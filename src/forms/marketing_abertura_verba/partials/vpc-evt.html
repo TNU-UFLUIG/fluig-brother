@@ -1,0 +1,66 @@
+<table class="table" tablename="itensVpcEvt" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.itensVpcEvt.length > 0">
+  <thead>
+    <tr>
+      <th class="hidden-xs">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="itemVpcEvt in vm.Formulario.itensVpcEvt">
+      <td>
+        <div class="td-content">
+          <div class="row">
+
+            <div class="col-sm-1">
+              <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensVpcEvt, $index)"
+                class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+            </div>
+            <div class="col-sm-11">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Nome do Evento</label>
+                  <input class="form-control input-lg" name="itemVpcEvt_nomeEvento" ng-model="itemVpcEvt.nomeEvento"
+                    ng-value="itemVpcEvt.nomeEvento" ng-disabled="!vm.regras.enableSolicitacao">
+                </div>
+                <div class="col-sm-6">
+                  <label>Finalidade</label>
+                  <input class="form-control input-lg" name="itemVpcEvt_finalidade" ng-model="itemVpcEvt.finalidade"
+                    ng-value="itemVpcEvt.finalidade" ng-disabled="!vm.regras.enableSolicitacao">
+                </div>
+                <div class="col-sm-3">
+                  <label>Data Início</label>
+                  <input class="form-control input-lg" name="itemVpcEvt_inicio_input" fluig-date-mask
+                    ng-model="itemVpcEvt.inicio" ng-disabled="!vm.regras.enableSolicitacao">
+                  <input type="hidden" ng-value="itemVpcEvt.inicio" name="itemVpcEvt_inicio">
+                </div>
+                <div class="col-sm-3">
+                  <label>Data Término</label>
+                  <input class="form-control input-lg" name="itemVpcEvt_termino_input" fluig-date-mask
+                    ng-model="itemVpcEvt.termino" ng-disabled="!vm.regras.enableSolicitacao">
+                  <input type="hidden" ng-value="itemVpcEvt.termino" name="itemVpcEvt_termino">
+                </div>
+                <div class="col-sm-3">
+                  <label>% Reembolso</label>
+                  <input class="form-control input-lg" name="itemVpcEvt_perc_input" fluig-percentage-mask
+                    ng-model="itemVpcEvt.perc" ng-disabled="!vm.regras.enableSolicitacao">
+                  <input type="hidden" ng-value="itemVpcEvt.perc" name="itemVpcEvt_perc">
+                </div>
+                <div class="col-sm-3">
+                  <label>Valor Total</label>
+                  <input class="form-control input-lg" name="itemVpcEvt_vlTotal_input" fluig-money-mask
+                    ng-model="itemVpcEvt.vlTotal" ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotais()">
+                  <input type="hidden" ng-value="itemVpcEvt.vlTotal" name="itemVpcEvt_vlTotal">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a ng-if="vm.regras.enableSolicitacao" class="btn btn-default"
+  ng-click="vm.incluiItem(vm.Formulario.itensVpcEvt)">Incluir
+  Item</a>

@@ -1,0 +1,37 @@
+<div class="col-sm-12">
+  <table class="table table-stripped" ng-show="vm.Formulario.resumoVerbas.length > 0">
+    <!-- <caption>Resumo de Verbas do Cliente</caption> -->
+    <thead>
+      <th></th>
+      <th>Rebate Sell-Out</th>
+      <th>Rebate Sell-in</th>
+      <th>Spiff</th>
+      <th>VPC</th>
+      <th>Total</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.Formulario.resumoVerbas">
+        <td>
+          
+        </td>
+        <td>
+          {{item.rebateSellout | currency}}
+        </td>
+        <td>
+          {{item.rebateSellin | currency}}
+        </td>
+        <td>
+          {{item.spiff | currency}}
+        </td>
+        <td>
+          {{item.vpc | currency}}
+        </td>
+        <td>
+          {{item.total | currency}}
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>

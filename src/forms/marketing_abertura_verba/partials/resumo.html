@@ -1,0 +1,525 @@
+<input type="hidden" name="status" ng-value="vm.Formulario.status" ng-model="vm.Formulario.status">
+
+<div class="row">
+  <div class="col-sm-4" ng-show="vm.Formulario.valorTotalVerba">
+    <div class="form-group">
+      <label class="control-label">Valor Total da Verba</label>
+      <h1>{{vm.Formulario.valorTotalVerba | currency}}</h1>
+      <input type="hidden" name="valorTotalVerba" ng-value="vm.Formulario.valorTotalVerba"
+        ng-model="vm.Formulario.valorTotalVerba">
+    </div>
+  </div>
+  <div class="col-sm-4" ng-show="vm.Formulario.gpMedioSugerido">
+    <div class="form-group">
+      <label class="control-label">GP Médido Sugerido</label>
+      <h1>{{vm.Formulario.gpMedioSugerido | currency}}</h1>
+      <input type="hidden" name="gpMedioSugerido" ng-value="vm.Formulario.gpMedioSugerido"
+        ng-model="vm.Formulario.gpMedioSugerido">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group">
+      <label class="control-label">Nº de Controle/Registro</label>
+      <h4>{{vm.Formulario.numControle}}</h4>
+      <input type="hidden" name="numControle" ng-value="vm.Formulario.numControle" ng-model="vm.Formulario.numControle">
+      <input type="hidden" name="numControleAno" ng-value="vm.Formulario.numControleAno"
+        ng-model="vm.Formulario.numControleAno">
+      <input type="hidden" name="numControleSeq" ng-value="vm.Formulario.numControleSeq"
+        ng-model="vm.Formulario.numControleSeq">
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group">
+      <label class="control-label">Data da Solicitação</label>
+      <h4>{{vm.Formulario.dataAbertura | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataAbertura" ng-value="vm.Formulario.dataAbertura"
+        ng-model="vm.Formulario.dataAbertura">
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group">
+      <label class="control-label">Solicitante</label>
+      <h4>{{vm.Formulario.solicitante.colleagueName| uppercase}}</h4>
+      <textarea hidden name="solicitante" ng-value="vm.Formulario.solicitante | json:0"
+        ng-bind="vm.Formulario.solicitante | json:0"></textarea>
+      <input type="hidden" name="solicitanteNome" ng-value="vm.Formulario.solicitante.colleagueName">
+      <input type="hidden" name="solicitanteCodigo" ng-value="vm.Formulario.solicitante.colleagueId">
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Cliente</label>
+      <h4>{{vm.Formulario.cliente.displaykey || '-' | uppercase}}</h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Executivo de Contas</label>
+      <h4>{{vm.Formulario.executivo.colleagueName || '-' | uppercase}}</h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Canal</label>
+      <h4>{{vm.Formulario.cliente.canal || '-' | uppercase}}</h4>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Tipo de Ação</label>
+      <h4>
+        {{vm.Formulario.tipoAcao.descricao  || '-' | uppercase}}
+        <span ng-if="vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin=='item'"> / ITEM</span>
+        <span ng-if="vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin=='target'"> / TARGET</span>
+        <span ng-if="vm.Formulario.tipoAcao.codigo=='spiff' && vm.Formulario.tipoSpiff=='item'"> / ITEM</span>
+        <span ng-if="vm.Formulario.tipoAcao.codigo=='spiff' && vm.Formulario.tipoSpiff=='target'"> / TARGET</span>
+        <span ng-if="vm.Formulario.tipoAcao.codigo=='vpc' && vm.Formulario.tipoVpc=='eventos'"> / EVENTOS</span>
+        <span ng-if="vm.Formulario.tipoAcao.codigo=='vpc' && vm.Formulario.tipoVpc=='outros'"> / OUTROS</span>
+
+      </h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Início da Ação</label>
+      <h4>{{vm.Formulario.inicioAcao  || '-' | date:'fullDate' | uppercase}}</h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Término da Ação</label>
+      <h4>{{vm.Formulario.terminoAcao  || '-' | date:'fullDate' | uppercase}}</h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group">
+      <label class="control-label">Status</label>
+      <h4>{{vm.Formulario.status | uppercase}}</h4>
+      <input type="hidden" name="status" ng-value="vm.Formulario.status" ng-model="vm.Formulario.status">
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Conta Contábil</label>
+      <h4>{{vm.Formulario.tipoAcao.contaContabil  || '-' | uppercase}}</h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Quantidade</label>
+      <h4>
+        {{vm.Formulario.tipoQuantidade == 'limitada' ? 'Limitada' : vm.Formulario.tipoQuantidade == 'estimada' ? 'Estimada' : '-' | uppercase}}
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label class="control-label">Descrição Detalhada da Ação</label>
+      <h4 style="white-space: pre-wrap;">{{vm.Formulario.descricaoDetalhada || '-'}}</h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensSellout.length > 0">
+      <caption>Sell-Out</caption>
+      <thead>
+        <th>Item</th>
+        <th>Categoria</th>
+        <th>SRP</th>
+        <th>Net</th>
+        <th>GP</th>
+        <th>Rebate Unit</th>
+        <th>Qtde</th>
+        <th>Rebate Total</th>
+        <th>Dolar</th>
+        <th>C. Custo</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemSellout in vm.Formulario.itensSellout">
+          <td>
+            {{itemSellout.item.descricao}}
+          </td>
+          <td>
+            {{itemSellout.item.categoria}}
+          </td>
+          <td>
+            <p>{{itemSellout.srpInicial | currency}}</p>
+            <p>{{itemSellout.srpSugerido | currency}}</p>
+          </td>
+          <td>
+            <p>{{itemSellout.item.netInicial | currency}}</p>
+            <p>{{itemSellout.item.netSugerido | currency}}</p>
+          </td>
+          <td>
+            <p>{{itemSellout.item.gpInicial | currency}}</p>
+            <p>{{itemSellout.item.gpSugerido | currency}}</p>
+          </td>
+          <td>
+            {{itemSellout.item.rebateUnit | currency}}
+          </td>
+          <td>
+            {{itemSellout.qtde | number:'2'}}
+          </td>
+          <td>
+            {{itemSellout.rebateTotal | currency}}
+          </td>
+          <td>
+            {{itemSellout.item.dolar | currency:'U$'}}
+          </td>
+          <td>
+            {{itemSellout.item.ccusto}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensSellinIt.length > 0">
+      <caption>Sell-In - Item</caption>
+      <thead>
+        <th>Item</th>
+        <th>Categoria</th>
+        <th>SRP</th>
+        <th>Net</th>
+        <th>GP</th>
+        <th>Rebate Unit</th>
+        <th>Qtde</th>
+        <th>Rebate Total</th>
+        <th>Dolar</th>
+        <th>C. Custo</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemSellinIt in vm.Formulario.itensSellinIt">
+          <td>
+            {{itemSellinIt.item.descricao}}
+          </td>
+          <td>
+            {{itemSellinIt.item.categoria}}
+          </td>
+          <td>
+            <p>{{itemSellinIt.srpInicial | currency}}</p>
+            <p>{{itemSellinIt.srpSugerido | currency}}</p>
+          </td>
+          <td>
+            <p>{{itemSellinIt.item.netInicial | currency}}</p>
+            <p>{{itemSellinIt.item.netSugerido | currency}}</p>
+          </td>
+          <td>
+            <p>{{itemSellinIt.item.gpInicial | currency}}</p>
+            <p>{{itemSellinIt.item.gpSugerido | currency}}</p>
+          </td>
+
+          <td>
+            {{itemSellinIt.item.rebateUnit | currency}}
+          </td>
+          <td>
+            {{itemSellinIt.qtde | number:'2'}}
+          </td>
+          <td>
+            {{itemSellinIt.rebateTotal | currency}}
+          </td>
+          <td>
+            {{itemSellinIt.item.dolar | currency:'U$'}}
+          </td>
+          <td>
+            {{itemSellinIt.item.ccusto}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensSellinTg.length > 0">
+      <caption>Sell-In - Target</caption>
+      <thead>
+        <th>Target Principal</th>
+        <th>Target R$</th>
+        <th>Target Qtde</th>
+        <th>Target %</th>
+        <th>Valor / Target</th>
+        <th>Valor Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemSellinTg in vm.Formulario.itensSellinTg">
+          <td>
+            {{itemSellinTg.descricao}}
+          </td>
+          <td>
+            {{itemSellinTg.target | currency}}
+          </td>
+          <td>
+            {{itemSellinTg.qtde | number}}
+          </td>
+          <td>
+            {{itemSellinTg.perc | percentage}}
+          </td>
+          <td>
+            {{itemSellinTg.vlTarget | currency}}
+          </td>
+          <td>
+            {{itemSellinTg.vlTotal | currency}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensSellinTgAc.length > 0">
+      <caption>Sell-In - Aceleradores</caption>
+      <thead>
+        <th>Descrição</th>
+        <th>Target R$</th>
+        <th>Target Qtde</th>
+        <th>Target %</th>
+        <th>Valor / Target</th>
+        <th>Valor Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemSellinAc in vm.Formulario.itensSellinTgAc">
+          <td>
+            {{itemSellinAc.descricao}}
+          </td>
+          <td>
+            {{itemSellinAc.target | currency}}
+          </td>
+          <td>
+            {{itemSellinAc.qtde | number}}
+          </td>
+          <td>
+            {{itemSellinAc.perc | percentage}}
+          </td>
+          <td>
+            {{itemSellinAc.vlTarget | currency}}
+          </td>
+          <td>
+            {{itemSellinAc.vlTotal | currency}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensVpcEvt.length > 0">
+      <caption>VPC / Coop - Eventos</caption>
+      <thead>
+        <th>Nome do Evento</th>
+        <th>Finalidade</th>
+        <th>Data Início</th>
+        <th>Data Término</th>
+        <th>% Reembolso</th>
+        <th>Valor Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemVpcEvt in vm.Formulario.itensVpcEvt">
+          <td>
+            {{itemVpcEvt.nomeEvento}}
+          </td>
+          <td>
+            {{itemVpcEvt.finalidade}}
+          </td>
+          <td>
+            {{itemVpcEvt.inicio | date}}
+          </td>
+          <td>
+            {{itemVpcEvt.termino | date}}
+          </td>
+          <td>
+            {{itemVpcEvt.perc | percentage}}
+          </td>
+          <td>
+            {{itemVpcEvt.vlTotal | currency}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensVpcOutros.length > 0">
+      <caption>VPC / Coop - Outros</caption>
+      <thead>
+        <th>Tipo</th>
+        <th>Finalidade</th>
+        <th>Quantidade</th>
+        <th>% Reembolso</th>
+        <th>Valor Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemVpcOutros in vm.Formulario.itensVpcOutros">
+          <td>
+            {{itemVpcOutros.tipo}}
+          </td>
+          <td>
+            {{itemVpcOutros.finalidade}}
+          </td>
+          <td>
+            {{itemVpcOutros.qtde | number}}
+          </td>
+          <td>
+            {{itemVpcOutros.perc | percentage}}
+          </td>
+          <td>
+            {{itemVpcOutros.vlTotal | currency}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensSpiffIt.length > 0">
+      <caption>Spiff - Item</caption>
+      <thead>
+        <th>Item</th>
+        <th>Categoria</th>
+        <th>Spiff Unitário</th>
+        <th>Qtde</th>
+        <th>Valor Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemSpiffIt in vm.Formulario.itensSpiffIt">
+          <td>
+            {{itemSpiffIt.item.descricao}}
+          </td>
+          <td>
+            {{itemSpiffIt.item.categoria}}
+          </td>
+          <td>
+            {{itemSpiffIt.spiffUnit | currency}}
+          </td>
+          <td>
+            {{itemSpiffIt.qtde | number:'2'}}
+          </td>
+          <td>
+            {{itemSpiffIt.vlTotal | currency}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-stripped" ng-show="vm.Formulario.itensSpiffTg.length > 0">
+      <caption>Spiff - Target</caption>
+      <thead>
+        <th>Foco</th>
+        <th>Target R$</th>
+        <th>Target %</th>
+        <th>Qtde</th>
+        <th>Valor Unitário</th>
+        <th>Valor Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="itemSpiffTg in vm.Formulario.itensSpiffTg">
+          <td>
+            {{itemSpiffTg.foco}}
+          </td>
+          <td>
+            {{itemSpiffTg.target | currency}}
+          </td>
+          <td>
+            {{itemSpiffTg.perc | percentage}}
+          </td>
+          <td>
+            {{itemSpiffTg.qtde | number}}
+          </td>
+          <td>
+            {{itemSpiffTg.vlUnit | currency}}
+          </td>
+          <td>
+            {{itemSpiffTg.vlTotal | currency}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-sm-3">
+    <table class="table table-stripped" ng-show="vm.Formulario.rateioCategoria.length > 0">
+      <caption>Rateio por Categoria</caption>
+      <thead>
+        <th>Categoria</th>
+        <th>%</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="rateio in vm.Formulario.rateioCategoria">
+          <td>
+            {{rateio.categoria.descricao}}
+          </td>
+          <td>
+            {{rateio.perc | percentage: '2'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-sm-9">
+    <table class="table table-stripped" ng-show="vm.Formulario.resumoVerbas.length > 0">
+      <caption>Resumo de Verbas do Cliente</caption>
+      <thead>
+        <th></th>
+        <th>Rebate Sell-Out</th>
+        <th>Rebate Sell-in</th>
+        <th>Spiff</th>
+        <th>VPC</th>
+        <th>Total</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in vm.Formulario.resumoVerbas" ng-class="item.class">
+          <td>
+            {{item.titulo}}
+          </td>
+          <td>
+            {{item.rebateSellout | currency}}
+          </td>
+          <td>
+            {{item.rebateSellin | currency}}
+          </td>
+          <td>
+            {{item.spiff | currency}}
+          </td>
+          <td>
+            {{item.vpc | currency}}
+          </td>
+          <td>
+            {{item.total | currency}}
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

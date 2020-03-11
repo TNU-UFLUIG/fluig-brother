@@ -1,0 +1,46 @@
+<table class="table" tablename="emailsCliente" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.emailsCliente.length > 0">
+  <thead>
+    <tr>
+      <th class="hidden-xs">
+      </th>
+      <th>E-mail</th>
+      <th>Início da Ação</th>
+      <th>Fim da Ação</th>
+      <th>Envio Evidências</th>
+      <th>Envio ND</th>
+      <th>Pagamento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="email in vm.Formulario.emailsCliente">
+      <td>
+        <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.emailsCliente, $index)"
+          class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+      </td>
+      <td>
+        <input type="email" name="email_email" ng-model="email.email" ng-value="email.email">
+      </td>
+      <td>
+        <input type="checkbox" name="email_iniAcao_input" ng-model="email.iniAcao" fluig-switch>
+        <input type="hidden" name="email_iniAcao" ng-value="email.iniAcao">
+      </td>
+      <td>
+        <input type="checkbox" name="email_fimAcao_input" ng-model="email.fimAcao" fluig-switch>
+        <input type="hidden" name="email_fimAcao" ng-value="email.fimAcao">
+      </td>
+      <td>
+        <input type="checkbox" name="email_evidencia_input" ng-model="email.evidencia" fluig-switch>
+        <input type="hidden" name="email_evidencia" ng-value="email.evidencia">
+      </td>
+      <td>
+        <input type="checkbox" name="email_envioNd_input" ng-model="email.envioNd" fluig-switch>
+        <input type="hidden" name="email_envioNd" ng-value="email.envioNd">
+      </td>
+      <td>
+        <input type="checkbox" name="email_pagamento_input" ng-model="email.pagamento" fluig-switch>
+        <input type="hidden" name="email_pagamento" ng-value="email.pagamento">
+      </td>
+    </tr>
+  </tbody>
+</table>

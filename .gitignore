@@ -2,12 +2,12 @@
 
 # Fluig project
 .metadata
-seed-fluig/datasets
-seed-fluig/events
-seed-fluig/forms
-seed-fluig/mechanisms
-seed-fluig/wcm/widget
-seed-fluig/workflow/.resources
+brother-fluig/datasets
+brother-fluig/events
+brother-fluig/forms
+brother-fluig/mechanisms
+brother-fluig/wcm/widget
+brother-fluig/workflow/.resources
 
 # compiled output
 dist
@@ -31,3 +31,4 @@ npm-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+com.totvs.tds.ecm.dataservers

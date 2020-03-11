@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Status</label>
+      <h4>{{vm.Formulario.statusValidacaoMarketing | uppercase}}</h4>
+      <input type="hidden" name="statusValidacaoMarketing" ng-value="vm.Formulario.statusValidacaoMarketing"
+        ng-model="vm.Formulario.statusValidacaoMarketing">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data da Validação</label>
+      <h4>{{vm.Formulario.dataValidacaoMarketing | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataValidacaoMarketing" ng-value="vm.Formulario.dataValidacaoMarketing"
+        ng-model="vm.Formulario.dataValidacaoMarketing">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userValMarketing.colleagueName| uppercase}}</h4>
+      <textarea hidden name="userValMarketing" ng-value="vm.Formulario.userValMarketing | json:0"
+        ng-bind="vm.Formulario.userValMarketing | json:0"></textarea>
+      <input type="hidden" name="userValMarketingNome" ng-value="vm.Formulario.userValMarketing.colleagueName">
+      <input type="hidden" name="userValMarketingCodigo" ng-value="vm.Formulario.userValMarketing.colleagueId">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsValidacaoMarketing" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableValidacaoMarketing" fluig-error="form.obsValidacaoMarketing.$error"
+        name="obsValidacaoMarketing" elastic class="form-control input-lg" placeholder="Caso devolva a solicitação, utilize este campo para informar o motivo"
+        ng-model="vm.Formulario.obsValidacaoMarketing" ng-value="vm.Formulario.obsValidacaoMarketing"></textarea>
+      <p ng-show="!vm.regras.enableValidacaoMarketing">{{vm.Formulario.obsValidacaoMarketing}}</p>
+    </div>
+  </div>
+
+</div>

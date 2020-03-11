@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsNotificacaoCliente" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableNotificacaoCliente" fluig-error="form.obsNotificacaoCliente.$error"
+        name="obsNotificacaoCliente" elastic class="form-control input-lg"
+        placeholder="Utilize este campo para incluir informações adicionais no e-mail que será enviado ao cliente"
+        ng-model="vm.Formulario.obsNotificacaoCliente" ng-value="vm.Formulario.obsNotificacaoCliente"></textarea>
+      <p ng-show="!vm.regras.enableNotificacaoCliente">{{vm.Formulario.obsNotificacaoCliente}}</p>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <table class="table" tablename="emailsCliente" noaddbutton="true" nodeletebutton="true"
+      ng-show="vm.Formulario.emailsCliente.length > 0">
+      <thead>
+        <tr>
+          <th class="hidden-xs col-sm-1">
+          </th>
+          <th class="col-sm-6">E-mail</th>
+          <th class="col-sm-1">Início da Ação</th>
+          <th class="col-sm-1">Fim da Ação</th>
+          <th class="col-sm-1">Envio Evidências</th>
+          <th class="col-sm-1">Envio ND</th>
+          <th class="col-sm-1">Pagamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="email in vm.Formulario.emailsCliente">
+          <td>
+            <span ng-click="vm.removeChild(vm.Formulario.emailsCliente, $index)"
+              class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+          </td>
+          <td>
+            <input type="email" class="form-control" name="email_email" ng-model="email.email" ng-value="email.email">
+          </td>
+          <td>
+            <input ng-show="vm.Params.etapa=='autorizarNotificacaoInicio'" type="checkbox" name="email_iniAcao_input"
+              ng-model="email.iniAcao" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="email_iniAcao" ng-value="email.iniAcao">
+          </td>
+          <td>
+            <input ng-show="vm.Params.etapa=='autorizarNotificacaoFim'" type="checkbox" name="email_fimAcao_input"
+              ng-model="email.fimAcao" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="email_fimAcao" ng-value="email.fimAcao">
+          </td>
+          <td>
+            <input type="checkbox" name="email_evidencia_input" ng-model="email.evidencia" fluig-switch
+              data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="email_evidencia" ng-value="email.evidencia">
+          </td>
+          <td>
+            <input type="checkbox" name="email_envioNd_input" ng-model="email.envioNd" fluig-switch data-off-text="NÃO"
+              data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="email_envioNd" ng-value="email.envioNd">
+          </td>
+          <td>
+            <input type="checkbox" name="email_pagamento_input" ng-model="email.pagamento" fluig-switch
+              data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="email_pagamento" ng-value="email.pagamento">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a class="btn btn-default btn-lg" ng-click="vm.Formulario.emailsCliente.push({})">Incluir E-mail</a>
+    </div>
+  </div>
+</div>

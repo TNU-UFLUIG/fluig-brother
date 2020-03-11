@@ -1,0 +1,44 @@
+@media (max-width: 767px) {
+  body {
+    margin: 0 !important;
+  }
+  .container {
+    padding: 0 !important;
+  }
+  .panel-body {
+    padding: 5px !important;
+  }
+  .fluig-style-guide {
+    font-size: 20px !important;
+    h4 {
+      font-size: 22px !important;
+    }
+    td,
+    th {
+      font-size: 20px !important;
+    }
+    .row {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+    .form-control {
+      font-size: 20px !important;
+      height: 45px !important;
+    }
+    .btn {
+      font-size: 20px !important;
+    }
+    .panel-heading h4 {
+      font-size: 20px !important;
+    }
+    .table > {
+      tbody, tfoot, thead > {
+        tr > {
+          th, td {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}

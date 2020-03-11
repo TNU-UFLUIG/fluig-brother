@@ -1,0 +1,60 @@
+<div class="row">
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Valor Liberado</label>
+      <h1>{{vm.Formulario.valorLiberado | currency}}</h1>
+      <input type="hidden" name="valorLiberado" ng-value="vm.Formulario.valorLiberado"
+        ng-model="vm.Formulario.valorLiberado">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table" tablename="duplicatas" noaddbutton="true" nodeletebutton="true"
+      ng-show="vm.Formulario.duplicatas.length > 0">
+      <caption>Duplicatas</caption>
+      <thead>
+        <tr>
+          <th class="col-sm-1">Seq</th>
+          <th class="col-sm-2">Emissão</th>
+          <th class="col-sm-2">Vencimento</th>
+          <th class="col-sm-1">Número</th>
+          <th class="col-sm-1">Parcela</th>
+          <th class="col-sm-1">Valor Original</th>
+          <th class="col-sm-1">Saldo</th>
+          <th class="col-sm-2">Valor a Antecipar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="titulo in vm.Formulario.duplicatas">
+
+          <td>
+            {{titulo.seq}}
+          </td>
+          <td>
+            {{titulo.emissao | date}}
+          </td>
+          <td>
+            {{titulo.vencimento | date}}
+          </td>
+          <td>
+            {{titulo.numero}}
+          </td>
+          <td>
+            {{titulo.parcela}}
+          </td>
+          <td>
+            {{titulo.valorOriginal | currency}}
+          </td>
+          <td>
+            {{titulo.saldo | currency}}
+          </td>
+          <td>
+            <input type="text" class="form-control" name="titulo_valorAntecipa_input" ng-model="titulo.valorAntecipa" fluig-money-mask>
+            <input type="hidden" name="titulo_valorAntecipa" ng-value="titulo.valorAntecipa">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

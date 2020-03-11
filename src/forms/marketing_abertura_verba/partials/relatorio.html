@@ -1,0 +1,102 @@
+<div class="relatorio">
+  <div class="report-header">
+    <div class="row">
+      <div class="col-xs-4">
+        <img src="/portal/api/servlet/image/BROTHER/custom/logo_image.png" height="80">
+        <!-- <h1 class="text-right">{{vm.Formulario.descricao}}</h1> -->
+      </div>
+      <div class="col-xs-8">
+        <h4 class="text-right">LAPS - Relatório de Estrutura de Produtos</h4>
+        <h4 class="text-right">{{vm.Formulario.dataAtiv || vm.Formulario.dataAbertura || vm.dataAtual | date:'medium'}} | {{vm.Formulario.status}} | {{vm.Formulario.versao}}</h4>
+        <h5 ng-if="vm.Formulario.importado" class="text-right">LAPS importada</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-content">
+    <div class="row">
+      <hr>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3">
+        <strong>Código do Produto</strong>
+      </div>
+      <div class="col-xs-9">
+        <strong>{{vm.Formulario.produto.codigo}} -
+          {{vm.Formulario.produto.ativo ? 'ATIVO' : 'INATIVO'}}</strong>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3">
+        <label>Nome do Produto</label>
+      </div>
+      <div class="col-xs-9">
+        <p>{{vm.Formulario.produto.descricao}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <label>Observações</label>
+      </div>
+      <div class="col-xs-9">
+        <p style="white-space: pre-line;">{{vm.Formulario.observacoesNpi}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <hr>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="text-center fs-no-margin" id="report-title">Itens</h3>
+
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th class="col-xs-2">Quantidade</th>
+              <th class="col-xs-2">Part Number</th>
+              <th class="col-xs-8">Nome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="itemNpi in vm.Formulario.itensNpi">
+              <td>{{itemNpi.qtde}}</td>
+              <td>{{itemNpi.item.codigo}}</td>
+              <td>{{itemNpi.item.descricao}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <hr>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="text-center fs-no-margin" id="report-title">Pacote de Arquivos</h3>
+
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th class="col-xs-2"></th>
+              <th class="col-xs-2">Código</th>
+              <th class="col-xs-8">Nome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="pacote in vm.Formulario.pacotesDocumentos">
+              <td></td>
+              <td>{{pacote.pacoteDoc.codigo}}</td>
+              <td>{{pacote.pacoteDoc.descricao}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

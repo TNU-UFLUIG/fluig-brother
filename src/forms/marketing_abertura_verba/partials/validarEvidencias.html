@@ -1,0 +1,64 @@
+<div class="row">
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Valor Total da Verba</label>
+      <h1>{{vm.Formulario.valorTotalVerba | currency}}</h1>
+      <input type="hidden" name="valorTotalVerba" ng-value="vm.Formulario.valorTotalVerba"
+        ng-model="vm.Formulario.valorTotalVerba">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Resultado Apresentado</label>
+      <h1 class="text-info">{{vm.Formulario.valorResultado | currency}}</h1>
+      <input type="hidden" name="valorResultado" ng-value="vm.Formulario.valorResultado"
+        ng-model="vm.Formulario.valorResultado">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Diferença</label>
+      <h1 class="text-danger">{{vm.Formulario.diferencaResultado | currency}}</h1>
+      <input type="hidden" name="diferencaResultado" ng-value="vm.Formulario.diferencaResultado"
+        ng-model="vm.Formulario.diferencaResultado">
+    </div>
+  </div>
+
+
+  <div class="col-sm-12">
+    <table class="table" tablename="arquivosEvidencias" noaddbutton="true" nodeletebutton="true"
+      ng-show="vm.Formulario.arquivosEvidencias.length > 0">
+      <caption>Arquivos de Evidência</caption>
+      <thead>
+        <tr>
+          <th class="col-sm-3">Descrição</th>
+          <th class="col-sm-3">Arquivo</th>
+          <th class="col-sm-1">Aceito</th>
+          <th class="col-sm-5">Motivo da Recusa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="arquivo in vm.Formulario.arquivosEvidencias">
+
+          <td>
+            {{arquivo.descricao}}
+          </td>
+          <td>
+            <a href="{{arquivo.link}}"> {{arquivo.nome}}</a>
+          </td>
+          <td>
+            <input ng-show="vm.Params.etapa=='validarEvidencias'" type="checkbox" name="arquivo_aceito_input"
+              ng-model="arquivo.aceito" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="arquivo_aceito" ng-value="arquivo.aceito">
+          </td>
+          <td>
+            <input ng-show="!arquivo.aceito" class="form-control" ng-model="arquivo.motivoRecusa"
+              name="arquivo_motivoRecusa" ng-value="arquivo.motivoRecusa">
+            <i ng-show="arquivo.aceito">Arquivo aceito</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

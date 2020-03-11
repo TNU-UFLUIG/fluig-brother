@@ -1,0 +1,146 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="cliente_input" class="control-label">Cliente</label>
+      <input ng-required="true" fluig-error="form.cliente_input.$error" class="form-control input-lg" fluig-autocomplete
+        dataset="totvs_busca_cliente" result-fields="['codigo','descricao','displaykey']" display-key="displaykey"
+        ng-model="vm.Formulario.cliente" name="cliente_input" ng-change="vm.changeCliente()"
+        ng-disabled="!vm.regras.enableSolicitacao">
+
+      <textarea hidden name="cliente" ng-value="vm.Formulario.cliente | json:0"
+        ng-bind="vm.Formulario.cliente | json:0"></textarea>
+      <textarea hidden name="executivo" ng-value="vm.Formulario.executivo | json:0"
+        ng-bind="vm.Formulario.executivo | json:0"></textarea>
+      <input type="hidden" name="clienteCodigo" ng-value="vm.Formulario.cliente.codigo">
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="tipoAcao_input" class="control-label">Tipo da Ação</label>
+      <input ng-required="true" fluig-error="form.tipoAcao_input.$error" class="form-control input-lg"
+        fluig-autocomplete dataset="fluig_busca_tipo_acao" display-key="descricao" ng-model="vm.Formulario.tipoAcao"
+        name="tipoAcao_input" ng-change="vm.changeTipoAcao()" ng-disabled="!vm.regras.enableSolicitacao">
+
+      <textarea hidden name="tipoAcao" ng-value="vm.Formulario.tipoAcao | json:0"
+        ng-bind="vm.Formulario.tipoAcao | json:0"></textarea>
+      <input type="hidden" name="tipoAcaoCodigo" ng-value="vm.Formulario.tipoAcao.codigo">
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="inicioAcao_input" class="control-label">Início da Ação</label>
+      <input class="form-control input-lg" name="inicioAcao_input" fluig-date-mask ng-model="vm.Formulario.inicioAcao"
+        ng-required="true" fluig-error="form.inicioAcao_input.$error">
+      <input type="hidden" name="inicioAcao" ng-value="vm.Formulario.inicioAcao">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="terminoAcao_input" class="control-label">Término da Ação</label>
+      <input class="form-control input-lg" name="terminoAcao_input" fluig-date-mask ng-model="vm.Formulario.terminoAcao"
+        ng-required="true" fluig-error="form.terminoAcao_input.$error">
+      <input type="hidden" name="terminoAcao" ng-value="vm.Formulario.terminoAcao">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="tipoQuantidade_input" class="control-label">Quantidade</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoQuantidade_input"
+            ng-model="vm.Formulario.tipoQuantidade" value="limitada" ng-required="true"
+            fluig-error="form.tipoQuantidade_input.$error">
+          Limitada
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoQuantidade_input"
+            ng-model="vm.Formulario.tipoQuantidade" value="estimada" ng-required="true"
+            fluig-error="form.tipoQuantidade_input.$error">
+          Estimada
+        </label>
+      </div>
+      <input type="hidden" name="tipoQuantidade" ng-value="vm.Formulario.tipoQuantidade">
+    </div>
+  </div>
+
+  <div class="col-sm-4 animation" ng-show="vm.Formulario.tipoAcao.codigo == 'sellin'">
+    <div class="form-group">
+      <label for="tipoSellin_input" class="control-label">Tipo</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoSellin_input"
+            ng-model="vm.Formulario.tipoSellin" value="item" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.codigo == 'sellin'" fluig-error="form.tipoSellin_input.$error">
+          Item
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoSellin_input"
+            ng-model="vm.Formulario.tipoSellin" value="target" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.codigo == 'sellin'" fluig-error="form.tipoSellin_input.$error">
+          Target
+        </label>
+      </div>
+      <input type="hidden" name="tipoSellin" ng-value="vm.Formulario.tipoSellin">
+    </div>
+  </div>
+
+  <div class="col-sm-4 animation" ng-show="vm.Formulario.tipoAcao.codigo == 'vpc'">
+    <div class="form-group">
+      <label for="tipoVpc_input" class="control-label">Tipo</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoVpc_input"
+            ng-model="vm.Formulario.tipoVpc" value="eventos" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.codigo == 'vpc'" fluig-error="form.tipoVpc_input.$error">
+          Eventos
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoVpc_input"
+            ng-model="vm.Formulario.tipoVpc" value="outros" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.codigo == 'vpc'" fluig-error="form.tipoVpc_input.$error">
+          Outros
+        </label>
+      </div>
+      <input type="hidden" name="tipoVpc" ng-value="vm.Formulario.tipoVpc">
+    </div>
+  </div>
+  <div class="col-sm-4 animation" ng-show="vm.Formulario.tipoAcao.codigo == 'spiff'">
+    <div class="form-group">
+      <label for="tipoSpiff_input" class="control-label">Tipo</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoSpiff_input"
+            ng-model="vm.Formulario.tipoSpiff" value="item" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.codigo == 'spiff'" fluig-error="form.tipoSpiff_input.$error">
+          Item
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-disabled="!vm.regras.enableSolicitacao" name="tipoSpiff_input"
+            ng-model="vm.Formulario.tipoSpiff" value="target" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.codigo == 'spiff'" fluig-error="form.tipoSpiff_input.$error">
+          Target
+        </label>
+      </div>
+      <input type="hidden" name="tipoSpiff" ng-value="vm.Formulario.tipoSpiff">
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="descricaoDetalhada" class="control-label">Descrição Detalhada da Ação</label>
+      <textarea ng-readonly="!vm.regras.enableSolicitacao" ng-required="true"
+        fluig-error="form.descricaoDetalhada.$error" name="descricaoDetalhada" elastic class="form-control input-lg"
+        ng-model="vm.Formulario.descricaoDetalhada" ng-value="vm.Formulario.descricaoDetalhada"></textarea>
+    </div>
+  </div>
+</div>

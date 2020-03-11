@@ -19,10 +19,14 @@ gulp.task('webserver', function () {
       livereload: true,
       directoryListing: true,
       open: true,
+      // path: 'brother-fluig',
       proxies: [
+        // { source: '/', target: params.cliServer }
+        { source: '/api', target: params.cliServer + '/api' },
         { source: '/portal', target: params.cliServer + '/portal' },
-        { source: '/seed_lib', target: params.cliServer + '/seed_lib' },
-        { source: '/webdesk', target: params.cliServer + '/webdesk' }
+        { source: '/brother_lib', target: params.cliServer + '/brother_lib' },
+        { source: '/webdesk', target: params.cliServer + '/webdesk' },
+        { source: '/style-guide', target: params.cliServer + '/style-guide' }
       ]
     }));
 });

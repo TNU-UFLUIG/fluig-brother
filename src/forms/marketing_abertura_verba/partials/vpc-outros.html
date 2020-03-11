@@ -1,0 +1,62 @@
+<table class="table" tablename="itensVpcEvt" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.itensVpcOutros.length > 0">
+  <thead>
+    <tr>
+      <th class="hidden-xs">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="itemVpcOutros in vm.Formulario.itensVpcOutros">
+      <td>
+        <div class="td-content">
+          <div class="row">
+
+            <div class="col-sm-1">
+              <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensVpcOutros, $index)"
+                class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+            </div>
+            <div class="col-sm-11">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Tipo</label>
+                  <input class="form-control input-lg" name="itemVpcOutros_tipo" ng-model="itemVpcOutros.tipo"
+                    ng-value="itemVpcOutros.tipo" ng-disabled="!vm.regras.enableSolicitacao">
+                </div>
+                <div class="col-sm-6">
+                  <label>Finalidade</label>
+                  <input class="form-control input-lg" name="itemVpcOutros_finalidade"
+                    ng-model="itemVpcOutros.finalidade" ng-value="itemVpcOutros.finalidade"
+                    ng-disabled="!vm.regras.enableSolicitacao">
+                </div>
+                <div class="col-sm-2">
+                  <label>Quantidade</label>
+                  <input class="form-control input-lg" name="itemVpcOutros_qtde_input" fluig-number-mask
+                    ng-model="itemVpcOutros.qtde" ng-disabled="!vm.regras.enableSolicitacao">
+                  <input type="hidden" ng-value="itemVpcOutros.qtde" name="itemVpcOutros_qtde">
+                </div>
+                <div class="col-sm-2">
+                  <label>% Reembolso</label>
+                  <input class="form-control input-lg" name="itemVpcOutros_perc_input" fluig-percentage-mask
+                    ng-model="itemVpcOutros.perc" ng-disabled="!vm.regras.enableSolicitacao">
+                  <input type="hidden" ng-value="itemVpcOutros.perc" name="itemVpcOutros_perc">
+                </div>
+                <div class="col-sm-3">
+                  <label>Valor Total</label>
+                  <input class="form-control input-lg" name="itemVpcOutros_vlTotal_input" fluig-money-mask
+                    ng-model="itemVpcOutros.vlTotal" ng-disabled="!vm.regras.enableSolicitacao"
+                    ng-change="vm.calculaTotais()">
+                  <input type="hidden" ng-value="itemVpcOutros.vlTotal" name="itemVpcOutros_vlTotal">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a ng-if="vm.regras.enableSolicitacao" class="btn btn-default"
+  ng-click="vm.incluiItem(vm.Formulario.itensVpcOutros)">Incluir
+  Item</a>

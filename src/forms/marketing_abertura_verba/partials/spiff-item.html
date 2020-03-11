@@ -1,0 +1,81 @@
+<table class="table" tablename="itensSpiffIt" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.itensSpiffIt.length > 0">
+  <thead>
+    <tr>
+      <th class="hidden-xs">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="itemSpiffIt in vm.Formulario.itensSpiffIt">
+      <td>
+        <div class="td-content">
+          <div class="row">
+
+            <div class="col-sm-1">
+              <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensSpiffIt, $index)"
+                class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+            </div>
+            <div class="col-sm-11">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Item</label>
+                  <input class="form-control input-lg" name="itemSpiffIt_item_input" fluig-autocomplete
+                    dataset="totvs_busca_item" display-key="displaykey" ng-model="itemSpiffIt.item"
+                    ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.changeitemSpiffIt(itemSpiffIt, $index)">
+                  <textarea hidden name="itemSpiffIt_item" ng-value="itemSpiffIt.item | json:0"
+                    ng-bind="itemSpiffIt.item | json:0"></textarea>
+                  <input type="hidden" name="itemSpiffIt_itemCodigo" ng-value="itemSpiffIt.item.codigo">
+                </div>
+                <div class="col-sm-6">
+                  <label>Categoria</label>
+                  <input class="form-control input-lg" name="itemSpiffIt_categoria"
+                    ng-model="itemSpiffIt.item.categoria" disabled>
+                </div>
+              </div>
+
+              <div class="row animation" ng-show="itemSpiffIt.item.codigo">
+                <div class="col-sm-4">
+                  <label>Spiff Unitário</label>
+                  <input class="form-control input-lg" name="itemSpiffIt_spiffUnit_input" fluig-money-mask
+                    ng-model="itemSpiffIt.spiffUnit" ng-disabled="!vm.regras.enableSolicitacao"
+                    ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
+                  <input type="hidden" name="itemSpiffIt_spiffUnit" ng-value="itemSpiffIt.spiffUnit">
+                </div>
+
+                <div class="col-sm-4">
+                  <label>Qtde</label>
+                  <input class="form-control input-lg" name="itemSpiffIt_qtde_input" fluig-number-mask
+                    ng-model="itemSpiffIt.qtde" ng-disabled="!vm.regras.enableSolicitacao"
+                    ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
+                  <input type="hidden" name="itemSpiffIt_qtde" ng-value="itemSpiffIt.qtde">
+                </div>
+                <div class="col-sm-4">
+                  <label>Valor Total</label>
+                  <input class="form-control input-lg" name="itemSpiffIt_vlTotal_input" fluig-money-mask
+                    ng-model="itemSpiffIt.vlTotal" disabled>
+                  <input type="hidden" name="itemSpiffIt_vlTotal" ng-value="itemSpiffIt.vlTotal">
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- <h4>{{itemSpiffIt.usuario.colleagueName}} incluiu em {{itemSpiffIt.data | date}}</h4> -->
+                  <textarea hidden name="itemSpiffIt_usuario" ng-value="itemSpiffIt.usuario | json:0"
+                    ng-bind="itemSpiffIt.usuario | json:0"></textarea>
+                  <input type="hidden" name="itemSpiffIt_usuarioCodigo" ng-value="itemSpiffIt.usuario.colleagueId">
+                  <input type="hidden" name="itemSpiffIt_data" ng-model="itemSpiffIt.data" ng-value="itemSpiffIt.data">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a ng-if="vm.regras.enableSolicitacao" class="btn btn-default"
+  ng-click="vm.incluiItem(vm.Formulario.itensSpiffIt)">Incluir
+  Item</a>

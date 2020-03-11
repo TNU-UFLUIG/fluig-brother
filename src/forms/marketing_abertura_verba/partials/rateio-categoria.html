@@ -1,0 +1,31 @@
+<table class="table" tablename="rateioCategoria" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.rateioCategoria.length > 0">
+  <caption>Rateio por Categoria</caption>
+  <thead>
+    <tr>
+      <th>
+        Categoria
+      </th>
+      <th>
+        %
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="rateio in vm.Formulario.rateioCategoria">
+      <td>
+        {{rateio.categoria.descricao}}
+      </td>
+      <td>
+        <input class="form-control input-lg" name="rateio_perc_input" fluig-percentage-mask ng-model="rateio.perc"
+          ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotalRateio()">
+        <input type="hidden" name="rateio_perc" ng-value="rateio.perc">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<input type="hidden" name="totalRateio" ng-value="vm.Formulario.totalRateio" ng-model="vm.Formulario.totalRateio">
+<h3 ng-class="{'text-danger': vm.Formulario.totalRateio != 1}">
+  Total: {{vm.Formulario.totalRateio | percentage:'2'}}
+</h3>

@@ -1,5 +1,5 @@
 {
-  "name": "seed-fluig",
+  "name": "brother-fluig",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -10,7 +10,8 @@
     "angular-fluig": "1.0.3",
     "chart.js": "2.5.0",
     "components-font-awesome": "4.7.0",
-    "moment": "2.18.1"
+    "moment": "2.18.1",
+    "ng-file-upload": "^12.2.13"
   },
   "devDependencies": {
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
@@ -65,5 +66,5 @@
   },
   "author": "",
   "license": "ISC",
-  "cliServer": "http://fluig2016tnu.brazilsouth.cloudapp.azure.com:8081"
+  "cliServer": "http://fluigteste.brother.com.br"
 }

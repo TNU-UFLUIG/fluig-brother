@@ -1,0 +1,16 @@
+.drop-box {
+  border: 3px dotted #ccc;
+  background-color: #eee;
+  text-align: center;
+  padding: 50px;
+}
+
+.drop-box.dragover {
+  border-color: #0e0;
+  background-color: #b2fab2;
+}
+
+.drop-box.dragover-err {
+  border-color: #f00;
+  background-color: #ffb2b2;
+}

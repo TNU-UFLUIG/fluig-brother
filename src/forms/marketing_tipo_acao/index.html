@@ -1,0 +1,38 @@
+<html ng-app="MarketingTipoAcaoApp">
+
+<head>
+	<!-- partial:../partials/head.html -->
+	<!-- partial -->
+	<title>Tipo de Ação de Marketing</title>
+</head>
+
+<body ng-controller="MarketingTipoAcaoController as vm">
+	<div class="fluig-style-guide ng-cloak">
+		<div class="container-fluid">
+			<div fluig-header class="hidden-xs hidden-print fs-sm-space" logo="../../wcm/widget/brother_lib/images/logo.png">
+			</div>
+			<form name="form" role="form" class="form">
+				<!-- partial:partials/angularMap.html -->
+				<!-- partial -->
+
+				<!-- partial:../partials/alerts.html -->
+				<!-- partial -->
+
+				<div class="panel animation"
+					ng-class="{'panel-primary': vm.Params.edit, 'panel-default': !vm.Params.edit}">
+					<div class="panel-heading">
+						<h4 class="panel-title">Tipo de Ação</h4>
+					</div>
+
+					<div class="panel-body">
+						<!-- partial:partials/tipoAcao.html -->
+						<!-- partial -->
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
