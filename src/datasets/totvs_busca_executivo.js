@@ -1,5 +1,5 @@
-const campos = ['codigo', 'descricao', 'categoria', 'netInicial', 'gpInicial', 'netSugerido', 'gpSugerido', 'rebateUnit', 'rebateTotal', 'dolar'];
-const display = ['codigo', 'descricao'];
+const campos = ['codigo', 'nome', 'email'];
+const display = ['nome', 'email'];
 const dePara = campos;
 
 
@@ -33,9 +33,9 @@ function buscaDataset(fields, constraints, sortFields) {
   properties["receive.timeout"] = "0";
 
   // const json = jsonLocal();
-  const json = callDatasul("esp/buscaItem.p", "piBusca", params, null, properties);
+  const json = callDatasul("esp/buscaExecutivo.p", "piBusca", params, null, properties);
 
-  return montaDataset(json.ttErro, json.ttItem, campos, display, null, true);
+  return montaDataset(json.ttErro, json.ttGestor, campos, display, null, true);
 }
 
 /*$$ partials/getConstraints.js $$*/
@@ -44,19 +44,13 @@ function buscaDataset(fields, constraints, sortFields) {
 
 function jsonLocal() {
   return {
-    ttItem: [
+    ttCliente: [
       {
-        codigo: '10930',
-        descricao: 'HLL2360DW',
-        categoria: '2.2-MLL HW',
-        netInicial: 1200,
-        gpInicial: 10,
-        netSugerido: 1300,
-        gpSugerido: 14,
-        rebateUnit: 100,
-        rebateTotal: 100,
-        dolar: 4.1
-        
+        codigo: '385',
+        cnpj: '00.00.000/0001-01',
+        nome: 'REIS OFFICE',
+        canal: 'DISTRIBUTOR',
+        executivo: 'ckayama'
       }
     ]
   };

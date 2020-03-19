@@ -2,74 +2,67 @@
   ng-show="vm.Formulario.itensSellinTg.length > 0">
   <thead>
     <tr>
-      <th class="hidden-xs">
-      </th>
+      <th class="col-sm-1" ng-if="vm.regras.enableSolicitacao"></th>
+      <th class="col-sm-11"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody ng-non-bindable>
     <tr ng-repeat="itemSellinTg in vm.Formulario.itensSellinTg">
+      <td ng-if="vm.regras.enableSolicitacao">
+        <span ng-click="vm.removeChild(vm.Formulario.itensSellinTg, $index)"
+          class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+      </td>
       <td>
         <div class="td-content">
           <div class="row">
-
-            <div class="col-sm-1">
-              <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensSellinTg, $index)"
-                class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+            <div class="col-sm-5">
+              <label>Target Principal</label>
+              <input class="form-control input-lg" name="itemSellinTg_descricao_input" ng-model="itemSellinTg.descricao"
+                ng-value="itemSellinTg.descricao" ng-disabled="!vm.regras.enableSolicitacao">
             </div>
-            <div class="col-sm-11">
-              <div class="row">
-                <div class="col-sm-5">
-                  <label>Target Principal</label>
-                  <input class="form-control input-lg" name="itemSellinTg_descricao_input"
-                    ng-model="itemSellinTg.descricao" ng-value="itemSellinTg.descricao"
-                    ng-disabled="!vm.regras.enableSolicitacao">
-                </div>
-                <div class="col-sm-3">
-                  <label>Target R$</label>
-                  <input class="form-control input-lg" name="itemSellinTg_target_input" fluig-money-mask
-                    ng-model="itemSellinTg.target" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSellinTg)">
-                  <input type="hidden" name="itemSellinTg_target" ng-value="itemSellinTg.target">
-                </div>
-                <div class="col-sm-2">
-                  <label>Target Qtde</label>
-                  <input class="form-control input-lg" name="itemSellinTg_qtde_input" fluig-number-mask="2"
-                    ng-model="itemSellinTg.qtde" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSellinTg)">
-                  <input type="hidden" name="itemSellinTg_qtde" ng-value="itemSellinTg.qtde">
-                </div>
-                <div class="col-sm-2">
-                  <label>Target %</label>
-                  <input class="form-control input-lg" name="itemSellinTg_perc_input" fluig-percentage-mask
-                    ng-model="itemSellinTg.perc" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSellinTg)">
-                  <input type="hidden" name="itemSellinTg_perc" ng-value="itemSellinTg.perc">
-                </div>
-                <div class="col-sm-3">
-                  <label>Valor / Target</label>
-                  <input class="form-control input-lg" name="itemSellinTg_vlTarget_input" fluig-money-mask
-                    ng-model="itemSellinTg.vlTarget" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSellinTg)">
-                  <input type="hidden" name="itemSellinTg_vlTarget" ng-value="itemSellinTg.vlTarget">
-                </div>
-                <div class="col-sm-3">
-                  <label>Valor Total</label>
-                  <input class="form-control input-lg" name="itemSellinTg_vlTotal_input" fluig-money-mask
-                    ng-model="itemSellinTg.vlTotal" disabled>
-                  <input type="hidden" name="itemSellinTg_vlTotal" ng-value="itemSellinTg.vlTotal">
-                </div>
-              </div>
+            <div class="col-sm-3">
+              <label>Target R$</label>
+              <input class="form-control input-lg" name="itemSellinTg_target_input" fluig-money-mask
+                ng-model="itemSellinTg.target" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSellinTg)">
+              <input type="hidden" name="itemSellinTg_target" ng-value="itemSellinTg.target">
+            </div>
+            <div class="col-sm-2">
+              <label>Target Qtde</label>
+              <input class="form-control input-lg" name="itemSellinTg_qtde_input" fluig-number-mask="2"
+                ng-model="itemSellinTg.qtde" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSellinTg)">
+              <input type="hidden" name="itemSellinTg_qtde" ng-value="itemSellinTg.qtde">
+            </div>
+            <div class="col-sm-2">
+              <label>Target %</label>
+              <input class="form-control input-lg" name="itemSellinTg_perc_input" fluig-percentage-mask
+                ng-model="itemSellinTg.perc" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSellinTg)">
+              <input type="hidden" name="itemSellinTg_perc" ng-value="itemSellinTg.perc">
+            </div>
+            <div class="col-sm-3">
+              <label>Valor / Target</label>
+              <input class="form-control input-lg" name="itemSellinTg_vlTarget_input" fluig-money-mask
+                ng-model="itemSellinTg.vlTarget" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSellinTg)">
+              <input type="hidden" name="itemSellinTg_vlTarget" ng-value="itemSellinTg.vlTarget">
+            </div>
+            <div class="col-sm-3">
+              <label>Valor Total</label>
+              <input class="form-control input-lg" name="itemSellinTg_vlTotal_input" fluig-money-mask
+                ng-model="itemSellinTg.vlTotal" disabled>
+              <input type="hidden" name="itemSellinTg_vlTotal" ng-value="itemSellinTg.vlTotal">
+            </div>
+          </div>
 
-              <div class="row">
-                <div class="col-sm-12">
-                  <!-- <h4>{{itemSellinTg.usuario.colleagueName}} incluiu em {{itemSellinTg.data | date}}</h4> -->
-                  <textarea hidden name="itemSellinTg_usuario" ng-value="itemSellinTg.usuario | json:0"
-                    ng-bind="itemSellinTg.usuario | json:0"></textarea>
-                  <input type="hidden" name="itemSellinTg_usuarioCodigo" ng-value="itemSellinTg.usuario.colleagueId">
-                  <input type="hidden" name="itemSellinTg_data" ng-model="itemSellinTg.data"
-                    ng-value="itemSellinTg.data">
-                </div>
-              </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- <h4>{{itemSellinTg.usuario.colleagueName}} incluiu em {{itemSellinTg.data | date}}</h4> -->
+              <textarea hidden name="itemSellinTg_usuario" ng-value="itemSellinTg.usuario | json:0"
+                ng-bind="itemSellinTg.usuario | json:0"></textarea>
+              <input type="hidden" name="itemSellinTg_usuarioCodigo" ng-value="itemSellinTg.usuario.colleagueId">
+              <input type="hidden" name="itemSellinTg_data" ng-model="itemSellinTg.data" ng-value="itemSellinTg.data">
             </div>
           </div>
         </div>

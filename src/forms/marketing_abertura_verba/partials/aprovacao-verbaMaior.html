@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Status</label>
+      <h4>{{vm.Formulario.statusAprovVerbaMaior | uppercase}}</h4>
+      <input type="hidden" name="statusAprovVerbaMaior" ng-value="vm.Formulario.statusAprovVerbaMaior"
+        ng-model="vm.Formulario.statusAprovVerbaMaior">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data</label>
+      <h4>{{vm.Formulario.dataAprovVerbaMaior | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataAprovVerbaMaior" ng-value="vm.Formulario.dataAprovVerbaMaior"
+        ng-model="vm.Formulario.dataAprovVerbaMaior">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userAprovVerbaMaior.colleagueName| uppercase}}</h4>
+      <textarea hidden name="userAprovVerbaMaior" ng-value="vm.Formulario.userAprovVerbaMaior | json:0"
+        ng-bind="vm.Formulario.userAprovVerbaMaior | json:0"></textarea>
+      <input type="hidden" name="userAprovVerbaMaiorNome"
+        ng-value="vm.Formulario.userAprovVerbaMaior.colleagueName">
+      <input type="hidden" name="userAprovVerbaMaiorCodigo"
+        ng-value="vm.Formulario.userAprovVerbaMaior.colleagueId">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsAprovVerbaMaior" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableAprovVerbaMaior" fluig-error="form.obsAprovVerbaMaior.$error"
+        name="obsAprovVerbaMaior" elastic class="form-control input-lg"
+        ng-model="vm.Formulario.obsAprovVerbaMaior" ng-value="vm.Formulario.obsAprovVerbaMaior"
+        placeholder="Caso reprove a solicitação, utilize este campo para informar o motivo"></textarea>
+      <p ng-show="!vm.regras.enableAprovVerbaMaior">{{vm.Formulario.obsAprovVerbaMaior || 'Sem observações'}}</p>
+    </div>
+  </div>
+
+</div>

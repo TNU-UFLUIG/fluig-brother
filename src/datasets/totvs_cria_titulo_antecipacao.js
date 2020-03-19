@@ -9,9 +9,9 @@ function defineStructure() {
   }
   addColumn('displaykey');
 
-  setKey(['codigo']);
+  setKey(['numTitulo']);
 
-  addIndex(['codigo']);
+  addIndex(['numTitulo']);
 }
 
 function onSync(lastSyncDate) {
@@ -32,8 +32,8 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  const json = jsonLocal();
-  // const json = callDatasul("criaAntecipacao.p", "piCria", params, null, properties);
+  // const json = jsonLocal();
+  const json = callDatasul("esp/criaAntecipacao.p", "piCria", params, null, properties);
 
   return montaDataset(json.ttErro, json.ttItem, campos, display);
 }

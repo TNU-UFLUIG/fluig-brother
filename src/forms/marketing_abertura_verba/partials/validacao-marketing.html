@@ -30,9 +30,37 @@
     <div class="form-group">
       <label for="obsValidacaoMarketing" class="control-label">Observações</label>
       <textarea ng-show="vm.regras.enableValidacaoMarketing" fluig-error="form.obsValidacaoMarketing.$error"
-        name="obsValidacaoMarketing" elastic class="form-control input-lg" placeholder="Caso devolva a solicitação, utilize este campo para informar o motivo"
+        name="obsValidacaoMarketing" elastic class="form-control input-lg"
+        placeholder="Caso devolva a solicitação, utilize este campo para informar o motivo"
         ng-model="vm.Formulario.obsValidacaoMarketing" ng-value="vm.Formulario.obsValidacaoMarketing"></textarea>
-      <p ng-show="!vm.regras.enableValidacaoMarketing">{{vm.Formulario.obsValidacaoMarketing}}</p>
+      <p ng-show="!vm.regras.enableValidacaoMarketing">{{vm.Formulario.obsValidacaoMarketing || 'Sem observações'}}</p>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+
+    <div class="form-group">
+      <label for="executivo_input" class="control-label">Executivo de Contas</label>
+      <input ng-required="true" fluig-error="form.executivo_input.$error" class="form-control input-lg"
+        fluig-autocomplete dataset="totvs_busca_executivo" result-fields="['codigo', 'nome', 'email', 'displaykey']"
+        display-key="displaykey" ng-model="vm.Formulario.executivo" name="executivo_input"
+        ng-disabled="!vm.regras.enableValidacaoMarketing">
+
+      <textarea hidden name="executivo" ng-value="vm.Formulario.executivo | json:0"
+        ng-bind="vm.Formulario.executivo | json:0"></textarea>
+      <input type="hidden" name="executivoCodigo" ng-value="vm.Formulario.executivo.codigo">
+    </div>
+
+
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="necAprovacaoGerMkt" class="control-label">Necessária a Aprovação do Gerente de Marketing</label>
+      <input type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success"
+        name="necAprovacaoGerMkt_input" ng-model="vm.Formulario.necAprovacaoGerMkt"
+        ng-disabled="!vm.regras.enableValidacaoMarketing">
+      <input type="hidden" name="necAprovacaoGerMkt" ng-value="vm.Formulario.necAprovacaoGerMkt">
     </div>
   </div>
 

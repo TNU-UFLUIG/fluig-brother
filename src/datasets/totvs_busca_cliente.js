@@ -1,4 +1,4 @@
-const campos = ['codigo', 'razaoSocial', 'nomeAbrev', 'cnpj', 'executivo', 'subcanal'];
+const campos = ['codigo', 'razaoSocial', 'nomeAbrev', 'cnpj', 'executivo', 'subcanal', 'matriz'];
 const display = ['codigo', 'razaoSocial', 'cnpj'];
 const dePara = campos;
 
@@ -32,10 +32,10 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  const json = jsonLocal();
-  // const json = callDatasul("buscaCliente.p", "piBusca", params, null, properties);
+  // const json = jsonLocal();
+  const json = callDatasul("esp/buscaCliente.p", "piBusca", params, null, properties);
 
-  return montaDataset(json.ttErro, json.ttCliente, campos, display);
+  return montaDataset(json.ttErro, json.ttCliente, campos, display, null, true);
 }
 
 /*$$ partials/getConstraints.js $$*/

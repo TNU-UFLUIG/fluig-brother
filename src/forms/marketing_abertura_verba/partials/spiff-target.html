@@ -2,72 +2,68 @@
   ng-show="vm.Formulario.itensSpiffTg.length > 0">
   <thead>
     <tr>
-      <th class="hidden-xs">
-      </th>
+      <th class="col-sm-1" ng-if="vm.regras.enableSolicitacao"></th>
+      <th class="col-sm-11"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody ng-non-bindable>
     <tr ng-repeat="itemSpiffTg in vm.Formulario.itensSpiffTg">
+      <td ng-if="vm.regras.enableSolicitacao">
+        <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensSpiffTg, $index)"
+          class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+      </td>
       <td>
         <div class="td-content">
+
           <div class="row">
-
-            <div class="col-sm-1">
-              <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensSpiffTg, $index)"
-                class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+            <div class="col-sm-5">
+              <label>Foco</label>
+              <input class="form-control input-lg" name="itemSpiffTg_foco_input" ng-model="itemSpiffTg.foco"
+                ng-value="itemSpiffTg.foco" ng-disabled="!vm.regras.enableSolicitacao">
             </div>
-            <div class="col-sm-11">
-              <div class="row">
-                <div class="col-sm-5">
-                  <label>Foco</label>
-                  <input class="form-control input-lg" name="itemSpiffTg_foco_input" ng-model="itemSpiffTg.foco"
-                    ng-value="itemSpiffTg.foco" ng-disabled="!vm.regras.enableSolicitacao">
-                </div>
-                <div class="col-sm-3">
-                  <label>Target R$</label>
-                  <input class="form-control input-lg" name="itemSpiffTg_target_input" fluig-money-mask
-                    ng-model="itemSpiffTg.target" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSpiffTg)">
-                  <input type="hidden" name="itemSpiffTg_target" ng-value="itemSpiffTg.target">
-                </div>
-                <div class="col-sm-2">
-                  <label>Target %</label>
-                  <input class="form-control input-lg" name="itemSpiffTg_perc_input" fluig-percentage-mask
-                    ng-model="itemSpiffTg.perc" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSpiffTg)">
-                  <input type="hidden" name="itemSpiffTg_perc" ng-value="itemSpiffTg.perc">
-                </div>
-                <div class="col-sm-2">
-                  <label>Qtde</label>
-                  <input class="form-control input-lg" name="itemSpiffTg_qtde_input" fluig-number-mask="2"
-                    ng-model="itemSpiffTg.qtde" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSpiffTg)">
-                  <input type="hidden" name="itemSpiffTg_qtde" ng-value="itemSpiffTg.qtde">
-                </div>
-                <div class="col-sm-3">
-                  <label>Valor Unitário</label>
-                  <input class="form-control input-lg" name="itemSpiffTg_vlUnit_input" fluig-money-mask
-                    ng-model="itemSpiffTg.vlUnit" ng-disabled="!vm.regras.enableSolicitacao"
-                    ng-change="vm.calculaTarget(itemSpiffTg)">
-                  <input type="hidden" name="itemSpiffTg_vlUnit" ng-value="itemSpiffTg.vlUnit">
-                </div>
-                <div class="col-sm-3">
-                  <label>Valor Total</label>
-                  <input class="form-control input-lg" name="itemSpiffTg_vlTotal_input" fluig-money-mask
-                    ng-model="itemSpiffTg.vlTotal" disabled>
-                  <input type="hidden" name="itemSpiffTg_vlTotal" ng-value="itemSpiffTg.vlTotal">
-                </div>
-              </div>
+            <div class="col-sm-3">
+              <label>Target R$</label>
+              <input class="form-control input-lg" name="itemSpiffTg_target_input" fluig-money-mask
+                ng-model="itemSpiffTg.target" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSpiffTg)">
+              <input type="hidden" name="itemSpiffTg_target" ng-value="itemSpiffTg.target">
+            </div>
+            <div class="col-sm-2">
+              <label>Target %</label>
+              <input class="form-control input-lg" name="itemSpiffTg_perc_input" fluig-percentage-mask
+                ng-model="itemSpiffTg.perc" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSpiffTg)">
+              <input type="hidden" name="itemSpiffTg_perc" ng-value="itemSpiffTg.perc">
+            </div>
+            <div class="col-sm-2">
+              <label>Qtde</label>
+              <input class="form-control input-lg" name="itemSpiffTg_qtde_input" fluig-number-mask="2"
+                ng-model="itemSpiffTg.qtde" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSpiffTg)">
+              <input type="hidden" name="itemSpiffTg_qtde" ng-value="itemSpiffTg.qtde">
+            </div>
+            <div class="col-sm-3">
+              <label>Valor Unitário</label>
+              <input class="form-control input-lg" name="itemSpiffTg_vlUnit_input" fluig-money-mask
+                ng-model="itemSpiffTg.vlUnit" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSpiffTg)">
+              <input type="hidden" name="itemSpiffTg_vlUnit" ng-value="itemSpiffTg.vlUnit">
+            </div>
+            <div class="col-sm-3">
+              <label>Valor Total</label>
+              <input class="form-control input-lg" name="itemSpiffTg_vlTotal_input" fluig-money-mask
+                ng-model="itemSpiffTg.vlTotal" disabled>
+              <input type="hidden" name="itemSpiffTg_vlTotal" ng-value="itemSpiffTg.vlTotal">
+            </div>
+          </div>
 
-              <div class="row">
-                <div class="col-sm-12">
-                  <!-- <h4>{{itemSpiffTg.usuario.colleagueName}} incluiu em {{itemSpiffTg.data | date}}</h4> -->
-                  <textarea hidden name="itemSpiffTg_usuario" ng-value="itemSpiffTg.usuario | json:0"
-                    ng-bind="itemSpiffTg.usuario | json:0"></textarea>
-                  <input type="hidden" name="itemSpiffTg_usuarioCodigo" ng-value="itemSpiffTg.usuario.colleagueId">
-                  <input type="hidden" name="itemSpiffTg_data" ng-model="itemSpiffTg.data" ng-value="itemSpiffTg.data">
-                </div>
-              </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- <h4>{{itemSpiffTg.usuario.colleagueName}} incluiu em {{itemSpiffTg.data | date}}</h4> -->
+              <textarea hidden name="itemSpiffTg_usuario" ng-value="itemSpiffTg.usuario | json:0"
+                ng-bind="itemSpiffTg.usuario | json:0"></textarea>
+              <input type="hidden" name="itemSpiffTg_usuarioCodigo" ng-value="itemSpiffTg.usuario.colleagueId">
+              <input type="hidden" name="itemSpiffTg_data" ng-model="itemSpiffTg.data" ng-value="itemSpiffTg.data">
             </div>
           </div>
         </div>

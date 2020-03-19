@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Status</label>
+      <h4>{{vm.Formulario.statusValidacaoND | uppercase}}</h4>
+      <input type="hidden" name="statusValidacaoND" ng-value="vm.Formulario.statusValidacaoND"
+        ng-model="vm.Formulario.statusValidacaoND">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data</label>
+      <h4>{{vm.Formulario.dataValidacaoND | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataValidacaoND" ng-value="vm.Formulario.dataValidacaoND"
+        ng-model="vm.Formulario.dataValidacaoND">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userValidacaoND.colleagueName| uppercase}}</h4>
+      <textarea hidden name="userValidacaoND" ng-value="vm.Formulario.userValidacaoND | json:0"
+        ng-bind="vm.Formulario.userValidacaoND | json:0"></textarea>
+      <input type="hidden" name="userValidacaoNDNome" ng-value="vm.Formulario.userValidacaoND.colleagueName">
+      <input type="hidden" name="userValidacaoNDCodigo" ng-value="vm.Formulario.userValidacaoND.colleagueId">
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsEnvioND" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableND" fluig-error="form.obsEnvioND.$error" name="obsEnvioND" elastic
+        class="form-control input-lg" placeholder="Observações do cliente no envio da ND"
+        ng-model="vm.Formulario.obsEnvioND" ng-value="vm.Formulario.obsEnvioND"></textarea>
+      <p ng-show="!vm.regras.enableND">{{vm.Formulario.obsEnvioND || 'Sem observações'}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-3" ng-if="vm.regras.enableND">
+    <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles(vm.Formulario.arquivosND, null, $files)"
+      ngf-drop="vm.selectFiles(vm.Formulario.arquivosND, null, $files)" ng-model="files" ngf-multiple="true"
+      ngf-drag-over-class="'dragover'">
+      <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
+    </div>
+  </div>
+
+  <div ng-class="{'col-sm-9': vm.regras.enableND, 'col-sm-12': !vm.regras.enableND}">
+    <div class="fs-txt-center" ng-show="vm.Formulario.arquivosND.length == 0">
+      <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
+    </div>
+    <table class="table" tablename="arquivosND" noaddbutton="true" nodeletebutton="true"
+      ng-show="vm.Formulario.arquivosND.length > 0">
+      <caption>Notas de Débito</caption>
+      <thead>
+        <tr>
+          <th class="col-sm-1" ng-show="vm.regras.enableND"></th>
+          <th class="col-sm-2">Descrição</th>
+          <th class="col-sm-1">Número da ND</th>
+          <th class="col-sm-2">Arquivo</th>
+          <th class="col-sm-1" ng-show="vm.regras.enableValidacaoND">Aceito</th>
+          <th class="col-sm-5" ng-show="vm.regras.enableValidacaoND">Motivo da Recusa</th>
+        </tr>
+      </thead>
+      <tbody ng-non-bindable>
+        <tr ng-repeat="arquivoND in vm.Formulario.arquivosND">
+
+          <td ng-show="vm.regras.enableND">
+            <span ng-click="vm.removeChild(vm.Formulario.arquivosND, $index)"
+              class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+
+            <input type="hidden" name="arquivoND_descricao" ng-value="arquivoND.descricao">
+            <input type="hidden" name="arquivoND_numero" ng-value="arquivoND.numero" ng-model="arquivoND.numero">
+            <input type="hidden" name="arquivoND_nome" ng-value="arquivoND.nome" ng-model="arquivoND.nome">
+            <input type="hidden" name="arquivoND_type" ng-value="arquivoND.type" ng-model="arquivoND.type">
+            <input type="hidden" name="arquivoND_documentid" ng-value="arquivoND.documentid"
+              ng-model="arquivoND.documentid">
+            <input type="hidden" name="arquivoND_version" ng-value="arquivoND.version" ng-model="arquivoND.version">
+            <input type="hidden" name="arquivoND_url" ng-value="arquivoND.url" ng-model="arquivoND.url">
+
+          </td>
+          <td>
+            <input type="text" ng-readonly="!vm.regras.enableND" class="form-control" name="arquivoND_descricao_input"
+              ng-model="arquivoND.descricao">
+          </td>
+          <td>
+            <input type="text" ng-readonly="!vm.regras.enableND" class="form-control" name="arquivoND_numero_input"
+              ng-model="arquivoND.numero">
+          </td>
+          <td>
+            <a target="_blank" href="{{arquivoND.url}}"> {{arquivoND.nome}}</a>
+          </td>
+          <td ng-show="vm.regras.enableValidacaoND">
+            <input type="checkbox" name="arquivoND_aceito_input" ng-model="arquivoND.aceito" fluig-switch
+              data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="arquivoND_aceito" ng-value="arquivoND.aceito">
+          </td>
+          <td ng-show="vm.regras.enableValidacaoND">
+            <input ng-show="!arquivoND.aceito" class="form-control" ng-model="arquivoND.motivoRecusa"
+              name="arquivoND_motivoRecusa" ng-value="arquivoND.motivoRecusa">
+            <i ng-show="arquivoND.aceito">ND aceita</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

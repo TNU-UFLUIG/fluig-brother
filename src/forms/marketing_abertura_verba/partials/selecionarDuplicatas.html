@@ -1,11 +1,61 @@
 <div class="row">
-
   <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Status</label>
+      <h4>{{vm.Formulario.statusFinanceiro | uppercase}}</h4>
+      <input type="hidden" name="statusFinanceiro" ng-value="vm.Formulario.statusFinanceiro"
+        ng-model="vm.Formulario.statusFinanceiro">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data</label>
+      <h4>{{vm.Formulario.dataFinanceiro | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataFinanceiro" ng-value="vm.Formulario.dataFinanceiro"
+        ng-model="vm.Formulario.dataFinanceiro">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userFinanceiro.colleagueName| uppercase}}</h4>
+      <textarea hidden name="userFinanceiro" ng-value="vm.Formulario.userFinanceiro | json:0"
+        ng-bind="vm.Formulario.userFinanceiro | json:0"></textarea>
+      <input type="hidden" name="userFinanceiroNome" ng-value="vm.Formulario.userFinanceiro.colleagueName">
+      <input type="hidden" name="userFinanceiroCodigo" ng-value="vm.Formulario.userFinanceiro.colleagueId">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-6">
     <div class="form-group">
       <label class="control-label">Valor Liberado</label>
       <h1>{{vm.Formulario.valorLiberado | currency}}</h1>
       <input type="hidden" name="valorLiberado" ng-value="vm.Formulario.valorLiberado"
         ng-model="vm.Formulario.valorLiberado">
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group fs-txt-right">
+      <label class="control-label">Diferença</label>
+      <h1 ng-class="{'text-danger': vm.Formulario.difValorLiberado != 0}">{{vm.Formulario.difValorLiberado | currency}}
+      </h1>
+      <input type="hidden" name="difValorLiberado" ng-value="vm.Formulario.difValorLiberado"
+        ng-model="vm.Formulario.difValorLiberado">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsConferenciaFinanceiro" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableSelecionarDuplicatas" fluig-error="form.obsConferenciaFinanceiro.$error"
+        name="obsConferenciaFinanceiro" elastic class="form-control input-lg"
+        ng-model="vm.Formulario.obsConferenciaFinanceiro" ng-value="vm.Formulario.obsConferenciaFinanceiro"
+        placeholder="Caso devolva a solicitação, utilize este campo para informar o motivo"></textarea>
+      <p ng-show="!vm.regras.enableSelecionarDuplicatas">{{vm.Formulario.obsConferenciaFinanceiro || 'Sem observações'}}
+      </p>
     </div>
   </div>
 
@@ -25,32 +75,46 @@
           <th class="col-sm-2">Valor a Antecipar</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody ng-non-bindable>
         <tr ng-repeat="titulo in vm.Formulario.duplicatas">
 
           <td>
-            {{titulo.seq}}
+            {{titulo.seq || $index + 1}}
+            <input type="hidden" name="titulo_seq" ng-value="titulo.seq" ng-model="titulo.seq">
+            <input type="hidden" name="titulo_codCliente" ng-value="titulo.codCliente" ng-model="titulo.codCliente">
+            <input type="hidden" name="titulo_codEspec" ng-value="titulo.codEspec" ng-model="titulo.codEspec">
+            <input type="hidden" name="titulo_codSerie" ng-value="titulo.codSerie" ng-model="titulo.codSerie">
+            <input type="hidden" name="titulo_matriz" ng-value="titulo.matriz" ng-model="titulo.matriz">
           </td>
           <td>
-            {{titulo.emissao | date}}
+            {{titulo.dataEmissao | date}}
+            <input type="hidden" name="titulo_dataEmissao" ng-value="titulo.dataEmissao" ng-model="titulo.dataEmissao">
           </td>
           <td>
-            {{titulo.vencimento | date}}
+            {{titulo.dataVencto | date}}
+            <input type="hidden" name="titulo_dataVencto" ng-value="titulo.dataVencto" ng-model="titulo.dataVencto">
           </td>
           <td>
-            {{titulo.numero}}
+            {{titulo.numTitulo}}
+            <input type="hidden" name="titulo_numTitulo" ng-value="titulo.numTitulo" ng-model="titulo.numTitulo">
           </td>
           <td>
             {{titulo.parcela}}
+            <input type="hidden" name="titulo_parcela" ng-value="titulo.parcela" ng-model="titulo.parcela">
           </td>
           <td>
             {{titulo.valorOriginal | currency}}
+            <input type="hidden" name="titulo_valorOriginal" ng-value="titulo.valorOriginal"
+              ng-model="titulo.valorOriginal">
           </td>
           <td>
-            {{titulo.saldo | currency}}
+            {{titulo.valorSaldo | currency}}
+            <input type="hidden" name="titulo_valorSaldo" ng-value="titulo.valorSaldo" ng-model="titulo.valorSaldo">
           </td>
           <td>
-            <input type="text" class="form-control" name="titulo_valorAntecipa_input" ng-model="titulo.valorAntecipa" fluig-money-mask>
+            <input type="text" class="form-control" name="titulo_valorAntecipa_input" ng-model="titulo.valorAntecipa"
+              fluig-money-mask ng-change="vm.calculaTotalDuplicatas()"
+              ng-readonly="!vm.regras.enableSelecionarDuplicatas">
             <input type="hidden" name="titulo_valorAntecipa" ng-value="titulo.valorAntecipa">
           </td>
         </tr>

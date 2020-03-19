@@ -3,14 +3,13 @@
     <div class="form-group">
       <label for="cliente_input" class="control-label">Cliente</label>
       <input ng-required="true" fluig-error="form.cliente_input.$error" class="form-control input-lg" fluig-autocomplete
-        dataset="totvs_busca_cliente" result-fields="['codigo','descricao','displaykey']" display-key="displaykey"
-        ng-model="vm.Formulario.cliente" name="cliente_input" ng-change="vm.changeCliente()"
-        ng-disabled="!vm.regras.enableSolicitacao">
+        dataset="totvs_busca_cliente"
+        result-fields="['codigo', 'razaoSocial', 'nomeAbrev', 'cnpj', 'executivo', 'subcanal', 'displaykey', 'matriz']"
+        filter-fields="['matriz', 'SIM']" display-key="displaykey" ng-model="vm.Formulario.cliente" name="cliente_input"
+        ng-change="vm.changeCliente()" ng-disabled="!vm.regras.enableSolicitacao">
 
       <textarea hidden name="cliente" ng-value="vm.Formulario.cliente | json:0"
         ng-bind="vm.Formulario.cliente | json:0"></textarea>
-      <textarea hidden name="executivo" ng-value="vm.Formulario.executivo | json:0"
-        ng-bind="vm.Formulario.executivo | json:0"></textarea>
       <input type="hidden" name="clienteCodigo" ng-value="vm.Formulario.cliente.codigo">
     </div>
   </div>
@@ -22,8 +21,9 @@
     <div class="form-group">
       <label for="tipoAcao_input" class="control-label">Tipo da Ação</label>
       <input ng-required="true" fluig-error="form.tipoAcao_input.$error" class="form-control input-lg"
-        fluig-autocomplete dataset="fluig_busca_tipo_acao" display-key="descricao" ng-model="vm.Formulario.tipoAcao"
-        name="tipoAcao_input" ng-change="vm.changeTipoAcao()" ng-disabled="!vm.regras.enableSolicitacao">
+        fluig-autocomplete dataset="fluig_busca_tipo_acao" result-fields="['codigo','descricao','displaykey']"
+        display-key="descricao" ng-model="vm.Formulario.tipoAcao" name="tipoAcao_input" ng-change="vm.changeTipoAcao()"
+        ng-disabled="!vm.regras.enableSolicitacao">
 
       <textarea hidden name="tipoAcao" ng-value="vm.Formulario.tipoAcao | json:0"
         ng-bind="vm.Formulario.tipoAcao | json:0"></textarea>
@@ -34,7 +34,7 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label for="inicioAcao_input" class="control-label">Início da Ação</label>
-      <input class="form-control input-lg" name="inicioAcao_input" fluig-date-mask ng-model="vm.Formulario.inicioAcao"
+      <input class="form-control input-lg" name="inicioAcao_input" fluig-date-mask date-pattern="LL" ng-model="vm.Formulario.inicioAcao"
         ng-required="true" fluig-error="form.inicioAcao_input.$error">
       <input type="hidden" name="inicioAcao" ng-value="vm.Formulario.inicioAcao">
     </div>
@@ -42,7 +42,7 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label for="terminoAcao_input" class="control-label">Término da Ação</label>
-      <input class="form-control input-lg" name="terminoAcao_input" fluig-date-mask ng-model="vm.Formulario.terminoAcao"
+      <input class="form-control input-lg" name="terminoAcao_input" fluig-date-mask date-pattern="LL" ng-model="vm.Formulario.terminoAcao"
         ng-required="true" fluig-error="form.terminoAcao_input.$error">
       <input type="hidden" name="terminoAcao" ng-value="vm.Formulario.terminoAcao">
     </div>

@@ -35,7 +35,7 @@
         name="obsAprovGerMarketing" elastic class="form-control input-lg" ng-model="vm.Formulario.obsAprovGerMarketing"
         ng-value="vm.Formulario.obsAprovGerMarketing"
         placeholder="Caso reprove a solicitação, utilize este campo para informar o motivo"></textarea>
-      <p ng-show="!vm.regras.enableAprovGerMarketing">{{vm.Formulario.obsAprovGerMarketing}}</p>
+      <p ng-show="!vm.regras.enableAprovGerMarketing">{{vm.Formulario.obsAprovGerMarketing || 'Sem observações'}}</p>
     </div>
   </div>
 

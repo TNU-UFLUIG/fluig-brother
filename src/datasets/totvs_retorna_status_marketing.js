@@ -9,9 +9,9 @@ function defineStructure() {
   }
   addColumn('displaykey');
 
-  setKey(['codigo']);
+  setKey(['solicitacao', 'data']);
 
-  addIndex(['codigo']);
+  addIndex(['solicitacao', 'data']);
 }
 
 function onSync(lastSyncDate) {
@@ -32,8 +32,8 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";Uint16Array
 
-  const json = jsonLocal();
-  // const json = callDatasul("buscaStatusVerbaMarketing.p", "piBusca", params, null, properties);
+  // const json = jsonLocal();
+  const json = callDatasul("buscaStatusVerbaMarketing.p", "piBusca", params, null, properties);
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display);
 }

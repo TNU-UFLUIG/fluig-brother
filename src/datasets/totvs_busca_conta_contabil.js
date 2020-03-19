@@ -32,10 +32,10 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  const json = jsonLocal();
-  // const json = callDatasul("buscaContaContabil.p", "piBusca", params, null, properties);
+  // const json = jsonLocal();
+  const json = callDatasul("esp/buscaContaContabil.p", "piBusca", params, null, properties);
 
-  return montaDataset(json.ttErro, json.ttContaContabil, campos, display);
+  return montaDataset(json.ttErro, json.ttContaContabil, campos, display, null, true);
 }
 
 /*$$ partials/getConstraints.js $$*/

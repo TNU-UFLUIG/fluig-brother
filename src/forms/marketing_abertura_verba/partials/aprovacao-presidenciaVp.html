@@ -35,7 +35,7 @@
         name="obsAprovPresidenciaVp" elastic class="form-control input-lg"
         ng-model="vm.Formulario.obsAprovPresidenciaVp" ng-value="vm.Formulario.obsAprovPresidenciaVp"
         placeholder="Caso reprove a solicitação, utilize este campo para informar o motivo"></textarea>
-      <p ng-show="!vm.regras.enableAprovPresidenciaVp">{{vm.Formulario.obsAprovPresidenciaVp}}</p>
+      <p ng-show="!vm.regras.enableAprovPresidenciaVp">{{vm.Formulario.obsAprovPresidenciaVp || 'Sem observações'}}</p>
     </div>
   </div>
 

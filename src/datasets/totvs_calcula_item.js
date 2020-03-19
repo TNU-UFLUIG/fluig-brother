@@ -1,5 +1,5 @@
-const campos = ['codigo', 'descricao', 'categoria', 'netInicial', 'gpInicial', 'netSugerido', 'gpSugerido', 'rebateUnit', 'rebateTotal', 'dolar'];
-const display = ['codigo', 'descricao'];
+const campos = ['netInicial', 'netSugerido', 'gpInicial', 'gpSugerido', 'dolar'];
+const display = campos;
 const dePara = campos;
 
 
@@ -9,9 +9,9 @@ function defineStructure() {
   }
   addColumn('displaykey');
 
-  setKey(['codigo']);
+  setKey(['displaykey']);
 
-  addIndex(['codigo']);
+  addIndex(['displaykey']);
 }
 
 function onSync(lastSyncDate) {
@@ -33,9 +33,9 @@ function buscaDataset(fields, constraints, sortFields) {
   properties["receive.timeout"] = "0";
 
   // const json = jsonLocal();
-  const json = callDatasul("esp/buscaItem.p", "piBusca", params, null, properties);
+  const json = callDatasul("esp/calculaItemMarketing.p", "piCalcula", params, null, properties);
 
-  return montaDataset(json.ttErro, json.ttItem, campos, display, null, true);
+  return montaDataset(json.ttErro, json.ttValores, campos, display);
 }
 
 /*$$ partials/getConstraints.js $$*/
@@ -44,20 +44,8 @@ function buscaDataset(fields, constraints, sortFields) {
 
 function jsonLocal() {
   return {
-    ttItem: [
-      {
-        codigo: '10930',
-        descricao: 'HLL2360DW',
-        categoria: '2.2-MLL HW',
-        netInicial: 1200,
-        gpInicial: 10,
-        netSugerido: 1300,
-        gpSugerido: 14,
-        rebateUnit: 100,
-        rebateTotal: 100,
-        dolar: 4.1
-        
-      }
+    ttValores: [
+      { netInicial: 100, netSugerido: 120, gpInicial: 130, gpSugerido: 140, dolar: 5 }
     ]
   };
 }

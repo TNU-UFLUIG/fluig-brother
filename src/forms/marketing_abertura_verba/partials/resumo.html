@@ -1,5 +1,3 @@
-<input type="hidden" name="status" ng-value="vm.Formulario.status" ng-model="vm.Formulario.status">
-
 <div class="row">
   <div class="col-sm-4" ng-show="vm.Formulario.valorTotalVerba">
     <div class="form-group">
@@ -62,7 +60,7 @@
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
       <label class="control-label">Executivo de Contas</label>
-      <h4>{{vm.Formulario.executivo.colleagueName || '-' | uppercase}}</h4>
+      <h4>{{vm.Formulario.executivo.nome || '-' | uppercase}}</h4>
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
@@ -145,9 +143,9 @@
       <thead>
         <th>Item</th>
         <th>Categoria</th>
-        <th>SRP</th>
-        <th>Net</th>
-        <th>GP</th>
+        <th>SRP I/S</th>
+        <th>Net I/S</th>
+        <th>GP I/S</th>
         <th>Rebate Unit</th>
         <th>Qtde</th>
         <th>Rebate Total</th>
@@ -167,15 +165,15 @@
             <p>{{itemSellout.srpSugerido | currency}}</p>
           </td>
           <td>
-            <p>{{itemSellout.item.netInicial | currency}}</p>
-            <p>{{itemSellout.item.netSugerido | currency}}</p>
+            <p>{{itemSellout.netInicial | currency}}</p>
+            <p>{{itemSellout.netSugerido | currency}}</p>
           </td>
           <td>
-            <p>{{itemSellout.item.gpInicial | currency}}</p>
-            <p>{{itemSellout.item.gpSugerido | currency}}</p>
+            <p>{{itemSellout.gpInicial | currency}}</p>
+            <p>{{itemSellout.gpSugerido | currency}}</p>
           </td>
           <td>
-            {{itemSellout.item.rebateUnit | currency}}
+            {{itemSellout.rebateUnit | currency}}
           </td>
           <td>
             {{itemSellout.qtde | number:'2'}}
@@ -184,10 +182,10 @@
             {{itemSellout.rebateTotal | currency}}
           </td>
           <td>
-            {{itemSellout.item.dolar | currency:'U$'}}
+            {{itemSellout.dolar | currency:'U$'}}
           </td>
           <td>
-            {{itemSellout.item.ccusto}}
+            {{itemSellout.ccusto}}
           </td>
         </tr>
       </tbody>
@@ -201,9 +199,9 @@
       <thead>
         <th>Item</th>
         <th>Categoria</th>
-        <th>SRP</th>
-        <th>Net</th>
-        <th>GP</th>
+        <th>SRP I/S</th>
+        <th>Net I/S</th>
+        <th>GP I/S</th>
         <th>Rebate Unit</th>
         <th>Qtde</th>
         <th>Rebate Total</th>
@@ -223,16 +221,16 @@
             <p>{{itemSellinIt.srpSugerido | currency}}</p>
           </td>
           <td>
-            <p>{{itemSellinIt.item.netInicial | currency}}</p>
-            <p>{{itemSellinIt.item.netSugerido | currency}}</p>
+            <p>{{itemSellinIt.netInicial | currency}}</p>
+            <p>{{itemSellinIt.netSugerido | currency}}</p>
           </td>
           <td>
-            <p>{{itemSellinIt.item.gpInicial | currency}}</p>
-            <p>{{itemSellinIt.item.gpSugerido | currency}}</p>
+            <p>{{itemSellinIt.gpInicial | currency}}</p>
+            <p>{{itemSellinIt.gpSugerido | currency}}</p>
           </td>
 
           <td>
-            {{itemSellinIt.item.rebateUnit | currency}}
+            {{itemSellinIt.rebateUnit | currency}}
           </td>
           <td>
             {{itemSellinIt.qtde | number:'2'}}
@@ -241,10 +239,10 @@
             {{itemSellinIt.rebateTotal | currency}}
           </td>
           <td>
-            {{itemSellinIt.item.dolar | currency:'U$'}}
+            {{itemSellinIt.dolar | currency:'U$'}}
           </td>
           <td>
-            {{itemSellinIt.item.ccusto}}
+            {{itemSellinIt.ccusto}}
           </td>
         </tr>
       </tbody>

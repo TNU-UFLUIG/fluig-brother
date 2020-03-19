@@ -2,53 +2,23 @@ angular.module('brother.services')
   .factory('erpService', ['$http', '$log', 'fluigService',
     ($http, $log, fluigService) => ({
 
-      /**
-       * Retorna os estabelecimentos cadastrados no ERP
-       *
-       * @param {string} cod_empresa
-       * @returns
-       */
-      getEstabelecimento: function getEstabelecimento(codigo) {
-        const constraints = [];
-        let dataset;
-
-        if (codigo) {
-          constraints.push(DatasetFactory.createConstraint('codigo', codigo, codigo, ConstraintType.MUST));
-        }
-
-        try {
-          dataset = DatasetFactory.getDataset('brother_erp_consulta_estabelecimento', null, constraints)
-            .values;
-        } catch (error) {
-          $log.error(error);
-        }
-
-        return fluigService.fixDataset(dataset, null, true);
+      calculaItemErp: function calculaItemErp(codItem, srpInicial, srpSugerido, fields) {
+        return fluigService.getDataset('totvs_calcula_item', {
+          codItem, srpInicial, srpSugerido,
+        }, fields);
       },
 
-      /**
-       * Retorna as categorias cadastradas no ERP
-       *
-       * @param {string} codigo
-       * @returns
-       */
-      getCategoria: function getCategoria(codigo) {
-        const constraints = [];
-        let dataset;
-
-        if (codigo) {
-          constraints.push(DatasetFactory.createConstraint('codigo', codigo, codigo, ConstraintType.MUST));
-        }
-
-        try {
-          dataset = DatasetFactory.getDataset('totvs_busca_categoria', null, constraints)
-            .values;
-        } catch (error) {
-          $log.error(error);
-        }
-
-        return fluigService.fixDataset(dataset, null, true);
+      getCategoria: function getCategoria(codigo, fields) {
+        return fluigService.getDataset('totvs_busca_categoria', {
+          codigo
+        }, fields);
       },
+
+      getTitulosCliente: function getTitulosCliente(codCliente, fields) {
+        return fluigService.getDataset('totvs_busca_titulo_cliente', {
+          codCliente
+        }, fields);
+      }
 
     })
   ]);

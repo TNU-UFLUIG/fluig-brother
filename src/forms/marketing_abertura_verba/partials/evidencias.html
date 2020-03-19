@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Status</label>
+      <h4>{{vm.Formulario.statusValidacaoEvid | uppercase}}</h4>
+      <input type="hidden" name="statusValidacaoEvid" ng-value="vm.Formulario.statusValidacaoEvid"
+        ng-model="vm.Formulario.statusValidacaoEvid">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data</label>
+      <h4>{{vm.Formulario.dataValidacaoEvid | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataValidacaoEvid" ng-value="vm.Formulario.dataValidacaoEvid"
+        ng-model="vm.Formulario.dataValidacaoEvid">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userValidacaoEvid.colleagueName| uppercase}}</h4>
+      <textarea hidden name="userValidacaoEvid" ng-value="vm.Formulario.userValidacaoEvid | json:0"
+        ng-bind="vm.Formulario.userValidacaoEvid | json:0"></textarea>
+      <input type="hidden" name="userValidacaoEvidNome" ng-value="vm.Formulario.userValidacaoEvid.colleagueName">
+      <input type="hidden" name="userValidacaoEvidCodigo" ng-value="vm.Formulario.userValidacaoEvid.colleagueId">
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Valor Total da Verba</label>
+      <p class="form-control input-lg" disabled>{{vm.Formulario.valorTotalVerba | currency}}</p>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Resultado Apresentado</label>
+
+      <input type="text" class="form-control input-lg" name="valorResultado_input"
+        ng-model="vm.Formulario.valorResultado" fluig-money-mask ng-readonly="!vm.regras.enableEvidencias"
+        ng-change="vm.Formulario.diferencaResultado = vm.Formulario.valorResultado - vm.Formulario.valorTotalVerba">
+
+      <input type="hidden" name="valorResultado" ng-value="vm.Formulario.valorResultado">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Diferença</label>
+      <p class="form-control input-lg" disabled ng-class="{'fs-color-danger':vm.Formulario.diferencaResultado > 0} ">
+        {{vm.Formulario.diferencaResultado | currency}}</p>
+      <input type="hidden" name="diferencaResultado" ng-value="vm.Formulario.diferencaResultado"
+        ng-model="vm.Formulario.diferencaResultado">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsEnvioEvidencias" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableEvidencias" fluig-error="form.obsEnvioEvidencias.$error"
+        name="obsEnvioEvidencias" elastic class="form-control input-lg"
+        placeholder="Observações do cliente no envio das evidências" ng-model="vm.Formulario.obsEnvioEvidencias"
+        ng-value="vm.Formulario.obsEnvioEvidencias"></textarea>
+      <p ng-show="!vm.regras.enableEvidencias">{{vm.Formulario.obsEnvioEvidencias || 'Sem observações'}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-3" ng-if="vm.regras.enableEvidencias">
+    <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles(vm.Formulario.arquivosEvidencias, null, $files)"
+      ngf-drop="vm.selectFiles(vm.Formulario.arquivosEvidencias, null, $files)" ng-model="files" ngf-multiple="true"
+      ngf-drag-over-class="'dragover'">
+      <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
+    </div>
+  </div>
+
+  <div ng-class="{'col-sm-9': vm.regras.enableEvidencias, 'col-sm-12': !vm.regras.enableEvidencias}">
+    <div class="fs-txt-center" ng-show="vm.Formulario.arquivosEvidencias.length == 0">
+      <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
+    </div>
+    <table class="table" tablename="arquivosEvidencias" noaddbutton="true" nodeletebutton="true"
+      ng-show="vm.Formulario.arquivosEvidencias.length > 0">
+      <caption>Arquivos de Evidência</caption>
+      <thead>
+        <tr>
+          <th class="col-sm-1" ng-show="vm.regras.enableEvidencias"></th>
+          <th class="col-sm-3">Descrição</th>
+          <th class="col-sm-3">Arquivo</th>
+          <th class="col-sm-1" ng-show="vm.regras.enableValidacaoEvidencias">Aceito</th>
+          <th class="col-sm-5" ng-show="vm.regras.enableValidacaoEvidencias">Motivo da Recusa</th>
+        </tr>
+      </thead>
+      <tbody ng-non-bindable>
+        <tr ng-repeat="arquivo in vm.Formulario.arquivosEvidencias">
+
+          <td ng-show="vm.regras.enableEvidencias">
+            <span ng-click="vm.removeChild(vm.Formulario.arquivosEvidencias, $index)"
+              class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+
+            <input type="hidden" name="arquivo_descricao" ng-value="arquivo.descricao">
+            <input type="hidden" name="arquivo_nome" ng-value="arquivo.nome" ng-model="arquivo.nome">
+            <input type="hidden" name="arquivo_type" ng-value="arquivo.type" ng-model="arquivo.type">
+            <input type="hidden" name="arquivo_documentid" ng-value="arquivo.documentid" ng-model="arquivo.documentid">
+            <input type="hidden" name="arquivo_version" ng-value="arquivo.version" ng-model="arquivo.version">
+            <input type="hidden" name="arquivo_url" ng-value="arquivo.url" ng-model="arquivo.url">
+
+          </td>
+          <td>
+            <input type="text" ng-readonly="!vm.regras.enableEvidencias" class="form-control"
+              name="arquivo_descricao_input" ng-model="arquivo.descricao">
+          </td>
+          <td>
+            <a target="_blank" href="{{arquivo.url}}"> {{arquivo.nome}}</a>
+          </td>
+          <td ng-show="vm.regras.enableValidacaoEvidencias">
+            <input type="checkbox" name="arquivo_aceito_input" ng-model="arquivo.aceito" fluig-switch
+              data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="hidden" name="arquivo_aceito" ng-value="arquivo.aceito">
+          </td>
+          <td ng-show="vm.regras.enableValidacaoEvidencias">
+            <input ng-show="!arquivo.aceito" class="form-control" ng-model="arquivo.motivoRecusa"
+              name="arquivo_motivoRecusa" ng-value="arquivo.motivoRecusa">
+            <i ng-show="arquivo.aceito">Arquivo aceito</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
