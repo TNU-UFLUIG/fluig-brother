@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Itens de Sellin (Item)</h4>
+      </div>
+
+      <div class="panel-body">
+
+        <table class="table" tablename="camposSellinIt" noaddbutton="true" nodeletebutton="true"
+          ng-show="vm.Formulario.camposSellinIt.length > 0">
+
+          <thead>
+            <tr>
+              <th ng-show="vm.Params.edit"></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody ng-non-bindable>
+            <tr ng-repeat="campoSellinIt in vm.Formulario.camposSellinIt">
+              <td ng-show="vm.Params.edit">
+                <span class="fluigicon fluigicon-md fluigicon-arrow-up fs-cursor-pointer"
+                  ng-click="$index>0?vm.Formulario.camposSellinIt.move($index,$index-1):null"></span>
+                <span class="fluigicon fluigicon-md fluigicon-arrow-down fs-cursor-pointer"
+                  ng-click="$index<vm.Formulario.camposSellinIt.length-1?vm.Formulario.camposSellinIt.move($index,$index+1):null"></span>
+
+                <span ng-click="vm.removeChild(vm.Formulario.camposSellinIt, $index)"
+                  class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" class="form-control input-lg" name="campoSellinIt_label"
+                        ng-value="campoSellinIt.label">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Campo</label>
+                      <input class="form-control input-lg" name="campoSellinIt_column_i" fluig-autocomplete
+                        values="vm.CamposSellinIt" ng-model="campoSellinIt.column" display-key="name">
+                      <textarea hidden name="campoSellinIt_column" ng-value="campoSellinIt.column | json:0"
+                        ng-bind="campoSellinIt.column | json:0"></textarea>
+                      <input type="hidden" name="campoSellinIt_name" ng-value="campoSellinIt.column.name">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-sm-2">
+                    <label>Início da Ação</label>
+                    <input type="checkbox" name="campoSellinIt_iniAcao_i" ng-model="campoSellinIt.iniAcao" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSellinIt_iniAcao" ng-value="campoSellinIt.iniAcao">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Término da Ação</label>
+                    <input type="checkbox" name="campoSellinIt_fimAcao_i" ng-model="campoSellinIt.fimAcao" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSellinIt_fimAcao" ng-value="campoSellinIt.fimAcao">
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Envio de Evidências</label>
+                    <input type="checkbox" name="campoSellinIt_evidencia_i" ng-model="campoSellinIt.evidencia"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSellinIt_evidencia" ng-value="campoSellinIt.evidencia">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Envio da ND</label>
+                    <input type="checkbox" name="campoSellinIt_envioND_i" ng-model="campoSellinIt.envioND" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSellinIt_envioND" ng-value="campoSellinIt.envioND">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Pagamento</label>
+                    <input type="checkbox" name="campoSellinIt_pagamento_i" ng-model="campoSellinIt.pagamento"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSellinIt_pagamento" ng-value="campoSellinIt.pagamento">
+                  </div>
+                </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <div ng-show="vm.Params.edit">
+          <a class="btn btn-default btn-lg" ng-click="vm.Formulario.camposSellinIt.push(
+        {iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true}
+        )">Incluir Campo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

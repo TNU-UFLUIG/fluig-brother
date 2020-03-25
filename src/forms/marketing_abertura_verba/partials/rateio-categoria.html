@@ -17,17 +17,19 @@
         {{rateio.categoria.descricao}}
         <textarea hidden name="rateio_categoria" ng-value="rateio.categoria | json:0"
           ng-bind="rateio.categoria | json:0"></textarea>
+        <input type="hidden" name="rateio_categoriaDescricao" ng-value="rateio.categoria.descricao">
       </td>
       <td>
-        <input class="form-control input-lg" name="rateio_perc_input" fluig-percentage-mask ng-model="rateio.perc"
+        <input class="form-control input-lg" name="rateio_perc_i" fluig-percentage-mask ng-model="rateio.perc"
           ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotalRateio()">
+        <input type="hidden" name="rateio_perc_f" ng-value="rateio.perc | percentage:'2'">
         <input type="hidden" name="rateio_perc" ng-value="rateio.perc">
       </td>
     </tr>
   </tbody>
 </table>
 
-<input type="hidden" name="totalRateio" ng-value="vm.Formulario.totalRateio" ng-model="vm.Formulario.totalRateio">
+<input type="hidden" name="totalRateio" ng-value="vm.Formulario.totalRateio">
 <h3 ng-class="{'text-danger': vm.Formulario.totalRateio != 1}">
   Total: {{vm.Formulario.totalRateio | percentage:'2'}}
 </h3>

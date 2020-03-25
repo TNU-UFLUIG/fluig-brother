@@ -3,16 +3,15 @@
     <div class="form-group">
       <label class="control-label">Status</label>
       <h4>{{vm.Formulario.statusValidacaoMarketing | uppercase}}</h4>
-      <input type="hidden" name="statusValidacaoMarketing" ng-value="vm.Formulario.statusValidacaoMarketing"
-        ng-model="vm.Formulario.statusValidacaoMarketing">
+      <input type="hidden" name="statusValidacaoMarketing" ng-value="vm.Formulario.statusValidacaoMarketing">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Data da Validação</label>
       <h4>{{vm.Formulario.dataValidacaoMarketing | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataValidacaoMarketing" ng-value="vm.Formulario.dataValidacaoMarketing"
-        ng-model="vm.Formulario.dataValidacaoMarketing">
+      <input type="hidden" name="dataValidacaoMarketing_f" ng-value="vm.Formulario.dataValidacaoMarketing | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataValidacaoMarketing" ng-value="vm.Formulario.dataValidacaoMarketing">
     </div>
   </div>
   <div class="col-sm-4">
@@ -40,15 +39,16 @@
   <div class="col-sm-12">
 
     <div class="form-group">
-      <label for="executivo_input" class="control-label">Executivo de Contas</label>
-      <input ng-required="true" fluig-error="form.executivo_input.$error" class="form-control input-lg"
+      <label for="executivo_i" class="control-label">Executivo de Contas</label>
+      <input ng-required="true" fluig-error="form.executivo_i.$error" class="form-control input-lg"
         fluig-autocomplete dataset="totvs_busca_executivo" result-fields="['codigo', 'nome', 'email', 'displaykey']"
-        display-key="displaykey" ng-model="vm.Formulario.executivo" name="executivo_input"
+        display-key="displaykey" ng-model="vm.Formulario.executivo" name="executivo_i"
         ng-disabled="!vm.regras.enableValidacaoMarketing">
 
       <textarea hidden name="executivo" ng-value="vm.Formulario.executivo | json:0"
         ng-bind="vm.Formulario.executivo | json:0"></textarea>
       <input type="hidden" name="executivoCodigo" ng-value="vm.Formulario.executivo.codigo">
+      <input type="hidden" name="executivoNome" ng-value="vm.Formulario.executivo.nome">
     </div>
 
 
@@ -58,7 +58,7 @@
     <div class="form-group">
       <label for="necAprovacaoGerMkt" class="control-label">Necessária a Aprovação do Gerente de Marketing</label>
       <input type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success"
-        name="necAprovacaoGerMkt_input" ng-model="vm.Formulario.necAprovacaoGerMkt"
+        name="necAprovacaoGerMkt_i" ng-model="vm.Formulario.necAprovacaoGerMkt"
         ng-disabled="!vm.regras.enableValidacaoMarketing">
       <input type="hidden" name="necAprovacaoGerMkt" ng-value="vm.Formulario.necAprovacaoGerMkt">
     </div>

@@ -28,27 +28,31 @@
             </div>
             <div class="col-sm-3">
               <label>Data Início</label>
-              <input class="form-control input-lg" name="itemVpcEvt_inicio_input" fluig-date-mask date-pattern="LL"
+              <input class="form-control input-lg" name="itemVpcEvt_inicio_i" fluig-date-mask date-pattern="LL"
                 ng-model="itemVpcEvt.inicio" ng-disabled="!vm.regras.enableSolicitacao">
-              <input type="hidden" ng-value="itemVpcEvt.inicio" name="itemVpcEvt_inicio">
+              <input type="hidden" name="itemVpcEvt_inicio_f" ng-value="itemVpcEvt.inicio | date:'fullDate'">
+              <input type="hidden" name="itemVpcEvt_inicio" ng-value="itemVpcEvt.inicio">
             </div>
             <div class="col-sm-3">
               <label>Data Término</label>
-              <input class="form-control input-lg" name="itemVpcEvt_termino_input" fluig-date-mask date-pattern="LL"
+              <input class="form-control input-lg" name="itemVpcEvt_termino_i" fluig-date-mask date-pattern="LL"
                 ng-model="itemVpcEvt.termino" ng-disabled="!vm.regras.enableSolicitacao">
-              <input type="hidden" ng-value="itemVpcEvt.termino" name="itemVpcEvt_termino">
+              <input type="hidden" name="itemVpcEvt_termino_f" ng-value="itemVpcEvt.termino | date:'fullDate'">
+              <input type="hidden" name="itemVpcEvt_termino" ng-value="itemVpcEvt.termino">
             </div>
             <div class="col-sm-3">
               <label>% Reembolso</label>
-              <input class="form-control input-lg" name="itemVpcEvt_perc_input" fluig-percentage-mask
+              <input class="form-control input-lg" name="itemVpcEvt_perc_i" fluig-percentage-mask
                 ng-model="itemVpcEvt.perc" ng-disabled="!vm.regras.enableSolicitacao">
-              <input type="hidden" ng-value="itemVpcEvt.perc" name="itemVpcEvt_perc">
+              <input type="hidden" name="itemVpcEvt_perc_f" ng-value="itemVpcEvt.perc | percentage:'2'">
+              <input type="hidden" name="itemVpcEvt_perc" ng-value="itemVpcEvt.perc">
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemVpcEvt_vlTotal_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemVpcEvt_vlTotal_i" fluig-money-mask
                 ng-model="itemVpcEvt.vlTotal" ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotais()">
-              <input type="hidden" ng-value="itemVpcEvt.vlTotal" name="itemVpcEvt_vlTotal">
+              <input type="hidden" name="itemVpcEvt_vlTotal_f" ng-value="itemVpcEvt.vlTotal | currency">
+              <input type="hidden" name="itemVpcEvt_vlTotal" ng-value="itemVpcEvt.vlTotal">
             </div>
           </div>
         </div>

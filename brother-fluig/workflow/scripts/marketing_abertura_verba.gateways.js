@@ -10,7 +10,3 @@ function checkValor30k() {
 		}
 	}
 }
-
-function aprovacaoGerMarketing() {
-	return true;
-}

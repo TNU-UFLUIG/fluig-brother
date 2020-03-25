@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Evidências</h4>
+      </div>
+
+      <div class="panel-body">
+
+        <table class="table" tablename="camposEvidencias" noaddbutton="true" nodeletebutton="true"
+          ng-show="vm.Formulario.camposEvidencias.length > 0">
+          
+          <thead>
+            <tr>
+              <th ng-show="vm.Params.edit"></th>
+              <th></th>
+            </tr>
+          </thead>
+          
+          <tbody ng-non-bindable>
+            <tr ng-repeat="campoEvidencia in vm.Formulario.camposEvidencias">
+              <td ng-show="vm.Params.edit">
+                <span class="fluigicon fluigicon-md fluigicon-arrow-up fs-cursor-pointer"
+                  ng-click="$index>0?vm.Formulario.camposEvidencias.move($index,$index-1):null"></span>
+                <span class="fluigicon fluigicon-md fluigicon-arrow-down fs-cursor-pointer"
+                  ng-click="$index<vm.Formulario.camposEvidencias.length-1?vm.Formulario.camposEvidencias.move($index,$index+1):null"></span>
+
+                <span ng-click="vm.removeChild(vm.Formulario.camposEvidencias, $index)"
+                  class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" class="form-control input-lg" name="campoEvidencia_label"
+                        ng-value="campoEvidencia.label">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Campo</label>
+                      <input class="form-control input-lg" name="campoEvidencia_column_i" fluig-autocomplete
+                        values="vm.CamposEvidencias" ng-model="campoEvidencia.column" display-key="name">
+                      <textarea hidden name="campoEvidencia_column" ng-value="campoEvidencia.column | json:0"
+                        ng-bind="campoEvidencia.column | json:0"></textarea>
+                      <input type="hidden" name="campoEvidencia_name" ng-value="campoEvidencia.column.name">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-sm-2">
+                    <label>Início da Ação</label>
+                    <input type="checkbox" name="campoEvidencia_iniAcao_i" ng-model="campoEvidencia.iniAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoEvidencia_iniAcao" ng-value="campoEvidencia.iniAcao">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Término da Ação</label>
+                    <input type="checkbox" name="campoEvidencia_fimAcao_i" ng-model="campoEvidencia.fimAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoEvidencia_fimAcao" ng-value="campoEvidencia.fimAcao">
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Envio de Evidências</label>
+                    <input type="checkbox" name="campoEvidencia_evidencia_i" ng-model="campoEvidencia.evidencia"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoEvidencia_evidencia" ng-value="campoEvidencia.evidencia">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Envio da ND</label>
+                    <input type="checkbox" name="campoEvidencia_envioND_i" ng-model="campoEvidencia.envioND"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoEvidencia_envioND" ng-value="campoEvidencia.envioND">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Pagamento</label>
+                    <input type="checkbox" name="campoEvidencia_pagamento_i" ng-model="campoEvidencia.pagamento"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoEvidencia_pagamento" ng-value="campoEvidencia.pagamento">
+                  </div>
+                </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <div ng-show="vm.Params.edit">
+          <a class="btn btn-default btn-lg" ng-click="vm.Formulario.camposEvidencias.push(
+        {iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true}
+        )">Incluir Campo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

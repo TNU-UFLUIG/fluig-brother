@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-4">
     <div class="form-group">
-      <label for="tipoAcao_input" class="control-label">Tipo da Ação</label>
-      <input ng-required="true" fluig-error="form.tipoAcao_input.$error" class="form-control input-lg"
+      <label for="tipoAcao_i" class="control-label">Tipo da Ação</label>
+      <input ng-required="true" fluig-error="form.tipoAcao_i.$error" class="form-control input-lg"
         fluig-autocomplete dataset="fluig_busca_tipo_acao" display-key="descricao" ng-model="vm.Formulario.tipoAcao"
-        name="tipoAcao_input" ng-change="vm.changeTipoAcao()">
+        name="tipoAcao_i" ng-change="vm.changeTipoAcao()" ng-disabled="vm.Params.formMode != 'ADD'">
 
       <textarea hidden name="tipoAcao" ng-value="vm.Formulario.tipoAcao | json:0"
         ng-bind="vm.Formulario.tipoAcao | json:0"></textarea>
@@ -12,12 +12,12 @@
     </div>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-8">
     <div class="form-group">
-      <label for="contaContabil_input" class="control-label">Conta Contábil</label>
-      <input ng-required="true" fluig-error="form.contaContabil_input.$error" class="form-control input-lg"
-        fluig-autocomplete dataset="totvs_busca_conta_contabil" display-key="descricao"
-        ng-model="vm.Formulario.contaContabil" name="contaContabil_input" ng-change="vm.changeContaContabil()">
+      <label for="contaContabil_i" class="control-label">Conta Contábil</label>
+      <input ng-required="true" fluig-error="form.contaContabil_i.$error" class="form-control input-lg"
+        fluig-autocomplete dataset="totvs_busca_conta_contabil" display-key="displaykey"
+        ng-model="vm.Formulario.contaContabil" name="contaContabil_i" ng-change="vm.changeContaContabil()">
 
       <textarea hidden name="contaContabil" ng-value="vm.Formulario.contaContabil | json:0"
         ng-bind="vm.Formulario.contaContabil | json:0"></textarea>

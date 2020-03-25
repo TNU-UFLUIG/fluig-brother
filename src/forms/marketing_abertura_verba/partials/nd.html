@@ -3,16 +3,16 @@
     <div class="form-group">
       <label class="control-label">Status</label>
       <h4>{{vm.Formulario.statusValidacaoND | uppercase}}</h4>
-      <input type="hidden" name="statusValidacaoND" ng-value="vm.Formulario.statusValidacaoND"
-        ng-model="vm.Formulario.statusValidacaoND">
+      <input type="hidden" name="statusValidacaoND" ng-value="vm.Formulario.statusValidacaoND">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Data</label>
       <h4>{{vm.Formulario.dataValidacaoND | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataValidacaoND" ng-value="vm.Formulario.dataValidacaoND"
-        ng-model="vm.Formulario.dataValidacaoND">
+      <input type="hidden" name="dataValidacaoND_f"
+        ng-value="vm.Formulario.dataValidacaoND | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataValidacaoND" ng-value="vm.Formulario.dataValidacaoND">
     </div>
   </div>
   <div class="col-sm-4">
@@ -74,29 +74,26 @@
             <span ng-click="vm.removeChild(vm.Formulario.arquivosND, $index)"
               class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
 
-            <input type="hidden" name="arquivoND_descricao" ng-value="arquivoND.descricao">
-            <input type="hidden" name="arquivoND_numero" ng-value="arquivoND.numero" ng-model="arquivoND.numero">
-            <input type="hidden" name="arquivoND_nome" ng-value="arquivoND.nome" ng-model="arquivoND.nome">
-            <input type="hidden" name="arquivoND_type" ng-value="arquivoND.type" ng-model="arquivoND.type">
-            <input type="hidden" name="arquivoND_documentid" ng-value="arquivoND.documentid"
-              ng-model="arquivoND.documentid">
-            <input type="hidden" name="arquivoND_version" ng-value="arquivoND.version" ng-model="arquivoND.version">
-            <input type="hidden" name="arquivoND_url" ng-value="arquivoND.url" ng-model="arquivoND.url">
+            <input type="hidden" name="arquivoND_nome" ng-value="arquivoND.nome">
+            <input type="hidden" name="arquivoND_type" ng-value="arquivoND.type">
+            <input type="hidden" name="arquivoND_documentid" ng-value="arquivoND.documentid">
+            <input type="hidden" name="arquivoND_version" ng-value="arquivoND.version">
+            <input type="hidden" name="arquivoND_url" ng-value="arquivoND.url">
 
           </td>
           <td>
-            <input type="text" ng-readonly="!vm.regras.enableND" class="form-control" name="arquivoND_descricao_input"
-              ng-model="arquivoND.descricao">
+            <input type="text" ng-readonly="!vm.regras.enableND" class="form-control" name="arquivoND_descricao"
+              ng-model="arquivoND.descricao" ng-value="arquivoND.descricao">
           </td>
           <td>
-            <input type="text" ng-readonly="!vm.regras.enableND" class="form-control" name="arquivoND_numero_input"
-              ng-model="arquivoND.numero">
+            <input type="text" ng-readonly="!vm.regras.enableND" class="form-control" name="arquivoND_numero"
+              ng-model="arquivoND.numero" ng-value="arquivoND.numero">
           </td>
           <td>
             <a target="_blank" href="{{arquivoND.url}}"> {{arquivoND.nome}}</a>
           </td>
           <td ng-show="vm.regras.enableValidacaoND">
-            <input type="checkbox" name="arquivoND_aceito_input" ng-model="arquivoND.aceito" fluig-switch
+            <input type="checkbox" name="arquivoND_aceito_i" ng-model="arquivoND.aceito" fluig-switch
               data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
             <input type="hidden" name="arquivoND_aceito" ng-value="arquivoND.aceito">
           </td>

@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Duplicatas</h4>
+      </div>
+
+      <div class="panel-body">
+        <table class="table" tablename="camposDuplicatas" noaddbutton="true" nodeletebutton="true"
+          ng-show="vm.Formulario.camposDuplicatas.length > 0">
+         
+          <thead>
+            <tr>
+              <th ng-show="vm.Params.edit"></th>
+              <th></th>
+            </tr>
+          </thead>
+          
+          <tbody ng-non-bindable>
+            <tr ng-repeat="campoDuplicata in vm.Formulario.camposDuplicatas">
+              <td ng-show="vm.Params.edit">
+                <span class="fluigicon fluigicon-md fluigicon-arrow-up fs-cursor-pointer"
+                  ng-click="$index>0?vm.Formulario.camposDuplicatas.move($index,$index-1):null"></span>
+                <span class="fluigicon fluigicon-md fluigicon-arrow-down fs-cursor-pointer"
+                  ng-click="$index<vm.Formulario.camposDuplicatas.length-1?vm.Formulario.camposDuplicatas.move($index,$index+1):null"></span>
+
+                <span ng-click="vm.removeChild(vm.Formulario.camposDuplicatas, $index)"
+                  class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" class="form-control input-lg" name="campoDuplicata_label"
+                        ng-value="campoDuplicata.label">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Campo</label>
+                      <input class="form-control input-lg" name="campoDuplicata_column_i" fluig-autocomplete
+                        values="vm.CamposDuplicatas" ng-model="campoDuplicata.column" display-key="name">
+                      <textarea hidden name="campoDuplicata_column" ng-value="campoDuplicata.column | json:0"
+                        ng-bind="campoDuplicata.column | json:0"></textarea>
+                      <input type="hidden" name="campoDuplicata_name" ng-value="campoDuplicata.column.name">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-sm-2">
+                    <label>Início da Ação</label>
+                    <input type="checkbox" name="campoDuplicata_iniAcao_i" ng-model="campoDuplicata.iniAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoDuplicata_iniAcao" ng-value="campoDuplicata.iniAcao">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Término da Ação</label>
+                    <input type="checkbox" name="campoDuplicata_fimAcao_i" ng-model="campoDuplicata.fimAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoDuplicata_fimAcao" ng-value="campoDuplicata.fimAcao">
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Envio de Evidências</label>
+                    <input type="checkbox" name="campoDuplicata_evidencia_i" ng-model="campoDuplicata.evidencia"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoDuplicata_evidencia" ng-value="campoDuplicata.evidencia">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Envio da ND</label>
+                    <input type="checkbox" name="campoDuplicata_envioND_i" ng-model="campoDuplicata.envioND"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoDuplicata_envioND" ng-value="campoDuplicata.envioND">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Pagamento</label>
+                    <input type="checkbox" name="campoDuplicata_pagamento_i" ng-model="campoDuplicata.pagamento"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoDuplicata_pagamento" ng-value="campoDuplicata.pagamento">
+                  </div>
+                </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <div ng-show="vm.Params.edit">
+          <a class="btn btn-default btn-lg" ng-click="vm.Formulario.camposDuplicatas.push(
+        {iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true}
+        )">Incluir Campo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

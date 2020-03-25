@@ -6,8 +6,6 @@ angular.module('MarketingTipoAcaoApp', ['angular.fluig', 'ngAnimate', 'brother.s
       formService.atualizaFormulario($scope, vm)
         .then(() => {
           try {
-            vm.Params = { edit: true, user: 'admin', formMode: 'MOD' };
-
             vm.inicia();
           } catch (error) {
             vm.Errors.push(error);
@@ -16,7 +14,9 @@ angular.module('MarketingTipoAcaoApp', ['angular.fluig', 'ngAnimate', 'brother.s
         });
 
       vm.inicia = function inicia() {
-        vm.Usuario = fluigService.getUsuarios(vm.Params.user)[0];
+        fluigService.getUsuarios(vm.Params.user).then(users => {
+          vm.Usuario = users[0];
+        });
 
         if (vm.Params.edit) {
           vm.Formulario.importado = false;
@@ -29,6 +29,15 @@ angular.module('MarketingTipoAcaoApp', ['angular.fluig', 'ngAnimate', 'brother.s
 
       vm.changeTipoAcao = function changeTipoAcao() {
 
+        vm.Errors = [];
+
+        if (vm.Formulario.tipoAcao.codigo) {
+          brotherService.getMarketingTipoAcao(vm.Formulario.tipoAcao.codigo).then(tipoAcao => {
+            if (tipoAcao[0]) {
+              vm.Errors.push('Tipo de ação já informado');
+            }
+          })
+        }
       }
 
       vm.incluiItem = function incluiItem(obj) {

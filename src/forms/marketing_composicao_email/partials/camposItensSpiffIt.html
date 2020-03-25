@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Itens de Spiff (Item)</h4>
+      </div>
+
+      <div class="panel-body">
+
+        <table class="table" tablename="camposSpiffIt" noaddbutton="true" nodeletebutton="true"
+          ng-show="vm.Formulario.camposSpiffIt.length > 0">
+          
+          <thead>
+            <tr>
+              <th ng-show="vm.Params.edit"></th>
+              <th></th>
+            </tr>
+          </thead>
+          
+          <tbody ng-non-bindable>
+            <tr ng-repeat="campoSpiffIt in vm.Formulario.camposSpiffIt">
+              <td ng-show="vm.Params.edit">
+                <span class="fluigicon fluigicon-md fluigicon-arrow-up fs-cursor-pointer"
+                  ng-click="$index>0?vm.Formulario.camposSpiffIt.move($index,$index-1):null"></span>
+                <span class="fluigicon fluigicon-md fluigicon-arrow-down fs-cursor-pointer"
+                  ng-click="$index<vm.Formulario.camposSpiffIt.length-1?vm.Formulario.camposSpiffIt.move($index,$index+1):null"></span>
+
+                <span ng-click="vm.removeChild(vm.Formulario.camposSpiffIt, $index)"
+                  class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" class="form-control input-lg" name="campoSpiffIt_label"
+                        ng-value="campoSpiffIt.label">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Campo</label>
+                      <input class="form-control input-lg" name="campoSpiffIt_column_i" fluig-autocomplete
+                        values="vm.CamposSpiffIt" ng-model="campoSpiffIt.column" display-key="name">
+                      <textarea hidden name="campoSpiffIt_column" ng-value="campoSpiffIt.column | json:0"
+                        ng-bind="campoSpiffIt.column | json:0"></textarea>
+                      <input type="hidden" name="campoSpiffIt_name" ng-value="campoSpiffIt.column.name">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-sm-2">
+                    <label>Início da Ação</label>
+                    <input type="checkbox" name="campoSpiffIt_iniAcao_i" ng-model="campoSpiffIt.iniAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSpiffIt_iniAcao" ng-value="campoSpiffIt.iniAcao">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Término da Ação</label>
+                    <input type="checkbox" name="campoSpiffIt_fimAcao_i" ng-model="campoSpiffIt.fimAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSpiffIt_fimAcao" ng-value="campoSpiffIt.fimAcao">
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Envio de Evidências</label>
+                    <input type="checkbox" name="campoSpiffIt_evidencia_i" ng-model="campoSpiffIt.evidencia"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSpiffIt_evidencia" ng-value="campoSpiffIt.evidencia">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Envio da ND</label>
+                    <input type="checkbox" name="campoSpiffIt_envioND_i" ng-model="campoSpiffIt.envioND"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSpiffIt_envioND" ng-value="campoSpiffIt.envioND">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Pagamento</label>
+                    <input type="checkbox" name="campoSpiffIt_pagamento_i" ng-model="campoSpiffIt.pagamento"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSpiffIt_pagamento" ng-value="campoSpiffIt.pagamento">
+                  </div>
+                </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <div ng-show="vm.Params.edit">
+          <a class="btn btn-default btn-lg" ng-click="vm.Formulario.camposSpiffIt.push(
+        {iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true}
+        )">Incluir Campo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

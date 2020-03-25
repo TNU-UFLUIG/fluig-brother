@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+
+      <div class="panel-body">
+
+        <table class="table" tablename="destinatarios" noaddbutton="true" nodeletebutton="true"
+          ng-show="vm.Formulario.destinatarios.length > 0">
+
+          <thead>
+            <tr>
+              <th ng-show="vm.Params.edit"></th>
+              <th></th>
+            </tr>
+          </thead>
+          
+          <tbody ng-non-bindable>
+            <tr ng-repeat="email in vm.Formulario.destinatarios">
+              <td ng-show="vm.Params.edit">
+
+                <span ng-click="vm.removeChild(vm.Formulario.destinatarios, $index)"
+                  class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Nome</label>
+                      <input type="text" class="form-control input-lg" name="email_nome" ng-value="email.nome">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>E-mail</label>
+                      <input type="email" class="form-control input-lg" name="email_email_i" ng-model="email.email">
+                      <input type="hidden" name="email_email" ng-value="email.email">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-sm-2">
+                    <label>Início da Ação</label>
+                    <input type="checkbox" name="email_iniAcao_i" ng-model="email.iniAcao" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="email_iniAcao" ng-value="email.iniAcao">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Término da Ação</label>
+                    <input type="checkbox" name="email_fimAcao_i" ng-model="email.fimAcao" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="email_fimAcao" ng-value="email.fimAcao">
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Envio de Evidências</label>
+                    <input type="checkbox" name="email_evidencia_i" ng-model="email.evidencia" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="email_evidencia" ng-value="email.evidencia">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Envio da ND</label>
+                    <input type="checkbox" name="email_envioND_i" ng-model="email.envioND" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="email_envioND" ng-value="email.envioND">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Pagamento</label>
+                    <input type="checkbox" name="email_pagamento_i" ng-model="email.pagamento" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="email_pagamento" ng-value="email.pagamento">
+                  </div>
+                </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <div ng-show="vm.Params.edit">
+          <a class="btn btn-default btn-lg" ng-click="vm.Formulario.destinatarios.push(
+        {iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true}
+        )">Incluir email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

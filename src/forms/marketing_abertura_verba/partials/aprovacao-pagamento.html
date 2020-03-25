@@ -3,16 +3,16 @@
     <div class="form-group">
       <label class="control-label">Status</label>
       <h4>{{vm.Formulario.statusAprovPagamento | uppercase}}</h4>
-      <input type="hidden" name="statusAprovPagamento" ng-value="vm.Formulario.statusAprovPagamento"
-        ng-model="vm.Formulario.statusAprovPagamento">
+      <input type="hidden" name="statusAprovPagamento" ng-value="vm.Formulario.statusAprovPagamento">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Data</label>
       <h4>{{vm.Formulario.dataAprovPagamento | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataAprovPagamento" ng-value="vm.Formulario.dataAprovPagamento"
-        ng-model="vm.Formulario.dataAprovPagamento">
+      <input type="hidden" name="dataAprovPagamento_f"
+        ng-value="vm.Formulario.dataAprovPagamento | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataAprovPagamento" ng-value="vm.Formulario.dataAprovPagamento">
     </div>
   </div>
   <div class="col-sm-4">
@@ -21,10 +21,8 @@
       <h4>{{vm.Formulario.userAprovPagamento.colleagueName| uppercase}}</h4>
       <textarea hidden name="userAprovPagamento" ng-value="vm.Formulario.userAprovPagamento | json:0"
         ng-bind="vm.Formulario.userAprovPagamento | json:0"></textarea>
-      <input type="hidden" name="userAprovPagamentoNome"
-        ng-value="vm.Formulario.userAprovPagamento.colleagueName">
-      <input type="hidden" name="userAprovPagamentoCodigo"
-        ng-value="vm.Formulario.userAprovPagamento.colleagueId">
+      <input type="hidden" name="userAprovPagamentoNome" ng-value="vm.Formulario.userAprovPagamento.colleagueName">
+      <input type="hidden" name="userAprovPagamentoCodigo" ng-value="vm.Formulario.userAprovPagamento.colleagueId">
     </div>
   </div>
 
@@ -32,8 +30,8 @@
     <div class="form-group">
       <label for="obsAprovPagamento" class="control-label">Observações</label>
       <textarea ng-show="vm.regras.enableAprovPagamento" fluig-error="form.obsAprovPagamento.$error"
-        name="obsAprovPagamento" elastic class="form-control input-lg"
-        ng-model="vm.Formulario.obsAprovPagamento" ng-value="vm.Formulario.obsAprovPagamento"
+        name="obsAprovPagamento" elastic class="form-control input-lg" ng-model="vm.Formulario.obsAprovPagamento"
+        ng-value="vm.Formulario.obsAprovPagamento"
         placeholder="Caso reprove a solicitação, utilize este campo para informar o motivo"></textarea>
       <p ng-show="!vm.regras.enableAprovPagamento">{{vm.Formulario.obsAprovPagamento || 'Sem observações'}}</p>
     </div>

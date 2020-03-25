@@ -9,28 +9,11 @@ angular.module('brother.services')
        *
        * @returns
        */
-      getUsuarios: function getUsuarios(userId, fields) {
-        const constraints = [];
-        let dataset;
-
-        if (userId) {
-          constraints.push(
-            DatasetFactory.createConstraint('colleaguePK.colleagueId', userId, userId, ConstraintType.MUST)
-          );
-        }
-
-        try {
-          dataset = DatasetFactory.getDataset('colleague', null, constraints)
-            .values;
-        } catch (error) {
-          $log.error('fluigService Error: ', error);
-        }
-
-        angular.forEach(dataset, (usuario) => {
-          usuario.colleagueId = usuario['colleaguePK.colleagueId'];
-        });
-
-        return this.fixDataset(dataset, fields);
+      getUsuarios: function getUsuarios(colleagueId, fields) {
+        console.log('getUsuarios', colleagueId, fields)
+        return this.getDatasetAsync('colleague', {
+          colleagueId
+        }, fields);
       },
 
       /**
@@ -93,6 +76,38 @@ angular.module('brother.services')
       },
 
       /**
+       * Retorna dados de um dataset
+       *
+       * @param {any} name
+       * @param {any} params
+       * @param {any} fields
+       * @returns
+       */
+      getDatasetAsync: function getDatasetAsync(name, params, fields) {
+
+        console.log(name, params, fields)
+
+        const defer = $q.defer();
+
+        let strParams = params ? Object.keys(params).map((k) => `${k},${params[k]}`).join(",") : '';
+        let strFields = fields ? fields.join() : '';
+        let urlDataset = `/api/public/ecm/dataset/search?datasetId=${name}&filterFields=${strParams}&resultFields=${strFields}`;
+
+        try {
+          $http.get(urlDataset).then((response) => {
+            defer.resolve(response.data.content);
+          }, (error) => {
+            $log.error('getDatasetAsync Failed: ', error);
+            defer.reject(error);
+          });
+        } catch (error) {
+          $log.error(error);
+        }
+
+        return defer.promise;
+      },
+
+      /**
        * Gera um id
        *
        * @returns
@@ -152,7 +167,7 @@ angular.module('brother.services')
         return dataset;
       },
       getPasta: function getPasta(companyId, folders, fields) {
-        return this.getDataset('fluig_get_pasta', {
+        return this.getDatasetAsync('fluig_get_pasta', {
           companyId, folders
         }, fields);
       },

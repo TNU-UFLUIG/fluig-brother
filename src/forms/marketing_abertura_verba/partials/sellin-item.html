@@ -15,42 +15,46 @@
       <td>
         <div class="td-content">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-9">
               <label>Item</label>
-              <input class="form-control input-lg" name="itemSellinIt_item_input" fluig-autocomplete
+              <input class="form-control input-lg" name="itemSellinIt_item_i" fluig-autocomplete
                 dataset="totvs_busca_item" display-key="displaykey" ng-model="itemSellinIt.item"
                 result-fields="['codigo','descricao','categoria','displaykey']"
                 ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.changeItemSellinIt(itemSellinIt, $index)">
               <textarea hidden name="itemSellinIt_item" ng-value="itemSellinIt.item | json:0"
                 ng-bind="itemSellinIt.item | json:0"></textarea>
+              <input type="hidden" name="itemSellinIt_itemDescricao" ng-value="itemSellinIt.item.descricao">
               <input type="hidden" name="itemSellinIt_itemCodigo" ng-value="itemSellinIt.item.codigo">
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">
               <label>Categoria</label>
-              <input class="form-control input-lg" name="itemSellinIt_categoria" ng-model="itemSellinIt.item.categoria"
-                disabled>
+              <input class="form-control input-lg" name="itemSellinIt_categoria" disabled>
             </div>
           </div>
 
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-4">
               <label>SRP Inicial</label>
-              <input class="form-control input-lg" name="itemSellinIt_srpInicial_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_srpInicial_i" fluig-money-mask
                 ng-model="itemSellinIt.srpInicial" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-blur="vm.calculaItemErp(itemSellinIt)">
+              <input type="hidden" name="itemSellinIt_srpInicial_f" ng-value="itemSellinIt.srpInicial | currency">
               <input type="hidden" name="itemSellinIt_srpInicial" ng-value="itemSellinIt.srpInicial">
             </div>
 
             <div class="col-sm-4">
               <label>Net R$ Inicial</label>
-              <input class="form-control input-lg" name="itemSellinIt_netInicial_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_netInicial_i" fluig-money-mask
                 ng-model="itemSellout.netInicial" disabled>
+              <input type="hidden" name="itemSellinIt_netInicial_f" ng-value="itemSellout.netInicial | currency">
               <input type="hidden" name="itemSellinIt_netInicial" ng-value="itemSellout.netInicial">
             </div>
             <div class="col-sm-4">
               <label>GP</label>
-              <input class="form-control input-lg" name="itemSellinIt_gpInicial_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_gpInicial_i" fluig-percentage-mask
                 ng-model="itemSellout.gpInicial" disabled>
+              <input type="hidden" name="itemSellinIt_gpInicial_f"
+                ng-value="itemSellout.gpInicial | percentage:'2'">
               <input type="hidden" name="itemSellinIt_gpInicial" ng-value="itemSellout.gpInicial">
             </div>
           </div>
@@ -58,22 +62,27 @@
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-4">
               <label>SRP Sugerido</label>
-              <input class="form-control input-lg" name="itemSellinIt_srpSugerido_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_srpSugerido_i" fluig-money-mask
                 ng-model="itemSellinIt.srpSugerido" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-blur="vm.calculaItemErp(itemSellinIt)">
+              <input type="hidden" name="itemSellinIt_srpSugerido_f"
+                ng-value="itemSellinIt.srpSugerido | currency">
               <input type="hidden" name="itemSellinIt_srpSugerido" ng-value="itemSellinIt.srpSugerido">
             </div>
 
             <div class="col-sm-4">
               <label>Net R$ Sugerido</label>
-              <input class="form-control input-lg" name="itemSellinIt_netSugerido_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_netSugerido_i" fluig-money-mask
                 ng-model="itemSellout.netSugerido" disabled>
+              <input type="hidden" name="itemSellinIt_netSugerido_f" ng-value="itemSellout.netSugerido | currency">
               <input type="hidden" name="itemSellinIt_netSugerido" ng-value="itemSellout.netSugerido">
             </div>
             <div class="col-sm-4">
               <label>GP</label>
-              <input class="form-control input-lg" name="itemSellinIt_gpSugerido_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_gpSugerido_i" fluig-percentage-mask
                 ng-model="itemSellout.gpSugerido" disabled>
+              <input type="hidden" name="itemSellinIt_gpSugerido_f"
+                ng-value="itemSellout.gpSugerido | percentage:'2'">
               <input type="hidden" name="itemSellinIt_gpSugerido" ng-value="itemSellout.gpSugerido">
             </div>
           </div>
@@ -81,28 +90,33 @@
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-3">
               <label>Rebate Unit</label>
-              <input class="form-control input-lg" name="itemSellinIt_rebateUnit_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_rebateUnit_i" fluig-money-mask
                 ng-model="itemSellout.rebateUnit" disabled>
+              <input type="hidden" name="itemSellinIt_rebateUnit_f" ng-value="itemSellout.rebateUnit | currency">
               <input type="hidden" name="itemSellinIt_rebateUnit" ng-value="itemSellout.rebateUnit">
             </div>
 
             <div class="col-sm-3">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSellinIt_qtde_input" fluig-number-mask
+              <input class="form-control input-lg" name="itemSellinIt_qtde_i" fluig-number-mask
                 ng-model="itemSellinIt.qtde" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaRebateTotal(itemSellinIt)">
+              <input type="hidden" name="itemSellinIt_qtde_f" ng-value="itemSellinIt.qtde | number:'2'">
               <input type="hidden" name="itemSellinIt_qtde" ng-value="itemSellinIt.qtde">
             </div>
             <div class="col-sm-3">
               <label>Rebate Total</label>
-              <input class="form-control input-lg" name="itemSellinIt_rebateTotal_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_rebateTotal_i" fluig-money-mask
                 ng-model="itemSellinIt.rebateTotal" disabled>
+              <input type="hidden" name="itemSellinIt_rebateTotal_f"
+                ng-value="itemSellinIt.rebateTotal | currency">
               <input type="hidden" name="itemSellinIt_rebateTotal" ng-value="itemSellinIt.rebateTotal">
             </div>
             <div class="col-sm-3">
               <label>Dolar</label>
-              <input class="form-control input-lg" name="itemSellinIt_dolar_input" fluig-money-mask
-                ng-model="itemSellinIt.dolar" disabled>
+              <input class="form-control input-lg" name="itemSellinIt_dolar_i" fluig-money-mask
+                currency-symbol="US$" ng-model="itemSellinIt.dolar" disabled>
+              <input type="hidden" name="itemSellinIt_dolar_f" ng-value="itemSellinIt.dolar | currency:'US$'">
               <input type="hidden" name="itemSellinIt_dolar" ng-value="itemSellinIt.dolar">
             </div>
 
@@ -114,7 +128,9 @@
               <textarea hidden name="itemSellinIt_usuario" ng-value="itemSellinIt.usuario | json:0"
                 ng-bind="itemSellinIt.usuario | json:0"></textarea>
               <input type="hidden" name="itemSellinIt_usuarioCodigo" ng-value="itemSellinIt.usuario.colleagueId">
-              <input type="hidden" name="itemSellinIt_data" ng-model="itemSellinIt.data" ng-value="itemSellinIt.data">
+              <input type="hidden" name="itemSellinIt_usuarioNome" ng-value="itemSellinIt.usuario.colleagueName">
+              <input type="hidden" name="itemSellinIt_data" ng-value="itemSellinIt.data">
+              <input type="hidden" name="itemSellinIt_data_f" ng-value="itemSellinIt.data | date:'fullDate'">
             </div>
           </div>
         </div>

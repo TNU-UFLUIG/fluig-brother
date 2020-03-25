@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Itens de VPC (Outros)</h4>
+      </div>
+
+      <div class="panel-body">
+
+        <table class="table" tablename="camposVpcOutros" noaddbutton="true" nodeletebutton="true"
+          ng-show="vm.Formulario.camposVpcOutros.length > 0">
+          
+          <thead>
+            <tr>
+              <th ng-show="vm.Params.edit"></th>
+              <th></th>
+            </tr>
+          </thead>
+          
+          <tbody ng-non-bindable>
+            <tr ng-repeat="campoVpcOutros in vm.Formulario.camposVpcOutros">
+              <td ng-show="vm.Params.edit">
+                <span class="fluigicon fluigicon-md fluigicon-arrow-up fs-cursor-pointer"
+                  ng-click="$index>0?vm.Formulario.camposVpcOutros.move($index,$index-1):null"></span>
+                <span class="fluigicon fluigicon-md fluigicon-arrow-down fs-cursor-pointer"
+                  ng-click="$index<vm.Formulario.camposVpcOutros.length-1?vm.Formulario.camposVpcOutros.move($index,$index+1):null"></span>
+
+                <span ng-click="vm.removeChild(vm.Formulario.camposVpcOutros, $index)"
+                  class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" class="form-control input-lg" name="campoVpcOutros_label"
+                        ng-value="campoVpcOutros.label">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Campo</label>
+                      <input class="form-control input-lg" name="campoVpcOutros_column_i" fluig-autocomplete
+                        values="vm.CamposVpcOutros" ng-model="campoVpcOutros.column" display-key="name">
+                      <textarea hidden name="campoVpcOutros_column" ng-value="campoVpcOutros.column | json:0"
+                        ng-bind="campoVpcOutros.column | json:0"></textarea>
+                      <input type="hidden" name="campoVpcOutros_name" ng-value="campoVpcOutros.column.name">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-sm-2">
+                    <label>Início da Ação</label>
+                    <input type="checkbox" name="campoVpcOutros_iniAcao_i" ng-model="campoVpcOutros.iniAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcOutros_iniAcao" ng-value="campoVpcOutros.iniAcao">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Término da Ação</label>
+                    <input type="checkbox" name="campoVpcOutros_fimAcao_i" ng-model="campoVpcOutros.fimAcao"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcOutros_fimAcao" ng-value="campoVpcOutros.fimAcao">
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Envio de Evidências</label>
+                    <input type="checkbox" name="campoVpcOutros_evidencia_i" ng-model="campoVpcOutros.evidencia"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcOutros_evidencia" ng-value="campoVpcOutros.evidencia">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Envio da ND</label>
+                    <input type="checkbox" name="campoVpcOutros_envioND_i" ng-model="campoVpcOutros.envioND"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcOutros_envioND" ng-value="campoVpcOutros.envioND">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Pagamento</label>
+                    <input type="checkbox" name="campoVpcOutros_pagamento_i" ng-model="campoVpcOutros.pagamento"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcOutros_pagamento" ng-value="campoVpcOutros.pagamento">
+                  </div>
+                </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <div ng-show="vm.Params.edit">
+          <a class="btn btn-default btn-lg" ng-click="vm.Formulario.camposVpcOutros.push(
+        {iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true}
+        )">Incluir Campo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

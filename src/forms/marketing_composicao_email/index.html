@@ -1,0 +1,87 @@
+<html ng-app="MarketingComposicaoEmailApp">
+
+<head>
+	<!-- partial:../partials/head.html -->
+	<!-- partial -->
+	<title>Composição dos E-mails de Ação de Marketing</title>
+</head>
+
+<body ng-controller="MarketingComposicaoEmailController as vm">
+	<div class="fluig-style-guide ng-cloak">
+		<div class="container">
+			<div fluig-header class="hidden-xs hidden-print fs-sm-space" logo="/brother_lib/images/logo.png">
+			</div>
+			<form name="form" role="form" class="form">
+				<!-- partial:partials/angularMap.html -->
+				<!-- partial -->
+
+				<!-- partial:../partials/alerts.html -->
+				<!-- partial -->
+
+				<ul class="nav nav-tabs clearfix" role="tablist" ng-init="vm.tab=1">
+					<li ng-class="{'active':vm.tab==1}" ng-click="vm.tab=1"><a href="#">Textos dos E-mails</a></li>
+					<li ng-class="{'active':vm.tab==2}" ng-click="vm.tab=2"><a href="#">Destinatários Grupo Brother</a></li>
+					<li ng-class="{'active':vm.tab==3}" ng-click="vm.tab=3"><a href="#">Campos do E-mail</a></li>
+				</ul>
+
+				<div ng-show="vm.tab==1" class="animation">
+					<div class="panel-body">
+						<!-- partial:partials/textos.html -->
+						<!-- partial -->
+					</div>
+
+				</div>
+
+				<div ng-show="vm.tab==2" class="animation">
+					<div class="panel-body">
+						<!-- partial:partials/destinatarios.html -->
+						<!-- partial -->
+					</div>
+				</div>
+
+				<div ng-show="vm.tab==3" class="animation">
+					<div class="panel-body">
+						<!-- partial:partials/camposSolicitacao.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensSellout.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensSellinIt.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensSellinTg.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensSellinTgAc.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensSpiffIt.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensSpiffTg.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensVpcEvt.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposItensVpcOutros.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposEvidencias.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposND.html -->
+						<!-- partial -->
+
+						<!-- partial:partials/camposDuplicatas.html -->
+						<!-- partial -->
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -3,16 +3,16 @@
     <div class="form-group">
       <label class="control-label">Status</label>
       <h4>{{vm.Formulario.statusAprovGerMarketing | uppercase}}</h4>
-      <input type="hidden" name="statusAprovGerMarketing" ng-value="vm.Formulario.statusAprovGerMarketing"
-        ng-model="vm.Formulario.statusAprovGerMarketing">
+      <input type="hidden" name="statusAprovGerMarketing" ng-value="vm.Formulario.statusAprovGerMarketing">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Data</label>
       <h4>{{vm.Formulario.dataAprovGerMarketing | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataAprovGerMarketing" ng-value="vm.Formulario.dataAprovGerMarketing"
-        ng-model="vm.Formulario.dataAprovGerMarketing">
+      <input type="hidden" name="dataAprovGerMarketing_f"
+        ng-value="vm.Formulario.dataAprovGerMarketing | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataAprovGerMarketing" ng-value="vm.Formulario.dataAprovGerMarketing">
     </div>
   </div>
   <div class="col-sm-4">

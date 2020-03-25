@@ -17,39 +17,43 @@
           <div class="row">
             <div class="col-sm-5">
               <label>Descrição</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_descricao_input"
-                ng-model="itemSellinTgAc.descricao" ng-value="itemSellinTgAc.descricao"
-                ng-disabled="!vm.regras.enableSolicitacao">
+              <input class="form-control input-lg" name="itemSellinTgAc_descricao" ng-model="itemSellinTgAc.descricao"
+                ng-value="itemSellinTgAc.descricao" ng-disabled="!vm.regras.enableSolicitacao">
             </div>
             <div class="col-sm-3">
               <label>Target R$</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_target_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinTgAc_target_i" fluig-money-mask
                 ng-model="itemSellinTgAc.target" ng-disabled="!vm.regras.enableSolicitacao">
+              <input type="hidden" name="itemSellinTgAc_target_f" ng-value="itemSellinTgAc.target | currency">
               <input type="hidden" name="itemSellinTgAc_target" ng-value="itemSellinTgAc.target">
             </div>
             <div class="col-sm-2">
               <label>Target Qtde</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_qtde_input" fluig-number-mask="2"
+              <input class="form-control input-lg" name="itemSellinTgAc_qtde_i" fluig-number-mask="2"
                 ng-model="itemSellinTgAc.qtde" ng-disabled="!vm.regras.enableSolicitacao">
+              <input type="hidden" name="itemSellinTgAc_qtde_f" ng-value="itemSellinTgAc.qtde | number:'2'">
               <input type="hidden" name="itemSellinTgAc_qtde" ng-value="itemSellinTgAc.qtde">
             </div>
             <div class="col-sm-2">
               <label>Target %</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_perc_input" fluig-percentage-mask
+              <input class="form-control input-lg" name="itemSellinTgAc_perc_i" fluig-percentage-mask
                 ng-model="itemSellinTgAc.perc" ng-disabled="!vm.regras.enableSolicitacao">
+              <input type="hidden" name="itemSellinTgAc_perc_f" ng-value="itemSellinTgAc.perc | percentage:'2'">
               <input type="hidden" name="itemSellinTgAc_perc" ng-value="itemSellinTgAc.perc">
             </div>
             <div class="col-sm-3">
               <label>Valor / Target</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_vlTarget_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinTgAc_vlTarget_i" fluig-money-mask
                 ng-model="itemSellinTgAc.vlTarget" ng-disabled="!vm.regras.enableSolicitacao">
+              <input type="hidden" name="itemSellinTgAc_vlTarget_f" ng-value="itemSellinTgAc.vlTarget | currency">
               <input type="hidden" name="itemSellinTgAc_vlTarget" ng-value="itemSellinTgAc.vlTarget">
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_vlTotal_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinTgAc_vlTotal_i" fluig-money-mask
                 ng-model="itemSellinTgAc.vlTotal" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTotais()">
+              <input type="hidden" name="itemSellinTgAc_vlTotal_f" ng-value="itemSellinTgAc.vlTotal | currency">
               <input type="hidden" name="itemSellinTgAc_vlTotal" ng-value="itemSellinTgAc.vlTotal">
             </div>
           </div>
@@ -60,8 +64,9 @@
               <textarea hidden name="itemSellinTgAc_usuario" ng-value="itemSellinTgAc.usuario | json:0"
                 ng-bind="itemSellinTgAc.usuario | json:0"></textarea>
               <input type="hidden" name="itemSellinTgAc_usuarioCodigo" ng-value="itemSellinTgAc.usuario.colleagueId">
-              <input type="hidden" name="itemSellinTgAc_data" ng-model="itemSellinTgAc.data"
-                ng-value="itemSellinTgAc.data">
+              <input type="hidden" name="itemSellinTgAc_usuarioNome" ng-value="itemSellinTgAc.usuario.colleagueName">
+              <input type="hidden" name="itemSellinTgAc_data" ng-value="itemSellinTgAc.data">
+              <input type="hidden" name="itemSellinTgAc_data_f" ng-value="itemSellinTgAc.data | date:'fullDate'">
             </div>
           </div>
 

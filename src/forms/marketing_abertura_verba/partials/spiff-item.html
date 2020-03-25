@@ -15,13 +15,14 @@
       <td>
         <div class="td-content">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-9">
               <label>Item</label>
-              <input class="form-control input-lg" name="itemSpiffIt_item_input" fluig-autocomplete
+              <input class="form-control input-lg" name="itemSpiffIt_item_i" fluig-autocomplete
                 dataset="totvs_busca_item" display-key="displaykey" ng-model="itemSpiffIt.item"
                 ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.changeitemSpiffIt(itemSpiffIt, $index)">
               <textarea hidden name="itemSpiffIt_item" ng-value="itemSpiffIt.item | json:0"
                 ng-bind="itemSpiffIt.item | json:0"></textarea>
+              <input type="hidden" name="itemSpiffIt_itemDescricao" ng-value="itemSpiffIt.item.codigo">
               <input type="hidden" name="itemSpiffIt_itemCodigo" ng-value="itemSpiffIt.item.codigo">
             </div>
             <div class="col-sm-6">
@@ -34,23 +35,26 @@
           <div class="row animation" ng-show="itemSpiffIt.item.codigo">
             <div class="col-sm-4">
               <label>Spiff Unitário</label>
-              <input class="form-control input-lg" name="itemSpiffIt_spiffUnit_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSpiffIt_spiffUnit_i" fluig-money-mask
                 ng-model="itemSpiffIt.spiffUnit" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
+              <input type="hidden" name="itemSpiffIt_spiffUnit_f" ng-value="itemSpiffIt.spiffUnit | currency">
               <input type="hidden" name="itemSpiffIt_spiffUnit" ng-value="itemSpiffIt.spiffUnit">
             </div>
 
             <div class="col-sm-4">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSpiffIt_qtde_input" fluig-number-mask
+              <input class="form-control input-lg" name="itemSpiffIt_qtde_i" fluig-number-mask
                 ng-model="itemSpiffIt.qtde" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
+              <input type="hidden" name="itemSpiffIt_qtde_f" ng-value="itemSpiffIt.qtde | number:'2'">
               <input type="hidden" name="itemSpiffIt_qtde" ng-value="itemSpiffIt.qtde">
             </div>
             <div class="col-sm-4">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemSpiffIt_vlTotal_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemSpiffIt_vlTotal_i" fluig-money-mask
                 ng-model="itemSpiffIt.vlTotal" disabled>
+              <input type="hidden" name="itemSpiffIt_vlTotal_f" ng-value="itemSpiffIt.vlTotal | currency">
               <input type="hidden" name="itemSpiffIt_vlTotal" ng-value="itemSpiffIt.vlTotal">
             </div>
 
@@ -62,7 +66,9 @@
               <textarea hidden name="itemSpiffIt_usuario" ng-value="itemSpiffIt.usuario | json:0"
                 ng-bind="itemSpiffIt.usuario | json:0"></textarea>
               <input type="hidden" name="itemSpiffIt_usuarioCodigo" ng-value="itemSpiffIt.usuario.colleagueId">
-              <input type="hidden" name="itemSpiffIt_data" ng-model="itemSpiffIt.data" ng-value="itemSpiffIt.data">
+              <input type="hidden" name="itemSpiffIt_usuarioNome" ng-value="itemSpiffIt.usuario.colleagueName">
+              <input type="hidden" name="itemSpiffIt_data_f" ng-value="itemSpiffIt.data | date:'fullDate'">
+              <input type="hidden" name="itemSpiffIt_data" ng-value="itemSpiffIt.data">
             </div>
           </div>
         </div>

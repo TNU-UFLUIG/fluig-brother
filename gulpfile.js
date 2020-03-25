@@ -23,6 +23,7 @@ gulp.task('webserver', function () {
       proxies: [
         // { source: '/', target: params.cliServer }
         { source: '/api', target: params.cliServer + '/api' },
+        { source: '/ecm', target: params.cliServer + '/ecm' },
         { source: '/portal', target: params.cliServer + '/portal' },
         { source: '/brother_lib', target: params.cliServer + '/brother_lib' },
         { source: '/webdesk', target: params.cliServer + '/webdesk' },

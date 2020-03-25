@@ -1,0 +1,38 @@
+<html ng-app="MarketingParametrosApp">
+
+<head>
+	<!-- partial:../partials/head.html -->
+	<!-- partial -->
+	<title>Parâmetros do Fluxo de Abertura de Verba para Ação de Marketing</title>
+</head>
+
+<body ng-controller="MarketingParametrosController as vm">
+	<div class="fluig-style-guide ng-cloak">
+		<div class="container">
+			<div fluig-header class="hidden-xs hidden-print fs-sm-space" logo="/brother_lib/images/logo.png">
+			</div>
+			<form name="form" role="form" class="form">
+				<!-- partial:partials/angularMap.html -->
+				<!-- partial -->
+
+				<!-- partial:../partials/alerts.html -->
+				<!-- partial -->
+
+				<div class="panel animation"
+					ng-class="{'panel-primary': vm.Params.edit, 'panel-default': !vm.Params.edit}">
+					<div class="panel-heading">
+						<h4 class="panel-title">Parâmetros Gerais</h4>
+					</div>
+
+					<div class="panel-body">
+						<!-- partial:partials/parametros.html -->
+						<!-- partial -->
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -24,6 +24,21 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
             vm.checkLocal();
 
+            if (!vm.Params.mobile && parent && parent.WCMAPI) {
+
+              vm.WCMAPI = parent.WCMAPI;
+              if (vm.WCMAPI.browserName != 'chrome') {
+                vm.Errors.push("Favor acessar o Fluig pelo navegador Chrome");
+                FLUIGC.message.error({
+                  message: 'Favor acessar o Fluig pelo navegador Chrome',
+                  title: 'Oops'
+                }, (result) => {
+
+                });
+                return;
+              }
+            }
+
             vm.inicia();
           } catch (error) {
             vm.Errors.push(error);
@@ -36,44 +51,45 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.Params = {
             edit: true,
             etapa: "inicio",
-            user: 'ricardo.silva',
+            user: 'ckayama',
             formMode: 'ADD'
           };
-          // vm.Formulario = { "rateioCategoria": [{ "categoria": { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }], "itensSellout": [{ "data": 1582029871745, "$$hashKey": "object:27", "item": { "netInicial": "1200", "displaykey": "10930 - HLL2360DW", "codigo": "10930", "gpInicial": "10", "gpSugerido": "14", "rebateTotal": "100", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "100", "netSugerido": "1300", "descricao": "HLL2360DW" }, "srpInicial": 100, "srpSugerido": 100, "qtde": 1000, "rebateTotal": 100000 }], "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1 };
-          vm.Formulario.resumoVerbas = [
-            { titulo: 'AGUARDANDO APROVAÇÃO', class: 'warning', rebateSellout: 9000, rebateSellin: 0, spiff: 300, vpc: 0, total: 9300 },
-            { titulo: 'FY 2018', class: 'success', rebateSellout: 50000, rebateSellin: 0, spiff: 10000, vpc: 30000, total: 90000 },
-            { titulo: 'FY 2019 - YTD', class: 'success', rebateSellout: 10000, rebateSellin: 0, spiff: 10000, vpc: 1500, total: 12500 },
-            { titulo: 'PAGAMENTOS EFETUADOS - FY ATUAL (YTD)', class: 'active', rebateSellout: 55000, rebateSellin: 0, spiff: 5600, vpc: 7000, total: 67600 },
-            { titulo: 'TOTAL', class: 'info', rebateSellout: 124000, rebateSellin: 0, spiff: 16900, vpc: 38500, total: 89400 },
-          ]
+
+          if (vm.Params.formMode != 'ADD') {
+            vm.Formulario = { "rateioCategoria": [{ "categoria": { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }], "itensSellout": [{ "data": 1582029871745, "$$hashKey": "object:27", "item": { "netInicial": "1200", "displaykey": "10930 - HLL2360DW", "codigo": "10930", "gpInicial": "10", "gpSugerido": "14", "rebateTotal": "100", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "100", "netSugerido": "1300", "descricao": "HLL2360DW" }, "srpInicial": 100, "srpSugerido": 100, "qtde": 1000, "rebateTotal": 100000 }], "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1 };
+
+            vm.Formulario.valorResultado = 150000;
+            vm.Formulario.valorLiberado = 150000;
+            vm.Formulario.diferencaResultado = 50000;
+            vm.Formulario.arquivosEvidencias = [
+              { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
+            ];
+            vm.Formulario.duplicatas = [
+              { seq: 1, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 2, valorOriginal: 200000, saldo: 180000 },
+              { seq: 2, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 3, valorOriginal: 200000, saldo: 160000 },
+              { seq: 3, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 4, valorOriginal: 200000, saldo: 140000 },
+            ]
+
+            vm.Formulario.valorResultado = 150000;
+            vm.Formulario.valorLiberado = 150000;
+            vm.Formulario.diferencaResultado = 50000;
+            vm.Formulario.valorTotalVerba = 100000;
+            vm.Formulario.gpMedioSugerido = 10000;
+
+          }
+
           // vm.Formulario.emailsCliente = [{}];
-          // vm.Formulario.valorResultado = 150000;
-          // vm.Formulario.valorLiberado = 150000;
-          // vm.Formulario.diferencaResultado = 50000;
-          // vm.Formulario.arquivosEvidencias = [
-          //   { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
-          // ];
-          // vm.Formulario.duplicatas = [
-          //   { seq: 1, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 2, valorOriginal: 200000, saldo: 180000 },
-          //   { seq: 2, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 3, valorOriginal: 200000, saldo: 160000 },
-          //   { seq: 3, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 4, valorOriginal: 200000, saldo: 140000 },
-          // ]
-
-          // vm.Formulario.valorResultado = 150000;
-          // vm.Formulario.valorLiberado = 150000;
-          // vm.Formulario.diferencaResultado = 50000;
-          // vm.Formulario.valorTotalVerba = 100000;
-          // vm.Formulario.gpMedioSugerido = 10000;
-
 
         }
       }
       vm.inicia = function inicia() {
 
-        if (vm.Params.formMode == 'ADD') {
+        vm.desktop = !vm.Params.mobile;
+        vm.dataAtual = new Date().getTime();
 
-          vm.Categorias = erpService.getCategoria();
+        vm.checkRegras();
+
+        if (vm.Params.formMode == 'ADD') {
 
           vm.Formulario.userAprovGerMarketing = {};
           vm.Formulario.userAprovPresidenciaVp = {};
@@ -82,33 +98,30 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.Formulario.cliente = {};
           vm.Formulario.necAprovacaoGerMkt = true;
 
-          vm.Categorias.forEach(c => {
-            vm.Formulario.rateioCategoria.push({ categoria: c, perc: 0 });
+          erpService.getCategoria().then(categorias => {
+            categorias.forEach(c => {
+              vm.Formulario.rateioCategoria.push({ categoria: c, perc: 0 });
+            })
           })
-
         }
 
-        vm.desktop = !vm.Params.mobile;
+        fluigService.getUsuarios(vm.Params.user).then(resp => {
+          vm.Usuario = resp[0];
+          vm.checkEtapa();
+        });
 
-        if (!vm.Params.mobile && parent && parent.WCMAPI) {
+        fluigService.getPasta(vm.Params.companyId, 'Cadastros|Marketing|Anexos').then(pasta => {
+          vm.PastaAnexos = pasta[0];
+        });
 
-          vm.WCMAPI = parent.WCMAPI;
-          if (vm.WCMAPI.browserName != 'chrome') {
-            vm.Errors.push("Favor acessar o Fluig pelo navegador Chrome");
-            FLUIGC.message.error({
-              message: 'Favor acessar o Fluig pelo navegador Chrome',
-              title: 'Oops'
-            }, (result) => {
+        vm.Formulario.numControle = '2020.0056'
 
-            });
-            return;
-          }
+        if (vm.Params.edit) {
+          vm.Formulario.importado = false;
         }
+      };
 
-        console.log('inicia 3');
-
-        vm.dataAtual = new Date().getTime();
-
+      vm.checkRegras = function checkRegras() {
         vm.etapas = ['consulta', 'inicio', 'validarMarketing', 'revisarSolicitacao', 'aprovarGerMarketing', 'aprovarPresidencia', 'analisarErros',
           'autorizarNotificacaoInicio', 'aguardandoFimDaAcao', 'autorizarNotificacaoFim', 'enviarEvidencias', 'validarEvidencias', 'aprovarVerbaMaior',
           'aprovarVerbaMenor', 'enviarND', 'validarND', 'conferirFinanceiro', 'aprovarPagamento', 'atualizarStatus', 'autorizarNotificacaoPagamento'];
@@ -156,12 +169,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         ].forEach(o => {
           vm.regras[o.regra] = vm.Params.user == "adminx" && vm.Params.edit ? true : o.etapas.indexOf(vm.Params.etapa) >= 0 ? o.def : false;
         });
+      }
 
-        vm.Usuario = fluigService.getUsuarios(vm.Params.user)[0];
-        vm.Formulario.numControle = '2020.0056'
-        vm.PastaAnexos = fluigService.getPasta(vm.Params.companyId, 'Cadastros|Marketing|Anexos')[0];
-        vm.Formulario.notificacaoEtapa = 'INÍCIO DA AÇÃO';
-
+      vm.checkEtapa = function checkEtapa() {
         switch (true) {
           case vm.Params.etapa == 'inicio':
             vm.Formulario.solicitante = vm.Usuario;
@@ -244,19 +254,25 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.calculaTotalDuplicatas();
             break;
         }
-
-        if (vm.Params.edit) {
-          vm.Formulario.importado = false;
-        }
-      };
-
-      vm.changeCliente = function changeCliente() {
-        // vm.Formulario.executivo = {};
-        // if (vm.Formulario.cliente && vm.Formulario.cliente.codigo) {
-        //   vm.Formulario.executivo = fluigService.getUsuarios(vm.Formulario.cliente.executivo)[0];
-        // }
       }
 
+      vm.changeCliente = function changeCliente() {
+        vm.Formulario.executivo = {};
+        if (vm.Formulario.cliente && vm.Formulario.cliente.codigo) {
+          vm.Formulario.executivo = fluigService.getUsuarios(vm.Formulario.cliente.executivo)[0];
+        }
+      }
+
+      vm.buscaResumoVerbas = function buscaResumoVerbas() {
+        // erpService.getResumoVerbas(vm.Formulario.cliente.codigo);
+        vm.Formulario.resumoVerbas = [
+          { titulo: 'AGUARDANDO APROVAÇÃO', class: 'warning', rebateSellout: 9000, rebateSellin: 0, spiff: 300, vpc: 0, total: 9300 },
+          { titulo: 'FY 2018', class: 'success', rebateSellout: 50000, rebateSellin: 0, spiff: 10000, vpc: 30000, total: 90000 },
+          { titulo: 'FY 2019 - YTD', class: 'success', rebateSellout: 10000, rebateSellin: 0, spiff: 10000, vpc: 1500, total: 12500 },
+          { titulo: 'PAGAMENTOS EFETUADOS - FY ATUAL (YTD)', class: 'active', rebateSellout: 55000, rebateSellin: 0, spiff: 5600, vpc: 7000, total: 67600 },
+          { titulo: 'TOTAL', class: 'info', rebateSellout: 124000, rebateSellin: 0, spiff: 16900, vpc: 38500, total: 89400 },
+        ]
+      }
       vm.changeItemSellout = function changeItemSellout(item, index) {
         vm.calculaItemErp(item);
       }
@@ -268,27 +284,31 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
             vm.loading.show();
 
-            $http.get(`/api/public/ecm/dataset/search?datasetId=totvs_calcula_item&filterFields=codItem,${item.item.codigo},srpInicial,${item.srpInicial},srpSugerido,${item.srpSugerido}`)
-              .then((result) => {
+            erpService.calculaItemErp(item.item.codigo, vm.Formulario.cliente.codigo, item.srpInicial, item.srpSugerido).then(result => {
 
-                vm.loading.hide();
+              // })
 
-                console.log(result);
-                // console.log(valores);
+              // $http.get(`/api/public/ecm/dataset/search?datasetId=totvs_calcula_item&filterFields=codCliente,${vm.Formulario.cliente.codigo},codItem,${item.item.codigo},srpInicial,${item.srpInicial},srpSugerido,${item.srpSugerido}`)
+              // .then((result) => {
 
-                let valores = fluigService.fixDataset(result.data.content);
+              vm.loading.hide();
 
-                item.netInicial = valores[0].netInicial;
-                item.netSugerido = valores[0].netSugerido;
-                item.gpInicial = valores[0].gpInicial;
-                item.gpSugerido = valores[0].gpSugerido;
-                item.dolar = valores[0].dolar;
-                item.rebateUnit = item.netSugerido - item.netInicial;
+              console.log(result);
+              // console.log(valores);
 
-                vm.calculaRebateTotal(item);
-              }, (error) => {
-                loading.hide();
-              })
+              let valores = fluigService.fixDataset(result);
+
+              item.netInicial = valores[0].netInicial;
+              item.netSugerido = valores[0].netSugerido;
+              item.gpInicial = valores[0].gpInicial;
+              item.gpSugerido = valores[0].gpSugerido;
+              item.dolar = valores[0].dolar;
+              item.rebateUnit = item.netSugerido - item.netInicial;
+
+              vm.calculaRebateTotal(item);
+            }, (error) => {
+              loading.hide();
+            })
           }
         } else {
           item.netInicial = 0;
@@ -387,7 +407,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       };
 
       vm.buscaDuplicatas = function buscaDuplicatas() {
-        vm.Formulario.duplicatas = erpService.getTitulosCliente(vm.Formulario.cliente.codigo);
+        erpService.getTitulosCliente(vm.Formulario.cliente.codigo).then(duplicatas => {
+          vm.Formulario.duplicatas = duplicatas;
+        })
       }
 
       vm.calculaTotais = function calculaTotais() {
@@ -618,6 +640,16 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         }, (error) => {
           console.log(error);
         });
+      }
+
+      vm.guid = function guid() {
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+        }
+        return `${s4() + s4()}$${s4()}$${s4()}$${
+          s4()}$${s4()}${s4()}${s4()}`;
       }
 
     }

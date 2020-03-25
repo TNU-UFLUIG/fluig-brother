@@ -3,16 +3,16 @@
     <div class="form-group">
       <label class="control-label">Status</label>
       <h4>{{vm.Formulario.statusAprovVerbaMenor | uppercase}}</h4>
-      <input type="hidden" name="statusAprovVerbaMenor" ng-value="vm.Formulario.statusAprovVerbaMenor"
-        ng-model="vm.Formulario.statusAprovVerbaMenor">
+      <input type="hidden" name="statusAprovVerbaMenor" ng-value="vm.Formulario.statusAprovVerbaMenor">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Data</label>
       <h4>{{vm.Formulario.dataAprovVerbaMenor | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataAprovVerbaMenor" ng-value="vm.Formulario.dataAprovVerbaMenor"
-        ng-model="vm.Formulario.dataAprovVerbaMenor">
+      <input type="hidden" name="dataAprovVerbaMenor_f"
+        ng-value="vm.Formulario.dataAprovVerbaMenor | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataAprovVerbaMenor" ng-value="vm.Formulario.dataAprovVerbaMenor">
     </div>
   </div>
   <div class="col-sm-4">
@@ -21,10 +21,8 @@
       <h4>{{vm.Formulario.userAprovVerbaMenor.colleagueName| uppercase}}</h4>
       <textarea hidden name="userAprovVerbaMenor" ng-value="vm.Formulario.userAprovVerbaMenor | json:0"
         ng-bind="vm.Formulario.userAprovVerbaMenor | json:0"></textarea>
-      <input type="hidden" name="userAprovVerbaMenorNome"
-        ng-value="vm.Formulario.userAprovVerbaMenor.colleagueName">
-      <input type="hidden" name="userAprovVerbaMenorCodigo"
-        ng-value="vm.Formulario.userAprovVerbaMenor.colleagueId">
+      <input type="hidden" name="userAprovVerbaMenorNome" ng-value="vm.Formulario.userAprovVerbaMenor.colleagueName">
+      <input type="hidden" name="userAprovVerbaMenorCodigo" ng-value="vm.Formulario.userAprovVerbaMenor.colleagueId">
     </div>
   </div>
 
@@ -32,8 +30,8 @@
     <div class="form-group">
       <label for="obsAprovVerbaMenor" class="control-label">Observações</label>
       <textarea ng-show="vm.regras.enableAprovVerbaMenor" fluig-error="form.obsAprovVerbaMenor.$error"
-        name="obsAprovVerbaMenor" elastic class="form-control input-lg"
-        ng-model="vm.Formulario.obsAprovVerbaMenor" ng-value="vm.Formulario.obsAprovVerbaMenor"
+        name="obsAprovVerbaMenor" elastic class="form-control input-lg" ng-model="vm.Formulario.obsAprovVerbaMenor"
+        ng-value="vm.Formulario.obsAprovVerbaMenor"
         placeholder="Caso reprove a solicitação, utilize este campo para informar o motivo"></textarea>
       <p ng-show="!vm.regras.enableAprovVerbaMenor">{{vm.Formulario.obsAprovVerbaMenor || 'Sem observações'}}</p>
     </div>

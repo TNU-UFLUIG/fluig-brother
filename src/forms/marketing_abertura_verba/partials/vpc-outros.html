@@ -28,22 +28,25 @@
             </div>
             <div class="col-sm-2">
               <label>Quantidade</label>
-              <input class="form-control input-lg" name="itemVpcOutros_qtde_input" fluig-number-mask
+              <input class="form-control input-lg" name="itemVpcOutros_qtde_i" fluig-number-mask
                 ng-model="itemVpcOutros.qtde" ng-disabled="!vm.regras.enableSolicitacao">
-              <input type="hidden" ng-value="itemVpcOutros.qtde" name="itemVpcOutros_qtde">
+              <input type="hidden" name="itemVpcOutros_qtde_f" ng-value="itemVpcOutros.qtde | number:'2'">
+              <input type="hidden" name="itemVpcOutros_qtde" ng-value="itemVpcOutros.qtde">
             </div>
             <div class="col-sm-2">
               <label>% Reembolso</label>
-              <input class="form-control input-lg" name="itemVpcOutros_perc_input" fluig-percentage-mask
+              <input class="form-control input-lg" name="itemVpcOutros_perc_i" fluig-percentage-mask
                 ng-model="itemVpcOutros.perc" ng-disabled="!vm.regras.enableSolicitacao">
-              <input type="hidden" ng-value="itemVpcOutros.perc" name="itemVpcOutros_perc">
+              <input type="hidden" name="itemVpcOutros_perc_f" ng-value="itemVpcOutros.perc | percentage:'2'">
+              <input type="hidden" name="itemVpcOutros_perc" ng-value="itemVpcOutros.perc">
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemVpcOutros_vlTotal_input" fluig-money-mask
+              <input class="form-control input-lg" name="itemVpcOutros_vlTotal_i" fluig-money-mask
                 ng-model="itemVpcOutros.vlTotal" ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTotais()">
-              <input type="hidden" ng-value="itemVpcOutros.vlTotal" name="itemVpcOutros_vlTotal">
+              <input type="hidden" name="itemVpcOutros_vlTotal_f" ng-value="itemVpcOutros.vlTotal | currency">
+              <input type="hidden" name="itemVpcOutros_vlTotal" ng-value="itemVpcOutros.vlTotal">
             </div>
           </div>
         </div>

@@ -3,16 +3,15 @@
     <div class="form-group">
       <label class="control-label">Valor Total da Verba</label>
       <h1>{{vm.Formulario.valorTotalVerba | currency}}</h1>
-      <input type="hidden" name="valorTotalVerba" ng-value="vm.Formulario.valorTotalVerba"
-        ng-model="vm.Formulario.valorTotalVerba">
+
     </div>
   </div>
   <div class="col-sm-4" ng-show="vm.Formulario.gpMedioSugerido">
     <div class="form-group">
       <label class="control-label">GP Médido Sugerido</label>
-      <h1>{{vm.Formulario.gpMedioSugerido | currency}}</h1>
-      <input type="hidden" name="gpMedioSugerido" ng-value="vm.Formulario.gpMedioSugerido"
-        ng-model="vm.Formulario.gpMedioSugerido">
+      <h1>{{vm.Formulario.gpMedioSugerido | percentage}}</h1>
+      <input type="hidden" name="gpMedioSugerido_f" ng-value="vm.Formulario.gpMedioSugerido | percentage">
+      <input type="hidden" name="gpMedioSugerido" ng-value="vm.Formulario.gpMedioSugerido">
     </div>
   </div>
 </div>
@@ -22,19 +21,18 @@
     <div class="form-group">
       <label class="control-label">Nº de Controle/Registro</label>
       <h4>{{vm.Formulario.numControle}}</h4>
-      <input type="hidden" name="numControle" ng-value="vm.Formulario.numControle" ng-model="vm.Formulario.numControle">
-      <input type="hidden" name="numControleAno" ng-value="vm.Formulario.numControleAno"
-        ng-model="vm.Formulario.numControleAno">
-      <input type="hidden" name="numControleSeq" ng-value="vm.Formulario.numControleSeq"
-        ng-model="vm.Formulario.numControleSeq">
+      <input type="hidden" name="numControle" ng-value="vm.Formulario.numControle">
+      <input type="hidden" name="numControleAno" ng-value="vm.Formulario.numControleAno">
+      <input type="hidden" name="numControleSeq" ng-value="vm.Formulario.numControleSeq">
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
     <div class="form-group">
       <label class="control-label">Data da Solicitação</label>
       <h4>{{vm.Formulario.dataAbertura | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataAbertura" ng-value="vm.Formulario.dataAbertura"
-        ng-model="vm.Formulario.dataAbertura">
+      <input type="hidden" name="dataAbertura_f"
+        ng-value="vm.Formulario.dataAbertura | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataAbertura" ng-value="vm.Formulario.dataAbertura">
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
@@ -107,7 +105,7 @@
     <div class="form-group">
       <label class="control-label">Status</label>
       <h4>{{vm.Formulario.status | uppercase}}</h4>
-      <input type="hidden" name="status" ng-value="vm.Formulario.status" ng-model="vm.Formulario.status">
+      <input type="hidden" name="status" ng-value="vm.Formulario.status">
     </div>
   </div>
   <div class="col-md-4 col-sm-6">

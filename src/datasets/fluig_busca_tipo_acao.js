@@ -47,23 +47,19 @@ function jsonLocal() {
     tipoAcao: [
       {
         codigo: 'sellout',
-        descricao: 'SELL-OUT PROMOTIONS',
-        contaContabil: '03.01.01'
+        descricao: 'SELL-OUT PROMOTIONS'
       },
       {
         codigo: 'sellin',
-        descricao: 'SELL-IN PROMOTIONS',
-        contaContabil: '03.01.02'
+        descricao: 'SELL-IN PROMOTIONS'
       },
       {
         codigo: 'vpc',
-        descricao: 'VPC/COOP',
-        contaContabil: '03.01.03'
+        descricao: 'VPC/COOP'
       },
       {
         codigo: 'spiff',
-        descricao: 'SPIFF',
-        contaContabil: '03.01.04'
+        descricao: 'SPIFF'
       }
 
     ]
