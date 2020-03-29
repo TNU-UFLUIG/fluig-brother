@@ -41,6 +41,17 @@
 </div>
 
 <div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="envioNDConcluido" class="control-label">Envio Concluído</label>
+      <input type="checkbox" name="envioNDConcluido_i" ng-model="vm.Formulario.envioNDConcluido"
+        fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+      <input type="hidden" name="envioNDConcluido" ng-value="vm.Formulario.envioNDConcluido">
+    </div>
+  </div>
+</div>
+
+<div class="row">
 
   <div class="col-sm-3" ng-if="vm.regras.enableND">
     <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles(vm.Formulario.arquivosND, null, $files)"
@@ -79,6 +90,7 @@
             <input type="hidden" name="arquivoND_documentid" ng-value="arquivoND.documentid">
             <input type="hidden" name="arquivoND_version" ng-value="arquivoND.version">
             <input type="hidden" name="arquivoND_url" ng-value="arquivoND.url">
+            <input type="hidden" name="arquivoND_removed" ng-value="arquivoND.removed">
 
           </td>
           <td>

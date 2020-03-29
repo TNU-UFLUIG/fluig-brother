@@ -1,0 +1,31 @@
+$control-menu-height: 60px;
+$top-resumo-height: 120px;
+$top-desktop-margin: $control-menu-height + $top-resumo-height;
+$left-menu-width: 20%;
+
+@import "color";
+
+body {
+  background: url("/bv_lib/images/background.svg") center center / cover no-repeat fixed;
+}
+
+.wcm-background {
+  background: transparent !important;
+}
+
+.drop-box {
+  border: 3px dotted #ccc;
+  background-color: #eee;
+  text-align: center;
+  padding: 50px;
+}
+
+.drop-box.dragover {
+  border-color: #0e0;
+  background-color: #b2fab2;
+}
+
+.drop-box.dragover-err {
+  border-color: #f00;
+  background-color: #ffb2b2;
+}

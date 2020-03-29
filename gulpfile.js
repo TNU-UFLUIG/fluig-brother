@@ -25,7 +25,9 @@ gulp.task('webserver', function () {
         { source: '/api', target: params.cliServer + '/api' },
         { source: '/ecm', target: params.cliServer + '/ecm' },
         { source: '/portal', target: params.cliServer + '/portal' },
+        { source: '/resources', target: params.cliServer + '/resources' },
         { source: '/brother_lib', target: params.cliServer + '/brother_lib' },
+        { source: '/brother-api', target: params.cliServer + '/brother-api' },
         { source: '/webdesk', target: params.cliServer + '/webdesk' },
         { source: '/style-guide', target: params.cliServer + '/style-guide' }
       ]

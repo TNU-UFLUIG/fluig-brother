@@ -1,0 +1,17 @@
+application.type=widget
+application.code=brother_documentacao_marketing
+application.title=Documentação do Marketing
+application.description=Envio de ND e Evidencias de Acoes de Marketing
+application.category=Marketing
+developer.code=alexson
+developer.name=Alexson Ferreira
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.html
+edit.file=edit.html
+application.icon=icon.png
+locale.file.base.name=brother_documentacao_marketing
+application.resource.js.1=/brother_lib/js/vendor.min.js
+application.resource.js.2=/brother_lib/js/script.min.js
+application.resource.js.3=js/script.min.js

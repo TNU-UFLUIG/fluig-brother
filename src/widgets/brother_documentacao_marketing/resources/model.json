@@ -1,0 +1,1602 @@
+[
+  {
+    "_id": "594a77a15f7cd8b3f275726f",
+    "index": 0,
+    "valor": 42538.59,
+    "numero": 10021,
+    "cliente": "BUZZOPIA",
+    "data": "2017-04-26T03:37:33 +03:00"
+  },
+  {
+    "_id": "594a77a1177289d6b2e61b15",
+    "index": 1,
+    "valor": 17726.73,
+    "numero": 20377,
+    "cliente": "DOGNOSIS",
+    "data": "2017-02-09T04:05:18 +02:00"
+  },
+  {
+    "_id": "594a77a1a93eaf570c3bb3c2",
+    "index": 2,
+    "valor": 15901.61,
+    "numero": 55964,
+    "cliente": "VIRXO",
+    "data": "2016-11-04T11:18:46 +02:00"
+  },
+  {
+    "_id": "594a77a1abb95b9404b9b18d",
+    "index": 3,
+    "valor": 34891.57,
+    "numero": 29632,
+    "cliente": "STEELTAB",
+    "data": "2016-05-26T03:05:21 +03:00"
+  },
+  {
+    "_id": "594a77a168b832a5d675d091",
+    "index": 4,
+    "valor": 69599.17,
+    "numero": 15381,
+    "cliente": "TALKOLA",
+    "data": "2016-11-11T03:50:33 +02:00"
+  },
+  {
+    "_id": "594a77a1a2c0ac7d06cc13d2",
+    "index": 5,
+    "valor": 28854.54,
+    "numero": 58702,
+    "cliente": "TINGLES",
+    "data": "2016-03-18T01:02:17 +03:00"
+  },
+  {
+    "_id": "594a77a1dd4dbcc2cd40ce2f",
+    "index": 6,
+    "valor": 34384.7,
+    "numero": 36088,
+    "cliente": "CAXT",
+    "data": "2016-02-14T11:26:28 +02:00"
+  },
+  {
+    "_id": "594a77a1ca2cd0b3e566168c",
+    "index": 7,
+    "valor": 37598.15,
+    "numero": 18955,
+    "cliente": "MARKETOID",
+    "data": "2017-02-27T08:46:57 +03:00"
+  },
+  {
+    "_id": "594a77a1f899bda6c2d1c3a0",
+    "index": 8,
+    "valor": 20962.94,
+    "numero": 44565,
+    "cliente": "ZILODYNE",
+    "data": "2016-05-09T06:48:42 +03:00"
+  },
+  {
+    "_id": "594a77a1d105e43cc6540cd8",
+    "index": 9,
+    "valor": 34401.11,
+    "numero": 47435,
+    "cliente": "SUPREMIA",
+    "data": "2017-05-03T12:40:44 +03:00"
+  },
+  {
+    "_id": "594a77a13731daefa63f4fcc",
+    "index": 10,
+    "valor": 13137.76,
+    "numero": 25567,
+    "cliente": "LUNCHPAD",
+    "data": "2016-02-09T02:49:27 +02:00"
+  },
+  {
+    "_id": "594a77a17ca9f93891a66ad9",
+    "index": 11,
+    "valor": 30789.93,
+    "numero": 57325,
+    "cliente": "KOZGENE",
+    "data": "2016-04-02T10:18:24 +03:00"
+  },
+  {
+    "_id": "594a77a1d6abc6a4947d4e04",
+    "index": 12,
+    "valor": 59632.94,
+    "numero": 58662,
+    "cliente": "QUARX",
+    "data": "2016-06-10T12:06:42 +03:00"
+  },
+  {
+    "_id": "594a77a1b5ee499a1a9043ad",
+    "index": 13,
+    "valor": 51117.89,
+    "numero": 32089,
+    "cliente": "ENERSAVE",
+    "data": "2017-06-17T09:35:23 +03:00"
+  },
+  {
+    "_id": "594a77a1265cc70e0ae135e1",
+    "index": 14,
+    "valor": 29918.07,
+    "numero": 14898,
+    "cliente": "ACLIMA",
+    "data": "2016-06-12T05:05:53 +03:00"
+  },
+  {
+    "_id": "594a77a16751b30a8556db42",
+    "index": 15,
+    "valor": 23406.87,
+    "numero": 18389,
+    "cliente": "COSMETEX",
+    "data": "2017-05-07T03:03:07 +03:00"
+  },
+  {
+    "_id": "594a77a13303cbf2bef4120e",
+    "index": 16,
+    "valor": 27185.35,
+    "numero": 14229,
+    "cliente": "ESCENTA",
+    "data": "2016-07-21T05:20:33 +03:00"
+  },
+  {
+    "_id": "594a77a194c4b26ec154d00f",
+    "index": 17,
+    "valor": 20052.9,
+    "numero": 23283,
+    "cliente": "RUGSTARS",
+    "data": "2016-10-08T07:53:19 +03:00"
+  },
+  {
+    "_id": "594a77a141d9bdc9915dcd20",
+    "index": 18,
+    "valor": 77483.64,
+    "numero": 23201,
+    "cliente": "PREMIANT",
+    "data": "2017-03-15T01:00:29 +03:00"
+  },
+  {
+    "_id": "594a77a13c4238d2dcbd2e98",
+    "index": 19,
+    "valor": 16166.83,
+    "numero": 32244,
+    "cliente": "APEXTRI",
+    "data": "2016-12-11T09:33:42 +02:00"
+  },
+  {
+    "_id": "594a77a1db18eacb0139c009",
+    "index": 20,
+    "valor": 12709.41,
+    "numero": 37392,
+    "cliente": "ELPRO",
+    "data": "2017-01-29T03:21:25 +02:00"
+  },
+  {
+    "_id": "594a77a1614b782f53685940",
+    "index": 21,
+    "valor": 33701.28,
+    "numero": 53691,
+    "cliente": "TELEQUIET",
+    "data": "2016-07-06T01:31:20 +03:00"
+  },
+  {
+    "_id": "594a77a1ee08e98b07ad6ad4",
+    "index": 22,
+    "valor": 38854.56,
+    "numero": 23705,
+    "cliente": "QUONATA",
+    "data": "2016-09-22T08:47:23 +03:00"
+  },
+  {
+    "_id": "594a77a1e52bb817981c7b8f",
+    "index": 23,
+    "valor": 11904.44,
+    "numero": 32100,
+    "cliente": "ESCHOIR",
+    "data": "2017-02-04T05:51:32 +02:00"
+  },
+  {
+    "_id": "594a77a1dfe9121ae8f745d8",
+    "index": 24,
+    "valor": 69238.5,
+    "numero": 30941,
+    "cliente": "VINCH",
+    "data": "2016-02-12T06:39:35 +02:00"
+  },
+  {
+    "_id": "594a77a16190629f40d71bd3",
+    "index": 25,
+    "valor": 23182.22,
+    "numero": 17520,
+    "cliente": "PIGZART",
+    "data": "2017-05-04T10:24:05 +03:00"
+  },
+  {
+    "_id": "594a77a187fcbe8d41bc331e",
+    "index": 26,
+    "valor": 30777.7,
+    "numero": 47359,
+    "cliente": "KNOWLYSIS",
+    "data": "2017-05-25T07:07:31 +03:00"
+  },
+  {
+    "_id": "594a77a1b9e61701a46c82c4",
+    "index": 27,
+    "valor": 80231.47,
+    "numero": 24286,
+    "cliente": "OPTICON",
+    "data": "2016-06-10T11:01:01 +03:00"
+  },
+  {
+    "_id": "594a77a13ee486750f70e9ca",
+    "index": 28,
+    "valor": 67671.1,
+    "numero": 50732,
+    "cliente": "GORGANIC",
+    "data": "2016-03-02T03:41:31 +03:00"
+  },
+  {
+    "_id": "594a77a1e95b2852df0dcee0",
+    "index": 29,
+    "valor": 38798.34,
+    "numero": 30399,
+    "cliente": "EVENTEX",
+    "data": "2016-02-07T09:20:20 +02:00"
+  },
+  {
+    "_id": "594a77a1517705ed0c655b97",
+    "index": 30,
+    "valor": 83442.23,
+    "numero": 44540,
+    "cliente": "INJOY",
+    "data": "2016-03-29T11:32:22 +03:00"
+  },
+  {
+    "_id": "594a77a150d4ded42d667ffb",
+    "index": 31,
+    "valor": 12627.04,
+    "numero": 21594,
+    "cliente": "POLARIA",
+    "data": "2016-02-12T11:42:35 +02:00"
+  },
+  {
+    "_id": "594a77a1a117cd665c0167e8",
+    "index": 32,
+    "valor": 30412.84,
+    "numero": 55940,
+    "cliente": "IPLAX",
+    "data": "2016-12-15T02:53:13 +02:00"
+  },
+  {
+    "_id": "594a77a10b05830672c976e9",
+    "index": 33,
+    "valor": 55820.25,
+    "numero": 55272,
+    "cliente": "AMRIL",
+    "data": "2016-07-10T04:37:39 +03:00"
+  },
+  {
+    "_id": "594a77a1a8b3369fa5671c28",
+    "index": 34,
+    "valor": 98687.37,
+    "numero": 17611,
+    "cliente": "QUANTASIS",
+    "data": "2016-11-27T03:14:21 +02:00"
+  },
+  {
+    "_id": "594a77a187d0ce7545e7ca85",
+    "index": 35,
+    "valor": 14127.28,
+    "numero": 11511,
+    "cliente": "OLUCORE",
+    "data": "2016-04-18T10:05:11 +03:00"
+  },
+  {
+    "_id": "594a77a1c46478f80481f01d",
+    "index": 36,
+    "valor": 73811.54,
+    "numero": 49275,
+    "cliente": "MACRONAUT",
+    "data": "2017-01-24T10:58:50 +02:00"
+  },
+  {
+    "_id": "594a77a101e7820625b0d81c",
+    "index": 37,
+    "valor": 11183.97,
+    "numero": 38181,
+    "cliente": "COLLAIRE",
+    "data": "2017-02-13T03:02:21 +02:00"
+  },
+  {
+    "_id": "594a77a1d20075bf60ce796b",
+    "index": 38,
+    "valor": 80247.73,
+    "numero": 16141,
+    "cliente": "SENSATE",
+    "data": "2016-02-24T10:27:22 +03:00"
+  },
+  {
+    "_id": "594a77a16cf4722524ecbd4a",
+    "index": 39,
+    "valor": 40381.16,
+    "numero": 29529,
+    "cliente": "NEWCUBE",
+    "data": "2016-08-05T06:33:20 +03:00"
+  },
+  {
+    "_id": "594a77a14ff14831da5ac2a4",
+    "index": 40,
+    "valor": 45578.4,
+    "numero": 16917,
+    "cliente": "BRAINQUIL",
+    "data": "2016-02-18T11:15:11 +02:00"
+  },
+  {
+    "_id": "594a77a12a7111e49185e8ae",
+    "index": 41,
+    "valor": 12477.39,
+    "numero": 40875,
+    "cliente": "KIGGLE",
+    "data": "2017-02-28T09:25:13 +03:00"
+  },
+  {
+    "_id": "594a77a124c73c044e7db604",
+    "index": 42,
+    "valor": 62484.11,
+    "numero": 45581,
+    "cliente": "ZEAM",
+    "data": "2016-12-23T10:17:02 +02:00"
+  },
+  {
+    "_id": "594a77a17d7685539741eae1",
+    "index": 43,
+    "valor": 35670.55,
+    "numero": 18919,
+    "cliente": "RONELON",
+    "data": "2017-02-08T04:47:17 +02:00"
+  },
+  {
+    "_id": "594a77a160a3801e2f723458",
+    "index": 44,
+    "valor": 13091.4,
+    "numero": 59625,
+    "cliente": "EXTRAGEN",
+    "data": "2016-09-12T03:15:03 +03:00"
+  },
+  {
+    "_id": "594a77a14dab105f4e5d40be",
+    "index": 45,
+    "valor": 83101.1,
+    "numero": 35668,
+    "cliente": "SUREPLEX",
+    "data": "2017-02-03T10:44:02 +02:00"
+  },
+  {
+    "_id": "594a77a1b6ab17c83ac21415",
+    "index": 46,
+    "valor": 81351.42,
+    "numero": 27902,
+    "cliente": "REPETWIRE",
+    "data": "2017-05-18T11:10:29 +03:00"
+  },
+  {
+    "_id": "594a77a114e64e321a805ace",
+    "index": 47,
+    "valor": 86516.33,
+    "numero": 22488,
+    "cliente": "ZILLANET",
+    "data": "2017-05-03T05:05:13 +03:00"
+  },
+  {
+    "_id": "594a77a17a6ceb6dac52eb2e",
+    "index": 48,
+    "valor": 55920.38,
+    "numero": 41385,
+    "cliente": "ESSENSIA",
+    "data": "2017-02-23T05:36:05 +03:00"
+  },
+  {
+    "_id": "594a77a1b48034ed7b21e4de",
+    "index": 49,
+    "valor": 27786.55,
+    "numero": 13504,
+    "cliente": "QUIZMO",
+    "data": "2016-07-05T11:22:30 +03:00"
+  },
+  {
+    "_id": "594a77a1a9f31d39e239ac1d",
+    "index": 50,
+    "valor": 22021.91,
+    "numero": 13048,
+    "cliente": "RENOVIZE",
+    "data": "2017-01-10T12:19:20 +02:00"
+  },
+  {
+    "_id": "594a77a11fb772bfebdbad4b",
+    "index": 51,
+    "valor": 30062.92,
+    "numero": 14714,
+    "cliente": "TERAPRENE",
+    "data": "2016-03-28T09:47:52 +03:00"
+  },
+  {
+    "_id": "594a77a1a509f3665b54c98a",
+    "index": 52,
+    "valor": 68568.41,
+    "numero": 48445,
+    "cliente": "MELBACOR",
+    "data": "2016-11-02T03:58:20 +02:00"
+  },
+  {
+    "_id": "594a77a146b9d49fd2cd5362",
+    "index": 53,
+    "valor": 90507.68,
+    "numero": 16807,
+    "cliente": "HOPELI",
+    "data": "2016-10-12T05:02:10 +03:00"
+  },
+  {
+    "_id": "594a77a142e0a927c4990a6e",
+    "index": 54,
+    "valor": 71313.32,
+    "numero": 50781,
+    "cliente": "PLASTO",
+    "data": "2016-08-08T05:21:12 +03:00"
+  },
+  {
+    "_id": "594a77a192808fd793886ca4",
+    "index": 55,
+    "valor": 48312.26,
+    "numero": 11650,
+    "cliente": "ARCHITAX",
+    "data": "2016-12-04T12:02:24 +02:00"
+  },
+  {
+    "_id": "594a77a1addda9243586fb38",
+    "index": 56,
+    "valor": 66966.61,
+    "numero": 42479,
+    "cliente": "SYNTAC",
+    "data": "2017-06-10T03:56:50 +03:00"
+  },
+  {
+    "_id": "594a77a1ae90035f59a71875",
+    "index": 57,
+    "valor": 19473.36,
+    "numero": 22718,
+    "cliente": "ATOMICA",
+    "data": "2017-02-26T09:46:13 +03:00"
+  },
+  {
+    "_id": "594a77a1420f0c05991e2555",
+    "index": 58,
+    "valor": 93161.28,
+    "numero": 25028,
+    "cliente": "AQUAZURE",
+    "data": "2016-01-08T09:26:50 +02:00"
+  },
+  {
+    "_id": "594a77a199d0ded4bd5a9e10",
+    "index": 59,
+    "valor": 76647.18,
+    "numero": 28118,
+    "cliente": "CYTREK",
+    "data": "2016-10-18T03:58:22 +02:00"
+  },
+  {
+    "_id": "594a77a14fe4ee901be2b30f",
+    "index": 60,
+    "valor": 79040.2,
+    "numero": 14769,
+    "cliente": "ZANITY",
+    "data": "2016-08-13T09:06:16 +03:00"
+  },
+  {
+    "_id": "594a77a15f9d7de76a6b4d65",
+    "index": 61,
+    "valor": 14112.13,
+    "numero": 52474,
+    "cliente": "ZAYA",
+    "data": "2016-02-01T08:32:14 +02:00"
+  },
+  {
+    "_id": "594a77a1cf9f0bfaf83d48bc",
+    "index": 62,
+    "valor": 10389.37,
+    "numero": 50020,
+    "cliente": "ORBIN",
+    "data": "2016-03-06T04:19:39 +03:00"
+  },
+  {
+    "_id": "594a77a1eda75c4aac216e29",
+    "index": 63,
+    "valor": 79242.65,
+    "numero": 44048,
+    "cliente": "ZENTILITY",
+    "data": "2017-03-22T01:51:54 +03:00"
+  },
+  {
+    "_id": "594a77a1a4eaa527367ebef2",
+    "index": 64,
+    "valor": 21407.82,
+    "numero": 54682,
+    "cliente": "BIOTICA",
+    "data": "2016-01-28T02:16:25 +02:00"
+  },
+  {
+    "_id": "594a77a1cc208450672d2429",
+    "index": 65,
+    "valor": 68797.81,
+    "numero": 55549,
+    "cliente": "KEENGEN",
+    "data": "2017-01-26T05:44:40 +02:00"
+  },
+  {
+    "_id": "594a77a1221d8b76d84f2768",
+    "index": 66,
+    "valor": 93406.25,
+    "numero": 53477,
+    "cliente": "ENTHAZE",
+    "data": "2017-03-25T02:21:10 +03:00"
+  },
+  {
+    "_id": "594a77a1c737e05ca405155d",
+    "index": 67,
+    "valor": 48150.46,
+    "numero": 21604,
+    "cliente": "BOLAX",
+    "data": "2016-02-01T10:40:57 +02:00"
+  },
+  {
+    "_id": "594a77a1468440d748542daf",
+    "index": 68,
+    "valor": 21495.3,
+    "numero": 14736,
+    "cliente": "CINASTER",
+    "data": "2017-06-06T11:23:47 +03:00"
+  },
+  {
+    "_id": "594a77a1193e05a79a1d540e",
+    "index": 69,
+    "valor": 28529.62,
+    "numero": 22013,
+    "cliente": "ZANYMAX",
+    "data": "2017-05-21T08:01:45 +03:00"
+  },
+  {
+    "_id": "594a77a185810d5a30de9459",
+    "index": 70,
+    "valor": 45704.25,
+    "numero": 44707,
+    "cliente": "QUILM",
+    "data": "2016-02-23T07:38:23 +03:00"
+  },
+  {
+    "_id": "594a77a1f1010db474ef8b8a",
+    "index": 71,
+    "valor": 60209.73,
+    "numero": 14143,
+    "cliente": "ENERFORCE",
+    "data": "2017-02-01T02:54:03 +02:00"
+  },
+  {
+    "_id": "594a77a15484e143bd9c65ca",
+    "index": 72,
+    "valor": 84590.09,
+    "numero": 13419,
+    "cliente": "MITROC",
+    "data": "2017-06-02T04:41:17 +03:00"
+  },
+  {
+    "_id": "594a77a175dcd5ebaf35dbfc",
+    "index": 73,
+    "valor": 36428.44,
+    "numero": 41457,
+    "cliente": "EBIDCO",
+    "data": "2016-12-26T09:48:08 +02:00"
+  },
+  {
+    "_id": "594a77a1c8cbb1cd62c4b8c0",
+    "index": 74,
+    "valor": 64665.27,
+    "numero": 38462,
+    "cliente": "CUJO",
+    "data": "2016-08-01T08:58:19 +03:00"
+  },
+  {
+    "_id": "594a77a1805fcde03d2376c8",
+    "index": 75,
+    "valor": 67540.31,
+    "numero": 23456,
+    "cliente": "GENESYNK",
+    "data": "2016-10-19T12:10:25 +02:00"
+  },
+  {
+    "_id": "594a77a153f19bb86f420cdc",
+    "index": 76,
+    "valor": 94139.99,
+    "numero": 16680,
+    "cliente": "PURIA",
+    "data": "2017-04-24T06:47:21 +03:00"
+  },
+  {
+    "_id": "594a77a1defdc50e6e3dfdf7",
+    "index": 77,
+    "valor": 57402.33,
+    "numero": 29873,
+    "cliente": "COMVENE",
+    "data": "2017-03-05T06:01:00 +03:00"
+  },
+  {
+    "_id": "594a77a17386982167958cbc",
+    "index": 78,
+    "valor": 60673.14,
+    "numero": 21528,
+    "cliente": "PASTURIA",
+    "data": "2016-05-29T03:43:47 +03:00"
+  },
+  {
+    "_id": "594a77a1bf14e5c395712398",
+    "index": 79,
+    "valor": 92999.76,
+    "numero": 50791,
+    "cliente": "XYLAR",
+    "data": "2016-08-27T05:55:30 +03:00"
+  },
+  {
+    "_id": "594a77a12bf3c1c55003b5ca",
+    "index": 80,
+    "valor": 92908.21,
+    "numero": 42608,
+    "cliente": "CALCU",
+    "data": "2016-12-26T08:27:00 +02:00"
+  },
+  {
+    "_id": "594a77a18025bf1f63bb497e",
+    "index": 81,
+    "valor": 95120.92,
+    "numero": 51066,
+    "cliente": "BARKARAMA",
+    "data": "2016-10-01T04:00:14 +03:00"
+  },
+  {
+    "_id": "594a77a1375ce8d11ae93169",
+    "index": 82,
+    "valor": 87516.98,
+    "numero": 14139,
+    "cliente": "TELEPARK",
+    "data": "2016-07-26T02:34:01 +03:00"
+  },
+  {
+    "_id": "594a77a15aca451cd899093f",
+    "index": 83,
+    "valor": 63340.26,
+    "numero": 24598,
+    "cliente": "EXOTERIC",
+    "data": "2017-05-21T02:55:49 +03:00"
+  },
+  {
+    "_id": "594a77a1bb16ca2d38805dc2",
+    "index": 84,
+    "valor": 70287.68,
+    "numero": 39258,
+    "cliente": "QABOOS",
+    "data": "2017-01-14T08:28:54 +02:00"
+  },
+  {
+    "_id": "594a77a1ebaa8832af82b3d5",
+    "index": 85,
+    "valor": 49968.12,
+    "numero": 28665,
+    "cliente": "REALYSIS",
+    "data": "2017-02-16T06:50:42 +02:00"
+  },
+  {
+    "_id": "594a77a10083d16135c77cbb",
+    "index": 86,
+    "valor": 64440.68,
+    "numero": 56183,
+    "cliente": "COMTENT",
+    "data": "2017-01-19T09:07:16 +02:00"
+  },
+  {
+    "_id": "594a77a1f03890cc9856a202",
+    "index": 87,
+    "valor": 47263.29,
+    "numero": 28482,
+    "cliente": "DADABASE",
+    "data": "2016-02-07T12:19:43 +02:00"
+  },
+  {
+    "_id": "594a77a18209b96fc156fdb2",
+    "index": 88,
+    "valor": 78502.42,
+    "numero": 44204,
+    "cliente": "ASSISTIX",
+    "data": "2016-02-25T12:36:47 +03:00"
+  },
+  {
+    "_id": "594a77a12e4585b02c775b9f",
+    "index": 89,
+    "valor": 28941.83,
+    "numero": 10002,
+    "cliente": "OLYMPIX",
+    "data": "2016-12-21T03:40:50 +02:00"
+  },
+  {
+    "_id": "594a77a17042286a1dab70a0",
+    "index": 90,
+    "valor": 28249.81,
+    "numero": 41270,
+    "cliente": "SENTIA",
+    "data": "2016-01-25T08:14:00 +02:00"
+  },
+  {
+    "_id": "594a77a17c106d55c661c24d",
+    "index": 91,
+    "valor": 86588.81,
+    "numero": 20942,
+    "cliente": "CORIANDER",
+    "data": "2016-02-12T02:45:28 +02:00"
+  },
+  {
+    "_id": "594a77a17d5b4f5614cb8818",
+    "index": 92,
+    "valor": 53735.98,
+    "numero": 52045,
+    "cliente": "CHILLIUM",
+    "data": "2016-11-01T05:45:59 +02:00"
+  },
+  {
+    "_id": "594a77a164e1406abb33b1b7",
+    "index": 93,
+    "valor": 79940.76,
+    "numero": 40261,
+    "cliente": "RONBERT",
+    "data": "2016-04-11T02:17:24 +03:00"
+  },
+  {
+    "_id": "594a77a14a46066d3eb1cd1a",
+    "index": 94,
+    "valor": 32982.69,
+    "numero": 55662,
+    "cliente": "TRIBALOG",
+    "data": "2016-03-27T08:25:09 +03:00"
+  },
+  {
+    "_id": "594a77a1e9b6e047177212b3",
+    "index": 95,
+    "valor": 53986.69,
+    "numero": 11263,
+    "cliente": "LYRIA",
+    "data": "2016-03-17T10:12:50 +03:00"
+  },
+  {
+    "_id": "594a77a13a2b5078e98e6765",
+    "index": 96,
+    "valor": 27361.52,
+    "numero": 44984,
+    "cliente": "SIGNITY",
+    "data": "2016-01-04T06:46:16 +02:00"
+  },
+  {
+    "_id": "594a77a146b6fed73642c21d",
+    "index": 97,
+    "valor": 88683.95,
+    "numero": 31052,
+    "cliente": "ANIMALIA",
+    "data": "2016-09-30T07:58:53 +03:00"
+  },
+  {
+    "_id": "594a77a1a9e62944cd440553",
+    "index": 98,
+    "valor": 66317.78,
+    "numero": 15446,
+    "cliente": "REMOLD",
+    "data": "2016-07-23T03:06:59 +03:00"
+  },
+  {
+    "_id": "594a77a14081a7d318c77098",
+    "index": 99,
+    "valor": 12620.83,
+    "numero": 30361,
+    "cliente": "GEEKNET",
+    "data": "2017-03-12T08:20:40 +03:00"
+  },
+  {
+    "_id": "594a77a1b4a873d4b699bed8",
+    "index": 100,
+    "valor": 25656.88,
+    "numero": 18949,
+    "cliente": "ELENTRIX",
+    "data": "2016-10-01T09:48:07 +03:00"
+  },
+  {
+    "_id": "594a77a11ae2785cda05d257",
+    "index": 101,
+    "valor": 53491.96,
+    "numero": 44851,
+    "cliente": "BRISTO",
+    "data": "2016-12-01T12:24:56 +02:00"
+  },
+  {
+    "_id": "594a77a1e1386423c4cdd72c",
+    "index": 102,
+    "valor": 40697.53,
+    "numero": 59431,
+    "cliente": "PERKLE",
+    "data": "2016-01-11T09:12:03 +02:00"
+  },
+  {
+    "_id": "594a77a10c8cf8ce92453d72",
+    "index": 103,
+    "valor": 76518.78,
+    "numero": 28544,
+    "cliente": "QUILITY",
+    "data": "2016-08-02T01:29:44 +03:00"
+  },
+  {
+    "_id": "594a77a1675b5bff57853601",
+    "index": 104,
+    "valor": 44054.94,
+    "numero": 20571,
+    "cliente": "NETAGY",
+    "data": "2016-06-05T03:07:12 +03:00"
+  },
+  {
+    "_id": "594a77a158afb6f860fc0132",
+    "index": 105,
+    "valor": 35574.02,
+    "numero": 15194,
+    "cliente": "MAKINGWAY",
+    "data": "2016-04-30T12:27:11 +03:00"
+  },
+  {
+    "_id": "594a77a1548c91d4f1bff113",
+    "index": 106,
+    "valor": 14805.31,
+    "numero": 45266,
+    "cliente": "STREZZO",
+    "data": "2016-07-16T08:22:31 +03:00"
+  },
+  {
+    "_id": "594a77a1a2c8d473259afd50",
+    "index": 107,
+    "valor": 69433.3,
+    "numero": 38496,
+    "cliente": "OPTIQUE",
+    "data": "2017-03-02T05:26:29 +03:00"
+  },
+  {
+    "_id": "594a77a1009f90f30c6baeae",
+    "index": 108,
+    "valor": 96491.79,
+    "numero": 17593,
+    "cliente": "ANDERSHUN",
+    "data": "2016-05-13T09:56:04 +03:00"
+  },
+  {
+    "_id": "594a77a15f0e36cdacb76cac",
+    "index": 109,
+    "valor": 69742.14,
+    "numero": 21882,
+    "cliente": "LIQUIDOC",
+    "data": "2017-03-30T06:07:24 +03:00"
+  },
+  {
+    "_id": "594a77a18ee828bd7629d949",
+    "index": 110,
+    "valor": 35683.46,
+    "numero": 34075,
+    "cliente": "ANIVET",
+    "data": "2016-10-14T07:44:22 +03:00"
+  },
+  {
+    "_id": "594a77a1a22bdcd5d9a8bc89",
+    "index": 111,
+    "valor": 60006.07,
+    "numero": 25448,
+    "cliente": "FITCORE",
+    "data": "2016-05-15T09:36:07 +03:00"
+  },
+  {
+    "_id": "594a77a1195f236277c79df9",
+    "index": 112,
+    "valor": 73243.49,
+    "numero": 49724,
+    "cliente": "COMDOM",
+    "data": "2016-11-21T01:48:42 +02:00"
+  },
+  {
+    "_id": "594a77a12e1f271b43c906f2",
+    "index": 113,
+    "valor": 70561.15,
+    "numero": 15082,
+    "cliente": "QUARMONY",
+    "data": "2017-03-19T02:13:20 +03:00"
+  },
+  {
+    "_id": "594a77a119d2f9ee1919bc44",
+    "index": 114,
+    "valor": 56931.51,
+    "numero": 57828,
+    "cliente": "COMTEST",
+    "data": "2017-03-27T09:28:55 +03:00"
+  },
+  {
+    "_id": "594a77a1e4ecb8acb2a53781",
+    "index": 115,
+    "valor": 50178.99,
+    "numero": 45522,
+    "cliente": "BULLZONE",
+    "data": "2016-08-19T10:26:37 +03:00"
+  },
+  {
+    "_id": "594a77a10a7ee0a19ce16c5a",
+    "index": 116,
+    "valor": 40279.48,
+    "numero": 34088,
+    "cliente": "RETROTEX",
+    "data": "2017-04-27T12:13:16 +03:00"
+  },
+  {
+    "_id": "594a77a1cb76912523910540",
+    "index": 117,
+    "valor": 87712.3,
+    "numero": 36089,
+    "cliente": "EARBANG",
+    "data": "2017-03-19T01:18:22 +03:00"
+  },
+  {
+    "_id": "594a77a1b43c4fd4736b4bae",
+    "index": 118,
+    "valor": 12723.04,
+    "numero": 30476,
+    "cliente": "TYPHONICA",
+    "data": "2017-06-19T06:50:02 +03:00"
+  },
+  {
+    "_id": "594a77a1579a4621602469a8",
+    "index": 119,
+    "valor": 41695.9,
+    "numero": 44406,
+    "cliente": "ZORROMOP",
+    "data": "2017-02-20T01:19:33 +03:00"
+  },
+  {
+    "_id": "594a77a1e9a60f1956e61dd5",
+    "index": 120,
+    "valor": 11445.13,
+    "numero": 48108,
+    "cliente": "ACCRUEX",
+    "data": "2017-03-03T04:04:38 +03:00"
+  },
+  {
+    "_id": "594a77a1b6fa3a3ad38e221a",
+    "index": 121,
+    "valor": 23933.49,
+    "numero": 56659,
+    "cliente": "KNEEDLES",
+    "data": "2017-04-10T05:13:02 +03:00"
+  },
+  {
+    "_id": "594a77a188a92be696648299",
+    "index": 122,
+    "valor": 25005.91,
+    "numero": 22076,
+    "cliente": "NETERIA",
+    "data": "2017-03-04T10:03:39 +03:00"
+  },
+  {
+    "_id": "594a77a1f605cc539e8f1f52",
+    "index": 123,
+    "valor": 64957.43,
+    "numero": 33557,
+    "cliente": "PHOTOBIN",
+    "data": "2016-12-11T01:08:57 +02:00"
+  },
+  {
+    "_id": "594a77a164ac8c93051ca009",
+    "index": 124,
+    "valor": 58930.02,
+    "numero": 15401,
+    "cliente": "WAZZU",
+    "data": "2016-10-27T04:57:42 +02:00"
+  },
+  {
+    "_id": "594a77a1769cbaaae52e7ad5",
+    "index": 125,
+    "valor": 25045.67,
+    "numero": 24540,
+    "cliente": "BOSTONIC",
+    "data": "2017-05-28T07:19:52 +03:00"
+  },
+  {
+    "_id": "594a77a112c538ff7f06f092",
+    "index": 126,
+    "valor": 74994.74,
+    "numero": 45801,
+    "cliente": "ENJOLA",
+    "data": "2016-04-15T03:15:59 +03:00"
+  },
+  {
+    "_id": "594a77a1176e06927ff487c9",
+    "index": 127,
+    "valor": 41530.85,
+    "numero": 31505,
+    "cliente": "AQUOAVO",
+    "data": "2017-04-13T01:03:37 +03:00"
+  },
+  {
+    "_id": "594a77a179fe0a25fad65273",
+    "index": 128,
+    "valor": 55953.99,
+    "numero": 59436,
+    "cliente": "AUTOMON",
+    "data": "2016-12-14T08:32:33 +02:00"
+  },
+  {
+    "_id": "594a77a1980592192ad8474b",
+    "index": 129,
+    "valor": 44993.63,
+    "numero": 19471,
+    "cliente": "ZOGAK",
+    "data": "2016-12-08T07:44:34 +02:00"
+  },
+  {
+    "_id": "594a77a11f8eb466b92dd440",
+    "index": 130,
+    "valor": 21900.45,
+    "numero": 57776,
+    "cliente": "EMTRAK",
+    "data": "2016-09-11T04:00:14 +03:00"
+  },
+  {
+    "_id": "594a77a10401897f16da662f",
+    "index": 131,
+    "valor": 39751.6,
+    "numero": 41606,
+    "cliente": "GRACKER",
+    "data": "2016-06-18T04:04:52 +03:00"
+  },
+  {
+    "_id": "594a77a101c2f22310863113",
+    "index": 132,
+    "valor": 84947.08,
+    "numero": 15929,
+    "cliente": "GLEAMINK",
+    "data": "2016-07-27T11:25:57 +03:00"
+  },
+  {
+    "_id": "594a77a167b189011090694e",
+    "index": 133,
+    "valor": 83586.55,
+    "numero": 36192,
+    "cliente": "VALPREAL",
+    "data": "2016-05-27T12:33:31 +03:00"
+  },
+  {
+    "_id": "594a77a1ff5bfb2015b7329c",
+    "index": 134,
+    "valor": 84836.13,
+    "numero": 16224,
+    "cliente": "WAAB",
+    "data": "2016-08-22T09:53:51 +03:00"
+  },
+  {
+    "_id": "594a77a1579f273b1cd0df10",
+    "index": 135,
+    "valor": 60598.32,
+    "numero": 54500,
+    "cliente": "DREAMIA",
+    "data": "2016-06-24T01:19:07 +03:00"
+  },
+  {
+    "_id": "594a77a16924702641279622",
+    "index": 136,
+    "valor": 42115.42,
+    "numero": 13494,
+    "cliente": "ANDRYX",
+    "data": "2016-06-24T11:52:11 +03:00"
+  },
+  {
+    "_id": "594a77a171e6efdd8b8ca1ef",
+    "index": 137,
+    "valor": 80340.16,
+    "numero": 21388,
+    "cliente": "VORATAK",
+    "data": "2016-07-23T04:08:18 +03:00"
+  },
+  {
+    "_id": "594a77a1dc510ee5183e6ed6",
+    "index": 138,
+    "valor": 38597.73,
+    "numero": 49301,
+    "cliente": "COMBOGEN",
+    "data": "2016-12-11T01:12:09 +02:00"
+  },
+  {
+    "_id": "594a77a19521504affce6a48",
+    "index": 139,
+    "valor": 36290.82,
+    "numero": 59520,
+    "cliente": "PHUEL",
+    "data": "2016-06-21T05:42:19 +03:00"
+  },
+  {
+    "_id": "594a77a153df68bb1c688e0c",
+    "index": 140,
+    "valor": 82239.66,
+    "numero": 42368,
+    "cliente": "BIOLIVE",
+    "data": "2017-03-07T02:02:43 +03:00"
+  },
+  {
+    "_id": "594a77a1d3c30b65bfd10f54",
+    "index": 141,
+    "valor": 97539.21,
+    "numero": 52230,
+    "cliente": "SATIANCE",
+    "data": "2017-05-09T01:45:46 +03:00"
+  },
+  {
+    "_id": "594a77a1da52456e0fefdef7",
+    "index": 142,
+    "valor": 25961.81,
+    "numero": 38499,
+    "cliente": "KOOGLE",
+    "data": "2016-10-04T11:21:07 +03:00"
+  },
+  {
+    "_id": "594a77a131cf5611846b0222",
+    "index": 143,
+    "valor": 18065.44,
+    "numero": 30696,
+    "cliente": "MOTOVATE",
+    "data": "2017-03-26T05:56:59 +03:00"
+  },
+  {
+    "_id": "594a77a17bb6ec34ab8a2f2d",
+    "index": 144,
+    "valor": 14341.99,
+    "numero": 49889,
+    "cliente": "VIDTO",
+    "data": "2016-12-03T09:53:15 +02:00"
+  },
+  {
+    "_id": "594a77a102b7eca49c17d44c",
+    "index": 145,
+    "valor": 72192.76,
+    "numero": 27058,
+    "cliente": "HONOTRON",
+    "data": "2016-06-21T06:56:31 +03:00"
+  },
+  {
+    "_id": "594a77a13d6340cf8a4933af",
+    "index": 146,
+    "valor": 99384.27,
+    "numero": 44277,
+    "cliente": "AQUASURE",
+    "data": "2016-03-09T07:00:35 +03:00"
+  },
+  {
+    "_id": "594a77a132dee9cc7c4b63f0",
+    "index": 147,
+    "valor": 56958.94,
+    "numero": 30173,
+    "cliente": "PHARMEX",
+    "data": "2016-02-16T04:08:31 +02:00"
+  },
+  {
+    "_id": "594a77a102c34fa1f74c8a64",
+    "index": 148,
+    "valor": 58467.4,
+    "numero": 16303,
+    "cliente": "FROLIX",
+    "data": "2016-10-21T04:17:38 +02:00"
+  },
+  {
+    "_id": "594a77a165839ce8c076f22f",
+    "index": 149,
+    "valor": 60574.3,
+    "numero": 16155,
+    "cliente": "HAIRPORT",
+    "data": "2016-08-30T04:58:24 +03:00"
+  },
+  {
+    "_id": "594a77a161f949c2c7c46c67",
+    "index": 150,
+    "valor": 55320.16,
+    "numero": 38197,
+    "cliente": "NIXELT",
+    "data": "2017-04-22T07:24:48 +03:00"
+  },
+  {
+    "_id": "594a77a198d95a8ae1785421",
+    "index": 151,
+    "valor": 59297.13,
+    "numero": 43309,
+    "cliente": "SULTRAXIN",
+    "data": "2016-05-18T08:51:13 +03:00"
+  },
+  {
+    "_id": "594a77a1c15e35c1dcf8a386",
+    "index": 152,
+    "valor": 83331.11,
+    "numero": 11794,
+    "cliente": "NAXDIS",
+    "data": "2017-06-17T09:43:31 +03:00"
+  },
+  {
+    "_id": "594a77a1261d8d9c991f7ed9",
+    "index": 153,
+    "valor": 79815.05,
+    "numero": 16183,
+    "cliente": "ISOSURE",
+    "data": "2016-12-22T08:32:47 +02:00"
+  },
+  {
+    "_id": "594a77a1815afb01a4ee2c04",
+    "index": 154,
+    "valor": 81595.25,
+    "numero": 31755,
+    "cliente": "YURTURE",
+    "data": "2016-09-08T04:41:27 +03:00"
+  },
+  {
+    "_id": "594a77a1d6af7323ece2d778",
+    "index": 155,
+    "valor": 23562.94,
+    "numero": 31661,
+    "cliente": "FARMEX",
+    "data": "2016-04-04T01:43:12 +03:00"
+  },
+  {
+    "_id": "594a77a14ef1c57b89c30c28",
+    "index": 156,
+    "valor": 70570.31,
+    "numero": 46149,
+    "cliente": "PARLEYNET",
+    "data": "2017-01-01T01:13:17 +02:00"
+  },
+  {
+    "_id": "594a77a11e9df16d8bae66c8",
+    "index": 157,
+    "valor": 95197.2,
+    "numero": 19289,
+    "cliente": "FANFARE",
+    "data": "2016-07-21T03:44:12 +03:00"
+  },
+  {
+    "_id": "594a77a140d5ef7ad02f6f6a",
+    "index": 158,
+    "valor": 99962.45,
+    "numero": 31084,
+    "cliente": "ROBOID",
+    "data": "2017-03-01T10:03:12 +03:00"
+  },
+  {
+    "_id": "594a77a10195f1b16a3a9e73",
+    "index": 159,
+    "valor": 26772.14,
+    "numero": 12321,
+    "cliente": "BISBA",
+    "data": "2016-03-24T09:09:32 +03:00"
+  },
+  {
+    "_id": "594a77a11e3352c896cb7cb9",
+    "index": 160,
+    "valor": 36026.44,
+    "numero": 56901,
+    "cliente": "ZENTIA",
+    "data": "2017-06-01T11:26:52 +03:00"
+  },
+  {
+    "_id": "594a77a100567b10d6b6d90e",
+    "index": 161,
+    "valor": 25343.35,
+    "numero": 44075,
+    "cliente": "MINGA",
+    "data": "2016-04-09T10:31:06 +03:00"
+  },
+  {
+    "_id": "594a77a1d2808beedc4913f8",
+    "index": 162,
+    "valor": 10131.44,
+    "numero": 55786,
+    "cliente": "XYQAG",
+    "data": "2016-07-10T09:22:52 +03:00"
+  },
+  {
+    "_id": "594a77a15ebef353ba9a8399",
+    "index": 163,
+    "valor": 72486.69,
+    "numero": 27879,
+    "cliente": "ISOPLEX",
+    "data": "2017-05-24T07:50:18 +03:00"
+  },
+  {
+    "_id": "594a77a1f3fb4d81ea441ca2",
+    "index": 164,
+    "valor": 47690.67,
+    "numero": 30710,
+    "cliente": "MOBILDATA",
+    "data": "2016-06-06T11:04:03 +03:00"
+  },
+  {
+    "_id": "594a77a18993abe39ae6c46d",
+    "index": 165,
+    "valor": 44269.17,
+    "numero": 13999,
+    "cliente": "INSECTUS",
+    "data": "2016-07-29T10:08:11 +03:00"
+  },
+  {
+    "_id": "594a77a1ca65face8d502f38",
+    "index": 166,
+    "valor": 45096.45,
+    "numero": 20965,
+    "cliente": "KLUGGER",
+    "data": "2016-07-25T11:14:34 +03:00"
+  },
+  {
+    "_id": "594a77a1cd96c40b7daa642c",
+    "index": 167,
+    "valor": 94810.89,
+    "numero": 23938,
+    "cliente": "JOVIOLD",
+    "data": "2017-03-02T12:29:21 +03:00"
+  },
+  {
+    "_id": "594a77a10a4eb38c36335286",
+    "index": 168,
+    "valor": 93636.6,
+    "numero": 59992,
+    "cliente": "ATGEN",
+    "data": "2016-04-06T02:55:02 +03:00"
+  },
+  {
+    "_id": "594a77a1e024609720a030e0",
+    "index": 169,
+    "valor": 16206.81,
+    "numero": 13049,
+    "cliente": "FIBRODYNE",
+    "data": "2016-09-25T12:28:46 +03:00"
+  },
+  {
+    "_id": "594a77a1ff3f39ea3fd162d5",
+    "index": 170,
+    "valor": 98977.16,
+    "numero": 48313,
+    "cliente": "EQUITOX",
+    "data": "2016-03-20T08:59:40 +03:00"
+  },
+  {
+    "_id": "594a77a1cb06b10855e15cc0",
+    "index": 171,
+    "valor": 32651.83,
+    "numero": 29971,
+    "cliente": "CABLAM",
+    "data": "2016-05-12T04:19:57 +03:00"
+  },
+  {
+    "_id": "594a77a1b178ee7ec35c24c5",
+    "index": 172,
+    "valor": 64317.3,
+    "numero": 14552,
+    "cliente": "ENQUILITY",
+    "data": "2016-10-20T06:28:05 +02:00"
+  },
+  {
+    "_id": "594a77a1c414f7710024ac0a",
+    "index": 173,
+    "valor": 13794.07,
+    "numero": 38135,
+    "cliente": "MIXERS",
+    "data": "2016-11-22T11:40:57 +02:00"
+  },
+  {
+    "_id": "594a77a1c8dae0b8a36f7b83",
+    "index": 174,
+    "valor": 72784.71,
+    "numero": 59725,
+    "cliente": "SNACKTION",
+    "data": "2017-02-20T07:08:47 +03:00"
+  },
+  {
+    "_id": "594a77a115d0a9194b42953a",
+    "index": 175,
+    "valor": 58955.79,
+    "numero": 47010,
+    "cliente": "EMPIRICA",
+    "data": "2016-12-30T02:51:49 +02:00"
+  },
+  {
+    "_id": "594a77a1b9b42f3b936180d5",
+    "index": 176,
+    "valor": 77271.54,
+    "numero": 46116,
+    "cliente": "SPHERIX",
+    "data": "2016-01-08T02:37:38 +02:00"
+  },
+  {
+    "_id": "594a77a19cc0f55707593054",
+    "index": 177,
+    "valor": 58241.2,
+    "numero": 52135,
+    "cliente": "CODAX",
+    "data": "2016-06-09T09:56:50 +03:00"
+  },
+  {
+    "_id": "594a77a1794baa8eeaafb2ec",
+    "index": 178,
+    "valor": 35254.2,
+    "numero": 53940,
+    "cliente": "ZYTREK",
+    "data": "2017-05-06T12:10:27 +03:00"
+  },
+  {
+    "_id": "594a77a1f97b4cedcb3cd5a0",
+    "index": 179,
+    "valor": 70713,
+    "numero": 32420,
+    "cliente": "ENOMEN",
+    "data": "2017-03-29T06:15:03 +03:00"
+  },
+  {
+    "_id": "594a77a12ba4a2c6ff0d8cb8",
+    "index": 180,
+    "valor": 81925.58,
+    "numero": 46128,
+    "cliente": "TRANSLINK",
+    "data": "2016-12-05T08:15:37 +02:00"
+  },
+  {
+    "_id": "594a77a182d236492afdeede",
+    "index": 181,
+    "valor": 83993,
+    "numero": 10830,
+    "cliente": "DATAGENE",
+    "data": "2017-04-06T06:50:38 +03:00"
+  },
+  {
+    "_id": "594a77a18ec52fd60c8a8fe4",
+    "index": 182,
+    "valor": 79357.15,
+    "numero": 40357,
+    "cliente": "GENEKOM",
+    "data": "2016-01-12T04:14:11 +02:00"
+  },
+  {
+    "_id": "594a77a1fca250dd0b4d0e80",
+    "index": 183,
+    "valor": 14027.18,
+    "numero": 16165,
+    "cliente": "GEEKOLOGY",
+    "data": "2016-03-26T02:48:21 +03:00"
+  },
+  {
+    "_id": "594a77a1133440776c5839a3",
+    "index": 184,
+    "valor": 56990.71,
+    "numero": 41061,
+    "cliente": "SLOFAST",
+    "data": "2017-05-23T02:26:24 +03:00"
+  },
+  {
+    "_id": "594a77a1128b44e3c73a4e80",
+    "index": 185,
+    "valor": 46547.12,
+    "numero": 50907,
+    "cliente": "SCENTRIC",
+    "data": "2016-11-28T10:48:58 +02:00"
+  },
+  {
+    "_id": "594a77a1bfdd2524170ff9aa",
+    "index": 186,
+    "valor": 46959.73,
+    "numero": 37745,
+    "cliente": "ZILIDIUM",
+    "data": "2016-01-18T03:50:05 +02:00"
+  },
+  {
+    "_id": "594a77a14cc06cd488c9180f",
+    "index": 187,
+    "valor": 49492.03,
+    "numero": 46493,
+    "cliente": "ONTAGENE",
+    "data": "2016-04-02T04:40:27 +03:00"
+  },
+  {
+    "_id": "594a77a1ec48f158755e82c9",
+    "index": 188,
+    "valor": 95359.55,
+    "numero": 33633,
+    "cliente": "KROG",
+    "data": "2016-10-28T11:09:59 +02:00"
+  },
+  {
+    "_id": "594a77a1ddce99fbb9e1f6d5",
+    "index": 189,
+    "valor": 37563.21,
+    "numero": 36991,
+    "cliente": "OPTYK",
+    "data": "2016-06-16T06:25:39 +03:00"
+  },
+  {
+    "_id": "594a77a1e2922507a4e5b155",
+    "index": 190,
+    "valor": 74745.33,
+    "numero": 55859,
+    "cliente": "MANUFACT",
+    "data": "2016-05-30T10:06:22 +03:00"
+  },
+  {
+    "_id": "594a77a1fff347cee0ffef42",
+    "index": 191,
+    "valor": 10043.09,
+    "numero": 41803,
+    "cliente": "MICRONAUT",
+    "data": "2016-04-27T07:49:58 +03:00"
+  },
+  {
+    "_id": "594a77a1b31fd268ab3ea563",
+    "index": 192,
+    "valor": 73209.01,
+    "numero": 43401,
+    "cliente": "KANGLE",
+    "data": "2017-03-10T03:01:57 +03:00"
+  },
+  {
+    "_id": "594a77a13fa76cf319970d76",
+    "index": 193,
+    "valor": 57159.68,
+    "numero": 24533,
+    "cliente": "ZUVY",
+    "data": "2016-07-08T07:13:46 +03:00"
+  },
+  {
+    "_id": "594a77a15e0ba3d1ce3d2ef8",
+    "index": 194,
+    "valor": 38318.16,
+    "numero": 27374,
+    "cliente": "ISONUS",
+    "data": "2016-09-22T01:47:17 +03:00"
+  },
+  {
+    "_id": "594a77a1a13594db93f30473",
+    "index": 195,
+    "valor": 73070.46,
+    "numero": 13948,
+    "cliente": "FUELTON",
+    "data": "2016-11-15T06:01:52 +02:00"
+  },
+  {
+    "_id": "594a77a1e252a657628abaa9",
+    "index": 196,
+    "valor": 60087.34,
+    "numero": 49262,
+    "cliente": "DOGNOST",
+    "data": "2017-01-14T05:46:35 +02:00"
+  },
+  {
+    "_id": "594a77a18a15d5df50028f53",
+    "index": 197,
+    "valor": 66738.42,
+    "numero": 59964,
+    "cliente": "INFOTRIPS",
+    "data": "2017-06-17T07:30:18 +03:00"
+  },
+  {
+    "_id": "594a77a1732b2bea0a3cf8e6",
+    "index": 198,
+    "valor": 35795.28,
+    "numero": 17312,
+    "cliente": "GLASSTEP",
+    "data": "2016-01-02T02:42:09 +02:00"
+  },
+  {
+    "_id": "594a77a1aea8804ebfb68bcf",
+    "index": 199,
+    "valor": 31519.99,
+    "numero": 23416,
+    "cliente": "NEBULEAN",
+    "data": "2017-04-24T05:31:41 +03:00"
+  }
+]

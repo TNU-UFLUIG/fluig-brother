@@ -50,8 +50,8 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  const json = jsonLocal();
-  // const json = callDatasul("atualizaFluxoMarketing.p", "piBusca", params, null, properties);
+  // const json = jsonLocal();
+  const json = callDatasul("atualizaFluxoMarketing.p", "piBusca", params, null, properties);
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display);
 }

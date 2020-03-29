@@ -1,4 +1,4 @@
-const campos = ['solicitacao', 'status', 'valorLiberado', 'valorTotalVerba', 'valorResultado', 'descricaoDetalhada', 'inicioAcao', 'terminoAcao'];
+const campos = ['documentid', 'solicitacao', 'status', 'valorLiberado', 'valorTotalVerba', 'valorResultado', 'diferencaResultado', 'descricaoDetalhada', 'inicioAcao', 'terminoAcao', 'envioEvidenciasConcluido', 'obsEnvioEvidencias', 'envioNDConcluido', 'obsEnvioND'];
 const display = ['solicitacao'];
 const dePara = campos;
 
@@ -13,16 +13,11 @@ function onMobileSync(user) {
 function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
-  let dsSolicitacaoGuid = getDataset('marketing_abertura_verba', null, [
-    { field: 'tablename', value: 'emailsCliente' },
-    { field: 'email_guid', value: params.guid },
-  ]);
-
   let dsSolicitacao = getDataset('marketing_abertura_verba', null, [
-    { field: 'documentid', value: dsSolicitacaoGuid[0].documentid }
+    { field: 'guid', value: params.guid }
   ]);
 
-  
+
   return montaDataset(null, dsSolicitacao, campos, display);
 }
 

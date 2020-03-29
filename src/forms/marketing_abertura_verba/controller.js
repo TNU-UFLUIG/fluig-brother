@@ -91,6 +91,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
         if (vm.Params.formMode == 'ADD') {
 
+          vm.Formulario.guid = vm.guid();
           vm.Formulario.userAprovGerMarketing = {};
           vm.Formulario.userAprovPresidenciaVp = {};
           vm.Formulario.userValMarketing = {};

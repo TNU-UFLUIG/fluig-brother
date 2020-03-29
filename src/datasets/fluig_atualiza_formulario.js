@@ -44,7 +44,6 @@ function buscaDataset(fields, constraints, sortFields) {
   let csDocumentid = String(params.documentid);
 
   let formCampos = [];
-
   csCampos.forEach((campo, index) => {
     if (campo && campo != '') {
       formCampos.push({
@@ -60,12 +59,12 @@ function buscaDataset(fields, constraints, sortFields) {
     formCampos
   }
 
-  atualizaFormulario("1", "admin", "Leci@2158", csDocumentid, formCampos)
+  atualizaFormulario("1", "admin", "adm", csDocumentid, formCampos)
 
   return montaDataset(json.ttErro, json.formCampos, campos, display);
 }
 
-/*$$ partials/getConstraints.js $$*/
+/*$$ partials/getConstraintsParams.js $$*/
 /*$$ partials/getDataset.js $$*/
 /*$$ partials/montaDataset.js $$*/
 /*$$ partials/atualizaFormulario.js $$*/

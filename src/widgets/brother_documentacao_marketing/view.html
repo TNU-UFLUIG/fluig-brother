@@ -1,0 +1,28 @@
+<div ng-app="BrotherDocumentacaoMarketingMainApp" ng-controller="BrotherDocumentacaoMarketingController as vm">
+
+    <head>
+        <!-- partial:partials/head.html -->
+        <!-- partial -->
+
+        <!-- <base href="/portal/1/aprovacao-docto/"> -->
+    </head>
+    <div class="fluig-style-guide ng-cloak">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img class="fs-md-space" width="200px" src="/brother_lib/images/logo.png">
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="text-right">{{vm.$route.current.title}}</h1>
+                </div>
+            </div>
+
+            <div data-ng-view="">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

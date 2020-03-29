@@ -32,8 +32,8 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  // const json = jsonLocal();
-  const json = callDatasul("esp/calculaItemMarketing.p", "piCalcula", params, null, properties);
+  const json = jsonLocal();
+  // const json = callDatasul("esp/calculaItemMarketing.p", "piCalcula", params, null, properties);
 
   return montaDataset(json.ttErro, json.ttValores, campos, display);
 }
@@ -45,7 +45,7 @@ function buscaDataset(fields, constraints, sortFields) {
 function jsonLocal() {
   return {
     ttValores: [
-      { netInicial: 100, netSugerido: 120, gpInicial: 130, gpSugerido: 140, dolar: 5 }
+      { netInicial: 1000, netSugerido: 1200, gpInicial: 0.2, gpSugerido: 0.2, dolar: 5 }
     ]
   };
 }

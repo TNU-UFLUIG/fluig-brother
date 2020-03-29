@@ -1,4 +1,4 @@
-const campos = ['codigo', 'descricao', 'categoria', 'netInicial', 'gpInicial', 'netSugerido', 'gpSugerido', 'rebateUnit', 'rebateTotal', 'dolar'];
+const campos = ['codigo', 'descricao', 'categoria', 'netInicial', 'gpInicial', 'netSugerido', 'gpSugerido', 'rebateUnit', 'rebateTotal', 'dolar', 'ccusto'];
 const display = ['codigo', 'descricao'];
 const dePara = campos;
 

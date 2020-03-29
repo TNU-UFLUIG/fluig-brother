@@ -42,8 +42,8 @@
       <h1 ng-show="!vm.regras.enableEvidencias" class="fs-no-margin">{{vm.Formulario.valorResultado | currency}}</h1>
 
       <div ng-show="vm.regras.enableEvidencias">
-        <input type="text" class="form-control input-lg" name="valorResultado_i"
-          ng-model="vm.Formulario.valorResultado" fluig-money-mask ng-show="vm.regras.enableEvidencias"
+        <input type="text" class="form-control input-lg" name="valorResultado_i" ng-model="vm.Formulario.valorResultado"
+          fluig-money-mask ng-show="vm.regras.enableEvidencias"
           ng-change="vm.Formulario.diferencaResultado = vm.Formulario.valorResultado - vm.Formulario.valorTotalVerba">
       </div>
 
@@ -76,6 +76,17 @@
   </div>
 </div>
 
+<div class="row" ng-show="vm.regras.enableEvidencias">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="envioEvidenciasConcluido" class="control-label">Envio Concluído</label>
+      <input type="checkbox" name="envioEvidenciasConcluido_i" ng-model="vm.Formulario.envioEvidenciasConcluido"
+        fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+      <input type="hidden" name="envioEvidenciasConcluido" ng-value="vm.Formulario.envioEvidenciasConcluido">
+    </div>
+  </div>
+</div>
+
 <div class="row">
 
   <div class="col-sm-3" ng-if="vm.regras.enableEvidencias">
@@ -103,7 +114,7 @@
         </tr>
       </thead>
       <tbody ng-non-bindable>
-        <tr ng-repeat="arquivo in vm.Formulario.arquivosEvidencias">
+        <tr ng-repeat="arquivo in vm.Formulario.arquivosEvidencias" ng-show="!arquivo.removed">
 
           <td ng-show="vm.regras.enableEvidencias">
             <span ng-click="vm.removeChild(vm.Formulario.arquivosEvidencias, $index)"
@@ -114,6 +125,7 @@
             <input type="hidden" name="arquivo_documentid" ng-value="arquivo.documentid">
             <input type="hidden" name="arquivo_version" ng-value="arquivo.version">
             <input type="hidden" name="arquivo_url" ng-value="arquivo.url">
+            <input type="hidden" name="arquivo_removed" ng-value="arquivo.removed">
 
           </td>
           <td>
@@ -124,8 +136,8 @@
             <a target="_blank" href="{{arquivo.url}}"> {{arquivo.nome}}</a>
           </td>
           <td ng-show="vm.regras.enableValidacaoEvidencias">
-            <input type="checkbox" name="arquivo_aceito_i" ng-model="arquivo.aceito" fluig-switch
-              data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            <input type="checkbox" name="arquivo_aceito_i" ng-model="arquivo.aceito" fluig-switch data-off-text="NÃO"
+              data-on-text="SIM" data-on-color="success">
             <input type="hidden" name="arquivo_aceito" ng-value="arquivo.aceito">
           </td>
           <td ng-show="vm.regras.enableValidacaoEvidencias">
