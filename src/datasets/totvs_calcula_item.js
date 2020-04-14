@@ -32,8 +32,14 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  const json = jsonLocal();
-  // const json = callDatasul("esp/calculaItemMarketing.p", "piCalcula", params, null, properties);
+  // const json = jsonLocal();
+  let json;
+  try {
+    json = callDatasul("esp/calculaItemMarketing.p", "piCalcula", params, null, properties);
+  } catch (error) {
+    json = { ttErro: [{ mensagem: String(error) }] }
+  }
+
 
   return montaDataset(json.ttErro, json.ttValores, campos, display);
 }

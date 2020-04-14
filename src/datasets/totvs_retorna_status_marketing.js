@@ -1,5 +1,5 @@
-const campos = ['solicitacao', 'status', 'data', 'ultimo'];
-const display = ['solicitacao', 'status'];
+const campos = ['solicitacao', 'descricao', 'data', 'ultimo'];
+const display = ['solicitacao', 'descricao'];
 const dePara = campos;
 
 
@@ -27,13 +27,30 @@ function onMobileSync(user) {
 }
 
 function buscaDataset(fields, constraints, sortFields) {
+
+  log.info("*** totvs_retorna_status_marketing 1");
+
   let params = getConstraints(constraints);
 
+  log.info("*** totvs_retorna_status_marketing 2");
+
   var properties = {};
-  properties["receive.timeout"] = "0";Uint16Array
+  properties["receive.timeout"] = "0";
+
+  log.info("*** totvs_retorna_status_marketing 3");
 
   // const json = jsonLocal();
-  const json = callDatasul("buscaStatusVerbaMarketing.p", "piBusca", params, null, properties);
+  let json;
+
+  try {
+    json = callDatasul("esp/buscaStatusVerbaMarketing.p", "piBusca", params, null, properties);
+  } catch (error) {
+    json = { ttErro: [{ mensagem: String(error) }] }
+  }
+
+  log.info("*** totvs_retorna_status_marketing 4");
+
+  log.info(JSON.stringify(json));
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display);
 }

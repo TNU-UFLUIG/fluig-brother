@@ -3,6 +3,7 @@
 <head>
 	<!-- partial:../partials/head.html -->
 	<!-- partial -->
+
 	<title>Abertura de Verba para Ação de Marketing</title>
 </head>
 
@@ -15,223 +16,13 @@
 				<!-- partial:partials/angularMap.html -->
 				<!-- partial -->
 
+				<!-- partial:../partials/alerts.html -->
+				<!-- partial -->
+
 				<div class="panel-group" id="accordion">
 
-					<div ng-show="vm.regras.showEvidencias && vm.Formulario.userValidacaoEvid.colleagueId"
-						class="panel  animation"
-						ng-class="{'panel-primary': vm.regras.enableValidacaoEvidencias || vm.regras.enableEvidencias, 'panel-default': !vm.regras.enableValidacaoEvidencias && !vm.regras.enableEvidencias}"
-						id="panelEvidencias">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon"
-									ng-class="{'up': vm.regras.enableEvidencias || vm.regras.enableValidacaoEvidencias}"
-									data-toggle="collapse" href="#collapseEvidencias">
-									Evidências e Resultado
-								</a>
-							</h4>
-						</div>
-						<div id="collapseEvidencias" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableEvidencias || vm.regras.enableValidacaoEvidencias}">
-							<div class="panel-body">
-								<!-- partial:partials/evidencias.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showND && vm.Formulario.userValidacaoND.colleagueId" class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableValidacaoND || vm.regras.enableND, 'panel-default': !vm.regras.enableValidacaoND && !vm.regras.enableND}"
-						id="panelND">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableValidacaoND || vm.regras.enableND}"
-									data-toggle="collapse" href="#collapseND">
-									Nota de Débito
-								</a>
-							</h4>
-						</div>
-						<div id="collapseND" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableValidacaoND || vm.regras.enableND}">
-							<div class="panel-body">
-								<!-- partial:partials/nd.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showSelecionarDuplicatas && vm.Formulario.userFinanceiro.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableSelecionarDuplicatas, 'panel-default': !vm.regras.enableSelecionarDuplicatas}"
-						id="panelSelecionarDuplicatas">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSelecionarDuplicatas}" data-toggle="collapse"
-									href="#collapseSelecionarDuplicatas">
-									Conferir Solicitação e Selecionar Duplicatas
-								</a>
-							</h4>
-						</div>
-						<div id="collapseSelecionarDuplicatas" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableSelecionarDuplicatas}">
-							<div class="panel-body">
-								<!-- partial:partials/selecionarDuplicatas.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showAprovPagamento && vm.Formulario.userAprovPagamento.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableAprovPagamento, 'panel-default': !vm.regras.enableAprovPagamento}"
-						id="panelAprovPagamento">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovPagamento}" data-toggle="collapse"
-									href="#collapseAprovPagamento">
-									Aprovação do Pagamento
-								</a>
-							</h4>
-						</div>
-						<div id="collapseAprovPagamento" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableAprovPagamento}">
-							<div class="panel-body">
-								<!-- partial:partials/aprovacao-pagamento.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showAprovVerbaMaior && vm.Formulario.userAprovVerbaMaior.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableAprovVerbaMaior, 'panel-default': !vm.regras.enableAprovVerbaMaior}"
-						id="panelAprovVerbaMaior">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovVerbaMaior}" data-toggle="collapse"
-									href="#collapseAprovVerbaMaior">
-									Aprovação de Verba maior que 30.000
-								</a>
-							</h4>
-						</div>
-						<div id="collapseAprovVerbaMaior" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableAprovVerbaMaior}">
-							<div class="panel-body">
-								<!-- partial:partials/aprovacao-verbaMaior.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showAprovVerbaMenor && vm.Formulario.userAprovVerbaMenor.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableAprovVerbaMenor, 'panel-default': !vm.regras.enableAprovVerbaMenor}"
-						id="panelAprovVerbaMenor">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovVerbaMenor}" data-toggle="collapse"
-									href="#collapseAprovVerbaMenor">
-									Aprovação de Verba até 30.000
-								</a>
-							</h4>
-						</div>
-						<div id="collapseAprovVerbaMenor" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableAprovVerbaMenor}">
-							<div class="panel-body">
-								<!-- partial:partials/aprovacao-verbaMenor.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showNotificacaoCliente" class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableNotificacaoCliente, 'panel-default': !vm.regras.enableNotificacaoCliente}"
-						id="panelNotificacaoCliente">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<input type="hidden" name="notificacaoEtapa" ng-value="vm.Formulario.notificacaoEtapa">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableNotificacaoCliente}" data-toggle="collapse"
-									href="#collapseNotificacaoCliente">
-									Notificar Cliente<span ng-show="vm.regras.enableNotificacaoCliente"> -
-										{{vm.Formulario.notificacaoEtapa}}</span>
-								</a>
-							</h4>
-						</div>
-						<div id="collapseNotificacaoCliente" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableNotificacaoCliente}">
-							<div class="panel-body">
-								<!-- partial:partials/autorizarNotificacaoCliente.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showValidacaoMarketing && vm.Formulario.userValMarketing.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableValidacaoMarketing, 'panel-default': !vm.regras.enableValidacaoMarketing}"
-						id="panelValidacaoMarketing">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableValidacaoMarketing}" data-toggle="collapse"
-									href="#collapseValidacaoMarketing">
-									Validação Marketing
-								</a>
-							</h4>
-						</div>
-						<div id="collapseValidacaoMarketing" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableValidacaoMarketing}">
-							<div class="panel-body">
-								<!-- partial:partials/validacao-marketing.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showAprovGerMarketing && vm.Formulario.userAprovGerMarketing.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableAprovGerMarketing, 'panel-default': !vm.regras.enableAprovGerMarketing}"
-						id="panelAprovGerMarketing">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovGerMarketing}" data-toggle="collapse"
-									href="#collapseAprovGerMarketing">
-									Aprovação Gerência de Marketing
-								</a>
-							</h4>
-						</div>
-						<div id="collapseAprovGerMarketing" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableAprovGerMarketing}">
-							<div class="panel-body">
-								<!-- partial:partials/aprovacao-gerMarketing.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-
-					<div ng-show="vm.regras.showAprovPresidenciaVp && vm.Formulario.userAprovPresidenciaVp.colleagueId"
-						class="panel panel-default animation"
-						ng-class="{'panel-primary': vm.regras.enableAprovPresidenciaVp, 'panel-default': !vm.regras.enableAprovPresidenciaVp}"
-						id="panelAprovPresidenciaVp">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovPresidenciaVp}" data-toggle="collapse"
-									href="#collapseAprovPresidenciaVp">
-									Aprovação Presidência / VP
-								</a>
-							</h4>
-						</div>
-						<div id="collapseAprovPresidenciaVp" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableAprovPresidenciaVp}">
-							<div class="panel-body">
-								<!-- partial:partials/aprovacao-presidenciaVp.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showSolicitacao" class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSolicitacao">
+					<div ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -258,9 +49,9 @@
 						</div>
 					</div>
 
-					<div ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='sellout'" class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSellout">
+					<div
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellout' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSellout" ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -278,10 +69,9 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin == 'item'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSellinItem">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin == 'item' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSellinItem"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -299,10 +89,9 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin == 'target'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSellinTarget">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin == 'target' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSellinTarget"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -321,10 +110,9 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin == 'target'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSellinTargetAc">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin == 'target' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSellinTargetAc"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -343,10 +131,8 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='vpc' && vm.Formulario.tipoVpc == 'eventos'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelVpcEvt">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc == 'eventos' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelVpcEvt" ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -364,10 +150,9 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='vpc' && vm.Formulario.tipoVpc == 'outros'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelVpcOutros">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc == 'outros' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelVpcOutros"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -386,10 +171,9 @@
 
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='spiff' && vm.Formulario.tipoSpiff == 'item'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSpiffItem">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff == 'item' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSpiffItem"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -407,10 +191,9 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.codigo=='spiff' && vm.Formulario.tipoSpiff == 'target'"
-						class="panel animation"
-						ng-class="{'panel-primary': vm.regras.enableSolicitacao, 'panel-default': !vm.regras.enableSolicitacao}"
-						id="panelSpiffTarget">
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff == 'target' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSpiffTarget"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -428,7 +211,267 @@
 						</div>
 					</div>
 
-					<div ng-show="vm.regras.showResumo" class="panel panel-default animation" id="panelResumo">
+					<div ng-show="vm.regras.showValidacaoMarketing && vm.Formulario.userValMarketing.colleagueId" class="panel"
+						id="panelValidacaoMarketing"
+						ng-class="vm.Formulario.statusValidacaoMarketing == 'APROVADO' ? 'panel-success' : vm.Formulario.statusValidacaoMarketing == 'REPROVADO' ? 'panel-danger' : vm.regras.enableValidacaoMarketing ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableValidacaoMarketing}" data-toggle="collapse"
+									href="#collapseValidacaoMarketing">
+									Validação Marketing
+								</a>
+							</h4>
+						</div>
+						<div id="collapseValidacaoMarketing" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableValidacaoMarketing}">
+							<div class="panel-body">
+								<!-- partial:partials/validacao-marketing.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showAprovGerMarketing && vm.Formulario.userAprovGerMarketing.colleagueId"
+						class="panel" id="panelAprovGerMarketing"
+						ng-class="vm.Formulario.statusAprovGerMarketing == 'APROVADO' ? 'panel-success' : vm.Formulario.statusAprovGerMarketing == 'REPROVADO' ? 'panel-danger' : vm.regras.enableAprovGerMarketing ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovGerMarketing}" data-toggle="collapse"
+									href="#collapseAprovGerMarketing">
+									Aprovação Gerência de Marketing
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAprovGerMarketing" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableAprovGerMarketing}">
+							<div class="panel-body">
+								<!-- partial:partials/aprovacao-gerMarketing.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+
+					<div ng-show="vm.regras.showAprovPresidenciaVp && vm.Formulario.userAprovPresidenciaVp.colleagueId"
+						class="panel" id="panelAprovPresidenciaVp"
+						ng-class="vm.Formulario.statusAprovPresidenciaVp == 'APROVADO' ? 'panel-success' : vm.Formulario.statusAprovPresidenciaVp == 'REPROVADO' ? 'panel-danger' : vm.regras.enableAprovPresidenciaVp ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovPresidenciaVp}" data-toggle="collapse"
+									href="#collapseAprovPresidenciaVp">
+									Aprovação Presidência / VP
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAprovPresidenciaVp" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableAprovPresidenciaVp}">
+							<div class="panel-body">
+								<!-- partial:partials/aprovacao-presidenciaVp.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showEncerramentoAntecipado || vm.Formulario.userEncerramentoAntecip.colleagueId"
+						class="panel panel-warning" id="panelEncerramentoAntecipado">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableEncerramentoAntecipado}"
+									data-toggle="collapse" href="#collapseEncerramentoAntecipado">
+									Encerramento Antecipado
+								</a>
+							</h4>
+						</div>
+						<div id="collapseEncerramentoAntecipado" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableEncerramentoAntecipado}">
+							<div class="panel-body">
+								<!-- partial:partials/encerramento-antecipado.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showEvidencias" class="panel"
+						id="panelEvidencias"
+						ng-class="vm.Formulario.statusValidacaoEvid == 'APROVADO' ? 'panel-success' : vm.Formulario.statusValidacaoEvid == 'REPROVADO' ? 'panel-danger' : vm.regras.enableValidacaoEvidencias || vm.regras.enableEvidencias ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon"
+									ng-class="{'up': vm.regras.enableEvidencias || vm.regras.enableValidacaoEvidencias}"
+									data-toggle="collapse" href="#collapseEvidencias">
+									Evidências e Resultado
+								</a>
+							</h4>
+						</div>
+						<div id="collapseEvidencias" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableEvidencias || vm.regras.enableValidacaoEvidencias}">
+							<div class="panel-body">
+								<!-- partial:partials/evidencias.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showAprovVerbaMaior && vm.Formulario.userAprovVerbaMaior.colleagueId" class="panel"
+						id="panelAprovVerbaMaior"
+						ng-class="vm.Formulario.statusAprovVerbaMaior == 'APROVADO' ? 'panel-success' : vm.Formulario.statusAprovVerbaMaior == 'REPROVADO' ? 'panel-danger' : vm.regras.enableAprovVerbaMaior ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovVerbaMaior}" data-toggle="collapse"
+									href="#collapseAprovVerbaMaior">
+									Aprovação de Verba maior que {{vm.MarketingParametros.limiteResultado | currency}}
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAprovVerbaMaior" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableAprovVerbaMaior}">
+							<div class="panel-body">
+								<!-- partial:partials/aprovacao-verbaMaior.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showAprovVerbaMenor && vm.Formulario.userAprovVerbaMenor.colleagueId" class="panel"
+						id="panelAprovVerbaMenor"
+						ng-class="vm.Formulario.statusAprovVerbaMenor == 'APROVADO' ? 'panel-success' : vm.Formulario.statusAprovVerbaMenor == 'REPROVADO' ? 'panel-danger' : vm.regras.enableAprovVerbaMenor ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovVerbaMenor}" data-toggle="collapse"
+									href="#collapseAprovVerbaMenor">
+									Aprovação de Verba até {{vm.MarketingParametros.limiteResultado | currency}}
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAprovVerbaMenor" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableAprovVerbaMenor}">
+							<div class="panel-body">
+								<!-- partial:partials/aprovacao-verbaMenor.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+
+
+					<div ng-show="vm.regras.showND" class="panel" id="panelND"
+						ng-class="vm.Formulario.statusValidacaoND == 'APROVADO' ? 'panel-success' : vm.Formulario.statusValidacaoND == 'REPROVADO' ? 'panel-danger' : vm.regras.enableValidacaoND || vm.regras.enableND ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableValidacaoND || vm.regras.enableND}"
+									data-toggle="collapse" href="#collapseND">
+									Nota de Débito
+								</a>
+							</h4>
+						</div>
+						<div id="collapseND" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableValidacaoND || vm.regras.enableND}">
+							<div class="panel-body">
+								<!-- partial:partials/nd.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+
+					<div ng-show="vm.regras.showSelecionarDuplicatas && vm.Formulario.userFinanceiro.colleagueId" class="panel"
+						id="panelSelecionarDuplicatas"
+						ng-class="vm.Formulario.statusFinanceiro == 'APROVADO' ? 'panel-success' : vm.Formulario.statusFinanceiro == 'REPROVADO' ? 'panel-danger' : vm.regras.enableSelecionarDuplicatas ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSelecionarDuplicatas}" data-toggle="collapse"
+									href="#collapseSelecionarDuplicatas">
+									Duplicatas a Antecipar
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSelecionarDuplicatas" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSelecionarDuplicatas}">
+							<div class="panel-body">
+								<!-- partial:partials/selecionarDuplicatas.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showAprovPagamento && vm.Formulario.userAprovPagamento.colleagueId" class="panel"
+						id="panelAprovPagamento"
+						ng-class="vm.Formulario.statusAprovPagamento == 'APROVADO' ? 'panel-success' : vm.Formulario.statusAprovPagamento == 'REPROVADO' ? 'panel-danger' : vm.regras.enableAprovPagamento ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableAprovPagamento}" data-toggle="collapse"
+									href="#collapseAprovPagamento">
+									Aprovação do Pagamento
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAprovPagamento" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableAprovPagamento}">
+							<div class="panel-body">
+								<!-- partial:partials/aprovacao-pagamento.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showNotificacaoCliente" class="panel" id="panelNotificacaoCliente"
+						ng-class="vm.regras.enableNotificacaoCliente ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<input type="hidden" name="notificacaoEtapa" ng-value="vm.Formulario.notificacaoEtapa">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableNotificacaoCliente}" data-toggle="collapse"
+									href="#collapseNotificacaoCliente">
+									Notificar Cliente<span ng-show="vm.regras.enableNotificacaoCliente"> -
+										{{vm.Formulario.notificacaoEtapa}}</span>
+								</a>
+							</h4>
+						</div>
+						<div id="collapseNotificacaoCliente" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableNotificacaoCliente}">
+							<div class="panel-body">
+								<!-- partial:partials/autorizarNotificacaoCliente.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showStatusErp" class="panel"
+						ng-class="vm.regras.enableStatusErp ? 'panel-primary' : 'panel-default'" id="panelStatusErp">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableStatusErp}" data-toggle="collapse"
+									href="#collapseStatusErp">
+									Status da Solicitação no ERP
+								</a>
+							</h4>
+						</div>
+						<div id="collapseStatusErp" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableStatusErp}">
+							<div class="panel-body">
+								<!-- partial:partials/statusErp.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showObsInternas" class="panel" id="panelObsInternas"
+						ng-class="vm.regras.enableObsInternas ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableObsInternas}" data-toggle="collapse"
+									href="#collapseObsInternas">
+									Observações Internas (Uso Brother)
+								</a>
+							</h4>
+						</div>
+						<div id="collapseObsInternas" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableObsInternas}">
+							<div class="panel-body">
+								<!-- partial:partials/obsInternas.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showResumo" class="panel panel-default " id="panelResumo">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon up" data-toggle="collapse" href="#collapseResumo">

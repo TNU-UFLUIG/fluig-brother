@@ -31,21 +31,22 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="form-group">
-      <label for="obsEnvioND" class="control-label">Observações</label>
+      <label for="obsEnvioND" class="control-label">Observações do Cliente</label>
       <textarea ng-show="vm.regras.enableND" fluig-error="form.obsEnvioND.$error" name="obsEnvioND" elastic
         class="form-control input-lg" placeholder="Observações do cliente no envio da ND"
         ng-model="vm.Formulario.obsEnvioND" ng-value="vm.Formulario.obsEnvioND"></textarea>
-      <p ng-show="!vm.regras.enableND">{{vm.Formulario.obsEnvioND || 'Sem observações'}}</p>
+      <p ng-show="!vm.regras.enableND" style="white-space: pre-line;">{{vm.Formulario.obsEnvioND || 'Sem observações'}}
+      </p>
     </div>
   </div>
 </div>
 
-<div class="row">
+<div class="row" ng-show="vm.regras.enableND">
   <div class="col-sm-12">
     <div class="form-group">
       <label for="envioNDConcluido" class="control-label">Envio Concluído</label>
-      <input type="checkbox" name="envioNDConcluido_i" ng-model="vm.Formulario.envioNDConcluido"
-        fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+      <input type="checkbox" name="envioNDConcluido_i" ng-model="vm.Formulario.envioNDConcluido" fluig-switch
+        data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
       <input type="hidden" name="envioNDConcluido" ng-value="vm.Formulario.envioNDConcluido">
     </div>
   </div>
@@ -74,19 +75,19 @@
           <th class="col-sm-2">Descrição</th>
           <th class="col-sm-1">Número da ND</th>
           <th class="col-sm-2">Arquivo</th>
-          <th class="col-sm-1" ng-show="vm.regras.enableValidacaoND">Aceito</th>
-          <th class="col-sm-5" ng-show="vm.regras.enableValidacaoND">Motivo da Recusa</th>
+          <th class="col-sm-1">Aceito</th>
+          <th class="col-sm-5">Motivo da Recusa</th>
         </tr>
       </thead>
       <tbody ng-non-bindable>
-        <tr ng-repeat="arquivoND in vm.Formulario.arquivosND">
+        <tr ng-repeat="arquivoND in vm.Formulario.arquivosND" ng-if="!arquivoND.removed">
 
           <td ng-show="vm.regras.enableND">
-            <span ng-click="vm.removeChild(vm.Formulario.arquivosND, $index)"
+            <span ng-click="vm.removeChild(vm.Formulario.arquivosND, arquivoND)"
               class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
 
             <input type="hidden" name="arquivoND_nome" ng-value="arquivoND.nome">
-            <input type="hidden" name="arquivoND_type" ng-value="arquivoND.type">
+            <input type="hidden" name="arquivoND_tipo" ng-value="arquivoND.tipo">
             <input type="hidden" name="arquivoND_documentid" ng-value="arquivoND.documentid">
             <input type="hidden" name="arquivoND_version" ng-value="arquivoND.version">
             <input type="hidden" name="arquivoND_url" ng-value="arquivoND.url">
@@ -104,14 +105,15 @@
           <td>
             <a target="_blank" href="{{arquivoND.url}}"> {{arquivoND.nome}}</a>
           </td>
-          <td ng-show="vm.regras.enableValidacaoND">
-            <input type="checkbox" name="arquivoND_aceito_i" ng-model="arquivoND.aceito" fluig-switch
-              data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+          <td>
+            <input ng-disabled="!vm.regras.enableValidacaoND" type="checkbox" name="arquivoND_aceito_i"
+              ng-model="arquivoND.aceito" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success"
+              ng-change="vm.checkEtapaNotificacao()">
             <input type="hidden" name="arquivoND_aceito" ng-value="arquivoND.aceito">
           </td>
-          <td ng-show="vm.regras.enableValidacaoND">
-            <input ng-show="!arquivoND.aceito" class="form-control" ng-model="arquivoND.motivoRecusa"
-              name="arquivoND_motivoRecusa" ng-value="arquivoND.motivoRecusa">
+          <td>
+            <input ng-readonly="!vm.regras.enableValidacaoND" ng-show="!arquivoND.aceito" class="form-control"
+              ng-model="arquivoND.motivoRecusa" name="arquivoND_motivoRecusa" ng-value="arquivoND.motivoRecusa">
             <i ng-show="arquivoND.aceito">ND aceita</i>
           </td>
         </tr>

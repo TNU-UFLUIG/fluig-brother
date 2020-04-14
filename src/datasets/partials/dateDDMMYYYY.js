@@ -1,4 +1,9 @@
-function dateDDMMYYY(date) {
+function dateDDMMYYY(date, ignoreTime) {
+
+  if (!date || date == '') {
+    return '';
+  }
+
   date = new Date(date);
 
   // return date;
@@ -16,5 +21,10 @@ function dateDDMMYYY(date) {
   day = day < 10 ? String('0' + day) : String(day);
   month = month < 10 ? String('0' + month) : String(month);
 
-  return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+  let result = day + '/' + month + '/' + year;
+  if (!ignoreTime) {
+    result += ' ' + hours + ':' + minutes + ':' + seconds
+  }
+
+  return result;
 }

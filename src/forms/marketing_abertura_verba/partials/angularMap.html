@@ -1,10 +1,17 @@
 <input name="Params" type="hidden" id="Params" ng-value="vm.Params | json:0">
 <input name="Errors" type="hidden" id="Errors" ng-value="vm.Errors | json:0">
 
-<input name="displaykey" type="hidden" ng-value="vm.Formulario.cliente.razaoSocial">
-<input name="importado" type="hidden" ng-value="vm.Formulario.importado">
+<input name="regras" type="hidden" id="regras" ng-value="vm.regras | json:0">
+
+<input type="hidden" name="displaykey" ng-value="vm.Formulario.cliente.razaoSocial">
+<input type="hidden" name="importado" ng-value="vm.Formulario.importado">
 <input type="hidden" name="solicitacao" ng-value="vm.Formulario.solicitacao">
 <input type="hidden" name="atividade" ng-value="vm.Params.etapa">
 <input type="hidden" name="responsavel" ng-value="vm.Params.user">
 <input type="hidden" name="guid" ng-value="vm.Formulario.guid">
 <input type="hidden" name="pendenteTotvs" ng-value="vm.Formulario.pendenteTotvs">
+<input type="hidden" name="statusIntegraTotvs" ng-value="vm.Formulario.statusIntegraTotvs">
+<input type="hidden" name="dataIntegraTotvs" ng-value="vm.Formulario.dataIntegraTotvs">
+<input type="hidden" name="currentStepPortal" ng-value="vm.Formulario.currentStepPortal">
+<input type="hidden" name="notificaGrupoBrotherFimAcao" ng-value="vm.Formulario.notificaGrupoBrotherFimAcao">
+<input type="hidden" name="motivoCancelamento" ng-value="vm.Formulario.motivoCancelamento">

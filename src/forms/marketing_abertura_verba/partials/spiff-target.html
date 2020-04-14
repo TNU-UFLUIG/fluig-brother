@@ -9,7 +9,7 @@
   <tbody ng-non-bindable>
     <tr ng-repeat="itemSpiffTg in vm.Formulario.itensSpiffTg">
       <td ng-if="vm.regras.enableSolicitacao">
-        <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensSpiffTg, $index)"
+        <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensSpiffTg, itemSpiffTg)"
           class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
       </td>
       <td>
@@ -19,12 +19,12 @@
             <div class="col-sm-5">
               <label>Foco</label>
               <input class="form-control input-lg" name="itemSpiffTg_foco_i" ng-model="itemSpiffTg.foco"
-                ng-value="itemSpiffTg.foco" ng-disabled="!vm.regras.enableSolicitacao">
+                ng-value="itemSpiffTg.foco" ng-readonly="!vm.regras.enableSolicitacao">
             </div>
             <div class="col-sm-3">
               <label>Target R$</label>
-              <input class="form-control input-lg" name="itemSpiffTg_target_i" fluig-money-mask
-                ng-model="itemSpiffTg.target" ng-disabled="!vm.regras.enableSolicitacao"
+              <input class="form-control input-lg" name="itemSpiffTg_target_i" fluig-money-mask fluig-negative-number
+                ng-model="itemSpiffTg.target" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSpiffTg)">
               <input type="hidden" name="itemSpiffTg_target_f" ng-value="itemSpiffTg.target | currency">
               <input type="hidden" name="itemSpiffTg_target" ng-value="itemSpiffTg.target">
@@ -32,7 +32,7 @@
             <div class="col-sm-2">
               <label>Target %</label>
               <input class="form-control input-lg" name="itemSpiffTg_perc_i" fluig-percentage-mask
-                ng-model="itemSpiffTg.perc" ng-disabled="!vm.regras.enableSolicitacao"
+                fluig-negative-number="true" ng-model="itemSpiffTg.perc" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSpiffTg)">
               <input type="hidden" name="itemSpiffTg_perc_f" ng-value="itemSpiffTg.perc | percentage:'2'">
               <input type="hidden" name="itemSpiffTg_perc" ng-value="itemSpiffTg.perc">
@@ -40,23 +40,23 @@
             <div class="col-sm-2">
               <label>Qtde</label>
               <input class="form-control input-lg" name="itemSpiffTg_qtde_i" fluig-number-mask="2"
-                ng-model="itemSpiffTg.qtde" ng-disabled="!vm.regras.enableSolicitacao"
+                ng-model="itemSpiffTg.qtde" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSpiffTg)">
               <input type="hidden" name="itemSpiffTg_qtde_f" ng-value="itemSpiffTg.qtde | number:'2'">
               <input type="hidden" name="itemSpiffTg_qtde" ng-value="itemSpiffTg.qtde">
             </div>
             <div class="col-sm-3">
               <label>Valor Unitário</label>
-              <input class="form-control input-lg" name="itemSpiffTg_vlUnit_i" fluig-money-mask
-                ng-model="itemSpiffTg.vlUnit" ng-disabled="!vm.regras.enableSolicitacao"
+              <input class="form-control input-lg" name="itemSpiffTg_vlUnit_i" fluig-money-mask fluig-negative-number
+                ng-model="itemSpiffTg.vlUnit" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSpiffTg)">
               <input type="hidden" name="itemSpiffTg_vlUnit_f" ng-value="itemSpiffTg.vlUnit | currency">
               <input type="hidden" name="itemSpiffTg_vlUnit" ng-value="itemSpiffTg.vlUnit">
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemSpiffTg_vlTotal_i" fluig-money-mask
-                ng-model="itemSpiffTg.vlTotal" disabled>
+              <input class="form-control input-lg" name="itemSpiffTg_vlTotal_i" fluig-money-mask fluig-negative-number
+                ng-model="itemSpiffTg.vlTotal" ng-readonly="!vm.regras.enableSolicitacao">
               <input type="hidden" name="itemSpiffTg_vlTotal_f" ng-value="itemSpiffTg.vlTotal | currency">
               <input type="hidden" name="itemSpiffTg_vlTotal" ng-value="itemSpiffTg.vlTotal">
             </div>

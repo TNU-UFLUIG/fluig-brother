@@ -36,6 +36,24 @@ function inputFields(form) {
     }
   }
 
+  if (currentState == Params.atividades.validarEvidencias[0]) {
+    if (nextState == Params.atividades.gtwAprovarVerbaMaior[0] || nextState == Params.atividades.conferirFinanceiro[0]) {
+      form.setValue('statusValidacaoEvid', 'APROVADO');
+    }
+    if (nextState == Params.atividades.enviarEvidencias[0]) {
+      form.setValue('statusValidacaoEvid', 'REPROVADO');
+    }
+  }
+
+  if (currentState == Params.atividades.validarND[0]) {
+    if (nextState == Params.atividades.conferirFinanceiro[0]) {
+      form.setValue('statusValidacaoND', 'APROVADO');
+    }
+    if (nextState == Params.atividades.enviarND[0]) {
+      form.setValue('statusValidacaoND', 'REPROVADO');
+    }
+  }
+
   if (currentState == Params.atividades.aprovarVerbaMaior[0]) {
     if (nextState == Params.atividades.enviarND[0]) {
       form.setValue('statusAprovVerbaMaior', 'APROVADO');
@@ -51,6 +69,15 @@ function inputFields(form) {
     }
     if (nextState == Params.atividades.validarEvidencias[0]) {
       form.setValue('statusAprovVerbaMenor', 'REPROVADO');
+    }
+  }
+
+  if (currentState == Params.atividades.conferirFinanceiro[0]) {
+    if (nextState == Params.atividades.aprovarPagamento[0]) {
+      form.setValue('statusFinanceiro', 'APROVADO');
+    }
+    if (nextState == Params.atividades.validarEvidencias[0]) {
+      form.setValue('statusFinanceiro', 'REPROVADO');
     }
   }
 

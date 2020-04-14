@@ -33,7 +33,13 @@ function buscaDataset(fields, constraints, sortFields) {
   properties["receive.timeout"] = "0";
 
   // const json = jsonLocal();
-  const json = callDatasul("esp/buscaCentroCusto.p", "piBusca", params, null, properties);
+  let json;
+
+  try {
+    json = callDatasul("esp/buscaCentroCusto.p", "piBusca", params, null, properties);
+  } catch (error) {
+    throw error;
+  }
 
   return montaDataset(json.ttErro, json.ttCentroCusto, campos, display, null, true);
 }

@@ -1,6 +1,6 @@
 let campos;
-let display = ['item'];
-let dePara = ['item', 'qtde', 'rebateTotal'];
+let display;
+let dePara;
 
 function createDataset(fields, constraints, sortFields) {
   return buscaDataset(fields, constraints, sortFields);
@@ -13,16 +13,54 @@ function onMobileSync(user) {
 function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
-  let dsSolicitacao = getDataset('marketing_abertura_verba', null, [
-    { field: 'guid', value: params.guid },
-  ]);
+  let dsSolicitacao = getDataset(`marketing_abertura_verba`, null, [
+    { field: `guid`, value: params.guid },
+  ])[0];
 
-  let dsItens = getDataset('marketing_abertura_verba', null, [
-    { field: 'documentid', value: dsSolicitacao[0].documentid },
-    { field: 'tablename', value: 'itensSellout' }
-  ]);
+  let dsItens;
 
-  campos = ['itemSellout_item', 'itemSellout_qtde', 'itemSellout_rebateTotal'];
+  switch (dsSolicitacao.tipoAcaoCodigo) {
+    case `sellout`:
+      dsItens = getDataset(`marketing_abertura_verba`, null, [
+        { field: `documentid`, value: dsSolicitacao.documentid },
+        { field: `tablename`, value: `itensSellout` }
+      ]);
+
+      campos = [`itemSellout_item`, `itemSellout_qtde`, `itemSellout_rebateTotal`];
+      dePara = [`item`, `qtde`, `rebateTotal`];
+      display = [`item`];
+      break;
+
+    case `sellin`:
+
+      if (dsSolicitacao.tipoSellin == `item`) {
+        dsItens = getDataset(`marketing_abertura_verba`, null, [
+          { field: `documentid`, value: dsSolicitacao.documentid },
+          { field: `tablename`, value: `itensSellin` }
+        ]);
+
+        campos = [`itemSellin_item`, `itemSellin_qtde`, `itemSellin_rebateTotal`];
+        dePara = [`item`, `qtde`, `rebateTotal`];
+        display = [`item`];
+      } else {
+
+      }
+      break;
+
+    case `vpc`:
+
+      break;
+
+    case `spiff`:
+
+      break;
+  }
+
+  if (dsSolicitacao.tipoAcaoCodigo == `sellout`) {
+
+  } else {
+
+  }
 
   return montaDataset(null, dsItens, campos, display, dePara);
 }

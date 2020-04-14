@@ -18,10 +18,11 @@
         <textarea hidden name="rateio_categoria" ng-value="rateio.categoria | json:0"
           ng-bind="rateio.categoria | json:0"></textarea>
         <input type="hidden" name="rateio_categoriaDescricao" ng-value="rateio.categoria.descricao">
+        <input type="hidden" name="rateio_categoriaCodigo" ng-value="rateio.categoria.codigo">
       </td>
       <td>
-        <input class="form-control input-lg" name="rateio_perc_i" fluig-percentage-mask ng-model="rateio.perc"
-          ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotalRateio()">
+        <input class="form-control input-lg" name="rateio_perc_i" fluig-percentage-mask fluig-negative-number="true"
+          ng-model="rateio.perc" ng-readonly="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotalRateio()">
         <input type="hidden" name="rateio_perc_f" ng-value="rateio.perc | percentage:'2'">
         <input type="hidden" name="rateio_perc" ng-value="rateio.perc">
       </td>

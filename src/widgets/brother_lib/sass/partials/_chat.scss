@@ -1,0 +1,16 @@
+.input_msg_write {
+  input {
+    color: #4c4c4c;
+    font-size: 24px !important;
+    min-height: 48px;
+    width: 100%;
+    outline: none;
+    border: 1px dashed #ddd;
+    // border-style: dashed;
+    padding: 15px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="anteciparEncerramento" class="control-label">Antecipar Encerramento</label>
+      <input type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success"
+        name="anteciparEncerramento_i" ng-model="vm.Formulario.anteciparEncerramento"
+        ng-readonly="!vm.regras.enableEncerramentoAntecipado">
+      <input type="hidden" name="anteciparEncerramento" ng-value="vm.Formulario.anteciparEncerramento">
+    </div>
+  </div>
+  <div class="col-sm-12" ng-show="vm.Formulario.anteciparEncerramento && vm.regras.enableEncerramentoAntecipado">
+    <div class="alert alert-warning" role="alert">
+      Para confirmar o encerramento antecipado, informe o motivo abaixo e clique em Salvar. O fluxo será movimentado automaticamente em até 5 minutos.
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="vm.Formulario.anteciparEncerramento">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data do Encerramento</label>
+      <h4>{{vm.Formulario.dataEncerramentoAntecip | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataEncerramentoAntecip_f"
+        ng-value="vm.Formulario.dataEncerramentoAntecip | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataEncerramentoAntecip" ng-value="vm.Formulario.dataEncerramentoAntecip">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userEncerramentoAntecip.colleagueName| uppercase}}</h4>
+      <textarea hidden name="userEncerramentoAntecip" ng-value="vm.Formulario.userEncerramentoAntecip | json:0"
+        ng-bind="vm.Formulario.userEncerramentoAntecip | json:0"></textarea>
+      <input type="hidden" name="userEncerramentoAntecipNome"
+        ng-value="vm.Formulario.userEncerramentoAntecip.colleagueName">
+      <input type="hidden" name="userEncerramentoAntecipCodigo"
+        ng-value="vm.Formulario.userEncerramentoAntecip.colleagueId">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsEncerramentoAntecip" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableEncerramentoAntecipado" fluig-error="form.obsEncerramentoAntecip.$error"
+        name="obsEncerramentoAntecip" elastic class="form-control input-lg"
+        placeholder="Informe aqui o motivo do encerramento antecipado" ng-required="vm.Formulario.anteciparEncerramento"
+        ng-model="vm.Formulario.obsEncerramentoAntecip" ng-value="vm.Formulario.obsEncerramentoAntecip"></textarea>
+      <p ng-show="!vm.regras.enableEncerramentoAntecipado">{{vm.Formulario.obsEncerramentoAntecip || 'Sem observações'}}
+      </p>
+    </div>
+  </div>
+
+</div>

@@ -11,6 +11,7 @@ function createDataset(fields, constraints, sortFields) {
   const dataset = DatasetBuilder.newDataset();
 
   const campos = ['to', 'subject'];
+  const sdk = new javax.naming.InitialContext().lookup('java:global/fluig/wcm-core/service/SDK');
 
   campos.forEach(function (campo) {
     dataset.addColumn(campo);
@@ -57,7 +58,7 @@ function createDataset(fields, constraints, sortFields) {
   let dsCampos = {};
 
   log.info('dsSolicitacoes.length = ' + dsSolicitacoes.length);
-  log.info('dsComposicao.length = ' + dsComposicao.length);
+  // log.info('dsComposicao.length = ' + dsComposicao.length);
   log.info('dsCamposSolicitacao.length = ' + dsCamposSolicitacao.length);
 
   tables.forEach(table => {
@@ -95,7 +96,7 @@ function createDataset(fields, constraints, sortFields) {
 
     tables.forEach(table => {
 
-      if (solicitacao[table.name].length > 0) {
+      if (solicitacao[table.name].length > 0 && dsCampos[table.name].length > 0) {
 
         var tplTable = new java.util.HashMap();
         tplTable.put('title', table.title);
@@ -121,7 +122,7 @@ function createDataset(fields, constraints, sortFields) {
             if (c[`${table.campoName}_${params.tipo}`] == 'true') {
               var campo = new java.util.HashMap();
 
-              campo.put('valor', item[c[`${table.campoName}_name`]]);
+              campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + item[c[`${table.campoName}_name`]]);
 
               tplArrItem.add(campo);
             }
@@ -140,6 +141,9 @@ function createDataset(fields, constraints, sortFields) {
 
     })
 
+    let linkPortalCliente = `${sdk.getServerURL()}/portal/BROTHER/acao-marketing-cliente#!/${solicitacao.guid}`
+    
+    tplParamsSolicitacao.put('linkPortalCliente', linkPortalCliente);
     tplParamsSolicitacao.put('observacoes', solicitacao.obsNotificacaoCliente);
     tplParamsSolicitacao.put('camposSolicitacao', tplArrCamposSolicitacao);
     tplParamsSolicitacao.put('tables', tplArrTables);
@@ -157,7 +161,11 @@ function createDataset(fields, constraints, sortFields) {
         { field: 'documentid', value: solicitacao.documentid },
       ]);
 
+      log.info('dsDestinatariosCliente.length = ' + dsDestinatariosCliente.length);
+
       dsDestinatariosCliente.forEach(destinatario => {
+        log.info(`email_${params.tipo} => ` + destinatario[`email_${params.tipo}`]);
+
         if (destinatario[`email_${params.tipo}`] == 'true') {
           arrDestinatarios.add(destinatario.email_email);
         }

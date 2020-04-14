@@ -18,6 +18,7 @@ function getParams(form) {
     analisarErros: [27, 36, 53, 54, 143, 125],
     aguardandoFimDaAcao: [129],
     notificarGrupoBrotherInicio: [23],
+    notificarGrupoBrotherFim: [41],
     autorizarNotificacaoInicio: [32],
     autorizarNotificacaoFim: [43],
     enviarEvidencias: [180],
@@ -31,7 +32,8 @@ function getParams(form) {
     aprovarPagamento: [116],
     gerarAbatimentos: [121],
     atualizarStatus: [132],
-    autorizarNotificacaoPagamento: [139]
+    autorizarNotificacaoPagamento: [139],
+    finalizadoSemAntecipacao: [173]
 
   };
 

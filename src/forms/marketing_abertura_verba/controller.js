@@ -115,6 +115,10 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.PastaAnexos = pasta[0];
         });
 
+        brotherService.getMarketingParametros().then(resp => {
+          vm.MarketingParametros = resp[0];
+        });
+
         vm.Formulario.numControle = '2020.0056'
 
         if (vm.Params.edit) {
@@ -132,10 +136,16 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'showResumo', def: true, etapas: vm.etapas },
           { regra: 'showSolicitacao', def: true, etapas: ['inicio', 'consulta', 'revisarSolicitacao', 'analisarErros'] },
           { regra: 'enableSolicitacao', def: vm.Params.edit, etapas: ['inicio', 'revisarSolicitacao'] },
+
+          { regra: 'showObsInternas', def: true, etapas: vm.etapas },
+          { regra: 'enableObsInternas', def: vm.Params.edit, etapas: vm.etapas },
+
+          { regra: 'showEncerramentoAntecipado', def: true, etapas: ['aguardandoFimDaAcao'] },
+          { regra: 'enableEncerramentoAntecipado', def: vm.Params.edit, etapas: ['aguardandoFimDaAcao'] },
+
           { regra: 'showValidacaoMarketing', def: true, etapas: ['consulta', 'revisarSolicitacao', 'aprovarGerMarketing', 'analisarErros', 'validarMarketing', 'aprovarPresidencia'] },
           { regra: 'enableValidacaoMarketing', def: vm.Params.edit, etapas: ['validarMarketing'] },
           { regra: 'showRateioCategoria', def: true, etapas: vm.etapas },
-          { regra: 'enableRateioCategoria', def: vm.Params.edit, etapas: ['inicio'] },
           { regra: 'showResumoVerbasCliente', def: true, etapas: vm.etapas },
 
           { regra: 'showAprovGerMarketing', def: true, etapas: ['consulta', 'revisarSolicitacao', 'analisarErros', 'aprovarGerMarketing', 'validarMarketing', 'aprovarPresidencia'] },
@@ -149,22 +159,25 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'showAprovVerbaMenor', def: true, etapas: ['consulta', 'aprovarVerbaMenor', 'aprovarGerMarketing', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovVerbaMenor', def: true, etapas: ['aprovarVerbaMenor'] },
 
-          { regra: 'showNotificacaoCliente', def: true, etapas: ['consulta', 'autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento'] },
-          { regra: 'enableNotificacaoCliente', def: true, etapas: ['autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento'] },
+          { regra: 'showNotificacaoCliente', def: true, etapas: ['consulta', 'autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento', 'validarEvidencias', 'validarND'] },
+          { regra: 'enableNotificacaoCliente', def: true, etapas: ['autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento', 'validarEvidencias', 'validarND'] },
 
           { regra: 'showEvidencias', def: true, etapas: ['consulta', 'enviarEvidencias', 'validarND', 'aprovarVerbaMaior', 'aprovarVerbaMenor', 'validarEvidencias', 'aprovarPagamento', 'analisarErros', 'conferirFinanceiro'] },
           { regra: 'enableEvidencias', def: true, etapas: ['enviarEvidencias', 'analisarErros'] },
           { regra: 'enableValidacaoEvidencias', def: true, etapas: ['validarEvidencias', 'analisarErros'] },
 
-          { regra: 'showND', def: true, etapas: ['consulta', 'enviarND', 'validarND', 'analisarErros', 'conferirFinanceiro', 'aprovarPagamento'] },
+          { regra: 'showND', def: true, etapas: ['consulta', 'enviarND', 'validarND', 'analisarErros', 'conferirFinanceiro', 'validarEvidencias', 'aprovarPagamento'] },
           { regra: 'enableND', def: true, etapas: ['enviarND', 'analisarErros'] },
           { regra: 'enableValidacaoND', def: true, etapas: ['validarND', 'analisarErros'] },
 
-          { regra: 'showSelecionarDuplicatas', def: true, etapas: ['consulta', 'conferirFinanceiro', 'aprovarPagamento', 'analisarErros'] },
+          { regra: 'showSelecionarDuplicatas', def: true, etapas: ['consulta', 'conferirFinanceiro', 'aprovarPagamento', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableSelecionarDuplicatas', def: true, etapas: ['conferirFinanceiro', 'analisarErros'] },
 
-          { regra: 'showAprovPagamento', def: true, etapas: ['consulta', 'aprovarPagamento', 'conferirFinanceiro', 'analisarErros'] },
+          { regra: 'showAprovPagamento', def: true, etapas: ['consulta', 'aprovarPagamento', 'conferirFinanceiro', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovPagamento', def: true, etapas: ['aprovarPagamento'] },
+
+          { regra: 'showStatusErp', def: true, etapas: ['consulta', 'analisarErros'] },
+          { regra: 'enableStatusErp', def: true, etapas: [] },
 
 
         ].forEach(o => {
@@ -177,90 +190,172 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           case vm.Params.etapa == 'inicio':
             vm.Formulario.solicitante = vm.Usuario;
             vm.Formulario.dataAbertura = vm.dataAtual;
-            vm.Formulario.status = 'INÍCIO';
+            // vm.Formulario.status = 'INÍCIO';
             break;
 
           case vm.Params.etapa == 'validarMarketing':
             vm.Formulario.userValMarketing = vm.Usuario;
             vm.Formulario.dataValidacaoMarketing = vm.dataAtual;
             vm.Formulario.statusValidacaoMarketing = 'PENDENTE';
+            vm.Formulario.obsValidacaoMarketing = '';
             break;
 
           case vm.Params.etapa == 'aprovarGerMarketing':
             vm.Formulario.userAprovGerMarketing = vm.Usuario;
             vm.Formulario.dataAprovGerMarketing = vm.dataAtual;
             vm.Formulario.statusAprovGerMarketing = 'PENDENTE';
+            vm.Formulario.obsAprovGerMarketing = '';
+            vm.buscaResumoVerbas();
             break;
 
           case vm.Params.etapa == 'aprovarPresidencia':
             vm.Formulario.userAprovPresidenciaVp = vm.Usuario;
             vm.Formulario.dataAprovPresidenciaVp = vm.dataAtual;
             vm.Formulario.statusAprovPresidenciaVp = 'PENDENTE';
+            vm.Formulario.obsAprovPresidenciaVp = '';
+            vm.buscaResumoVerbas();
             break;
 
           case vm.Params.etapa == 'autorizarNotificacaoInicio':
             vm.Formulario.userAutorizNotifIni = vm.Usuario;
             vm.Formulario.dataAutorizNotifIni = vm.dataAtual;
             vm.Formulario.notificacaoEtapa = 'INÍCIO DA AÇÃO';
+            vm.etapaNotificacao = 1;
+            break;
+
+          case vm.Params.etapa == 'aguardandoFimDaAcao':
+            vm.Formulario.userEncerramentoAntecip = vm.Usuario;
+            vm.Formulario.dataEncerramentoAntecip = vm.dataAtual;
             break;
 
           case vm.Params.etapa == 'autorizarNotificacaoFim':
-            vm.Formulario.userAutorizNotifIni = vm.Usuario;
-            vm.Formulario.dataAutorizNotifIni = vm.dataAtual;
+            vm.Formulario.userAutorizNotifFim = vm.Usuario;
+            vm.Formulario.dataAutorizNotifFim = vm.dataAtual;
             vm.Formulario.notificacaoEtapa = 'FIM DA AÇÃO';
+            vm.etapaNotificacao = 2;
             break;
 
           case vm.Params.etapa == 'aprovarVerbaMaior':
             vm.Formulario.userAprovVerbaMaior = vm.Usuario;
             vm.Formulario.dataAprovVerbaMaior = vm.dataAtual;
             vm.Formulario.statusAprovVerbaMaior = 'PENDENTE';
+            vm.Formulario.obsAprovVerbaMaior = '';
+            vm.buscaResumoVerbas();
             break;
 
           case vm.Params.etapa == 'aprovarVerbaMenor':
             vm.Formulario.userAprovVerbaMenor = vm.Usuario;
             vm.Formulario.dataAprovVerbaMenor = vm.dataAtual;
             vm.Formulario.statusAprovVerbaMenor = 'PENDENTE';
+            vm.Formulario.obsAprovVerbaMenor = '';
+            vm.buscaResumoVerbas();
             break;
 
           case vm.Params.etapa == 'autorizarNotificacaoPagamento':
             vm.Formulario.userAutorizNotifPagto = vm.Usuario;
             vm.Formulario.dataAutorizNotifPagto = vm.dataAtual;
             vm.Formulario.notificacaoEtapa = 'PAGAMENTO';
+            vm.etapaNotificacao = 5;
             break;
 
           case vm.Params.etapa == 'validarEvidencias' || vm.Params.etapa == 'enviarEvidencias':
+            vm.Formulario.necEnvioNd = !vm.Formulario.userValidacaoEvid ? true : vm.Formulario.necEnvioNd;
             vm.Formulario.userValidacaoEvid = vm.Usuario;
             vm.Formulario.dataValidacaoEvid = vm.dataAtual;
             vm.Formulario.statusValidacaoEvid = 'PENDENTE';
+            // vm.Formulario.valorLiberado = vm.Formulario.valorLiberado ? vm.Formulario.valorLiberado : vm.Formulario.valorResultado;
+            vm.Formulario.obsValidacaoEvid = '';
+            vm.checkEtapaNotificacao();
             break;
 
           case vm.Params.etapa == 'validarND' || vm.Params.etapa == 'enviarND':
             vm.Formulario.userValidacaoND = vm.Usuario;
             vm.Formulario.dataValidacaoND = vm.dataAtual;
             vm.Formulario.statusValidacaoND = 'PENDENTE';
+            vm.Formulario.obsValidacaoND = '';
+            vm.checkEtapaNotificacao();
             break;
 
           case vm.Params.etapa == 'aprovarPagamento':
             vm.Formulario.userAprovPagamento = vm.Usuario;
             vm.Formulario.dataAprovPagamento = vm.dataAtual;
             vm.Formulario.statusAprovPagamento = 'PENDENTE';
+            vm.Formulario.obsAprovPagamento = '';
+            vm.buscaResumoVerbas();
             break;
 
           case vm.Params.etapa == 'conferirFinanceiro':
-            vm.Formulario.totalLiberado = vm.Formulario.valorResultado;
             vm.Formulario.userFinanceiro = vm.Usuario;
             vm.Formulario.dataFinanceiro = vm.dataAtual;
             vm.Formulario.statusFinanceiro = 'PENDENTE';
+            vm.Formulario.obsConferenciaFinanceiro = '';
             vm.buscaDuplicatas();
             vm.calculaTotalDuplicatas();
             break;
         }
+
+        if (vm.regras.enableSolicitacao) {
+          brotherService.getMarketingTipoAcao().then(resp => {
+            vm.TiposAcao = resp;
+            vm.TiposAcao.forEach(tipoAcao => {
+              tipoAcao.tipoAcao = JSON.parse(tipoAcao.tipoAcao);
+              tipoAcao.contaContabil = JSON.parse(tipoAcao.contaContabil);
+            })
+          });
+
+        }
+      }
+
+      vm.checkEtapaNotificacao = function checkEtapaNotificacao() {
+        if (vm.Params.etapa == 'validarEvidencias') {
+
+          let arquivoRecusado = vm.Formulario.arquivosEvidencias.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
+
+          if (arquivoRecusado) {
+            vm.Formulario.notificacaoEtapa = 'ENVIO DAS EVIDÊNCIAS';
+            vm.etapaNotificacao = 3;
+            vm.regras.showNotificacaoCliente = true;
+          } else {
+            if (vm.Formulario.necEnvioNd) {
+              vm.Formulario.notificacaoEtapa = 'ENVIO DA ND';
+              vm.etapaNotificacao = 4;
+              vm.regras.showNotificacaoCliente = true;
+            } else {
+              vm.etapaNotificacao = 5;
+              vm.regras.showNotificacaoCliente = false;
+            }
+
+          }
+
+        } else {
+          if (vm.Params.etapa == 'validarND') {
+            let arquivoRecusado = vm.Formulario.arquivosND.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
+
+            if (arquivoRecusado) {
+              vm.Formulario.notificacaoEtapa = 'ENVIO DA ND';
+              vm.etapaNotificacao = 4;
+
+              vm.regras.showNotificacaoCliente = true;
+            } else {
+              vm.regras.showNotificacaoCliente = false;
+            }
+          }
+        }
       }
 
       vm.changeCliente = function changeCliente() {
-        vm.Formulario.executivo = {};
         if (vm.Formulario.cliente && vm.Formulario.cliente.codigo) {
-          vm.Formulario.executivo = fluigService.getUsuarios(vm.Formulario.cliente.executivo)[0];
+          if (vm.Formulario.cliente.executivo) {
+            vm.Formulario.executivo = fluigService.getUsuarios(vm.Formulario.cliente.executivo)[0];
+          }
+
+          vm.Formulario.itensSellinIt.forEach(itemSellinIt => {
+            vm.calculaItemErp(itemSellinIt)
+          })
+
+          vm.Formulario.itensSellout.forEach(itemSellout => {
+            vm.calculaItemErp(itemSellout)
+          })
         }
       }
 
@@ -275,61 +370,80 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         ]
       }
       vm.changeItemSellout = function changeItemSellout(item, index) {
-        vm.calculaItemErp(item);
+        if (item.item.codigo) {
+          vm.calculaItemErp(item);
+        }
       }
 
-      vm.calculaItemErp = function (item) {
-        if (item.item) {
+      vm.changeItemSellinIt = function changeItemSellinIt(item, index) {
+        if (item.item.codigo) {
+          vm.calculaItemErp(item);
+        }
+      }
+
+      vm.calculaItemErp = function (item, loadContainer) {
+        if (item.item.codigo && item.alterado) {
           if (item.srpInicial && item.srpSugerido) {
-            // let valores = erpService.calculaItemErp(item.item.codigo, item.srpInicial, item.srpSugerido)[0];
 
-            vm.loading.show();
+            item.loading = true;
 
+            vm.Errors = [];
+            
             erpService.calculaItemErp(item.item.codigo, vm.Formulario.cliente.codigo, item.srpInicial, item.srpSugerido).then(result => {
 
-              // })
+              item.alterado = false;
+              item.loading = false;
 
-              // $http.get(`/api/public/ecm/dataset/search?datasetId=totvs_calcula_item&filterFields=codCliente,${vm.Formulario.cliente.codigo},codItem,${item.item.codigo},srpInicial,${item.srpInicial},srpSugerido,${item.srpSugerido}`)
-              // .then((result) => {
-
-              vm.loading.hide();
-
-              console.log(result);
-              // console.log(valores);
+              if (result[0].erro) {
+                let msg = `Ocorreu um erro ao calcular o item. Não será possível iniciar a solicitação \n\n ${result[0].erro}`
+                FLUIGC.message.error({
+                  message: msg,
+                  title: 'Oops'
+                });
+                vm.Errors.push(msg);
+                return;
+              }
 
               let valores = fluigService.fixDataset(result);
 
-              item.netInicial = valores[0].netInicial;
-              item.netSugerido = valores[0].netSugerido;
-              item.gpInicial = valores[0].gpInicial;
-              item.gpSugerido = valores[0].gpSugerido;
-              item.dolar = valores[0].dolar;
-              item.rebateUnit = item.netSugerido - item.netInicial;
+              if (valores.length == 0) {
+                FLUIGC.message.error({
+                  message: 'Não foi possível calcular o item no ERP',
+                  title: 'Oops'
+                }, (result) => {
+
+                });
+                return;
+              }
+
+              item.netInicial = parseFloat(valores[0].netInicial.toFixed(4));
+              item.netSugerido = parseFloat(valores[0].netSugerido.toFixed(4));
+              item.gpInicial = parseFloat(valores[0].gpInicial.toFixed(4));
+              item.gpSugerido = parseFloat(valores[0].gpSugerido.toFixed(4));
+              item.dolar = parseFloat(valores[0].dolar.toFixed(4));
+              item.rebateUnit = parseFloat(Number(item.netInicial - item.netSugerido).toFixed(4));
 
               vm.calculaRebateTotal(item);
             }, (error) => {
-              loading.hide();
+              item.alterado = false;
+              item.loading = false;
+              FLUIGC.loading('.panel-heading').hide()
             })
           }
-        } else {
-          item.netInicial = 0;
-          item.netSugerido = 0;
-          item.gpInicial = 0;
-          item.gpSugerido = 0;
-          item.rebateUnit = 0;
-
-          vm.calculaRebateTotal(item);
         }
       }
 
       vm.calculaRebateTotal = function calculaRebateTotal(item) {
         item.rebateTotal = item.rebateUnit * item.qtde;
+        item.rebateTotal = parseFloat(item.rebateTotal.toFixed(4));
         vm.calculaTotais();
       }
 
       vm.calculaTotalRateio = function calculaTotalRateio() {
         vm.Formulario.totalRateio = 0;
         vm.Formulario.rateioCategoria.forEach(r => { vm.Formulario.totalRateio += r.perc });
+
+        vm.Formulario.totalRateio = parseFloat(vm.Formulario.totalRateio.toFixed(4));
       }
 
       vm.changeTipoAcao = function changeTipoAcao() {
@@ -343,8 +457,8 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.Formulario.itensSpiffTg = [];
         vm.calculaTotais();
 
-        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.codigo) {
-          switch (vm.Formulario.tipoAcao.codigo) {
+        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+          switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.incluiItem(vm.Formulario.itensSellout);
               break
@@ -383,33 +497,101 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       vm.calculaTotalDuplicatas = function calculaTotalDuplicatas() {
         let total = 0;
         vm.Formulario.duplicatas.forEach(d => {
-          total += d.valorAntecipa || 0;
+          total += Number(d.valorAntecipa) || 0;
+          d.saldoAposAbatimento = Number(d.valorSaldo) - Number(d.valorAntecipa);
         });
-        vm.Formulario.difValorLiberado = vm.Formulario.totalLiberado - total;
+        
+        total = parseFloat(total.toFixed(4));
+
+        vm.Formulario.difValorLiberado = vm.Formulario.valorLiberado - vm.Formulario.valorAntecipacao - total;
       }
 
       vm.incluiItem = function incluiItem(obj) {
         obj.push({
           data: new Date().getTime(),
-          usuario: vm.Usuario
+          usuario: vm.Usuario,
+          qtde: 0,
+          vlTotal: 0,
+          rebateTotal: 0,
+          perc: 0,
+          gpInicial: 0,
+          gpSugerido: 0,
+          srpInicial: 0,
+          srpSugerido: 0,
+          netInicial: 0,
+          netSugerido: 0,
+          rebateUnit: 0,
+          dolar: 0
+
         });
       };
 
-      vm.removeChild = function removeChild(Array, $index) {
+      vm.removeChild = function removeChild(Array, item) {
         FLUIGC.message.confirm({
           message: 'Deseja excluir esse registro?',
           title: 'Excluir'
         }, (result) => {
           if (result) {
-            Array.splice($index, 1);
+            Array.splice(Array.indexOf(item), 1);
+            // Array.splice($index, 1);
             $scope.$apply();
           }
         });
       };
 
       vm.buscaDuplicatas = function buscaDuplicatas() {
+
+        let loading = FLUIGC.loading(`#collapseSelecionarDuplicatas`);
+
+        loading.show();
+
+        vm.Formulario.saldoTitulos = 0;
+        vm.Formulario.difValorLiberado = 0;
+        vm.Formulario.valorAntecipacao = 0;
+
         erpService.getTitulosCliente(vm.Formulario.cliente.codigo).then(duplicatas => {
-          vm.Formulario.duplicatas = duplicatas;
+
+          loading.hide();
+
+          if (duplicatas[0].erro) {
+            let msg = `Ocorreu um erro ao buscar as duplicatas. Não será possível movimentar a solicitação \n\n ${duplicatas[0].erro}`;
+            FLUIGC.message.error({
+              message: msg,
+              title: 'Oops'
+            });
+
+            vm.Errors.push(msg);
+            return;
+          }
+
+          duplicatas.forEach(duplicata => {
+            regDuplicata = vm.Formulario.duplicatas.filter(d => d.numTitulo == duplicata.numTitulo)[0];
+
+            if (!regDuplicata) {
+              vm.Formulario.duplicatas.push(duplicata);
+            } else {
+              regDuplicata.codCliente = duplicata.codCliente;
+              regDuplicata.codEspec = duplicata.codEspec;
+              regDuplicata.codEstab = duplicata.codEstab;
+              regDuplicata.codSerie = duplicata.codSerie;
+              regDuplicata.matriz = duplicata.matriz;
+              regDuplicata.dataEmissao = duplicata.dataEmissao;
+              regDuplicata.dataVencto = duplicata.dataVencto;
+              regDuplicata.numTitulo = duplicata.numTitulo;
+              regDuplicata.parcela = duplicata.parcela;
+              regDuplicata.valorOriginal = duplicata.valorOriginal;
+              regDuplicata.valorSaldo = duplicata.valorSaldo;
+            }
+
+            vm.Formulario.saldoTitulos += Number(duplicata.valorSaldo);
+          })
+
+          if (vm.Formulario.saldoTitulos < vm.Formulario.valorLiberado) {
+            vm.Formulario.valorAntecipacao = vm.Formulario.valorLiberado - vm.Formulario.saldoTitulos;
+            vm.Formulario.duplicatas.forEach(titulo => { titulo.valorAntecipa = titulo.valorSaldo });
+          }
+
+          vm.calculaTotalDuplicatas();
         })
       }
 
@@ -418,12 +600,12 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.Formulario.gpMedioSugerido = 0;
         let qtdItem = 0;
 
-        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.codigo) {
-          switch (vm.Formulario.tipoAcao.codigo) {
+        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+          switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.Formulario.itensSellout.forEach(it => {
-                vm.Formulario.valorTotalVerba += it.rebateTotal;
-                vm.Formulario.gpMedioSugerido += it.gpSugerido;
+                vm.Formulario.valorTotalVerba += it.rebateTotal || 0;
+                vm.Formulario.gpMedioSugerido += it.gpSugerido || 0;
                 qtdItem++;
               })
               vm.Formulario.gpMedioSugerido = vm.Formulario.gpMedioSugerido / qtdItem;
@@ -432,17 +614,17 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'sellin':
               if (vm.Formulario.tipoSellin == 'item') {
                 vm.Formulario.itensSellinIt.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.rebateTotal;
-                  vm.Formulario.gpMedioSugerido += it.gpSugerido;
+                  vm.Formulario.valorTotalVerba += it.rebateTotal || 0;
+                  vm.Formulario.gpMedioSugerido += it.gpSugerido || 0;
                   qtdItem++;
                 })
                 vm.Formulario.gpMedioSugerido = vm.Formulario.gpMedioSugerido / qtdItem;
               } else {
                 vm.Formulario.itensSellinTg.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.vlTotal;
+                  vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
                 vm.Formulario.itensSellinTgAc.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.vlTotal;
+                  vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
               }
 
@@ -451,11 +633,11 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'vpc':
               if (vm.Formulario.tipoVpc == 'eventos') {
                 vm.Formulario.itensVpcEvt.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.vlTotal;
+                  vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
               } else {
                 vm.Formulario.itensVpcOutros.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.vlTotal;
+                  vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
               }
 
@@ -464,22 +646,34 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.Formulario.itensSpiffIt.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.vlTotal;
+                  vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
               } else {
                 vm.Formulario.itensSpiffTg.forEach(it => {
-                  vm.Formulario.valorTotalVerba += it.vlTotal;
+                  vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
               }
 
               break
           }
         }
+      }
 
+      vm.incluirEmailNotificacao = function incluirEmailNotificacao() {
+        vm.Formulario.emailsCliente.push(
+          {
+            iniAcao: vm.etapaNotificacao < 2,
+            fimAcao: vm.etapaNotificacao < 3,
+            evidencia: vm.etapaNotificacao < 4,
+            envioND: vm.etapaNotificacao < 5,
+            pagamento: vm.etapaNotificacao < 6
+          }
+        )
       }
 
       vm.calculaTarget = function calculaTarget(item) {
         item.vlTotal = item.target * item.perc;
+        item.vlTotal = parseFloat(item.vlTotal.toFixed(4));
         vm.calculaTotais();
       }
 
@@ -641,6 +835,19 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         }, (error) => {
           console.log(error);
         });
+      };
+
+      vm.sendChatMessage = function sendChatMessage() {
+        vm.Formulario.chat.push({
+          texto: vm.chatMessage,
+          time: new Date().getTime(),
+          user: vm.Params.user,
+          userName: vm.Usuario.colleagueName
+        })
+
+        console.log(vm.Formulario.chat)
+
+        vm.chatMessage = null;
       }
 
       vm.guid = function guid() {
@@ -654,4 +861,17 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
     }
-  ]);
+  ])
+
+  .directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+      element.bind("keydown keypress", function (event) {
+        if (event.which === 13) {
+          scope.$apply(function () {
+            scope.$eval(attrs.ngEnter);
+          });
+          event.preventDefault();
+        }
+      });
+    };
+  })

@@ -31,6 +31,9 @@ function callDatasul(programa, metodo, json, tenantId, properties, usuario) {
 
   const jsonParams = JSON.stringify(params);
 
+  log.info('*** callDatasul');
+  log.info(jsonParams)
+
   const token = client.userLogin(usuario);
 
   let resp;

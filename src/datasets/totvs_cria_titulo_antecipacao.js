@@ -27,20 +27,64 @@ function onMobileSync(user) {
 }
 
 function buscaDataset(fields, constraints, sortFields) {
+
+  log.info("*** totvs_cria_titulo_antecipacao 1");
+
   let params = getConstraints(constraints);
+
+  log.info("*** totvs_cria_titulo_antecipacao 2");
 
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  // const json = jsonLocal();
-  const json = callDatasul("esp/criaAntecipacao.p", "piCria", params, null, properties);
+  log.info("*** totvs_cria_titulo_antecipacao 3");
 
-  return montaDataset(json.ttErro, json.ttItem, campos, display);
+  let solicitacao = getDataset('marketing_abertura_verba', null, [
+    { field: 'solicitacao', value: params.solicitacao }
+  ])[0];
+  let titulos = getDataset('marketing_abertura_verba', null, [
+    { field: 'documentid', value: solicitacao.documentid },
+    { field: 'tablename', value: 'duplicatas' },
+  ]);
+
+  let ttParam = [{ solicitacao: String(solicitacao.solicitacao), valorTotal: String(solicitacao.valorLiberado) }];
+  let ttTitulos = [];
+
+  log.info("*** totvs_cria_titulo_antecipacao 4");
+
+  titulos.forEach(titulo => {
+    if (Number(titulo.titulo_valorAntecipa) > 0) {
+      ttTitulos.push({
+        codEstab: String(titulo.titulo_codEstab),
+        codEspec: String(titulo.titulo_codEspec),
+        codSerie: String(titulo.titulo_codSerie),
+        numTitulo: String(titulo.titulo_numTitulo),
+        parcela: String(titulo.titulo_parcela),
+        valorAntecipado: String(titulo.titulo_valorAntecipa)
+      })
+    }
+  })
+
+  log.info("*** totvs_cria_titulo_antecipacao ttParam: " + JSON.stringify(ttParam));
+  log.info("*** totvs_cria_titulo_antecipacao ttTitulos: " + JSON.stringify(ttTitulos));
+
+  // const json = jsonLocal();
+  let json;
+  try {
+    json = callDatasul("esp/criaAntecipacao.p", "piCria", { ttParam, ttTitulos }, null, properties);
+  } catch (error) {
+    json = { ttErro: [{ mensagem: String(error) }] }
+  }
+
+  log.info("*** totvs_cria_titulo_antecipacao json: " + JSON.stringify(json));
+
+  return montaDataset(json.ttErro, json.ttRetorno, campos, display);
 }
 
-/*$$ partials/getConstraints.js $$*/
+/*$$ partials/getConstraintsParams.js $$*/
 /*$$ partials/callDatasul.js $$*/
 /*$$ partials/montaDataset.js $$*/
+/*$$ partials/getDataset.js $$*/
 
 function jsonLocal() {
   return {
@@ -56,7 +100,7 @@ function jsonLocal() {
         rebateUnit: 100,
         rebateTotal: 100,
         dolar: 4.1
-        
+
       }
     ]
   };

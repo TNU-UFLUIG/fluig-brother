@@ -1,0 +1,44 @@
+<table hidden tablename="chat" noaddbutton="true" nodeletebutton="true">
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody ng-non-bindable>
+    <tr ng-repeat="msg in vm.Formulario.chat">
+      <td>
+        <input type="hidden" name="msg_texto" ng-value="msg.texto">
+        <input type="hidden" name="msg_user" ng-value="msg.user">
+        <input type="hidden" name="msg_userName" ng-value="msg.userName">
+        <input type="hidden" name="msg_time" ng-value="msg.time">
+        <input type="hidden" name="msg_secaoId" ng-value="msg.secaoId">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="type_msg" ng-show="vm.regras.enableObsInternas">
+  <div class="input_msg_write">
+    <input ng-model="vm.chatMessage" name="chatMessage" id="chatMessage" type="text" class="write_msg"
+      placeholder="Escreva seu comentário e tecle Enter para enviar" ng-enter="vm.sendChatMessage()" />
+  </div>
+</div>
+
+<div class="panel-body">
+  <div class="row fs-md-space" ng-repeat="msg in vm.Formulario.chat | orderBy:'time':true">
+    <div ng-class="{'col-sm-offset-1': msg.user == vm.Params.user }" class="col-sm-11">
+      <div class="card">
+        <div class="card-body"
+          ng-class="{'bg-default': msg.user == vm.Params.user, 'bg-primary': msg.user != vm.Params.user }">
+          <p class="card-text">{{msg.texto}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">{{msg.user == vm.Params.user ? 'Você' : msg.userName}} escreveu em
+            {{msg.time | date : 'medium'}}</h6>
+
+          <span ng-if="msg.user == vm.Params.user" ng-click="vm.removeChild(vm.Formulario.chat, msg)"
+            class="flaticon flaticon-trash icon-md fs-cursor-pointer"
+            style="position: absolute; right: 10px; top: 10px"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

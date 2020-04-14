@@ -15,3 +15,5 @@ locale.file.base.name=brother_documentacao_marketing
 application.resource.js.1=/brother_lib/js/vendor.min.js
 application.resource.js.2=/brother_lib/js/script.min.js
 application.resource.js.3=js/script.min.js
+application.resource.css.1=/brother_lib/css/main.css
+application.resource.css.2=/css/main.css

@@ -2,25 +2,61 @@
   <div class="col-sm-4" ng-show="vm.Formulario.valorTotalVerba">
     <div class="form-group">
       <label class="control-label">Valor Total da Verba</label>
-      <h1>{{vm.Formulario.valorTotalVerba | currency}}</h1>
+      <h1>{{vm.Formulario.valorTotalVerba || 0 | currency}}</h1>
 
     </div>
   </div>
   <div class="col-sm-4" ng-show="vm.Formulario.gpMedioSugerido">
     <div class="form-group">
       <label class="control-label">GP Médido Sugerido</label>
-      <h1>{{vm.Formulario.gpMedioSugerido | percentage}}</h1>
+      <h1>{{vm.Formulario.gpMedioSugerido || 0 | percentage}}</h1>
       <input type="hidden" name="gpMedioSugerido_f" ng-value="vm.Formulario.gpMedioSugerido | percentage">
       <input type="hidden" name="gpMedioSugerido" ng-value="vm.Formulario.gpMedioSugerido">
     </div>
   </div>
+
+  <div class="col-sm-4" ng-show="vm.Formulario.valorLiberado">
+    <div class="form-group">
+      <label class="control-label">Valor Liberado para Pagamento</label>
+      <h1>{{vm.Formulario.valorLiberado || 0 | currency}}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <label class="control-label">Nome da Ação</label>
+    <h4>{{vm.Formulario.nomeAcao}}</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Cliente</label>
+      <h4>{{vm.Formulario.cliente.displaykey || '-' | uppercase}}</h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Executivo de Contas</label>
+      <h4>{{vm.Formulario.executivo.nome || '-' | uppercase}}</h4>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6">
+    <div class="form-group animation">
+      <label class="control-label">Canal</label>
+      <h4>{{vm.Formulario.cliente.subcanal || '-' | uppercase}}</h4>
+    </div>
+  </div>
+
 </div>
 
 <div class="row">
   <div class="col-md-4 col-sm-6">
     <div class="form-group">
       <label class="control-label">Nº de Controle/Registro</label>
-      <h4>{{vm.Formulario.numControle}}</h4>
+      <h4>{{vm.Formulario.solicitacao || '-'}}</h4>
       <input type="hidden" name="numControle" ng-value="vm.Formulario.numControle">
       <input type="hidden" name="numControleAno" ng-value="vm.Formulario.numControleAno">
       <input type="hidden" name="numControleSeq" ng-value="vm.Formulario.numControleSeq">
@@ -30,8 +66,7 @@
     <div class="form-group">
       <label class="control-label">Data da Solicitação</label>
       <h4>{{vm.Formulario.dataAbertura | date:'fullDate' | uppercase}}</h4>
-      <input type="hidden" name="dataAbertura_f"
-        ng-value="vm.Formulario.dataAbertura | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataAbertura_f" ng-value="vm.Formulario.dataAbertura | date:'fullDate' | uppercase">
       <input type="hidden" name="dataAbertura" ng-value="vm.Formulario.dataAbertura">
     </div>
   </div>
@@ -51,37 +86,15 @@
 <div class="row">
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
-      <label class="control-label">Cliente</label>
-      <h4>{{vm.Formulario.cliente.displaykey || '-' | uppercase}}</h4>
-    </div>
-  </div>
-  <div class="col-md-4 col-sm-6">
-    <div class="form-group animation">
-      <label class="control-label">Executivo de Contas</label>
-      <h4>{{vm.Formulario.executivo.nome || '-' | uppercase}}</h4>
-    </div>
-  </div>
-  <div class="col-md-4 col-sm-6">
-    <div class="form-group animation">
-      <label class="control-label">Canal</label>
-      <h4>{{vm.Formulario.cliente.canal || '-' | uppercase}}</h4>
-    </div>
-  </div>
-
-</div>
-
-<div class="row">
-  <div class="col-md-4 col-sm-6">
-    <div class="form-group animation">
       <label class="control-label">Tipo de Ação</label>
       <h4>
-        {{vm.Formulario.tipoAcao.descricao  || '-' | uppercase}}
-        <span ng-if="vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin=='item'"> / ITEM</span>
-        <span ng-if="vm.Formulario.tipoAcao.codigo=='sellin' && vm.Formulario.tipoSellin=='target'"> / TARGET</span>
-        <span ng-if="vm.Formulario.tipoAcao.codigo=='spiff' && vm.Formulario.tipoSpiff=='item'"> / ITEM</span>
-        <span ng-if="vm.Formulario.tipoAcao.codigo=='spiff' && vm.Formulario.tipoSpiff=='target'"> / TARGET</span>
-        <span ng-if="vm.Formulario.tipoAcao.codigo=='vpc' && vm.Formulario.tipoVpc=='eventos'"> / EVENTOS</span>
-        <span ng-if="vm.Formulario.tipoAcao.codigo=='vpc' && vm.Formulario.tipoVpc=='outros'"> / OUTROS</span>
+        {{vm.Formulario.tipoAcao.displaykey  || '-' | uppercase}}
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='item'"> / ITEM</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='target'"> / TARGET</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff=='item'"> / ITEM</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff=='target'"> / TARGET</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc=='eventos'"> / EVENTOS</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc=='outros'"> / OUTROS</span>
 
       </h4>
     </div>
@@ -96,6 +109,8 @@
     <div class="form-group animation">
       <label class="control-label">Término da Ação</label>
       <h4>{{vm.Formulario.terminoAcao  || '-' | date:'fullDate' | uppercase}}</h4>
+      <i ng-if="vm.Formulario.dataEncerramentoAntecipado">Encerramento antecipado para
+        {{vm.Formulario.dataEncerramentoAntecipado}}</i>
     </div>
   </div>
 </div>
@@ -104,14 +119,14 @@
   <div class="col-md-4 col-sm-6">
     <div class="form-group">
       <label class="control-label">Status</label>
-      <h4>{{vm.Formulario.status | uppercase}}</h4>
+      <h4>{{vm.Formulario.status || 'INÍCIO' | uppercase}}</h4>
       <input type="hidden" name="status" ng-value="vm.Formulario.status">
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
       <label class="control-label">Conta Contábil</label>
-      <h4>{{vm.Formulario.tipoAcao.contaContabil  || '-' | uppercase}}</h4>
+      <h4>{{vm.Formulario.tipoAcao.contaContabil.displaykey  || '-' | uppercase}}</h4>
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
@@ -128,7 +143,7 @@
   <div class="col-md-12">
     <div class="form-group">
       <label class="control-label">Descrição Detalhada da Ação</label>
-      <h4 style="white-space: pre-wrap;">{{vm.Formulario.descricaoDetalhada || '-'}}</h4>
+      <h4 style="white-space: pre-line;">{{vm.Formulario.descricaoDetalhada || '-'}}</h4>
     </div>
   </div>
 </div>
@@ -183,7 +198,7 @@
             {{itemSellout.dolar | currency:'U$'}}
           </td>
           <td>
-            {{itemSellout.ccusto}}
+            {{itemSellout.item.ccusto}}
           </td>
         </tr>
       </tbody>
@@ -223,8 +238,8 @@
             <p>{{itemSellinIt.netSugerido | currency}}</p>
           </td>
           <td>
-            <p>{{itemSellinIt.gpInicial | currency}}</p>
-            <p>{{itemSellinIt.gpSugerido | currency}}</p>
+            <p>{{itemSellinIt.gpInicial | percentage}}</p>
+            <p>{{itemSellinIt.gpSugerido | percentage}}</p>
           </td>
 
           <td>

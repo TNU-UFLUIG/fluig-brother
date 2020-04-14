@@ -8,18 +8,9 @@ angular
 
       vm.inicia = function inicia() {
 
-        vm.loading = FLUIGC.loading('body');
-
-        if ($window.location.href.indexOf("/p/") > 0) {
-          $http.get('/portal/p/api/servlet/logout.do')
-            .then(response => {
-              $window.location.href = $window.location.href.replace("/p/", "/");
-            });
-        }
         vm.Param = {
-          guid: $routeParams.guid || '47a2a3ef$d59e$e76f$c05f$efb1f5a0bc98'
+          guid: $routeParams.guid
         };
-        console.log(vm.Param);
         if (vm.Param.guid) {
           vm.buscaSolicitacao();
         }
@@ -32,31 +23,120 @@ angular
 
       vm.buscaSolicitacao = function buscaSolicitacao() {
 
-        vm.loading.show();
+        FLUIGC.loading("body").show();
+
+        vm.Formulario = null;
+
+        $http.get(`/brother-api/v1/marketing/textos`).then((response) => {
+          vm.Textos = response.data;
+          // vm.showConfirmPage();
+        }, (error) => {
+          $log.log(error);
+        });
 
         $http.get(`/brother-api/v1/marketing/search/${vm.Param.guid}`)
           .then((response) => {
-            vm.loading.hide();
+            FLUIGC.loading("body").hide();
             vm.done = true;
-            vm.step = 1;
-            vm.currentStep = 2;
+            // vm.show = true;
+            vm.Params = {};
 
             vm.Formulario = response.data;
 
-            console.log(vm.Formulario);
+            vm.setRegras();
 
-            if (!vm.Formulario) {
-              return;
-            }
           }, (error) => {
             vm.done = true;
             $log.log(error);
           });
       };
 
-      vm.salvar = function salvar() {
+      vm.showConfirmPage = function showConfirmPage() {
+        var settings = {
+          element: '#message-page',
+          target: '#form',
+          title: "Solicitação enviada",
+          description: "Acesse esta página no futuro para acompanhar o status da solicitação",
+          header: 'O que você deseja fazer?',
+          transitionEffect: true,
+          messageType: 'success',
+          links: [{
+            description: 'Acompanhar Status',
+            bind: 'data-close-message-page',
+            href: `#!/${vm.Param.guid}`
+          }, {
+            description: 'Encerrar',
+            href: `https://www.brother.com.br/`
+          }],
+          actionClose: {
+            label: "Voltar",
+            bind: 'data-close-message-page',
+            href: `#!/${vm.Param.guid}`
+          }
+        };
 
-        console.log("vm.salvar", vm.alterado);
+        messagePage = FLUIGC.messagePage(settings);
+        messagePage.show();
+
+        $(document).on('click', '[data-close-message-page]', function (ev) {
+          messagePage.hide();
+        });
+
+      }
+      vm.setRegras = function setRegras() {
+        if (!vm.Formulario) {
+          return;
+        }
+
+        switch (vm.Formulario.currentStepPortal) {
+          case 0:
+            vm.regras = {
+              enableEnvioEvidencias: false, showEnvioEvidencias: false, enableND: false,
+              showND: false, enablePagamento: false, showPagamento: false
+            }
+            break;
+          case 1:
+            vm.regras = {
+              enableEnvioEvidencias: true, showEnvioEvidencias: true, enableND: false,
+              showND: false, enablePagamento: false, showPagamento: false
+            }
+            break;
+          case 2:
+            vm.regras = {
+              enableEnvioEvidencias: false, showEnvioEvidencias: true, enableND: false,
+              showND: false, enablePagamento: false, showPagamento: false
+            }
+            break;
+          case 3:
+            vm.regras = {
+              enableEnvioEvidencias: false, showEnvioEvidencias: true, enableND: true,
+              showND: true, enablePagamento: false, showPagamento: false
+            }
+            break;
+          case 4:
+            vm.regras = {
+              enableEnvioEvidencias: false, showEnvioEvidencias: true, enableND: false,
+              showND: true, enablePagamento: false, showPagamento: false
+            }
+            break;
+          case 5:
+            vm.regras = {
+              enableEnvioEvidencias: false, showEnvioEvidencias: true, enableND: false,
+              showND: true, enablePagamento: false, showPagamento: true
+            }
+            break;
+        }
+
+        if (vm.Formulario.status == "CANCELADA") {
+          vm.regras.enableEnvioEvidencias = false;
+          vm.regras.enableND = false;
+          vm.regras.enablePagamento = false;
+        }
+
+        vm.Params.edit = vm.regras.enableEnvioEvidencias || vm.regras.enableND || vm.regras.enablePagamento;
+      }
+
+      vm.salvar = function salvar(loading) {
 
         if (!vm.alterado) {
           return;
@@ -72,21 +152,22 @@ angular
           }
         });
 
-        console.log(notUploaded);
-
         if (notUploaded) {
           return;
         }
 
-        vm.loading.show();
+        if (loading) FLUIGC.loading("body").show();
 
         $http.post(`/brother-api/v1/marketing/update`, vm.Formulario, { headers: { 'guid': vm.Param.guid } })
           .then((response) => {
             console.log(response);
-            vm.loading.hide();
+            if (loading) FLUIGC.loading("body").hide();
             // vm.Formulario = response.data;
+            vm.showConfirmPage();
+            vm.setRegras();
           }, (error) => {
             vm.done = true;
+            if (loading) FLUIGC.loading("body").hide();
             $log.log(error);
           });
       };
@@ -101,7 +182,8 @@ angular
         files.forEach(file => {
           console.log(file);
           file.nome = file.name;
-          file.descricao = file.name;
+          // file.descricao = file.name;
+          file.tipo = file.type;
           vm.Formulario[tablename].push(file);
           vm.upload(file);
         });
@@ -121,10 +203,14 @@ angular
           }
         }).then(function (resp) {
           file.documentid = resp.data.documentid;
+          file.numero = "";
+          file.descricao = "";
           file.filename = resp.data.filename;
           file.url = resp.data.url;
           file.description = resp.data.description;
+          file.version = resp.data.version;
           file.uploaded = true;
+          file.removed = false;
 
           console.log(file);
 
@@ -150,12 +236,54 @@ angular
       };
 
       vm.enviar = function enviar() {
+
+        let Errors = [];
+
+        if (vm.regras.enableEnvioEvidencias) {
+          vm.Formulario.evidencias.forEach(arquivo => {
+            if (!arquivo.descricao) {
+              Errors.push(`<li>Informe a descrição no arquivo ${arquivo.nome}</li>`);
+            }
+          })
+        }
+
+        if (vm.regras.enableND) {
+          vm.Formulario.nd.forEach(arquivo => {
+            if (!arquivo.descricao) {
+              Errors.push(`<li>Informe a descrição no arquivo ${arquivo.nome}</li>`);
+            }
+            if (!arquivo.numero) {
+              Errors.push(`<li>Informe o número da ND no arquivo ${arquivo.nome}</li>`);
+            }
+          })
+        }
+
+        if (Errors.length > 0) {
+          FLUIGC.toast({
+            title: 'Oops.. ocorreram erros ao enviar seus dados:',
+            message: `<ul>${Errors.join('')}</ul>`,
+            type: 'danger'
+          });
+          return;
+        }
+
         FLUIGC.message.confirm({ message: 'Confirma o envio dos arquivos?', title: 'Enviar documentação' }, result => {
           if (result) {
-            vm.Formulario.envioEvidenciasConcluido = true;
+
+            vm.Formulario.currentStepPortal++;
+
+            if (vm.regras.enableEnvioEvidencias) {
+              vm.Formulario.envioEvidenciasConcluido = true;
+            }
+
+            if (vm.regras.enableND) {
+              vm.Formulario.envioNDConcluido = true;
+            }
+
             vm.alterado = true;
+            vm.setRegras();
             $scope.$apply();
-            vm.salvar();
+            vm.salvar(true);
           }
         });
       }

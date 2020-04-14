@@ -20,13 +20,14 @@
 
 				<ul class="nav nav-tabs clearfix" role="tablist" ng-init="vm.tab=1">
 					<li ng-class="{'active':vm.tab==1}" ng-click="vm.tab=1"><a href="#">Textos dos E-mails</a></li>
-					<li ng-class="{'active':vm.tab==2}" ng-click="vm.tab=2"><a href="#">Destinatários Grupo Brother</a></li>
-					<li ng-class="{'active':vm.tab==3}" ng-click="vm.tab=3"><a href="#">Campos do E-mail</a></li>
+					<li ng-class="{'active':vm.tab==2}" ng-click="vm.tab=2"><a href="#">Textos do Portal</a></li>
+					<li ng-class="{'active':vm.tab==3}" ng-click="vm.tab=3"><a href="#">Destinatários Grupo Brother</a></li>
+					<li ng-class="{'active':vm.tab==4}" ng-click="vm.tab=4"><a href="#">Campos do E-mail</a></li>
 				</ul>
 
 				<div ng-show="vm.tab==1" class="animation">
 					<div class="panel-body">
-						<!-- partial:partials/textos.html -->
+						<!-- partial:partials/textosEmail.html -->
 						<!-- partial -->
 					</div>
 
@@ -34,12 +35,20 @@
 
 				<div ng-show="vm.tab==2" class="animation">
 					<div class="panel-body">
+						<!-- partial:partials/textosPortal.html -->
+						<!-- partial -->
+					</div>
+
+				</div>
+
+				<div ng-show="vm.tab==3" class="animation">
+					<div class="panel-body">
 						<!-- partial:partials/destinatarios.html -->
 						<!-- partial -->
 					</div>
 				</div>
 
-				<div ng-show="vm.tab==3" class="animation">
+				<div ng-show="vm.tab==4" class="animation">
 					<div class="panel-body">
 						<!-- partial:partials/camposSolicitacao.html -->
 						<!-- partial -->

@@ -36,11 +36,13 @@ DEF TEMP-TABLE ttParam
     FIELD obsAprovPresidenciaVp         as char.
 
 def temp-table ttRateioCategoria
+    field solicitacao           as char
     field categoriaCodigo       as char
     field categoriaDescricao    as char
     field perc                  as dec.
 
 def temp-table ttSellout
+    field solicitacao           as char
     field itemCodigo    as char
     field srpInicial    as dec
     field netInicial    as dec
@@ -53,6 +55,7 @@ def temp-table ttSellout
     field rebateTotal   as dec.
 
 def temp-table ttSellinItem
+    field solicitacao           as char
     field itemCodigo    as char
     field srpInicial    as dec
     field netInicial    as dec
@@ -65,6 +68,7 @@ def temp-table ttSellinItem
     field rebateTotal   as dec.
 
 def temp-table ttSellinTarget
+    field solicitacao           as char
     field descricao as char
     field target    as dec
     field qtde      as dec
@@ -73,6 +77,7 @@ def temp-table ttSellinTarget
     field vlTotal   as dec.
 
 def temp-table ttSellinTargetAc // aceleradores
+    field solicitacao           as char
     field descricao as char
     field target    as dec
     field qtde      as dec
@@ -81,12 +86,14 @@ def temp-table ttSellinTargetAc // aceleradores
     field vlTotal   as dec.
 
 def temp-table ttSpiffItem
+    field solicitacao           as char
     field itemCodigo    as char
     field spiffUnit     as dec
     field qtde          as dec
     field vlTotal       as dec.
 
 def temp-table ttSpiffTarget
+    field solicitacao           as char
     field foco      as char
     field target    as dec
     field qtde      as dec
@@ -94,6 +101,7 @@ def temp-table ttSpiffTarget
     field vlTotal   as dec.
 
 def temp-table ttVpcEvt
+    field solicitacao           as char
     field nomeEvento    as char
     field finalidade    as char
     field inicio        as date
@@ -102,6 +110,7 @@ def temp-table ttVpcEvt
     field vlTotal       as dec.
 
 def temp-table ttVpcOutros
+    field solicitacao           as char
     field tipo          as char
     field finalidade    as char
     field qtde          as dec
@@ -111,8 +120,8 @@ def temp-table ttVpcOutros
 DEF TEMP-TABLE ttStatus
     FIELD retorno       AS CHAR.
 
-DEFINE DATASET dsInput  FOR ttParam, ttItem, ttFamilia, ttEvento, ttInformacao, ttRateio.
-DEFINE DATASET dsOutput FOR ttErro.
+DEFINE DATASET dsInput  FOR ttParam, ttRateioCategoria, ttSellout, ttSellinItem, ttSellinTarget, ttSellinTargetAc, ttSpiffItem, ttSpiffTarget, ttVpcEvt, ttVpcOutros.
+DEFINE DATASET dsOutput FOR ttErro, ttStatus.
 
 PROCEDURE piCria:
 
@@ -121,18 +130,16 @@ PROCEDURE piCria:
 
     DATASET dsInput:READ-JSON("LONGCHAR", wsInput).
 
-    FIND FIRST ttParam NO-ERROR.
-    IF AVAIL ttParam THEN DO:
-         RUN pi-cria-fluxo.
-         create ttStatus.
-         assign ttStatus.retorno = "OK".
-    END.
-    ELSE DO:
-        CREATE ttErro.
-        ASSIGN ttErro.codigo = "0"
-               ttErro.mensagem = "Par�metros n�o informados".
-    END.
+    for each ttParam where ttParam.solicitacao <> "":
+        for each ttRateioCategoria where 
+            ttRateioCategoria.solicitacao = ttParam.solicitacao:
+
+        end.
+    end.
     
+    create ttStatus.
+    assign ttStatus.retorno = "OK".
+
     DATASET dsOutput:WRITE-JSON("LONGCHAR", wsOutput, FALSE).
 
 END PROCEDURE.

@@ -33,7 +33,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
-    { field: 'solicitacao', value: params.solicitacao }
+    { field: 'pendenteTotvs', value: 'S' }
   ]);
 
   // busca filhos e monta params 
@@ -158,6 +158,10 @@ function buscaDataset(fields, constraints, sortFields) {
           let value = String(objTable[`${paramTable.fieldPref}_${c.name}`] || '');
           obj[c.name] = String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : String(value);
         })
+
+        if (!ttParams[paramTable.tt]) {
+          ttParams[paramTable.tt] = [];
+        }
         ttParams[paramTable.tt].push(obj);
       })
     })
@@ -173,7 +177,20 @@ function buscaDataset(fields, constraints, sortFields) {
     log.info('*** totvs_atualiza_fluxo_marketing 1');
 
     // const json = jsonLocal();
-    json = callDatasul("esp/atualizaFluxoMarketing.p", "piCria", ttParams, null, properties);
+    try {
+      json = callDatasul("esp/atualizaFluxoMarketing.p", "piCria", ttParams, null, properties);
+    } catch (error) {
+      solicitacoes.forEach(solicitacao => {
+        if (solicitacao.statusIntegraTotvs != error) {
+          getDataset('fluig_atualiza_formulario', null, [
+            { field: 'campos', value: 'pendenteTotvs|statusIntegraTotvs|dataIntegraTotvs' },
+            { field: 'valores', value: `S|${String(error) || 'N/D'}|${String(new Date().getTime())}` },
+            { field: 'documentid', value: String(solicitacao.documentid) }
+          ])
+        }
+        
+      })
+    }
 
     log.info('*** totvs_atualiza_fluxo_marketing 2');
 
@@ -181,14 +198,17 @@ function buscaDataset(fields, constraints, sortFields) {
       log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
       json.ttStatus.forEach(status => {
 
-        log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao)
+        log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
 
-        let solicitacao = solicitacoes.filter(s => s.solicitacao == status.solicitacao)[0]
+        let solicitacao = solicitacoes.filter(s => s.solicitacao == status.solicitacao)[0];
+
+        log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
+        log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
 
         if (solicitacao) {
           getDataset('fluig_atualiza_formulario', null, [
-            { field: 'campos', value: 'pendenteTotvs' },
-            { field: 'valores', value: 'N' },
+            { field: 'campos', value: 'pendenteTotvs|statusIntegraTotvs|dataIntegraTotvs' },
+            { field: 'valores', value: `N|${status.retorno || 'N/D'}|${String(new Date().getTime())}` },
             { field: 'documentid', value: String(solicitacao.documentid) }
           ])
         }

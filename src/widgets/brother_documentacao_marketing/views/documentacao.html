@@ -1,175 +1,433 @@
-<div class="row">
-    <div class="col-sm-12">
+<div id="message-page"></div>
 
-        <div class="page-header fs-sm-space">
-            <div class="row">
-                <div class="col-md-8">
-                    <h2 class="fs-no-margin fs-ellipsis fs-full-width">Ação de Marketing</h2>
-                </div>
-                <div class="col-md-4" ng-if="!vm.finalizado">
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-success btn-lg" ng-click="vm.enviar()">Enviar</button>
+<form name="form" role="form" id="form">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="page-header fs-sm-space">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img width="200px" src="/brother_lib/images/logo.png">
+                    </div>
+                    <div ng-class="{'col-sm-4': vm.Params.edit, 'col-sm-8': !vm.Params.edit}">
+                        <h1 ng-class="{'text-center': vm.Params.edit, 'text-right': !vm.Params.edit}">Ação de Marketing
+                        </h1>
+                    </div>
+                    <div class="col-sm-4" ng-if="vm.Params.edit">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-success btn-lg" ng-click="vm.enviar()"
+                                ng-disabled="vm.loading">
+                                <span>{{vm.loading ? 'Salvando...' : 'Enviar'}}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <ul class="nav nav-tabs clearfix" role="tablist">
-            <li ng-class="{'active':vm.step==1}" ng-click="vm.currentStep>=1 ? vm.step=1 : null"><a>1. Envio de
-                    Evidências</a></li>
-            <li ng-class="{'active':vm.step==2, 'disabled': vm.currentStep < 2}"
-                ng-click="vm.currentStep>=2 ? vm.step=2 : null"><a>2. Envio de ND</a></li>
-            <li ng-class="{'active':vm.step==3, 'disabled': vm.currentStep < 3}"
-                ng-click="vm.currentStep>=3 ? vm.step=3 : null"><a>3. Informações de Pagamento</a></li>
-        </ul>
+            <div ng-if="vm.Formulario.status == 'CANCELADA'" class="alert alert-warning" role="alert">
+                <p>Solicitação cancelada!  </p>
+                <p>{{vm.Formulario.motivoCancelamento}}</p>
+            </div>
 
-        <div class="panel panel-default" ng-show="vm.step == 1">
-            <!-- <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Status</label>
-                        <h4>{{vm.Formulario.statusValidacaoEvid | uppercase}}</h4>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Data</label>
-                        <h4>{{vm.Formulario.dataValidacaoEvid | date:'fullDate' | uppercase}}</h4>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Responsável</label>
-                        <h4>{{vm.Formulario.userValidacaoEvid.colleagueName| uppercase}}</h4>
-                    </div>
-                </div>
-            </div> -->
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label">Valor Total da Verba</label>
-                            <h1 class="fs-no-margin">{{vm.Formulario.valorTotalVerba | currency}}</h1>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label">Resultado Apresentado</label>
-                            <h1 ng-if="vm.Formulario.envioEvidenciasConcluido" class="fs-no-margin">
-                                {{vm.Formulario.valorResultado | currency}}</h1>
+            <div class="panel-group" id="accordion">
 
-                            <div ng-if="!vm.Formulario.envioEvidenciasConcluido">
-                                <input type="text" class="form-control input-lg" name="valorResultado_i"
-                                    ng-model="vm.Formulario.valorResultado" fluig-money-mask ng-blur="vm.salvar()"
-                                    ng-change="vm.Formulario.diferencaResultado = vm.Formulario.valorResultado - vm.Formulario.valorTotalVerba;vm.alterado=true;">
+                <div class="panel panel-default" id="panelSolicitacao">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="collapse-icon fs-cursor-pointer"
+                                ng-class="{'up': !vm.regras.enableEnvioEvidencias && !vm.regras.enableND && !vm.regras.enablePagamento}"
+                                data-toggle="collapse" data-target="#collapseSolicitacao">
+                                Dados
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSolicitacao" class="panel-collapse collapse"
+                        ng-class="{'in': !vm.regras.enableEnvioEvidencias && !vm.regras.enableND && !vm.regras.enablePagamento}">
+                        <div class="panel-body">
+
+                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalDadosTexto" style="white-space: pre-line;">
+                                {{vm.Textos.portalDadosTexto}}
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="text-muted">Status</h3>
+                                    <h4>{{vm.Formulario.status}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="text-muted">Descrição da Ação</h3>
+                                    <h4>{{vm.Formulario.descricaoDetalhada}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h3 class="text-muted">Início da Ação</h3>
+                                    <h4>{{vm.Formulario.inicioAcao | date:'fullDate'}}</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3 class="text-muted">Término da Ação</h3>
+                                    <h4>{{vm.Formulario.terminoAcao | date:'fullDate'}}</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label">Diferença</label>
-                            <h1 class="fs-no-margin"
-                                ng-class="{'fs-color-danger':vm.Formulario.diferencaResultado > 0} ">
-                                {{vm.Formulario.diferencaResultado | currency}}</h1>
+                </div>
+
+                <div ng-show="vm.regras.showEnvioEvidencias" class="panel" id="panelEvidencias"
+                    ng-class="vm.regras.enableEnvioEvidencias ? 'panel-primary' : 'panel-default'">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="collapse-icon fs-cursor-pointer"
+                                ng-class="{'up': vm.regras.enableEnvioEvidencias}" data-toggle="collapse"
+                                data-target="#collapseEvidencias">
+                                1. Envio de Evidências
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseEvidencias" class="panel-collapse collapse"
+                        ng-class="{'in': vm.regras.enableEnvioEvidencias}">
+                        <div class="panel-body">
+                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalEvidenciasTexto && vm.regras.enableEnvioEvidencias" style="white-space: pre-line;">
+                                {{vm.Textos.portalEvidenciasTexto}}
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <h3 class="text-muted " for="valorResultado_i" class="control-label">
+                                            Resultado Apresentado</h3>
+                                        <div ng-if="vm.regras.enableEnvioEvidencias">
+                                            <input type="text" class="form-control input-lg" name="valorResultado_i"
+                                                ng-required="vm.regras.enableEnvioEvidencias"
+                                                fluig-error="form.valorResultado_i.$error"
+                                                ng-model="vm.Formulario.valorResultado" fluig-money-mask
+                                                ng-blur="vm.salvar()"
+                                                ng-change="vm.Formulario.diferencaResultado = vm.Formulario.valorResultado - vm.Formulario.valorTotalVerba;vm.alterado=true;">
+
+                                        </div>
+
+                                        <h2 ng-if="!vm.regras.enableEnvioEvidencias" class="fs-no-margin">
+                                            {{vm.Formulario.valorResultado | currency}}</h2>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <h3 class="text-muted" for="obsEnvioEvidencias" class="control-label">
+                                            Observações</h3>
+                                        <textarea ng-show="vm.regras.enableEnvioEvidencias"
+                                            fluig-error="form.obsEnvioEvidencias.$error" name="obsEnvioEvidencias"
+                                            elastic class="form-control input-lg"
+                                            placeholder="Observações sobre o envio das evidências"
+                                            ng-model="vm.Formulario.obsEnvioEvidencias" ng-change="vm.alterado = true"
+                                            ng-blur="vm.salvar()"
+                                            ng-value="vm.Formulario.obsEnvioEvidencias"></textarea>
+                                        <h4 ng-show="!vm.regras.enableEnvioEvidencias" style="white-space: pre-line;">
+                                            {{vm.Formulario.obsEnvioEvidencias || 'Sem observações'}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-3" ng-if="vm.regras.enableEnvioEvidencias">
+                                    <div class="drop-box fs-cursor-pointer"
+                                        ngf-select="vm.selectFiles('evidencias', $files)"
+                                        ngf-drop="vm.selectFiles('evidencias', $files)" ng-model="files"
+                                        ngf-multiple="true" ngf-drag-over-class="'dragover'">
+                                        <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
+                                    </div>
+                                </div>
+
+                                <div
+                                    ng-class="{'col-sm-9': vm.regras.enableEnvioEvidencias, 'col-sm-12': !vm.regras.enableEnvioEvidencias}">
+                                    <div class="fs-txt-center" ng-show="vm.Formulario.evidencias.length == 0">
+                                        <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
+                                    </div>
+                                    <div ng-show="vm.Formulario.evidencias.length > 0">
+                                        <h3 class="text-muted">Arquivos de Evidências</h3>
+                                        <table class="table table-striped"
+                                            ng-show="vm.Formulario.evidencias.length > 0">
+                                            <!-- <caption>Arquivos de Evidência</caption> -->
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="arquivo in vm.Formulario.evidencias"
+                                                    ng-if="!arquivo.removed">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-sm-1">
+                                                                <span ng-click="vm.removeArquivo(arquivo)"
+                                                                    ng-if="vm.regras.enableEnvioEvidencias && !arquivo.aceito"
+                                                                    class="flaticon icon-lg flaticon-trash fs-cursor-pointer "></span>
+
+                                                                <span ng-if="arquivo.aceito"
+                                                                    class="flaticon flaticon-done icon-lg text-success"></span>
+                                                            </div>
+                                                            <div class="col-sm-11">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <label>Descrição do Arquivo</label>
+                                                                        <input type="text"
+                                                                            ng-if="vm.regras.enableEnvioEvidencias && !arquivo.aceito"
+                                                                            class="form-control input-lg"
+                                                                            ng-model="arquivo.descricao"
+                                                                            ng-value="arquivo.descricao"
+                                                                            ng-change="vm.alterado = true"
+                                                                            ng-blur="vm.salvar()"
+                                                                            placeholder="Descrição do arquivo">
+                                                                        <h4 class="fs-no-margin"
+                                                                            ng-if="!vm.regras.enableEnvioEvidencias || arquivo.aceito">
+                                                                            {{arquivo.descricao}}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <a target="_blank" href="{{arquivo.url}}">
+                                                                            <h4>
+                                                                                <i
+                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivo.nome || 'Sem descrição'}}
+                                                                            </h4>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div style="padding-top: 10px">
+                                                                            <div ng-if="!arquivo.aceito && arquivo.motivoRecusa"
+                                                                                class="alert alert-warning"
+                                                                                role="alert">
+                                                                                <p>Arquivo Recusado. Motivo:
+                                                                                    {{arquivo.motivoRecusa}}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="obsEnvioEvidencias" class="control-label">Observações</label>
-                            <textarea ng-show="!vm.Formulario.envioEvidenciasConcluido"
-                                fluig-error="form.obsEnvioEvidencias.$error" name="obsEnvioEvidencias" elastic
-                                class="form-control input-lg"
-                                placeholder="Observações do cliente no envio das evidências"
-                                ng-model="vm.Formulario.obsEnvioEvidencias" ng-change="vm.alterado = true"
-                                ng-blur="vm.salvar()" ng-value="vm.Formulario.obsEnvioEvidencias"></textarea>
-                            <p ng-show="vm.Formulario.envioEvidenciasConcluido">
-                                {{vm.Formulario.obsEnvioEvidencias || 'Sem observações'}}</p>
+
+                <div ng-show="vm.regras.showND" class="panel" id="panelND"
+                    ng-class="vm.regras.enableND ? 'panel-primary' : 'panel-default'">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="collapse-icon fs-cursor-pointer" ng-class="{'up': vm.regras.enableND}"
+                                data-toggle="collapse" data-target="#collapseND">
+                                2. Envio de ND
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseND" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableND}">
+                        <div class="panel-body">
+                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalNDTexto && vm.regras.enableND" style="white-space: pre-line;">
+                                {{vm.Textos.portalNDTexto}}
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <h3 class="text-muted" class="control-label">Valor Liberado</h3>
+                                        <h2 class="fs-no-margin">{{vm.Formulario.valorLiberado | currency}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <h3 class="text-muted" for="obsEnvioND" class="control-label">Observações</h3>
+                                        <textarea ng-show="vm.regras.enableND" fluig-error="form.obsEnvioND.$error"
+                                            name="obsEnvioND" elastic class="form-control input-lg"
+                                            placeholder="Observações sobre o envio da ND"
+                                            ng-model="vm.Formulario.obsEnvioND" ng-change="vm.alterado = true"
+                                            ng-blur="vm.salvar()" ng-value="vm.Formulario.obsEnvioND"></textarea>
+                                        <h4 ng-show="!vm.regras.enableND" style="white-space: pre-line;">
+                                            {{vm.Formulario.obsEnvioND || 'Sem observações'}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-3" ng-if="vm.regras.enableND">
+                                    <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles('nd', $files)"
+                                        ngf-drop="vm.selectFiles('nd', $files)" ng-model="files" ngf-multiple="true"
+                                        ngf-drag-over-class="'dragover'">
+                                        <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
+                                    </div>
+                                </div>
+
+                                <div ng-class="{'col-sm-9': vm.regras.enableND, 'col-sm-12': !vm.regras.enableND}">
+                                    <div class="fs-txt-center" ng-show="vm.Formulario.nd.length == 0">
+                                        <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
+                                    </div>
+                                    <div ng-show="vm.Formulario.nd.length > 0">
+                                        <h3 class="text-muted">Notas de Débito</h3>
+                                        <table class="table table-striped">
+                                            <!-- <caption>Arquivos de Evidência</caption> -->
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="arquivo in vm.Formulario.nd" ng-if="!arquivo.removed">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-sm-1">
+                                                                <span ng-click="vm.removeArquivo(arquivo)"
+                                                                    ng-if="vm.regras.enableND && !arquivo.aceito"
+                                                                    class="flaticon icon-lg flaticon-trash fs-cursor-pointer "></span>
+
+                                                                <span ng-if="arquivo.aceito"
+                                                                    class="flaticon flaticon-done icon-lg text-success"></span>
+                                                            </div>
+                                                            <div class="col-sm-11">
+                                                                <div class="row">
+                                                                    <div class="col-sm-3">
+                                                                        <label>Número</label>
+                                                                        <input type="text" ng-if="vm.regras.enableND"
+                                                                            class="form-control input-lg"
+                                                                            ng-model="arquivo.numero"
+                                                                            ng-value="arquivo.numero"
+                                                                            ng-change="vm.alterado = true"
+                                                                            ng-blur="vm.salvar()"
+                                                                            placeholder="Número da ND">
+                                                                        <h4 class="fs-no-margin"
+                                                                            ng-if="!vm.regras.enableND">
+                                                                            {{arquivo.numero}}</h4>
+                                                                    </div>
+
+                                                                    <div class="col-sm-9">
+                                                                        <label>Descrição do arquivo</label>
+                                                                        <input type="text" ng-if="vm.regras.enableND"
+                                                                            class="form-control input-lg"
+                                                                            ng-model="arquivo.descricao"
+                                                                            ng-value="arquivo.descricao"
+                                                                            ng-change="vm.alterado = true"
+                                                                            ng-blur="vm.salvar()"
+                                                                            placeholder="Descrição do arquivo">
+                                                                        <h4 class="fs-no-margin"
+                                                                            ng-if="!vm.regras.enableND">
+                                                                            {{arquivo.descricao}}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <a target="_blank" href="{{arquivo.url}}">
+                                                                            <h4>
+                                                                                <i
+                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivo.nome || 'Sem descrição'}}
+                                                                            </h4>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div style="padding-top: 10px">
+                                                                            <div ng-if="!arquivo.aceito && arquivo.motivoRecusa"
+                                                                                class="alert alert-warning"
+                                                                                role="alert">
+                                                                                <p>Arquivo Recusado. Motivo:
+                                                                                    {{arquivo.motivoRecusa}}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
 
-                    <div class="col-sm-3" ng-if="!vm.Formulario.envioEvidenciasConcluido">
-                        <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles('evidencias', $files)"
-                            ngf-drop="vm.selectFiles('evidencias', $files)" ng-model="files" ngf-multiple="true"
-                            ngf-drag-over-class="'dragover'">
-                            <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
-                        </div>
+                <div ng-show="vm.regras.showPagamento" class="panel" id="panelPagamento"
+                    ng-class="vm.regras.enablePagamento ? 'panel-primary' : 'panel-default'">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="collapse-icon fs-cursor-pointer" ng-class="{'up': vm.regras.enablePagamento}"
+                                data-toggle="collapse" data-target="#collapsePagamento">
+                                3. Pagamento
+                            </a>
+                        </h4>
                     </div>
+                    <div id="collapsePagamento" class="panel-collapse collapse"
+                        ng-class="{'in': vm.regras.enablePagamento}">
+                        <div class="panel-body">
+                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalPagamentoTexto" style="white-space: pre-line;">
+                                {{vm.Textos.portalPagamentoTexto}}
+                            </div>
 
-                    <div
-                        ng-class="{'col-sm-9': !vm.Formulario.envioEvidenciasConcluido, 'col-sm-12': vm.Formulario.envioEvidenciasConcluido}">
-                        <div class="fs-txt-center" ng-show="vm.Formulario.evidencias.length == 0">
-                            <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="fs-txt-center" ng-show="vm.Formulario.statusErp.length == 0">
+                                        <h1 class="fs-lg-space">Não disponível</h1>
+                                    </div>
+                                    <div ng-show="vm.Formulario.statusErp.length > 0">
+                                        <h3 class="text-muted">Status</h3>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Data</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="status in vm.Formulario.statusErp">
+                                                    <td>
+                                                        {{status.data | date}}
+                                                    </td>
+                                                    <td>
+                                                        {{status.descricao}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <table class="table" ng-show="vm.Formulario.evidencias.length > 0">
-                            <!-- <caption>Arquivos de Evidência</caption> -->
-                            <thead>
-                                <tr>
-                                    <th class="col-sm-1" ng-show="!vm.Formulario.envioEvidenciasConcluido"></th>
-                                    <th class="col-sm-3">Descrição</th>
-                                    <th class="col-sm-3">Arquivo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="arquivo in vm.Formulario.evidencias" ng-if="!arquivo.removed">
-                                    <td ng-show="!vm.Formulario.envioEvidenciasConcluido">
-                                        <span ng-click="vm.removeArquivo(arquivo)"
-                                            class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
-                                    </td>
-                                    <td>
-                                        <input type="text" ng-readonly="vm.Formulario.envioEvidenciasConcluido"
-                                            class="form-control" ng-model="arquivo.descricao"
-                                            ng-value="arquivo.descricao" ng-change="vm.alterado = true"
-                                            ng-blur="vm.salvar()">
-                                    </td>
-                                    <td>
-                                        <a target="_blank" href="{{arquivo.url}}"> {{arquivo.nome}}</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-        <div class="panel panel-default">
-
-            <div class="panel-body">
-                <div class="col-sm-12">
-                    {{vm.Formulario.descricaoDetalhada}}
-                </div>
-                <div class="col-sm-6">
-                    <b>Início da Ação</b>
-                    <p>{{vm.Formulario.inicioAcao | date:'fullDate'}}</p>
-                </div>
-                <div class="col-sm-6">
-                    <b>Término da Ação</b>
-                    <p>{{vm.Formulario.terminoAcao | date:'fullDate'}}</p>
+        <div class="col-sm-12" ng-show="vm.show">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <pre>{{vm.Formulario | json}}</pre>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-sm-12" ng-show="vm.show">
-        <div class="panel panel-default">
-
-            <div class="panel-heading">
-                Teste
-            </div>
-
-            <div class="panel-body">
-
-                <pre>{{vm.Formulario | json}}</pre>
-            </div>
-        </div>
-    </div>
-</div>
+</form>
 
 <!-- <button class="btn btn-default fs-float-right" ng-click="vm.show=!vm.show"></button> -->

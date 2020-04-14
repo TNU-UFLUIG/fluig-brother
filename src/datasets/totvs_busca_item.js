@@ -1,4 +1,4 @@
-const campos = ['codigo', 'descricao', 'categoria', 'netInicial', 'gpInicial', 'netSugerido', 'gpSugerido', 'rebateUnit', 'rebateTotal', 'dolar', 'ccusto'];
+const campos = ['codigo', 'descricao', 'categoria', 'ccusto'];
 const display = ['codigo', 'descricao'];
 const dePara = campos;
 
@@ -32,8 +32,15 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  // const json = jsonLocal();
-  const json = callDatasul("esp/buscaItem.p", "piBusca", params, null, properties);
+  let json;
+
+  try {
+    json = callDatasul("esp/buscaItem.p", "piBusca", params, null, properties);
+  } catch (error) {
+    // json = { ttErro: [{ mensagem: String(error) }] }
+    throw error;
+  }
+
 
   return montaDataset(json.ttErro, json.ttItem, campos, display, null, true);
 }
@@ -56,7 +63,7 @@ function jsonLocal() {
         rebateUnit: 100,
         rebateTotal: 100,
         dolar: 4.1
-        
+
       }
     ]
   };

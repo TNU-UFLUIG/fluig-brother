@@ -9,7 +9,7 @@
   <tbody ng-non-bindable>
     <tr ng-repeat="itemVpcEvt in vm.Formulario.itensVpcEvt">
       <td ng-if="vm.regras.enableSolicitacao">
-        <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensVpcEvt, $index)"
+        <span ng-if="vm.regras.enableSolicitacao" ng-click="vm.removeChild(vm.Formulario.itensVpcEvt, itemVpcEvt)"
           class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
       </td>
       <td>
@@ -19,38 +19,38 @@
             <div class="col-sm-6">
               <label>Nome do Evento</label>
               <input class="form-control input-lg" name="itemVpcEvt_nomeEvento" ng-model="itemVpcEvt.nomeEvento"
-                ng-value="itemVpcEvt.nomeEvento" ng-disabled="!vm.regras.enableSolicitacao">
+                ng-value="itemVpcEvt.nomeEvento" ng-readonly="!vm.regras.enableSolicitacao">
             </div>
             <div class="col-sm-6">
               <label>Finalidade</label>
               <input class="form-control input-lg" name="itemVpcEvt_finalidade" ng-model="itemVpcEvt.finalidade"
-                ng-value="itemVpcEvt.finalidade" ng-disabled="!vm.regras.enableSolicitacao">
+                ng-value="itemVpcEvt.finalidade" ng-readonly="!vm.regras.enableSolicitacao">
             </div>
             <div class="col-sm-3">
               <label>Data Início</label>
               <input class="form-control input-lg" name="itemVpcEvt_inicio_i" fluig-date-mask date-pattern="LL"
-                ng-model="itemVpcEvt.inicio" ng-disabled="!vm.regras.enableSolicitacao">
+                ng-model="itemVpcEvt.inicio" ng-readonly="!vm.regras.enableSolicitacao">
               <input type="hidden" name="itemVpcEvt_inicio_f" ng-value="itemVpcEvt.inicio | date:'fullDate'">
               <input type="hidden" name="itemVpcEvt_inicio" ng-value="itemVpcEvt.inicio">
             </div>
             <div class="col-sm-3">
               <label>Data Término</label>
               <input class="form-control input-lg" name="itemVpcEvt_termino_i" fluig-date-mask date-pattern="LL"
-                ng-model="itemVpcEvt.termino" ng-disabled="!vm.regras.enableSolicitacao">
+                ng-model="itemVpcEvt.termino" ng-readonly="!vm.regras.enableSolicitacao">
               <input type="hidden" name="itemVpcEvt_termino_f" ng-value="itemVpcEvt.termino | date:'fullDate'">
               <input type="hidden" name="itemVpcEvt_termino" ng-value="itemVpcEvt.termino">
             </div>
             <div class="col-sm-3">
               <label>% Reembolso</label>
               <input class="form-control input-lg" name="itemVpcEvt_perc_i" fluig-percentage-mask
-                ng-model="itemVpcEvt.perc" ng-disabled="!vm.regras.enableSolicitacao">
+                fluig-negative-number="true" ng-model="itemVpcEvt.perc" ng-readonly="!vm.regras.enableSolicitacao">
               <input type="hidden" name="itemVpcEvt_perc_f" ng-value="itemVpcEvt.perc | percentage:'2'">
               <input type="hidden" name="itemVpcEvt_perc" ng-value="itemVpcEvt.perc">
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemVpcEvt_vlTotal_i" fluig-money-mask
-                ng-model="itemVpcEvt.vlTotal" ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotais()">
+              <input class="form-control input-lg" name="itemVpcEvt_vlTotal_i" fluig-money-mask fluig-negative-number
+                ng-model="itemVpcEvt.vlTotal" ng-readonly="!vm.regras.enableSolicitacao" ng-change="vm.calculaTotais()">
               <input type="hidden" name="itemVpcEvt_vlTotal_f" ng-value="itemVpcEvt.vlTotal | currency">
               <input type="hidden" name="itemVpcEvt_vlTotal" ng-value="itemVpcEvt.vlTotal">
             </div>

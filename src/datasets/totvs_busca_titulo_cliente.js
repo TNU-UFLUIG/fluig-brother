@@ -32,8 +32,15 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  const json = jsonLocal();
-  // const json = callDatasul("esp/buscaTitulos.p", "piBusca", params, null, properties);
+  // const json = jsonLocal();
+  let json;
+
+  try {
+    json = callDatasul("esp/buscaTitulos.p", "piBusca", params, null, properties);
+  } catch (error) {
+    json = { ttErro: [{ mensagem: String(error) }] }
+  }
+
 
   return montaDataset(json.ttErro, json.ttTitulos, campos, display);
 }
@@ -58,7 +65,7 @@ function jsonLocal() {
         matriz: '100',
         valorOriginal: 100000,
         valorSaldo: 80000
-        
+
       }
     ]
   };
