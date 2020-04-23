@@ -7,13 +7,13 @@ function atualizaFormulario(empresa, usuario, senha, documentid, campos) {
 
   let sequence = 0;
 
-  log.info('antes updateCardData. documentid: ' + documentid);
+  // log.info('antes updateCardData. documentid: ' + documentid);
 
   campos.forEach(campo => {
     let cardField = cardServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.CardFieldDto");
 
-    log.info(campo.name);
-    log.info(campo.value);
+    // log.info(campo.name);
+    // log.info(campo.value);
 
     cardField.setField(String(campo.name));
     cardField.setValue(String(campo.value || ''));
@@ -26,6 +26,6 @@ function atualizaFormulario(empresa, usuario, senha, documentid, campos) {
 
   cardService.updateCardData(empresa, usuario, senha, documentid, cardFieldDtoArray);
 
-  log.info('depois updateCardData');
+  // log.info('depois updateCardData');
 
 }

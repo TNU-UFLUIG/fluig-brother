@@ -435,19 +435,19 @@
 						</div>
 					</div>
 
-					<div ng-show="vm.regras.showStatusErp" class="panel"
-						ng-class="vm.regras.enableStatusErp ? 'panel-primary' : 'panel-default'" id="panelStatusErp">
+					
+
+					<div ng-show="vm.regras.showResumo" class="panel panel-default " id="panelResumo">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableStatusErp}" data-toggle="collapse"
-									href="#collapseStatusErp">
-									Status da Solicitação no ERP
+								<a class="collapse-icon up" data-toggle="collapse" href="#collapseResumo">
+									Resumo
 								</a>
 							</h4>
 						</div>
-						<div id="collapseStatusErp" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableStatusErp}">
+						<div id="collapseResumo" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<!-- partial:partials/statusErp.html -->
+								<!-- partial:partials/resumo.html -->
 								<!-- partial -->
 							</div>
 						</div>
@@ -471,21 +471,25 @@
 						</div>
 					</div>
 
-					<div ng-show="vm.regras.showResumo" class="panel panel-default " id="panelResumo">
+					<div ng-show="vm.regras.showStatusErp" class="panel"
+						ng-class="vm.regras.enableStatusErp ? 'panel-primary' : 'panel-default'" id="panelStatusErp">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a class="collapse-icon up" data-toggle="collapse" href="#collapseResumo">
-									Resumo
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableStatusErp}" data-toggle="collapse"
+									href="#collapseStatusErp">
+									Status da Solicitação no ERP
 								</a>
 							</h4>
 						</div>
-						<div id="collapseResumo" class="panel-collapse collapse in">
+						<div id="collapseStatusErp" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableStatusErp}">
 							<div class="panel-body">
-								<!-- partial:partials/resumo.html -->
+								<!-- partial:partials/statusErp.html -->
 								<!-- partial -->
 							</div>
 						</div>
 					</div>
+
+					
 				</div>
 
 			</form>

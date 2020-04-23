@@ -28,16 +28,16 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  log.info("*** totvs_retorna_status_marketing 1");
+  // log.info("*** totvs_retorna_status_marketing 1");
 
   let params = getConstraints(constraints);
 
-  log.info("*** totvs_retorna_status_marketing 2");
+  // log.info("*** totvs_retorna_status_marketing 2");
 
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  log.info("*** totvs_retorna_status_marketing 3");
+  // log.info("*** totvs_retorna_status_marketing 3");
 
   // const json = jsonLocal();
   let json;
@@ -48,9 +48,9 @@ function buscaDataset(fields, constraints, sortFields) {
     json = { ttErro: [{ mensagem: String(error) }] }
   }
 
-  log.info("*** totvs_retorna_status_marketing 4");
+  // log.info("*** totvs_retorna_status_marketing 4");
 
-  log.info(JSON.stringify(json));
+  // log.info(JSON.stringify(json));
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display);
 }

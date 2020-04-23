@@ -28,16 +28,16 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  log.info("*** totvs_cria_titulo_antecipacao 1");
+  // log.info("*** totvs_cria_titulo_antecipacao 1");
 
   let params = getConstraints(constraints);
 
-  log.info("*** totvs_cria_titulo_antecipacao 2");
+  // log.info("*** totvs_cria_titulo_antecipacao 2");
 
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  log.info("*** totvs_cria_titulo_antecipacao 3");
+  // log.info("*** totvs_cria_titulo_antecipacao 3");
 
   let solicitacao = getDataset('marketing_abertura_verba', null, [
     { field: 'solicitacao', value: params.solicitacao }
@@ -50,7 +50,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let ttParam = [{ solicitacao: String(solicitacao.solicitacao), valorTotal: String(solicitacao.valorLiberado) }];
   let ttTitulos = [];
 
-  log.info("*** totvs_cria_titulo_antecipacao 4");
+  // log.info("*** totvs_cria_titulo_antecipacao 4");
 
   titulos.forEach(titulo => {
     if (Number(titulo.titulo_valorAntecipa) > 0) {
@@ -65,8 +65,8 @@ function buscaDataset(fields, constraints, sortFields) {
     }
   })
 
-  log.info("*** totvs_cria_titulo_antecipacao ttParam: " + JSON.stringify(ttParam));
-  log.info("*** totvs_cria_titulo_antecipacao ttTitulos: " + JSON.stringify(ttTitulos));
+  // log.info("*** totvs_cria_titulo_antecipacao ttParam: " + JSON.stringify(ttParam));
+  // log.info("*** totvs_cria_titulo_antecipacao ttTitulos: " + JSON.stringify(ttTitulos));
 
   // const json = jsonLocal();
   let json;
@@ -76,7 +76,7 @@ function buscaDataset(fields, constraints, sortFields) {
     json = { ttErro: [{ mensagem: String(error) }] }
   }
 
-  log.info("*** totvs_cria_titulo_antecipacao json: " + JSON.stringify(json));
+  // log.info("*** totvs_cria_titulo_antecipacao json: " + JSON.stringify(json));
 
   return montaDataset(json.ttErro, json.ttRetorno, campos, display);
 }

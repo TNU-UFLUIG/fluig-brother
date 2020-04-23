@@ -99,7 +99,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.Formulario.cliente = {};
           vm.Formulario.necAprovacaoGerMkt = true;
 
-          erpService.getCategoria().then(categorias => {
+          erpService.getBusinessSegment().then(categorias => {
             categorias.forEach(c => {
               vm.Formulario.rateioCategoria.push({ categoria: c, perc: 0 });
             })
@@ -119,7 +119,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.MarketingParametros = resp[0];
         });
 
-        vm.Formulario.numControle = '2020.0056'
+        // vm.Formulario.numControle = '2020.0056'
 
         if (vm.Params.edit) {
           vm.Formulario.importado = false;
@@ -170,13 +170,13 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'enableND', def: true, etapas: ['enviarND', 'analisarErros'] },
           { regra: 'enableValidacaoND', def: true, etapas: ['validarND', 'analisarErros'] },
 
-          { regra: 'showSelecionarDuplicatas', def: true, etapas: ['consulta', 'conferirFinanceiro', 'aprovarPagamento', 'validarEvidencias', 'analisarErros'] },
+          { regra: 'showSelecionarDuplicatas', def: true, etapas: ['consulta', 'conferirFinanceiro', 'aprovarPagamento', 'validarEvidencias', 'analisarErros', 'autorizarNotificacaoPagamento'] },
           { regra: 'enableSelecionarDuplicatas', def: true, etapas: ['conferirFinanceiro', 'analisarErros'] },
 
           { regra: 'showAprovPagamento', def: true, etapas: ['consulta', 'aprovarPagamento', 'conferirFinanceiro', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovPagamento', def: true, etapas: ['aprovarPagamento'] },
 
-          { regra: 'showStatusErp', def: true, etapas: ['consulta', 'analisarErros'] },
+          { regra: 'showStatusErp', def: true, etapas: vm.etapas },
           { regra: 'enableStatusErp', def: true, etapas: [] },
 
 
@@ -361,13 +361,13 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
       vm.buscaResumoVerbas = function buscaResumoVerbas() {
         // erpService.getResumoVerbas(vm.Formulario.cliente.codigo);
-        vm.Formulario.resumoVerbas = [
-          { titulo: 'AGUARDANDO APROVAÇÃO', class: 'warning', rebateSellout: 9000, rebateSellin: 0, spiff: 300, vpc: 0, total: 9300 },
-          { titulo: 'FY 2018', class: 'success', rebateSellout: 50000, rebateSellin: 0, spiff: 10000, vpc: 30000, total: 90000 },
-          { titulo: 'FY 2019 - YTD', class: 'success', rebateSellout: 10000, rebateSellin: 0, spiff: 10000, vpc: 1500, total: 12500 },
-          { titulo: 'PAGAMENTOS EFETUADOS - FY ATUAL (YTD)', class: 'active', rebateSellout: 55000, rebateSellin: 0, spiff: 5600, vpc: 7000, total: 67600 },
-          { titulo: 'TOTAL', class: 'info', rebateSellout: 124000, rebateSellin: 0, spiff: 16900, vpc: 38500, total: 89400 },
-        ]
+        // vm.Formulario.resumoVerbas = [
+        //   { titulo: 'AGUARDANDO APROVAÇÃO', class: 'warning', rebateSellout: 9000, rebateSellin: 0, spiff: 300, vpc: 0, total: 9300 },
+        //   { titulo: 'FY 2018', class: 'success', rebateSellout: 50000, rebateSellin: 0, spiff: 10000, vpc: 30000, total: 90000 },
+        //   { titulo: 'FY 2019 - YTD', class: 'success', rebateSellout: 10000, rebateSellin: 0, spiff: 10000, vpc: 1500, total: 12500 },
+        //   { titulo: 'PAGAMENTOS EFETUADOS - FY ATUAL (YTD)', class: 'active', rebateSellout: 55000, rebateSellin: 0, spiff: 5600, vpc: 7000, total: 67600 },
+        //   { titulo: 'TOTAL', class: 'info', rebateSellout: 124000, rebateSellin: 0, spiff: 16900, vpc: 38500, total: 89400 },
+        // ]
       }
       vm.changeItemSellout = function changeItemSellout(item, index) {
         if (item.item.codigo) {
@@ -497,7 +497,10 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       vm.calculaTotalDuplicatas = function calculaTotalDuplicatas() {
         let total = 0;
         vm.Formulario.duplicatas.forEach(d => {
-          total += Number(d.valorAntecipa) || 0;
+          if (!d.valorAntecipa) {
+            d.valorAntecipa = 0;
+          }
+          total += Number(d.valorAntecipa);
           d.saldoAposAbatimento = Number(d.valorSaldo) - Number(d.valorAntecipa);
         });
         

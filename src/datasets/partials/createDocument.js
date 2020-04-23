@@ -37,7 +37,7 @@ function createDocument(usuarioFluig, senhaFLuig, parentDocumentId, fileName, de
   var attachmentArray = webServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.AttachmentArray");
   var attachment = webServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.Attachment");
 
-  log.info("## [Dataset: createDocument] - Nome e extensão do arquivo físico a ser publicado: " + fileName);
+  // log.info("## [Dataset: createDocument] - Nome e extensão do arquivo físico a ser publicado: " + fileName);
 
   attachment.setFileName(fileName);
   attachment.setPrincipal(true);
@@ -49,7 +49,7 @@ function createDocument(usuarioFluig, senhaFLuig, parentDocumentId, fileName, de
   var approverDtoArray = webServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.ApproverDtoArray");
   var relatedDocumentDtoArray = webServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.RelatedDocumentDtoArray");
 
-  log.info("## [Dataset: createDocument] - chamando createDocument");
+  // log.info("## [Dataset: createDocument] - chamando createDocument");
 
   var retornoDocumento = webService.createDocument(usuarioFluig, senhaFLuig, '1', documentoArray, attachmentArray, documentSecurityConfigDtoArray, approverDtoArray, relatedDocumentDtoArray);
 

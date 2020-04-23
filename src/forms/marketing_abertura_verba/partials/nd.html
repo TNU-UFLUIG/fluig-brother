@@ -1,3 +1,13 @@
+<div class="row" ng-show="vm.regras.enableND">
+  <div class="col-sm-12">
+    <div class="alert alert-warning" role="alert">
+      Atenção! O envio de ND deve ser preferencialmente realizado pelo <a
+        href="/portal/BROTHER/acao-marketing-cliente#!/{{vm.Formulario.guid}}">Portal do Cliente</a>. Caso não seja
+      possível o envio pelo Portal, informe os dados neste formulário, selecione o campo Envio de ND Concluído e
+      clique em <strong class="text-danger">Salvar</strong>. O fluxo será movimentado automaticamente em até 5 minutos.
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-sm-4">
     <div class="form-group">
@@ -44,7 +54,7 @@
 <div class="row" ng-show="vm.regras.enableND">
   <div class="col-sm-12">
     <div class="form-group">
-      <label for="envioNDConcluido" class="control-label">Envio Concluído</label>
+      <label for="envioNDConcluido" class="control-label">Envio de ND Concluído</label>
       <input type="checkbox" name="envioNDConcluido_i" ng-model="vm.Formulario.envioNDConcluido" fluig-switch
         data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
       <input type="hidden" name="envioNDConcluido" ng-value="vm.Formulario.envioNDConcluido">

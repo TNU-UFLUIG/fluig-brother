@@ -8,14 +8,14 @@ function afterStateEntry(sequenceId) {
     hAPI.setCardValue("status", "ENVIO DE EVIDÊNCIAS");
     hAPI.setCardValue("currentStepPortal", "1");
     hAPI.setCardValue("envioEvidenciasConcluido", "false");
-    enviaEmail("evidencia", "N", "S");
+    enviaEmail("evidencia", "S", "S", "S");
   }
 
   if (Params.atividades.enviarND.indexOf(sequenceId) >= 0) {
     hAPI.setCardValue("status", "ENVIO DE ND");
     hAPI.setCardValue("currentStepPortal", "3");
     hAPI.setCardValue("envioNDConcluido", "false");
-    enviaEmail("envioND", "N", "S");
+    enviaEmail("envioND", "S", "S", "S");
   }
 
   if (Params.atividades.validarMarketing.indexOf(sequenceId) >= 0) {
@@ -85,12 +85,12 @@ function afterStateEntry(sequenceId) {
 
   if (Params.atividades.conferirFinanceiro.indexOf(sequenceId) >= 0) {
     hAPI.setCardValue("status", "ANÁLISE FINANCEIRA");
-    hAPI.setCardValue("currentStepPortal", "5");
+    hAPI.setCardValue("currentStepPortal", "4");
   }
 
   if (Params.atividades.aprovarPagamento.indexOf(sequenceId) >= 0) {
     hAPI.setCardValue("status", "APROVAÇÃO FINANCEIRA");
-    hAPI.setCardValue("currentStepPortal", "5");
+    hAPI.setCardValue("currentStepPortal", "4");
   }
 
   if (Params.atividades.atualizarStatus.indexOf(sequenceId) >= 0) {

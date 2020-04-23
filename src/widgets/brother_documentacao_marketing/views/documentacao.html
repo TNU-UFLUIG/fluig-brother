@@ -25,7 +25,7 @@
             </div>
 
             <div ng-if="vm.Formulario.status == 'CANCELADA'" class="alert alert-warning" role="alert">
-                <p>Solicitação cancelada!  </p>
+                <p>Solicitação cancelada! </p>
                 <p>{{vm.Formulario.motivoCancelamento}}</p>
             </div>
 
@@ -45,12 +45,17 @@
                         ng-class="{'in': !vm.regras.enableEnvioEvidencias && !vm.regras.enableND && !vm.regras.enablePagamento}">
                         <div class="panel-body">
 
-                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalDadosTexto" style="white-space: pre-line;">
+                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalDadosTexto"
+                                style="white-space: pre-line;">
                                 {{vm.Textos.portalDadosTexto}}
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <h3 class="text-muted">Nº de Controle/Registro</h3>
+                                    <h4>{{vm.Formulario.solicitacao}}</h4>
+                                </div>
+                                <div class="col-sm-6">
                                     <h3 class="text-muted">Status</h3>
                                     <h4>{{vm.Formulario.status}}</h4>
                                 </div>
@@ -58,7 +63,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h3 class="text-muted">Descrição da Ação</h3>
-                                    <h4>{{vm.Formulario.descricaoDetalhada}}</h4>
+                                    <h4 style="white-space: pre-line;">{{vm.Formulario.descricaoDetalhada}}</h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -69,6 +74,199 @@
                                 <div class="col-sm-6">
                                     <h3 class="text-muted">Término da Ação</h3>
                                     <h4>{{vm.Formulario.terminoAcao | date:'fullDate'}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensSellout.length > 0">
+                                    <h3 class="text-muted">Itens de Sellout</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Categoria</th>
+                                                <th>Rebate Unitário</th>
+                                                <th>Quantidade</th>
+                                                <th>Rebate Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensSellout">
+                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
+                                                <td>{{item.item.categoria}}</td>
+                                                <td>{{item.rebateUnit | currency}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.rebateTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensSellinIt.length > 0">
+                                    <h3 class="text-muted">Itens de Sellin</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Categoria</th>
+                                                <th>Rebate Unitário</th>
+                                                <th>Quantidade</th>
+                                                <th>Rebate Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensSellinIt">
+                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
+                                                <td>{{item.item.categoria}}</td>
+                                                <td>{{item.rebateUnit | currency}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.rebateTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensSellinTg.length > 0">
+                                    <h3 class="text-muted">Itens de Sellin (Target)</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Descrição</th>
+                                                <th>Valor Unitário</th>
+                                                <th>Quantidade</th>
+                                                <th>Valor Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensSellinTg">
+                                                <td>{{item.descricao}}</td>
+                                                <td>{{item.valorUnit | currency}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.valorTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensSellinTgAc.length > 0">
+                                    <h3 class="text-muted">Itens de Sellin (Aceleradores)</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Descrição</th>
+                                                <th>Valor Unitário</th>
+                                                <th>Quantidade</th>
+                                                <th>Valor Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensSellinTgAc">
+                                                <td>{{item.descricao}}</td>
+                                                <td>{{item.valorUnit | currency}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.valorTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensSpiffIt.length > 0">
+                                    <h3 class="text-muted">Itens de Spiff</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Categoria</th>
+                                                <th>Valor Unitário</th>
+                                                <th>Quantidade</th>
+                                                <th>Valor Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensSpiffIt">
+                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
+                                                <td>{{item.item.categoria}}</td>
+                                                <td>{{item.valorUnit | currency}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.valorTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensSpiffTg.length > 0">
+                                    <h3 class="text-muted">Itens de Spiff (Target)</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Foco</th>
+                                                <th>Valor Unitário</th>
+                                                <th>Quantidade</th>
+                                                <th>Valor Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensSpiffTg">
+                                                <td>{{item.foco}}</td>
+                                                <td>{{item.valorUnit | currency}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.valorTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensVpcEvt.length > 0">
+                                    <h3 class="text-muted">VPC - Eventos</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome do Evento</th>
+                                                <th>Finalidade</th>
+                                                <th>Início</th>
+                                                <th>Término</th>
+                                                <th>Percentual</th>
+                                                <th>Valor Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensVpcEvt">
+                                                <td>{{item.nomeEvento}}</td>
+                                                <td>{{item.finalidade}}</td>
+                                                <td>{{item.inicio | date:'fullDate'}}</td>
+                                                <td>{{item.termino | date:'fullDate'}}</td>
+                                                <td>{{item.perc | percentage:2}}</td>
+                                                <td>{{item.valorTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-12" ng-if="vm.Formulario.itensVpcOutros.length > 0">
+                                    <h3 class="text-muted">VPC - Outros</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Finalidade</th>
+                                                <th>Quantidade</th>
+                                                <th>Percentual</th>
+                                                <th>Valor Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.Formulario.itensVpcEvt">
+                                                <td>{{item.finalidade}}</td>
+                                                <td>{{item.qtde | number:2}}</td>
+                                                <td>{{item.perc | percentage:2}}</td>
+                                                <td>{{item.valorTotal | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="text-muted">Total da Verba</h3>
+                                    <h2>{{vm.Formulario.valorTotalVerba | currency}}</h2>
                                 </div>
                             </div>
                         </div>
@@ -89,12 +287,14 @@
                     <div id="collapseEvidencias" class="panel-collapse collapse"
                         ng-class="{'in': vm.regras.enableEnvioEvidencias}">
                         <div class="panel-body">
-                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalEvidenciasTexto && vm.regras.enableEnvioEvidencias" style="white-space: pre-line;">
+                            <div class="alert alert-info" role="alert"
+                                ng-if="vm.Textos.portalEvidenciasTexto && vm.regras.enableEnvioEvidencias"
+                                style="white-space: pre-line;">
                                 {{vm.Textos.portalEvidenciasTexto}}
                             </div>
 
                             <div class="row">
-                                
+
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <h3 class="text-muted " for="valorResultado_i" class="control-label">
@@ -114,7 +314,7 @@
                                     </div>
 
                                 </div>
-                                
+
                             </div>
 
                             <div class="row">
@@ -239,7 +439,8 @@
                     </div>
                     <div id="collapseND" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableND}">
                         <div class="panel-body">
-                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalNDTexto && vm.regras.enableND" style="white-space: pre-line;">
+                            <div class="alert alert-info" role="alert"
+                                ng-if="vm.Textos.portalNDTexto && vm.regras.enableND" style="white-space: pre-line;">
                                 {{vm.Textos.portalNDTexto}}
                             </div>
 
@@ -381,31 +582,49 @@
                     <div id="collapsePagamento" class="panel-collapse collapse"
                         ng-class="{'in': vm.regras.enablePagamento}">
                         <div class="panel-body">
-                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalPagamentoTexto" style="white-space: pre-line;">
+                            <div class="alert alert-info" role="alert" ng-if="vm.Textos.portalPagamentoTexto"
+                                style="white-space: pre-line;">
                                 {{vm.Textos.portalPagamentoTexto}}
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="fs-txt-center" ng-show="vm.Formulario.statusErp.length == 0">
+                                    <div class="fs-txt-center" ng-show="vm.Formulario.duplicatas.length == 0">
                                         <h1 class="fs-lg-space">Não disponível</h1>
                                     </div>
-                                    <div ng-show="vm.Formulario.statusErp.length > 0">
-                                        <h3 class="text-muted">Status</h3>
+                                    <div ng-show="vm.Formulario.duplicatas.length > 0">
+                                        <h3 class="text-muted">Duplicatas</h3>
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Data</th>
-                                                    <th>Status</th>
+                                                    <th>Título</th>
+                                                    <th>ND</th>
+                                                    <th>Vencimento</th>
+                                                    <th>Saldo Original</th>
+                                                    <th>Antecipação</th>
+                                                    <th>Valor Final</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="status in vm.Formulario.statusErp">
+                                                <tr ng-repeat="titulo in vm.Formulario.duplicatas"
+                                                    ng-if="titulo.valorAntecipa > 0">
                                                     <td>
-                                                        {{status.data | date}}
+                                                        {{titulo.titulo}}
                                                     </td>
                                                     <td>
-                                                        {{status.descricao}}
+                                                        {{titulo.nd}}
+                                                    </td>
+                                                    <td>
+                                                        {{titulo.dataVencto | date}}
+                                                    </td>
+                                                    <td>
+                                                        {{titulo.valorSaldo | currency}}
+                                                    </td>
+                                                    <td>
+                                                        {{titulo.valorAntecipa | currency}}
+                                                    </td>
+                                                    <td>
+                                                        {{titulo.saldoAposAbatimento | currency}}
                                                     </td>
                                                 </tr>
                                             </tbody>

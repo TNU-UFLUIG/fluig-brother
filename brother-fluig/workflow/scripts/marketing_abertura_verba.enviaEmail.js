@@ -1,4 +1,4 @@
-function enviaEmail(tipo, enviaBrother, enviaCliente) {
+function enviaEmail(tipo, enviaBrother, enviaCliente, enviaExecutivo) {
 
   var solicitacao = hAPI.getCardValue("solicitacao");
 
@@ -8,8 +8,9 @@ function enviaEmail(tipo, enviaBrother, enviaCliente) {
   var csTipo = DatasetFactory.createConstraint("tipo", tipo, tipo, ConstraintType.MUST);
   var csEnviaBrother = DatasetFactory.createConstraint("enviaBrother", enviaBrother, enviaBrother, ConstraintType.MUST);
   var csEnviaCliente = DatasetFactory.createConstraint("enviaCliente", enviaCliente, enviaCliente, ConstraintType.MUST);
+  var csEnviaExecutivo = DatasetFactory.createConstraint("enviaExecutivo", enviaExecutivo, enviaExecutivo, ConstraintType.MUST);
 
-  var dsEnviaEmail = DatasetFactory.getDataset("fluig_notifica_acao_marketing", null, [csSolicitacao, csTipo, csEnviaBrother, csEnviaCliente], null);
+  var dsEnviaEmail = DatasetFactory.getDataset("fluig_notifica_acao_marketing", null, [csSolicitacao, csTipo, csEnviaBrother, csEnviaCliente, csEnviaExecutivo], null);
 
   if (dsEnviaEmail) {
     for (var i = 0; i < dsEnviaEmail.rowsCount; i++) {

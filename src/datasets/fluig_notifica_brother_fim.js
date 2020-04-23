@@ -28,7 +28,7 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  log.info('******** fluig_notifica_brother_fim INICIO ');
+  // log.info('******** fluig_notifica_brother_fim INICIO ');
 
   let params = getConstraints(constraints);
 
@@ -39,7 +39,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let json = [];
 
   if (dsSolicitacoes.length > 0) {
-    
+
     var solicitacoes = [];
 
     dsSolicitacoes.forEach(solicitacao => {
@@ -48,7 +48,9 @@ function buscaDataset(fields, constraints, sortFields) {
 
     let dsNotifica = getDataset('fluig_notifica_acao_marketing', null, [
       { field: 'solicitacoes', value: String(solicitacoes.join('|')) },
-      { field: 'enviaBrother', value: 'S' }
+      { field: 'enviaBrother', value: 'S' },
+      { field: 'enviaExecutivo', value: 'S' },
+      { field: 'tipo', value: 'fimAcao' }
     ])
 
     dsSolicitacoes.forEach(solicitacao => {

@@ -28,7 +28,7 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  log.info('******** totvs_atualiza_fluxo_marketing INICIO ');
+  // log.info('******** totvs_atualiza_fluxo_marketing INICIO ');
 
   let params = getConstraints(constraints);
 
@@ -62,7 +62,7 @@ function buscaDataset(fields, constraints, sortFields) {
     { name: 'userAprovPresidenciaVpCodigo' }, { name: 'obsAprovPresidenciaVp' }
   ]
 
-  log.info(`solicitacoes.length = ${solicitacoes.length}`);
+  // log.info(`solicitacoes.length = ${solicitacoes.length}`);
 
   solicitacoes.forEach(solicitacao => {
 
@@ -174,7 +174,7 @@ function buscaDataset(fields, constraints, sortFields) {
     var properties = {};
     properties["receive.timeout"] = "0";
 
-    log.info('*** totvs_atualiza_fluxo_marketing 1');
+    // log.info('*** totvs_atualiza_fluxo_marketing 1');
 
     // const json = jsonLocal();
     try {
@@ -192,18 +192,18 @@ function buscaDataset(fields, constraints, sortFields) {
       })
     }
 
-    log.info('*** totvs_atualiza_fluxo_marketing 2');
+    // log.info('*** totvs_atualiza_fluxo_marketing 2');
 
     if (json && json.ttStatus) {
-      log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
+      // log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
       json.ttStatus.forEach(status => {
 
-        log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
+        // log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
 
         let solicitacao = solicitacoes.filter(s => s.solicitacao == status.solicitacao)[0];
 
-        log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
-        log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
+        // log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
+        // log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
 
         if (solicitacao) {
           getDataset('fluig_atualiza_formulario', null, [
@@ -215,13 +215,13 @@ function buscaDataset(fields, constraints, sortFields) {
       })
     }
 
-    log.info('*** totvs_atualiza_fluxo_marketing 3');
+    // log.info('*** totvs_atualiza_fluxo_marketing 3');
 
   }
 
-  log.info('*** totvs_atualiza_fluxo_marketing 4');
+  // log.info('*** totvs_atualiza_fluxo_marketing 4');
 
-  log.info(JSON.stringify(json))
+  // log.info(JSON.stringify(json))
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display, dePara, true);
 }

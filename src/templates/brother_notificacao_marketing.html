@@ -599,6 +599,11 @@
           </table>
 
           <#list solicitacoes as solicitacao>
+
+            <hr style="border: 2px #ccc; border-style: dashed;">
+
+            <h1 style="margin:10px;text-align:center">Nº de Controle/Registro: ${solicitacao.solicitacao}</h1>
+            
             <table class="es-content" cellspacing="0" cellpadding="0" align="center"
               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;">
 
@@ -607,7 +612,9 @@
                   <table class="es-content-body"
                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;"
                     width="820" cellspacing="0" cellpadding="0" align="center">
-
+                    
+                    <#if solicitacao.observacoes?has_content>
+                    
                     <tr style="border-collapse:collapse;">
                       <td
                         style="Margin:0;padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:35px;background-color:#eee;">
@@ -616,7 +623,7 @@
                           ${solicitacao.observacoes}</p>
                       </td>
                     </tr>
-
+                    </#if>
                     <tr>
                       <td class="es-m-txt-l" bgcolor="#ffffff" align="left"
                         style="Margin:0;padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:35px;">
@@ -688,7 +695,7 @@
                                       style="font-size:12px;line-height:14px;color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;text-align:left;">
                                       <p style="margin: 0;font-size: 12px;line-height: 14px">
                                         <span
-                                          style="font-size: 14px; line-height: 16px;">${campoSolicitacao.valor}</span>
+                                          style="font-size: 14px; line-height: 16px;white-space: pre-line;">${campoSolicitacao.valor}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -742,6 +749,9 @@
               </tr>
 
             </table>
+
+            <hr style="border: 2px #ccc; border-style: dashed;">
+            
           </#list>
 
           <table class="es-content" cellspacing="0" cellpadding="0" align="center"

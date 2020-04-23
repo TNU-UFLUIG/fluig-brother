@@ -33,9 +33,8 @@ function createDataset(fields, constraints, sortFields) {
   let filtros = [];
 
   params.solicitacoes = String(params.solicitacoes).split('|');
-  log.info('params.solicitacoes = ' + params.solicitacoes.length);
+
   params.solicitacoes.forEach(solicitacao => {
-    log.info('solicitacao = ' + solicitacao);
     filtros.push({ field: 'solicitacao', value: String(solicitacao), type: ConstraintType.SHOULD })
   })
 
@@ -57,13 +56,15 @@ function createDataset(fields, constraints, sortFields) {
   const dsCamposSolicitacao = getDataset('marketing_composicao_email', null, [{ field: 'tablename', value: 'campos' }]);
   let dsCampos = {};
 
-  log.info('dsSolicitacoes.length = ' + dsSolicitacoes.length);
-  // log.info('dsComposicao.length = ' + dsComposicao.length);
-  log.info('dsCamposSolicitacao.length = ' + dsCamposSolicitacao.length);
+  // log.info('dsSolicitacoes.length = ' + dsSolicitacoes.length);
+  // log.info('dsCamposSolicitacao.length = ' + dsCamposSolicitacao.length);
 
   tables.forEach(table => {
-    dsCampos[table.name] = getDataset('marketing_composicao_email', null, [{ field: 'tablename', value: table.tableCampos }]);
-    log.info(`dsCampos.${table.name}.length = ${dsCampos[table.name].length}`);
+    dsCampos[table.name] = getDataset('marketing_composicao_email', null, [
+      { field: 'tablename', value: table.tableCampos },
+      { field: `${table.campoName}_${params.tipo}`, value: 'true' }
+    ]);
+    // log.info(`dsCampos.${table.name}.length = ${dsCampos[table.name].length}`);
   })
 
   const tplParams = new java.util.HashMap();
@@ -111,21 +112,15 @@ function createDataset(fields, constraints, sortFields) {
 
           dsCampos[table.name].forEach(c => {
             if (tplArrItens.size() == 0) {
-              if (c[`${table.campoName}_${params.tipo}`] == 'true') {
-                var campo = new java.util.HashMap();
-
-                campo.put('label', c[`${table.campoName}_label`]);
-
-                tplArrLabelsItens.add(campo);
-              }
-            }
-            if (c[`${table.campoName}_${params.tipo}`] == 'true') {
               var campo = new java.util.HashMap();
-
-              campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + item[c[`${table.campoName}_name`]]);
-
-              tplArrItem.add(campo);
+              campo.put('label', c[`${table.campoName}_label`]);
+              tplArrLabelsItens.add(campo);
             }
+            
+            var campo = new java.util.HashMap();
+            campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + item[c[`${table.campoName}_name`]]);
+            tplArrItem.add(campo);
+
           })
 
           tplItem.put('content', tplArrItem)
@@ -142,18 +137,28 @@ function createDataset(fields, constraints, sortFields) {
     })
 
     let linkPortalCliente = `${sdk.getServerURL()}/portal/BROTHER/acao-marketing-cliente#!/${solicitacao.guid}`
-    
+
     tplParamsSolicitacao.put('linkPortalCliente', linkPortalCliente);
     tplParamsSolicitacao.put('observacoes', solicitacao.obsNotificacaoCliente);
+    tplParamsSolicitacao.put('solicitacao', solicitacao.solicitacao);
     tplParamsSolicitacao.put('camposSolicitacao', tplArrCamposSolicitacao);
     tplParamsSolicitacao.put('tables', tplArrTables);
 
-    log.info('tplArrCamposSolicitacao.size = ' + tplArrCamposSolicitacao.size());
-    log.info('tplArrTables.size = ' + tplArrTables.size());
+    // log.info('tplArrCamposSolicitacao.size = ' + tplArrCamposSolicitacao.size());
+    // log.info('tplArrTables.size = ' + tplArrTables.size());
 
     tplArrSolicitacoes.add(tplParamsSolicitacao);
 
     dsDestinatariosCliente = [];
+
+    if (params.enviaExecutivo == 'S') {
+      
+      solicitacao.executivo = JSON.parse(solicitacao.executivo);
+
+      if (solicitacao.executivo && solicitacao.executivo.email) {
+        arrDestinatarios.add(solicitacao.executivo.email);
+      }
+    }
 
     if (params.enviaCliente == 'S') {
       dsDestinatariosCliente = getDataset('marketing_abertura_verba', null, [
@@ -161,10 +166,10 @@ function createDataset(fields, constraints, sortFields) {
         { field: 'documentid', value: solicitacao.documentid },
       ]);
 
-      log.info('dsDestinatariosCliente.length = ' + dsDestinatariosCliente.length);
+      // log.info('dsDestinatariosCliente.length = ' + dsDestinatariosCliente.length);
 
       dsDestinatariosCliente.forEach(destinatario => {
-        log.info(`email_${params.tipo} => ` + destinatario[`email_${params.tipo}`]);
+        // log.info(`email_${params.tipo} => ` + destinatario[`email_${params.tipo}`]);
 
         if (destinatario[`email_${params.tipo}`] == 'true') {
           arrDestinatarios.add(destinatario.email_email);
@@ -173,7 +178,7 @@ function createDataset(fields, constraints, sortFields) {
     }
   })
 
-  log.info('tplArrSolicitacoes.size = ' + tplArrSolicitacoes.size());
+  // log.info('tplArrSolicitacoes.size = ' + tplArrSolicitacoes.size());
 
   tplParams.put('subject', dsComposicao[`${params.tipo}Titulo`]);
   tplParams.put('titulo', dsComposicao[`${params.tipo}Titulo`]);

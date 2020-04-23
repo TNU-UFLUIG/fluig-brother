@@ -39,11 +39,11 @@ function saveAndSendTask(user, password, solicitacao, campos, values, atividadeD
         0
     );
 
-    log.info('*********** saveAdnSendTask ***********');
+    // log.info('*********** saveAdnSendTask ***********');
 
     for (var r = 0; r < retorno.getItem().size(); r++) {
-        log.info(retorno.getItem().get(r).getItem().get(0));
-        log.info(retorno.getItem().get(r).getItem().get(1));
+        // log.info(retorno.getItem().get(r).getItem().get(0));
+        // log.info(retorno.getItem().get(r).getItem().get(1));
 
         // if (retorno.getItem().get(r).getItem().get(0) == "iProcess") {
         //     solicitacao = retorno.getItem().get(r).getItem().get(1);

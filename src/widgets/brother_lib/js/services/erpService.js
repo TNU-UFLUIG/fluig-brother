@@ -8,8 +8,8 @@ angular.module('brother.services')
         }, fields);
       },
 
-      getCategoria: function getCategoria(codigo, fields) {
-        return fluigService.getDatasetAsync('totvs_busca_categoria', {
+      getBusinessSegment: function getBusinessSegment(codigo, fields) {
+        return fluigService.getDatasetAsync('totvs_busca_business_segment', {
           codigo
         }, fields);
       },

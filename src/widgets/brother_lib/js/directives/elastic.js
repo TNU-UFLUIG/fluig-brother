@@ -171,7 +171,8 @@ angular.module('brother.directives')
 
           function forceAdjust() {
             active = false;
-            adjust();
+            // adjust();
+            $timeout(adjust, 500, false);
           }
 
           /*
@@ -199,7 +200,7 @@ angular.module('brother.directives')
             forceAdjust();
           });
 
-          $timeout(adjust, 0, false);
+          $timeout(adjust, 500, false);
 
           /*
            * destroy

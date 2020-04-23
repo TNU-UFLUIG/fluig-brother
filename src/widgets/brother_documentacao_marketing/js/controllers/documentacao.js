@@ -158,17 +158,25 @@ angular
 
         if (loading) FLUIGC.loading("body").show();
 
+        vm.loading = true;
         $http.post(`/brother-api/v1/marketing/update`, vm.Formulario, { headers: { 'guid': vm.Param.guid } })
           .then((response) => {
             console.log(response);
             if (loading) FLUIGC.loading("body").hide();
             // vm.Formulario = response.data;
-            vm.showConfirmPage();
+            
             vm.setRegras();
+            if (loading) {
+              vm.showConfirmPage();
+            }
+
+            vm.loading = false;
           }, (error) => {
             vm.done = true;
             if (loading) FLUIGC.loading("body").hide();
             $log.log(error);
+
+            vm.loading = false;
           });
       };
 
@@ -241,7 +249,7 @@ angular
 
         if (vm.regras.enableEnvioEvidencias) {
           vm.Formulario.evidencias.forEach(arquivo => {
-            if (!arquivo.descricao) {
+            if (!arquivo.descricao && !arquivo.removed) {
               Errors.push(`<li>Informe a descrição no arquivo ${arquivo.nome}</li>`);
             }
           })
@@ -249,10 +257,10 @@ angular
 
         if (vm.regras.enableND) {
           vm.Formulario.nd.forEach(arquivo => {
-            if (!arquivo.descricao) {
+            if (!arquivo.descricao && !arquivo.removed) {
               Errors.push(`<li>Informe a descrição no arquivo ${arquivo.nome}</li>`);
             }
-            if (!arquivo.numero) {
+            if (!arquivo.numero && !arquivo.removed) {
               Errors.push(`<li>Informe o número da ND no arquivo ${arquivo.nome}</li>`);
             }
           })

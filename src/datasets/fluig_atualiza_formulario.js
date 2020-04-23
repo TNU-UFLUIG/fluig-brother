@@ -23,6 +23,12 @@ function buscaDataset(fields, constraints, sortFields) {
 
   let erros = [];
 
+  if (params.fullParam) {
+    params.campos = String(params.fullParam).split('@$')[0];
+    params.valores = String(params.fullParam).split('@$')[1];
+    params.documentid = String(params.fullParam).split('@$')[2];
+  }
+
   if (!params.campos || params.campos == '') {
     erros.push({ mensagem: 'Informe os campos separados por |' });
   }

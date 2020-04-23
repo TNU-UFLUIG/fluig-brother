@@ -1,5 +1,11 @@
 // Atualizar Status
 function intermediateconditional132() {
+  var pendenteTotvs = hAPI.getCardValue("pendenteTotvs");
+
+  if (pendenteTotvs == "S") {
+    return false;
+  }
+
   var solicitacao = hAPI.getCardValue("solicitacao");
   var ultimo = false;
 

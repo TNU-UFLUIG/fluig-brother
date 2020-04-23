@@ -1,3 +1,14 @@
+<div class="row" ng-show="vm.regras.enableEvidencias">
+  <div class="col-sm-12">
+    <div class="alert alert-warning" role="alert">
+      Atenção! O envio de evidências deve ser preferencialmente realizado pelo <a
+        href="/portal/BROTHER/acao-marketing-cliente#!/{{vm.Formulario.guid}}">Portal do Cliente</a>. Caso não seja
+      possível o envio pelo Portal, informe os dados neste formulário, selecione o campo Envio de Evidências Concluído e
+      clique em <strong class="text-danger">Salvar</strong>. O fluxo será movimentado automaticamente em até 5 minutos.
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-4">
     <div class="form-group">
@@ -25,9 +36,7 @@
   </div>
 </div>
 
-
 <div class="row">
-
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Valor Total da Verba</label>
@@ -53,7 +62,8 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Valor Liberado para Pagamento</label>
-      <h1 ng-show="!vm.regras.enableValidacaoEvidencias" class="fs-no-margin">{{vm.Formulario.valorLiberado || 0 | currency}}
+      <h1 ng-show="!vm.regras.enableValidacaoEvidencias" class="fs-no-margin">
+        {{vm.Formulario.valorLiberado || 0 | currency}}
       </h1>
 
       <div ng-show="vm.regras.enableValidacaoEvidencias">
@@ -82,8 +92,9 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label for="necEnvioNd" class="control-label">Necessário o Envio de ND</label>
-      <input type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success" ng-change="vm.checkEtapaNotificacao()"
-        name="necEnvioNd_i" ng-model="vm.Formulario.necEnvioNd" ng-readonly="!vm.regras.enableValidacaoEvidencias && !vm.regras.enableEvidencias">
+      <input type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success"
+        ng-change="vm.checkEtapaNotificacao()" name="necEnvioNd_i" ng-model="vm.Formulario.necEnvioNd"
+        ng-readonly="!vm.regras.enableValidacaoEvidencias && !vm.regras.enableEvidencias">
       <input type="hidden" name="necEnvioNd" ng-value="vm.Formulario.necEnvioNd">
     </div>
   </div>
