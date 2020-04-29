@@ -9,6 +9,10 @@ function inputFields(form) {
   const currentState = getValue("WKNumState");
   const nextState = getValue("WKNextState");
 
+  if (importado) {
+    preencheForm(form);
+  }
+
   if (currentState == Params.atividades.validarMarketing[0]) {
     if (nextState == Params.atividades.gtwAprovarGerMarketing[0]) {
       form.setValue('statusValidacaoMarketing', 'APROVADO');
