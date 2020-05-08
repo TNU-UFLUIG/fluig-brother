@@ -74,11 +74,11 @@ function validateForm(form) {
     }
   }
 
-  if (currentState == nextState || importado) {
+  if (currentState == nextState) {
     return;
   }
 
-  if (regras.enableSolicitacao) {
+  if (regras.enableSolicitacao || importado) {
     if (!clienteCodigo) {
       Errors.push(`Informe o cliente`);
     }

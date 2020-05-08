@@ -1,0 +1,9 @@
+$primary-color: #222;
+$second-color: lighten($primary-color, 10%);
+$text-color: #ddd;
+$data-color: darken($text-color, 10%);
+$panel-color: $second-color;
+$border-panel-color: $primary-color;
+$border-card-color: #bbb;
+
+@import 'partials/default';

@@ -1,0 +1,140 @@
+body {
+  //background: $second-color;
+}
+
+.mhps-eng-gerencial {
+
+  background: $second-color;
+
+  > div {
+    background: $second-color;
+  }
+
+  .form-control {
+    color: $text-color;
+    background: $primary-color;
+    border-color: $primary-color;
+  }
+
+  .input-group-addon {
+    color: $text-color;
+    background: $second-color;
+    border-color: $primary-color;
+  }
+
+  .panel-heading {
+    &.ERROR {
+      background: #c0392b !important;
+      color: #eee !important;
+    }
+    &.SUCCESS {
+      background: #27ae60 !important;
+      color: #eee !important;
+    }
+  }
+
+  .grayscale {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+
+  .control-menu {
+    // background: black;
+    color: $text-color;
+  }
+
+  .top-resumo {
+    background: $second-color;
+    color: $text-color;
+  }
+
+  .left-menu {
+    @media screen {
+      background: $second-color;
+    }
+    color: $text-color;
+  } // .content {
+  //   // color: $text-color;
+  //   p,
+  //   td {
+  //     color: $data-color;
+  //   }
+  // }
+  .card {
+    border: 1px solid $border-card-color;
+    &.chart {
+      @media print {
+        border: none;
+      }
+    }
+  }
+
+  .btn-default {
+    background: transparent; // color: $text-color; // border-color: $primary-color;
+  }
+
+  .panel {
+    background: $panel-color;
+    border: 1px solid $border-panel-color;
+    color: $text-color;
+  }
+
+  .panel-default > .panel-heading {
+    color: $text-color;
+    background: darken($primary-color, 3%);
+    border-bottom: 1px solid $second-color;
+  }
+
+  .nav-tabs > li > a,
+  .nav-tabs > li > a:hover,
+  .nav-tabs > li > a:focus {
+    color: $text-color;
+    background: lighten($primary-color, 3%);
+  }
+
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    color: $text-color;
+    background: $primary-color;
+  }
+
+  .panel-default > .panel-footer,
+  .panel.panel-danger .panel-footer,
+  .panel.panel-success .panel-footer {
+    color: $text-color;
+    background: lighten($primary-color, 3%);
+    border: 1px solid $second-color;
+  }
+
+  .list-group-item {
+    background: $primary-color;
+    border: none;
+    color: $data-color;
+  }
+
+  .list-group-item-info {
+    color: #31708f;
+    background-color: #d9edf7;
+  } // .table-striped > tbody > tr:nth-child(odd) {
+  //   background: lighten($primary-color, 3%);
+  // }
+  // .table-striped tbody tr:nth-child(even) td,
+  // .table-striped tbody tr:nth-child(even) th {
+  //   background: darken($primary-color, 3%);
+  // }
+  // .table > thead > tr > th,
+  // .table > tbody > tr > th,
+  // .table > tfoot > tr > th,
+  // .table > thead > tr > td,
+  // .table > tbody > tr > td,
+  // .table > tfoot > tr > td {
+  //   border-top: 1px solid $primary-color;
+  // }
+  // td,
+  // th,
+  // i,
+  // p {
+  //   color: $text-color;
+  // }
+}

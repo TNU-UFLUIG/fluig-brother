@@ -18,6 +18,24 @@ angular.module('brother.services')
         return fluigService.getDatasetAsync('totvs_busca_titulo_cliente', {
           codCliente
         }, fields);
+      },
+
+      getItem: function getTitulosCliente(codigo, fields) {
+        return fluigService.getDatasetAsync('totvs_busca_item', {
+          codigo
+        }, fields);
+      },
+
+      getExecutivo: function getTitulosCliente(codigo, fields) {
+        return fluigService.getDatasetAsync('totvs_busca_executivo', {
+          codigo
+        }, fields);
+      },
+
+      getCliente: function getCliente(codigo, fields) {
+        return fluigService.getDatasetAsync('totvs_busca_cliente', {
+          codigo
+        }, fields);
       }
 
     })

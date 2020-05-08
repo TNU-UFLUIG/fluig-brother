@@ -41,7 +41,7 @@ function buscaDataset(fields, constraints, sortFields) {
     throw error;
   }
 
-  return montaDataset(json.ttErro, json.ttBusinessSegment, campos, display, null, true);
+  return montaDataset(json.ttErro, json.ttBusinessSegment, campos, display, null);
 }
 
 /*$$ partials/getConstraints.js $$*/

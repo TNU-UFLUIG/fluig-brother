@@ -1,0 +1,146 @@
+$control-menu-height: 60px;
+$top-resumo-height: 120px;
+$top-desktop-margin: $control-menu-height + $top-resumo-height;
+$left-menu-width: 20%;
+
+@import "color";
+@import "pyro";
+@import "countdown";
+@import "indicacao";
+
+.wcm-background {
+  background: transparent !important;
+}
+
+// @media print {
+//   .fluig-style-guide *,
+//   .fluig-style-guide:before,
+//   .fluig-style-guide:after {
+//     background:
+//   }
+// }
+#popupIndicacao-modal {
+  .modal-footer {
+    display: none;
+  }
+}
+.btn-orange-gradient.focus,
+.btn-orange-gradient:focus {
+  color: #fff !important;
+  background-image: linear-gradient(to right, #ed3837, #ed3837) !important;
+}
+
+.btn-orange-gradient {
+  color: #fff !important;
+  background-image: linear-gradient(to right, #ed3837, #e66e83) !important;
+}
+
+.btn-green-gradient.focus,
+.btn-green-gradient:focus {
+  color: #fff !important;
+  background-image: linear-gradient(to right, #4cb3b6, #6fc2c5) !important;
+}
+
+.btn-green-gradient {
+  color: #fff !important;
+  background-image: linear-gradient(to right, #4cb3b6, #6fc2c5) !important;
+}
+
+.fluig-style-guide .text-green-gradient {
+  color: transparent;
+  background-image: linear-gradient(to right, #4cb3b6, #6fc2c5) !important;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+.mhps-eng-gerencial {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  .left-content {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: $left-menu-width;
+    z-index: 100;
+    background: #222;
+
+    .logo {
+      text-align: center;
+      height: $control-menu-height;
+      background: #fff;
+      img {
+        height: 100%;
+      }
+      .menu {
+      }
+    }
+  }
+
+  .right-content {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: $left-menu-width;
+    right: 0;
+    background: #ddd;
+    @media print {
+      left: 0;
+    }
+    .content {
+      overflow: auto;
+      position: absolute;
+      bottom: 0;
+      top: 60px;
+      right: 0;
+      left: 0;
+      @media print {
+        top: 0;
+      }
+      .detail {
+        padding: 10px 5px 0 10px;
+        .card {
+          padding: 10px;
+          background: #eee;
+          min-height: 160px;
+        }
+      }
+    }
+  }
+
+  .control-menu {
+    height: $control-menu-height;
+    border-bottom: 1px solid #eee;
+
+    .buttons {
+      width: 200px;
+      height: 100%;
+      .btn-group-justified {
+        height: 100%;
+        .btn-default {
+          color: #58595b;
+        }
+      }
+    }
+  }
+
+  .tempo-previsto {
+    background: #2c3e50 !important;
+  }
+  .tempo-real {
+    background: #0061ae !important;
+  }
+}
+
+.segmento-icon {
+  width: 90px;
+  padding: 10px;
+  &.selected {
+    border: 2px solid #666;
+    border-radius: 10px;
+  }
+}

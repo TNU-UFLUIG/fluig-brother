@@ -2,16 +2,10 @@
 /*jshint -W116 */
 function inputFields(form) {
 
-  const importado = value(form, 'importado');
-
   const Params = getParams(form);
 
   const currentState = getValue("WKNumState");
   const nextState = getValue("WKNextState");
-
-  if (importado) {
-    preencheForm(form);
-  }
 
   if (currentState == Params.atividades.validarMarketing[0]) {
     if (nextState == Params.atividades.gtwAprovarGerMarketing[0]) {
