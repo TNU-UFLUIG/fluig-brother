@@ -90,8 +90,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.checkRegras();
 
         if (vm.Params.formMode == 'ADD') {
-
-          vm.Formulario.guid = vm.guid();
           vm.Formulario.userAprovGerMarketing = {};
           vm.Formulario.userAprovPresidenciaVp = {};
           vm.Formulario.userValMarketing = {};
@@ -106,6 +104,14 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           })
         }
 
+        if (vm.Params.edit && !vm.Formulario.guid) {
+          vm.Formulario.guid = vm.guid();
+        }
+
+        if (vm.Params.edit) {
+          vm.Formulario.necEnvioNd = !vm.Formulario.userValidacaoEvid ? true : vm.Formulario.necEnvioNd;
+        }
+        
         fluigService.getUsuarios(vm.Params.user).then(resp => {
           vm.Usuario = resp[0];
           vm.checkEtapa();
@@ -186,6 +192,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
       vm.checkEtapa = function checkEtapa() {
+
         switch (true) {
           case vm.Params.etapa == 'inicio':
             vm.Formulario.solicitante = vm.Usuario;
@@ -259,7 +266,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             break;
 
           case vm.Params.etapa == 'validarEvidencias' || vm.Params.etapa == 'enviarEvidencias':
-            vm.Formulario.necEnvioNd = !vm.Formulario.userValidacaoEvid ? true : vm.Formulario.necEnvioNd;
             vm.Formulario.userValidacaoEvid = vm.Usuario;
             vm.Formulario.dataValidacaoEvid = vm.dataAtual;
             vm.Formulario.statusValidacaoEvid = 'PENDENTE';
@@ -293,6 +299,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.calculaTotalDuplicatas();
             break;
         }
+
 
         if (vm.regras.enableSolicitacao) {
           brotherService.getMarketingTipoAcao().then(resp => {
@@ -388,7 +395,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             item.loading = true;
 
             vm.Errors = [];
-            
+
             erpService.calculaItemErp(item.item.codigo, vm.Formulario.cliente.codigo, item.srpInicial, item.srpSugerido).then(result => {
 
               item.alterado = false;
@@ -503,7 +510,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           total += Number(d.valorAntecipa);
           d.saldoAposAbatimento = Number(d.valorSaldo) - Number(d.valorAntecipa);
         });
-        
+
         total = parseFloat(total.toFixed(4));
 
         vm.Formulario.difValorLiberado = vm.Formulario.valorLiberado - vm.Formulario.valorAntecipacao - total;

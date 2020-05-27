@@ -17,7 +17,7 @@
                         <div class="pull-right">
                             <button type="button" class="btn btn-success btn-lg" ng-click="vm.enviar()"
                                 ng-disabled="vm.loading">
-                                <span>{{vm.loading ? 'Salvando...' : 'Enviar'}}</span>
+                                <span>{{vm.loading ? 'Enviando...' : 'Enviar'}}</span>
                             </button>
                         </div>
                     </div>
@@ -246,6 +246,7 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
+                                                <th>Tipo</th>
                                                 <th>Finalidade</th>
                                                 <th>Quantidade</th>
                                                 <th>Percentual</th>
@@ -253,7 +254,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="item in vm.Formulario.itensVpcEvt">
+                                            <tr ng-repeat="item in vm.Formulario.itensVpcOutros">
+                                                <td>{{item.tipo}}</td>
                                                 <td>{{item.finalidade}}</td>
                                                 <td>{{item.qtde | number:2}}</td>
                                                 <td>{{item.perc | percentage:2}}</td>

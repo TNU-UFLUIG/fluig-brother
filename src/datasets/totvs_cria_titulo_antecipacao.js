@@ -76,7 +76,7 @@ function buscaDataset(fields, constraints, sortFields) {
     json = { ttErro: [{ mensagem: String(error) }] }
   }
 
-  // log.info("*** totvs_cria_titulo_antecipacao json: " + JSON.stringify(json));
+  log.info("*** totvs_cria_titulo_antecipacao json: " + JSON.stringify(json));
 
   return montaDataset(json.ttErro, json.ttRetorno, campos, display);
 }

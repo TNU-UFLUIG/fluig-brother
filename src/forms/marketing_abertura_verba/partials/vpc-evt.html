@@ -29,14 +29,14 @@
             <div class="col-sm-3">
               <label>Data Início</label>
               <input class="form-control input-lg" name="itemVpcEvt_inicio_i" fluig-date-mask date-pattern="LL"
-                ng-model="itemVpcEvt.inicio" ng-readonly="!vm.regras.enableSolicitacao">
+                ng-model="itemVpcEvt.inicio" ng-readonly="!vm.regras.enableSolicitacao" readonly>
               <input type="hidden" name="itemVpcEvt_inicio_f" ng-value="itemVpcEvt.inicio | date:'fullDate'">
               <input type="hidden" name="itemVpcEvt_inicio" ng-value="itemVpcEvt.inicio">
             </div>
             <div class="col-sm-3">
               <label>Data Término</label>
               <input class="form-control input-lg" name="itemVpcEvt_termino_i" fluig-date-mask date-pattern="LL"
-                ng-model="itemVpcEvt.termino" ng-readonly="!vm.regras.enableSolicitacao">
+                ng-model="itemVpcEvt.termino" ng-readonly="!vm.regras.enableSolicitacao" readonly>
               <input type="hidden" name="itemVpcEvt_termino_f" ng-value="itemVpcEvt.termino | date:'fullDate'">
               <input type="hidden" name="itemVpcEvt_termino" ng-value="itemVpcEvt.termino">
             </div>

@@ -158,7 +158,7 @@ angular
 
         if (loading) FLUIGC.loading("body").show();
 
-        vm.loading = true;
+        vm.loading = loading;
         $http.post(`/brother-api/v1/marketing/update`, vm.Formulario, { headers: { 'guid': vm.Param.guid } })
           .then((response) => {
             console.log(response);

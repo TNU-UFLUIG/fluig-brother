@@ -56,8 +56,8 @@
   <div class="col-md-4 col-sm-6">
     <div class="form-group">
       <label class="control-label">Nº de Controle/Registro</label>
-      <h4>{{vm.Formulario.solicitacao || '-'}}</h4>
-      <input type="hidden" name="numControle" ng-value="vm.Formulario.solicitacao">
+      <h4>{{vm.Formulario.numControle || vm.Formulario.solicitacao || '-'}}</h4>
+      <input type="hidden" name="numControle" ng-value="vm.Formulario.numControle">
       <input type="hidden" name="numControleAno" ng-value="vm.Formulario.numControleAno">
       <input type="hidden" name="numControleSeq" ng-value="vm.Formulario.numControleSeq">
     </div>
@@ -168,7 +168,7 @@
       <tbody>
         <tr ng-repeat="itemSellout in vm.Formulario.itensSellout">
           <td>
-            {{itemSellout.item.descricao}}
+            {{itemSellout.item.displaykey}}
           </td>
           <td>
             {{itemSellout.item.categoria}}
@@ -224,7 +224,7 @@
       <tbody>
         <tr ng-repeat="itemSellinIt in vm.Formulario.itensSellinIt">
           <td>
-            {{itemSellinIt.item.descricao}}
+            {{itemSellinIt.item.displaykey}}
           </td>
           <td>
             {{itemSellinIt.item.categoria}}
@@ -417,7 +417,7 @@
       <tbody>
         <tr ng-repeat="itemSpiffIt in vm.Formulario.itensSpiffIt">
           <td>
-            {{itemSpiffIt.item.descricao}}
+            {{itemSpiffIt.item.displaykey}}
           </td>
           <td>
             {{itemSpiffIt.item.categoria}}

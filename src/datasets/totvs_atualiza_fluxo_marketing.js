@@ -51,8 +51,8 @@ function buscaDataset(fields, constraints, sortFields) {
   }
 
   let solicitacaoCampos = [
-    { name: 'solicitacao' }, { name: 'clienteCodigo' }, { name: 'tipoAcaoDescricao' }, { name: 'tipoAcaoCodigo' },
-    { name: 'inicioAcao', type: 'date' }, { name: 'terminoAcao', type: 'date' }, { name: 'tipoQuantidade' },
+    { name: 'solicitacao' }, { name: 'importado' }, { name: 'clienteCodigo' }, { name: 'tipoAcaoDescricao' }, { name: 'tipoAcaoCodigo' },
+    { name: 'inicioAcao', type: 'date' }, { name: 'terminoAcao', type: 'date' }, { name: 'tipoQuantidade' }, {name: 'nomeAcao'},
     { name: 'tipoSellin' }, { name: 'tipoVpc' }, { name: 'tipoSpiff' }, { name: 'descricaoDetalhada' },
     { name: 'valorTotalVerba', type: 'decimal' }, { name: 'gpMedioSugerido', type: 'perc' }, { name: 'numControle' },
     { name: 'dataAbertura', type: 'date' }, { name: 'solicitanteNome' }, { name: 'solicitanteCodigo' }, { name: 'atividade' },
@@ -67,7 +67,7 @@ function buscaDataset(fields, constraints, sortFields) {
   solicitacoes.forEach(solicitacao => {
 
     let objSolicitacao = {};
-    solicitacaoCampos.forEach(c => { objSolicitacao[c.name] = String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : String(solicitacao[c.name]) });
+    solicitacaoCampos.forEach(c => { objSolicitacao[c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : String(solicitacao[c.name]) });
 
     ttParams.ttParam.push(objSolicitacao);
 
@@ -156,7 +156,7 @@ function buscaDataset(fields, constraints, sortFields) {
         paramTable.campos.forEach(c => {
 
           let value = String(objTable[`${paramTable.fieldPref}_${c.name}`] || '');
-          obj[c.name] = String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : String(value);
+          obj[c.name] = String(value) == "null" ? "" : String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : String(value);
         })
 
         if (!ttParams[paramTable.tt]) {
@@ -221,7 +221,7 @@ function buscaDataset(fields, constraints, sortFields) {
 
   // log.info('*** totvs_atualiza_fluxo_marketing 4');
 
-  // log.info(JSON.stringify(json))
+  log.info(JSON.stringify(json))
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display, dePara, true);
 }

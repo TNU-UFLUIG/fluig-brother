@@ -23,6 +23,10 @@ function buscaDataset(fields, constraints, sortFields) {
 
   let erros = [];
 
+  log.info(params.campos);
+  log.info(params.valores);
+  log.info(params.documentid);
+
   if (params.fullParam) {
     params.campos = String(params.fullParam).split('@$')[0];
     params.valores = String(params.fullParam).split('@$')[1];

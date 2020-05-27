@@ -7,6 +7,10 @@ function inputFields(form) {
   const currentState = getValue("WKNumState");
   const nextState = getValue("WKNextState");
 
+  const clienteNome = value(form, `clienteNome`);
+
+  form.setValue('displaykey', clienteNome);
+
   if (currentState == Params.atividades.validarMarketing[0]) {
     if (nextState == Params.atividades.gtwAprovarGerMarketing[0]) {
       form.setValue('statusValidacaoMarketing', 'APROVADO');

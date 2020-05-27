@@ -56,7 +56,8 @@
             <div class="col-sm-3">
               <label>Valor Total</label>
               <input class="form-control input-lg" name="itemSpiffTg_vlTotal_i" fluig-money-mask fluig-negative-number
-                ng-model="itemSpiffTg.vlTotal" ng-readonly="!vm.regras.enableSolicitacao">
+                ng-model="itemSpiffTg.vlTotal" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTotais()">
               <input type="hidden" name="itemSpiffTg_vlTotal_f" ng-value="itemSpiffTg.vlTotal | currency">
               <input type="hidden" name="itemSpiffTg_vlTotal" ng-value="itemSpiffTg.vlTotal">
             </div>

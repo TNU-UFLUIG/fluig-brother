@@ -54,7 +54,7 @@
     <div class="form-group">
       <label for="inicioAcao_i" class="control-label">Início da Ação</label>
       <input class="form-control input-lg" name="inicioAcao_i" fluig-date-mask date-pattern="LL" use-current="false"
-        ng-model="vm.Formulario.inicioAcao" ng-required="true" fluig-error="form.inicioAcao_i.$error">
+        ng-model="vm.Formulario.inicioAcao" ng-required="true" fluig-error="form.inicioAcao_i.$error" readonly>
       <input type="hidden" name="inicioAcao_f" ng-value="vm.Formulario.inicioAcao | date:'fullDate'">
       <input type="hidden" name="inicioAcao" ng-value="vm.Formulario.inicioAcao">
     </div>
@@ -63,7 +63,7 @@
     <div class="form-group">
       <label for="terminoAcao_i" class="control-label">Término da Ação</label>
       <input class="form-control input-lg" name="terminoAcao_i" fluig-date-mask date-pattern="LL" use-current="false"
-        ng-model="vm.Formulario.terminoAcao" ng-required="true" fluig-error="form.terminoAcao_i.$error">
+        ng-model="vm.Formulario.terminoAcao" ng-required="true" fluig-error="form.terminoAcao_i.$error" readonly>
       <input type="hidden" name="terminoAcao_f" ng-value="vm.Formulario.terminoAcao | date:'fullDate'">
       <input type="hidden" name="terminoAcao" ng-value="vm.Formulario.terminoAcao">
     </div>

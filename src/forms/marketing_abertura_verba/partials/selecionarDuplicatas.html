@@ -219,7 +219,7 @@
               <div class="col-sm-3">
                 <label>Saldo Final</label>
                 <h3 class="fs-no-margin">{{titulo.saldoAposAbatimento | currency}}</h3>
-                <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento">
+                <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento" ng-model="titulo.saldoAposAbatimento">
                 <!-- <input type="hidden" name="titulo_saldoAposAbatimento_i" ng-model="titulo.saldoAposAbatimento"> -->
                 <input type="hidden" name="titulo_saldoAposAbatimento_f"
                   ng-value="titulo.saldoAposAbatimento | currency">
