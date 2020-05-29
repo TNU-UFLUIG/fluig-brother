@@ -1,4 +1,4 @@
-const campos = [`documentid`, `solicitacao`, `status`, `valorLiberado`, `valorTotalVerba`, `valorResultado`, `diferencaResultado`, `descricaoDetalhada`, `inicioAcao`, `terminoAcao`, `envioEvidenciasConcluido`, `obsEnvioEvidencias`, `envioNDConcluido`, `obsEnvioND`, `currentStepPortal`, `motivoCancelamento`];
+const campos = [`documentid`, `solicitacao`, `status`, `valorLiberado`, `valorTotalVerba`, `valorResultado`, `descricaoDetalhada`, `inicioAcao`, `terminoAcao`, `envioEvidenciasConcluido`, `obsEnvioEvidencias`, `envioNDConcluido`, `obsEnvioND`, `currentStepPortal`, `motivoCancelamento`];
 const display = [`solicitacao`];
 const dePara = campos;
 

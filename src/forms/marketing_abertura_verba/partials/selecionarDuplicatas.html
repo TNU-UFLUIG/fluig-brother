@@ -110,7 +110,7 @@
         </tr>
       </thead>
       <tbody ng-non-bindable>
-        <tr ng-repeat="titulo in vm.Formulario.duplicatas"
+        <tr ng-repeat="titulo in vm.Formulario.duplicatas | orderBy:'dataVencto'"
           ng-if="vm.regras.enableSelecionarDuplicatas || titulo.valorAntecipa > 0">
 
           <td>
@@ -152,8 +152,7 @@
                 <label for="titulo_nd_i___{{$index + 1}}">ND</label>
                 <input type="text" fluig-error="form.titulo_nd_i___{{$index + 1}}.$error" class="form-control"
                   name="titulo_nd_i" ng-model="titulo.nd" fluig-autocomplete values="vm.Formulario.arquivosND"
-                  display-key="numero" ng-required="titulo.valorAntecipa > 0"
-                  ng-readonly="!vm.regras.enableSelecionarDuplicatas">
+                  display-key="numero" ng-readonly="!vm.regras.enableSelecionarDuplicatas">
                 <input type="hidden" name="titulo_nd_f" ng-value="titulo.nd.numero">
                 <textarea hidden name="titulo_nd" ng-value="titulo.nd || {} | json:0"
                   ng-bind="titulo.nd || {} | json:0"></textarea>
@@ -219,10 +218,9 @@
               <div class="col-sm-3">
                 <label>Saldo Final</label>
                 <h3 class="fs-no-margin">{{titulo.saldoAposAbatimento | currency}}</h3>
-                <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento" ng-model="titulo.saldoAposAbatimento">
-                <!-- <input type="hidden" name="titulo_saldoAposAbatimento_i" ng-model="titulo.saldoAposAbatimento"> -->
                 <input type="hidden" name="titulo_saldoAposAbatimento_f"
                   ng-value="titulo.saldoAposAbatimento | currency">
+                <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento">
               </div>
             </div>
           </td>

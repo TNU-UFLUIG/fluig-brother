@@ -89,11 +89,15 @@
       <label class="control-label">Tipo de Ação</label>
       <h4>
         {{vm.Formulario.tipoAcao.displaykey  || '-' | uppercase}}
-        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='item'"> / ITEM</span>
-        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='target'"> / TARGET</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='item'"> /
+          ITEM</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='target'"> /
+          TARGET</span>
         <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff=='item'"> / ITEM</span>
-        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff=='target'"> / TARGET</span>
-        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc=='eventos'"> / EVENTOS</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='spiff' && vm.Formulario.tipoSpiff=='target'"> /
+          TARGET</span>
+        <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc=='eventos'"> /
+          EVENTOS</span>
         <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='vpc' && vm.Formulario.tipoVpc=='outros'"> / OUTROS</span>
 
       </h4>
@@ -533,4 +537,16 @@
 
   </div>
 
+</div>
+
+<div class="row" ng-if="vm.Formulario.guid">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label class="control-label">Link para o portal do cliente</label>
+
+      <a target="_blank" ng-href="/portal/BROTHER/acao-marketing-cliente#!/{{vm.Formulario.guid}}">
+        <h3>/portal/BROTHER/acao-marketing-cliente#!/{{vm.Formulario.guid}}</h3>
+      </a>
+    </div>
+  </div>
 </div>

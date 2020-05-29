@@ -7,7 +7,10 @@ function checkValor30k() {
 		limiteResultado = Number(dsParametros.getValue(0, "limiteResultado"));
   }
 
-	var diferencaResultado = Number(hAPI.getCardValue("diferencaResultado"));
+	var valorLiberado = Number(hAPI.getCardValue("valorLiberado"));
+	var valorTotalVerba = Number(hAPI.getCardValue("valorTotalVerba"));
+	var diferencaResultado = valorLiberado - valorTotalVerba;
+
 	if (diferencaResultado >= limiteResultado) {
 		return "maior";
 	} else {

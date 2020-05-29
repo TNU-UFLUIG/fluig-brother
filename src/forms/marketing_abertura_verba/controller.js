@@ -60,7 +60,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
             vm.Formulario.valorResultado = 150000;
             vm.Formulario.valorLiberado = 150000;
-            vm.Formulario.diferencaResultado = 50000;
             vm.Formulario.arquivosEvidencias = [
               { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
             ];
@@ -72,7 +71,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
             vm.Formulario.valorResultado = 150000;
             vm.Formulario.valorLiberado = 150000;
-            vm.Formulario.diferencaResultado = 50000;
             vm.Formulario.valorTotalVerba = 100000;
             vm.Formulario.gpMedioSugerido = 10000;
 

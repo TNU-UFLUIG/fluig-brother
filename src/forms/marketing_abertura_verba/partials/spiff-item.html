@@ -22,7 +22,7 @@
                 ng-readonly="!vm.regras.enableSolicitacao" ng-change="vm.changeitemSpiffIt(itemSpiffIt, $index)">
               <textarea hidden name="itemSpiffIt_item" ng-value="itemSpiffIt.item | json:0"
                 ng-bind="itemSpiffIt.item | json:0"></textarea>
-              <input type="hidden" name="itemSpiffIt_itemDescricao" ng-value="itemSpiffIt.item.codigo">
+              <input type="hidden" name="itemSpiffIt_itemDescricao" ng-value="itemSpiffIt.item.descricao">
               <input type="hidden" name="itemSpiffIt_itemCodigo" ng-value="itemSpiffIt.item.codigo">
             </div>
             <div class="col-sm-3">

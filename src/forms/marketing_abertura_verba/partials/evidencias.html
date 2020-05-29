@@ -68,8 +68,7 @@
 
       <div ng-show="vm.regras.enableValidacaoEvidencias">
         <input type="text" class="form-control input-lg" name="valorLiberado_i" ng-model="vm.Formulario.valorLiberado"
-          fluig-money-mask fluig-negative-number ng-show="vm.regras.enableValidacaoEvidencias"
-          ng-change="vm.Formulario.diferencaResultado = vm.Formulario.valorLiberado - vm.Formulario.valorTotalVerba">
+          fluig-money-mask fluig-negative-number ng-show="vm.regras.enableValidacaoEvidencias">
       </div>
 
       <input type="hidden" name="valorLiberado_f" ng-value="vm.Formulario.valorLiberado | currency">
@@ -78,17 +77,6 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-4" ng-if="false">
-    <div class="form-group">
-      <label class="control-label">Diferença</label>
-      <h1 class="fs-no-margin" ng-class="{'fs-color-danger':vm.Formulario.diferencaResultado > 0} ">
-        {{vm.Formulario.diferencaResultado || 0 | currency}}</h1>
-
-      <input type="hidden" name="diferencaResultado_f" ng-value="vm.Formulario.diferencaResultado | currency">
-      <input type="hidden" name="diferencaResultado" ng-value="vm.Formulario.diferencaResultado">
-    </div>
-  </div>
-
   <div class="col-sm-4">
     <div class="form-group">
       <label for="necEnvioNd" class="control-label">Necessário o Envio de ND</label>

@@ -59,6 +59,9 @@ function validateForm(form) {
   const currentState = getValue(`WKNumState`);
   const nextState = getValue(`WKNextState`);
 
+  let nextStateTxt = ''
+  let currentStateTxt = ''
+
   for (var atividade in Params.atividades) {
     if (Params.atividades[atividade].indexOf(parseInt(currentState)) > -1) {
       currentStateTxt = atividade;
