@@ -13,12 +13,12 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
         fluigService.getUsuarios().then(resp => { vm.Usuarios = resp; vm.readLocalFile() });
         erpService.getItem().then(resp => { vm.Itens = resp; vm.readLocalFile() });
         erpService.getExecutivo().then(resp => { vm.Executivos = resp; vm.readLocalFile() });
-        brotherService.getMarketingTipoAcao().then(resp => { 
-          vm.TiposAcao = resp; 
+        brotherService.getMarketingTipoAcao().then(resp => {
+          vm.TiposAcao = resp;
           vm.TiposAcao.forEach(t => {
             t.contaContabil = JSON.parse(t.contaContabil)
           })
-          vm.readLocalFile() 
+          vm.readLocalFile()
         });
         erpService.getBusinessSegment().then(resp => { vm.BusinessSegment = resp; vm.readLocalFile() })
         erpService.getCliente().then(resp => { vm.Clientes = resp; vm.readLocalFile() })
@@ -83,9 +83,27 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
         let solicitacaoIndex;
         vm.Solicitacoes = [];
 
-        $http.get('../../../resources/verbas.csv')
+        // $.ajax({
+        //   type: "GET",
+        //   url: "../../../resources/verbas.csv",
+        //   headers: {
+        //     "Accept": "application/json;charset=iso-8859-1",
+        //     "Accept-Charset": "charset=iso-8859-1"
+        //   },
+        //   dataType: "text"
+        // }).success(function (result, status, headers) {
+
+        // console.log(result)
+        $http.get('../../../resources/verbas2.csv')
           .then((result) => {
 
+            // let textDecoder = new TextDecoder('ISO-8859-15'); // your encoding may vary!
+            // return JSON.parse(textDecoder.decode(data));
+
+            // vm.fileContent = textDecoder.decode(result.data);
+            // vm.fileContent = result.data;
+
+            // result.setEncoding('utf8');
             vm.fileContent = result.data;
 
             let allTextLines = vm.fileContent.split(/\r\n|\n/);
@@ -163,7 +181,7 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
                       case 'dataset':
                         field.value = value;
                         let reg = vm[camposCsv[col].format.split('|')[0]].filter(u => u[camposCsv[col].format.split('|')[1]] == value)[0];
-                        
+
                         if (reg) {
                           let additionalFields = camposCsv[col].format.split('|')[3].split(',');
                           solicitacao.formData.push({

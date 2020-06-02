@@ -1,55 +1,66 @@
-<link rel="stylesheet" type="text/css" href="/brother-fluig/wcm/widget/brother_lib/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/brother-fluig/wcm/widget/brother_importa_verbas/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-flat.min.css">
-</script>
-<script type="text/javascript" src="/brother-fluig/wcm/widget/brother_lib/js/vendor.min.js"></script>
-<script type="text/javascript" src="/brother-fluig/wcm/widget/brother_lib/js/script.min.js"></script>
-<script type="text/javascript" src="/resources/js/wcm_global_pt_BR.js?v=1.6.5-190219" charset="utf-8"></script>
-<script type="text/javascript" src="/portal/resources/js/api_pt_BR.js?v=1.6.5-190219" charset="utf-8"></script>
-<script type="text/javascript" src="/brother-fluig/wcm/widget/brother_importa_verbas/js/script.min.js"></script>
-<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"></script>
+<html lang="pt-br">
 
-<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/brother-fluig/wcm/widget/brother_lib/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/brother-fluig/wcm/widget/brother_importa_verbas/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-flat.min.css">
+    </script>
+    <script type="text/javascript" src="/brother-fluig/wcm/widget/brother_lib/js/vendor.min.js"></script>
+    <script type="text/javascript" src="/brother-fluig/wcm/widget/brother_lib/js/script.min.js"></script>
+    <script type="text/javascript" src="/resources/js/wcm_global_pt_BR.js?v=1.6.5-190219" charset="utf-8"></script>
+    <script type="text/javascript" src="/portal/resources/js/api_pt_BR.js?v=1.6.5-190219" charset="utf-8"></script>
+    <script type="text/javascript" src="/brother-fluig/wcm/widget/brother_importa_verbas/js/script.min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"></script>
 
-<div id="BrotherImportaVerbas" ng-controller="BrotherImportaVerbasController as vm" class="fluig-style-guide ng-cloak">
-    <div class="row">
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
 
-        <div class="col-sm-12">
-            
-            <button class="btn btn-default" ng-click="vm.importar()">Importar</button>
+</head>
 
-            <table class="table table-stripped" ng-show="vm.Solicitacoes.length > 0">
-                <caption>Solicitacoes</caption>
-                <thead>
-                    <th>No. Controle</th>
-                    <th>Total da Verba</th>
-                    <th>Solicitação</th>
-                    <th>Status</th>
-                    <th>Erros</th>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="solicitacao in vm.Solicitacoes">
-                        <td>{{solicitacao.numControle}}</td>
-                        <td>{{solicitacao.valorTotalVerba | currency}}</td>
-                        <td>{{solicitacao.solicitacao}}</td>
-                        <td>{{solicitacao.loading ? 'Loading...' : solicitacao.status}}</td>
-                        <td>{{solicitacao.errors}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-        </div>
+<body>
+    <div id="BrotherImportaVerbas" ng-controller="BrotherImportaVerbasController as vm"
+        class="fluig-style-guide ng-cloak">
+        <div class="row">
 
-        <div class="col-sm-12" ng-show="false">
+            <div class="col-sm-12">
 
-            <pre>
+                <button class="btn btn-default" ng-click="vm.importar()">Importar</button>
+
+                <table class="table table-stripped" ng-show="vm.Solicitacoes.length > 0">
+                    <caption>Solicitacoes</caption>
+                    <thead>
+                        <th>No. Controle</th>
+                        <th>Total da Verba</th>
+                        <th>Solicitação</th>
+                        <th>Status</th>
+                        <th>Erros</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="solicitacao in vm.Solicitacoes">
+                            <td>{{solicitacao.numControle}}</td>
+                            <td>{{solicitacao.valorTotalVerba | currency}}</td>
+                            <td>{{solicitacao.solicitacao}}</td>
+                            <td>{{solicitacao.loading ? 'Loading...' : solicitacao.status}}</td>
+                            <td>{{solicitacao.errors}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="col-sm-12" ng-show="false">
+
+                <pre>
                 {{vm.Solicitacoes | json}}
             </pre>
 
-            <pre>
+                <pre>
                 {{vm.fileContent}}
             </pre>
 
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+</html>
