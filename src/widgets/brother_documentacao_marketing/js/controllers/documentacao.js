@@ -44,6 +44,7 @@ angular
             vm.Formulario = response.data;
 
             vm.setRegras();
+            vm.getItens();
 
           }, (error) => {
             vm.done = true;
@@ -164,7 +165,7 @@ angular
             console.log(response);
             if (loading) FLUIGC.loading("body").hide();
             // vm.Formulario = response.data;
-            
+
             vm.setRegras();
             if (loading) {
               vm.showConfirmPage();
@@ -180,7 +181,7 @@ angular
           });
       };
 
-      vm.selectFiles = function selectFiles(tablename, files) {
+      vm.selectFiles = function selectFiles(tablename, files, item) {
         if (!vm.Formulario[tablename]) {
           vm.Formulario[tablename] = [];
         }
@@ -192,6 +193,7 @@ angular
           file.nome = file.name;
           // file.descricao = file.name;
           file.tipo = file.type;
+          file.item = item;
           vm.Formulario[tablename].push(file);
           vm.upload(file);
         });
@@ -295,6 +297,96 @@ angular
           }
         });
       }
+
+      vm.getItens = () => {
+
+        console.log('getItens', vm.Formulario)
+        vm.Itens = [];
+
+        vm.Formulario.itensSellout.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensSellout', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
+        })
+        vm.Formulario.itensSellinIt.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
+        })
+
+        vm.Formulario.itensSellinTg.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
+        })
+        vm.Formulario.itensSellinTgAc.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
+        })
+        vm.Formulario.itensVpcEvt.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
+        })
+        vm.Formulario.itensVpcOutros.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
+        })
+        vm.Formulario.itensSpiffIt.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
+        })
+        vm.Formulario.itensSpiffTg.forEach((it, index) => {
+          vm.Itens.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
+        })
+
+        vm.Itens.forEach(item => {
+          vm.calculaTotalItemEvidencia(item)
+        })
+
+        console.log(vm.Itens)
+      }
+
+      vm.calculaTotalItemEvidencia = item => {
+
+        vm.Formulario[item.tablename][item.index].valEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia || 0
+        vm.Formulario[item.tablename][item.index].qtdEvidencia = vm.Formulario[item.tablename][item.index].qtdEvidencia || 0
+
+        vm.Formulario[item.tablename][item.index].totEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia * vm.Formulario[item.tablename][item.index].qtdEvidencia
+        vm.Formulario.valorResultado = 0;
+        vm.Itens.forEach(item => {
+          vm.Formulario.valorResultado += vm.Formulario[item.tablename][item.index].totEvidencia || 0
+        })
+
+        vm.alterado = true
+
+      }
+
+      // vm.selecionaArquivosEvidencias = (item, files) => {
+      //   // vm.selectFiles(vm.Formulario.arquivosEvidencias, null, $files);
+
+      //   vm.Formulario.evidencias = vm.Formulario.evidencias || []
+
+      //   files.forEach(file => {
+      //     file.uploading = true;
+      //     file.descricao = file.name;
+      //     file.nome = file.name;
+      //     file.novo = true;
+      //     file.item = item;
+
+      //     vm.Formulario.evidencias.push(file);
+
+      //     vm.upload(file);
+
+      //     // Upload.upload({
+      //     //   url: '/ecm/upload',
+      //     //   data: {
+      //     //     "userId": vm.Params.user || 'fluigpost2',
+      //     //     "uploadWithTimeStamp": true,
+      //     //     file: file
+      //     //   },
+      //     //   // headers: $oauth.oauth.toHeader($oauth.oauth.authorize(reqUpload, $oauth.token))
+      //     // }).then(function (resp) {
+      //     //   resp.data.files.forEach(uploadedFile => {
+      //     //     vm.createDocument(file, uploadedFile);
+      //     //   })
+      //     // }, function (resp) {
+      //     //   console.log('Error status: ' + resp.status);
+      //     // }, function (evt) {
+      //     //   file.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+      //     // });
+      //   });
+      //   console.log(vm.Formulario.evidencias)
+      // }
 
       vm.inicia();
 

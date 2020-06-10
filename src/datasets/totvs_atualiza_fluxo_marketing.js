@@ -52,7 +52,7 @@ function buscaDataset(fields, constraints, sortFields) {
 
   let solicitacaoCampos = [
     { name: 'solicitacao' }, { name: 'importado' }, { name: 'clienteCodigo' }, { name: 'tipoAcaoDescricao' }, { name: 'tipoAcaoCodigo' },
-    { name: 'inicioAcao', type: 'date' }, { name: 'terminoAcao', type: 'date' }, { name: 'tipoQuantidade' }, {name: 'nomeAcao'},
+    { name: 'inicioAcao', type: 'date' }, { name: 'terminoAcao', type: 'date' }, { name: 'tipoQuantidade' }, { name: 'nomeAcao' },
     { name: 'tipoSellin' }, { name: 'tipoVpc' }, { name: 'tipoSpiff' }, { name: 'descricaoDetalhada' },
     { name: 'valorTotalVerba', type: 'decimal' }, { name: 'gpMedioSugerido', type: 'perc' }, { name: 'numControle' },
     { name: 'dataAbertura', type: 'date' }, { name: 'solicitanteNome' }, { name: 'solicitanteCodigo' }, { name: 'atividade' },
@@ -84,7 +84,8 @@ function buscaDataset(fields, constraints, sortFields) {
           { name: 'itemCodigo' }, { name: 'srpInicial', type: 'decimal' }, { name: 'netInicial', type: 'decimal' },
           { name: 'gpInicial', type: 'perc' }, { name: 'srpSugerido', type: 'decimal' }, { name: 'netSugerido', type: 'decimal' },
           { name: 'gpSugerido', type: 'perc' }, { name: 'rebateUnit', type: 'decimal' }, { name: 'qtde', type: 'decimal' },
-          { name: 'rebateTotal', type: 'decimal' }
+          { name: 'rebateTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
@@ -93,49 +94,56 @@ function buscaDataset(fields, constraints, sortFields) {
           { name: 'itemCodigo' }, { name: 'srpInicial', type: 'decimal' }, { name: 'netInicial', type: 'decimal' },
           { name: 'gpInicial', type: 'perc' }, { name: 'srpSugerido', type: 'decimal' }, { name: 'netSugerido', type: 'decimal' },
           { name: 'gpSugerido', type: 'perc' }, { name: 'rebateUnit', type: 'decimal' }, { name: 'qtde', type: 'decimal' },
-          { name: 'rebateTotal', type: 'decimal' }
+          { name: 'rebateTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
         tablename: 'itensSellinTg', tt: 'ttSellinTarget', fieldPref: 'itemSellinTg',
         campos: [
           { name: 'descricao' }, { name: 'target' }, { name: 'qtde', type: 'decimal' }, { name: 'perc', type: 'perc' },
-          { name: 'vlTarget', type: 'decimal' }, { name: 'vlTotal', type: 'decimal' }
+          { name: 'vlTarget', type: 'decimal' }, { name: 'vlTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
         tablename: 'itensSellinTgAc', tt: 'ttSellinTargetAc', fieldPref: 'itemSellinTgAc',
         campos: [
           { name: 'descricao' }, { name: 'target' }, { name: 'qtde', type: 'decimal' }, { name: 'perc', type: 'perc' },
-          { name: 'vlTarget', type: 'decimal' }, { name: 'vlTotal', type: 'decimal' }
+          { name: 'vlTarget', type: 'decimal' }, { name: 'vlTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
         tablename: 'itensSpiffIt', tt: 'ttSpiffItem', fieldPref: 'itemSpiffIt',
         campos: [
           { name: 'itemCodigo' }, { name: 'spiffUnit', type: 'decimal' }, { name: 'qtde', type: 'decimal' },
-          { name: 'vlTotal', type: 'decimal' }
+          { name: 'vlTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
         tablename: 'itensSpiffTg', tt: 'ttSpiffTarget', fieldPref: 'itemSpiffTg',
         campos: [
           { name: 'foco' }, { name: 'target', type: 'perc' }, { name: 'qtde', type: 'decimal' },
-          { name: 'vlUnit', type: 'decimal' }, { name: 'vlTotal', type: 'decimal' }
+          { name: 'vlUnit', type: 'decimal' }, { name: 'vlTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
         tablename: 'itensVpcEvt', tt: 'ttVpcEvt', fieldPref: 'itemVpcEvt',
         campos: [
           { name: 'nomeEvento' }, { name: 'finalidade' }, { name: 'inicio', type: 'date' }, { name: 'termino', type: 'date' },
-          { name: 'perc', type: 'perc' }, { name: 'vlTotal', type: 'decimal' }
+          { name: 'perc', type: 'perc' }, { name: 'vlTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
         tablename: 'itensVpcOutros', tt: 'ttVpcOutros', fieldPref: 'itemVpcOutros',
         campos: [
           { name: 'tipo' }, { name: 'finalidade' }, { name: 'qtde', type: 'decimal' },
-          { name: 'perc', type: 'perc' }, { name: 'vlTotal', type: 'decimal' }
+          { name: 'perc', type: 'perc' }, { name: 'vlTotal', type: 'decimal' },
+          { name: 'qtdEvidencia', type: 'decimal' }, { name: 'valEvidencia', type: 'decimal' }, { name: 'totEvidencia', type: 'decimal' },
         ]
       },
       {
@@ -188,7 +196,7 @@ function buscaDataset(fields, constraints, sortFields) {
             { field: 'documentid', value: String(solicitacao.documentid) }
           ])
         }
-        
+
       })
     }
 

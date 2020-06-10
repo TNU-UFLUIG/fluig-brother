@@ -48,12 +48,7 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Resultado Apresentado</label>
-      <h1 ng-show="!vm.regras.enableEvidencias" class="fs-no-margin">{{vm.Formulario.valorResultado | currency}}</h1>
-
-      <div ng-show="vm.regras.enableEvidencias">
-        <input type="text" class="form-control input-lg" name="valorResultado_i" ng-model="vm.Formulario.valorResultado"
-          fluig-money-mask fluig-negative-number ng-show="vm.regras.enableEvidencias">
-      </div>
+      <h1 class="fs-no-margin">{{vm.Formulario.valorResultado | currency}}</h1>
 
       <input type="hidden" name="valorResultado_f" ng-value="vm.Formulario.valorResultado | currency">
       <input type="hidden" name="valorResultado" ng-value="vm.Formulario.valorResultado">
@@ -105,6 +100,10 @@
 </div>
 
 <div class="row">
+  <div class="col-sm-12">
+    <h3 class="text-muted" class="control-label">Arquivos de Evidência</h3>
+  </div>
+
 
   <div class="col-sm-3" ng-if="vm.regras.enableEvidencias">
     <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles(vm.Formulario.arquivosEvidencias, null, $files)"
@@ -115,27 +114,102 @@
   </div>
 
   <div ng-class="{'col-sm-9': vm.regras.enableEvidencias, 'col-sm-12': !vm.regras.enableEvidencias}">
-    <div class="fs-txt-center" ng-show="vm.Formulario.arquivosEvidencias.length == 0">
+    <div ng-show="vm.Formulario.arquivosEvidencias.length == 0">
       <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
     </div>
-    <table class="table" tablename="arquivosEvidencias" noaddbutton="true" nodeletebutton="true"
-      ng-show="vm.Formulario.arquivosEvidencias.length > 0">
-      <!-- <caption>Arquivos de Evidência</caption> -->
+    <div class="table" ng-show="vm.Formulario.arquivosEvidencias.length > 0">
+      <!-- <!- <caption>Arquivos de Evidência</caption> -> -->
+      <div ng-repeat="arquivoEv in vm.Formulario.arquivosEvidencias" ng-show="!arquivoEv.removed"
+        class="row">
+
+        <div ng-show="vm.regras.enableEvidencias" class="col-sm-1">
+          <span ng-click="vm.removeChild(vm.Formulario.arquivosEvidencias, arquivoEv)"
+            class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+        </div>
+        <div class="col-sm-4">
+          <input type="text" ng-readonly="!vm.regras.enableEvidencias" class="form-control" name="arquivoEv_descricao_i"
+            ng-model="arquivoEv.descricao" placeholder="Descrição do arquivo">
+        </div>
+        <div class="col-sm-3">
+          <a target="_blank" href="{{arquivoEv.url}}"> {{arquivoEv.nome}}</a>
+        </div>
+        <div class="col-sm-2">
+          <input ng-disabled="!vm.regras.enableValidacaoEvidencias" type="checkbox" name="arquivoEv_aceito_i"
+            ng-model="arquivoEv.aceito" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success"
+            ng-change="vm.checkEtapaNotificacao()">
+          <!-- <input type="hidden" name="arquivoEv_aceito" ng-value="arquivoEv.aceito"> -->
+        </div>
+        <div class="col-sm-2">
+          <input ng-readonly="!vm.regras.enableValidacaoEvidencias" ng-show="!arquivoEv.aceito" class="form-control"
+            ng-model="arquivoEv.motivoRecusa" name="arquivoEv_motivoRecusa_i">
+          <i ng-show="arquivoEv.aceito">Arquivo aceito</i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-12">
+    <h3 class="text-muted" class="control-label">
+      Evidências por item</h3>
+  </div>
+
+  <div ng-repeat="item in vm.Itens track by $index" class="col-sm-12" style="margin-bottom: 15px;">
+
+    <div class="panel panel-default">
+      <div class="panel-heading" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+        <h2 class="fs-no-margin text-muted text-center">{{item.descricao}}</h2>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label for="itemEv_qtdVendida">Quantidade</label>
+              <input ng-if="vm.regras.enableEvidencias" type="text" class="form-control input-lg"
+                name="itemEv_qtdVendida" ng-model="vm.Formulario[item.tablename][item.index].qtdEvidencia"
+                ng-change="vm.calculaTotalItemEvidencia(item)" fluig-number-mask>
+              <h1 ng-if="!vm.regras.enableEvidencias" class="fs-no-margin">
+                {{vm.Formulario[item.tablename][item.index].qtdEvidencia | number:'2'}}</h1>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="itemEv_valEvidencia">Valor</label>
+              <input ng-if="vm.regras.enableEvidencias" type="text" class="form-control input-lg"
+                name="itemEv_valEvidencia" ng-model="vm.Formulario[item.tablename][item.index].valEvidencia"
+                ng-change="vm.calculaTotalItemEvidencia(item)" fluig-money-mask>
+              <h1 ng-if="!vm.regras.enableEvidencias" class="fs-no-margin">
+                {{vm.Formulario[item.tablename][item.index].valEvidencia | currency}}</h1>
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="form-group">
+              <label for="">Total</label>
+              <h1 class="fs-no-margin">{{vm.Formulario[item.tablename][item.index].totEvidencia | currency}}</h1>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-display-none">
+    <table class="table" tablename="arquivosEvidencias" noaddbutton="true" nodeletebutton="true">
       <thead>
         <tr>
-          <th class="col-sm-1" ng-show="vm.regras.enableEvidencias"></th>
-          <th class="col-sm-3">Descrição</th>
-          <th class="col-sm-3">Link</th>
-          <th class="col-sm-1">Aceito</th>
-          <th class="col-sm-5">Motivo da Recusa</th>
+          <th></th>
         </tr>
       </thead>
       <tbody ng-non-bindable>
-        <tr ng-repeat="arquivoEv in vm.Formulario.arquivosEvidencias" ng-show="!arquivoEv.removed">
+        <tr ng-repeat="arquivoEv in vm.Formulario.arquivosEvidencias">
 
-          <td ng-show="vm.regras.enableEvidencias">
-            <span ng-click="vm.removeChild(vm.Formulario.arquivosEvidencias, arquivoEv)"
-              class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+          <td>
 
             <input type="hidden" name="arquivoEv_nome" ng-value="arquivoEv.nome">
             <input type="hidden" name="arquivoEv_tipo" ng-value="arquivoEv.tipo">
@@ -143,25 +217,12 @@
             <input type="hidden" name="arquivoEv_version" ng-value="arquivoEv.version">
             <input type="hidden" name="arquivoEv_url" ng-value="arquivoEv.url">
             <input type="hidden" name="arquivoEv_removed" ng-value="arquivoEv.removed">
-
-          </td>
-          <td>
-            <input type="text" ng-readonly="!vm.regras.enableEvidencias" class="form-control" name="arquivoEv_descricao"
-              ng-model="arquivoEv.descricao" ng-value="arquivoEv.descricao" placeholder="Descrição do arquivo">
-          </td>
-          <td>
-            <a target="_blank" href="{{arquivoEv.url}}"> {{arquivoEv.nome}}</a>
-          </td>
-          <td>
-            <input ng-disabled="!vm.regras.enableValidacaoEvidencias" type="checkbox" name="arquivoEv_aceito_i"
-              ng-model="arquivoEv.aceito" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success"
-              ng-change="vm.checkEtapaNotificacao()">
+            <input type="hidden" name="arquivoEv_descricao" ng-value="arquivoEv.descricao">
             <input type="hidden" name="arquivoEv_aceito" ng-value="arquivoEv.aceito">
-          </td>
-          <td>
-            <input ng-readonly="!vm.regras.enableValidacaoEvidencias" ng-show="!arquivoEv.aceito" class="form-control"
-              ng-model="arquivoEv.motivoRecusa" name="arquivoEv_motivoRecusa" ng-value="arquivoEv.motivoRecusa">
-            <i ng-show="arquivoEv.aceito">Arquivo aceito</i>
+            <input type="hidden" name="arquivoEv_motivoRecusa" ng-value="arquivoEv.motivoRecusa">
+            <textarea hidden name="arquivoEv_item" ng-value="arquivoEv.item | json:0"
+              ng-bind="arquivoEv.item | json:0"></textarea>
+
           </td>
         </tr>
       </tbody>

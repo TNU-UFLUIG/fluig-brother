@@ -142,8 +142,18 @@
               <input type="hidden" name="itemSellinIt_usuarioNome" ng-value="itemSellinIt.usuario.colleagueName">
               <input type="hidden" name="itemSellinIt_data" ng-value="itemSellinIt.data">
               <input type="hidden" name="itemSellinIt_data_f" ng-value="itemSellinIt.data | date:'fullDate'">
+
             </div>
           </div>
+
+          <input type="hidden" name="itemSellinIt_qtdEvidencia_f" ng-value="itemSellinIt.qtdEvidencia | number:'2'">
+          <input type="hidden" name="itemSellinIt_valEvidencia_f" ng-value="itemSellinIt.valEvidencia | currency">
+          <input type="hidden" name="itemSellinIt_totEvidencia_f" ng-value="itemSellinIt.totEvidencia | currency">
+
+          <input type="hidden" name="itemSellinIt_qtdEvidencia" ng-value="itemSellinIt.qtdEvidencia">
+          <input type="hidden" name="itemSellinIt_valEvidencia" ng-value="itemSellinIt.valEvidencia">
+          <input type="hidden" name="itemSellinIt_totEvidencia" ng-value="itemSellinIt.totEvidencia">
+
         </div>
       </td>
     </tr>

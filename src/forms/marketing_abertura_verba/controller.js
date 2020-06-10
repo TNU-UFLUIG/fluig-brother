@@ -50,18 +50,38 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: "inicio",
+            etapa: "enviarEvidencias",
             user: 'ckayama',
-            formMode: 'ADD'
+            formMode: 'MOD',
+            companyId: 1
           };
 
           if (vm.Params.formMode != 'ADD') {
-            vm.Formulario = { "rateioCategoria": [{ "categoria": { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }], "itensSellout": [{ "data": 1582029871745, "$$hashKey": "object:27", "item": { "netInicial": "1200", "displaykey": "10930 - HLL2360DW", "codigo": "10930", "gpInicial": "10", "gpSugerido": "14", "rebateTotal": "100", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "100", "netSugerido": "1300", "descricao": "HLL2360DW" }, "srpInicial": 100, "srpSugerido": 100, "qtde": 1000, "rebateTotal": 100000 }], "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1 };
+            vm.Formulario = {
+              "rateioCategoria": [
+                { "categoria": { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }],
+              "itensSellout":
+                [
+                  {
+                    $id: 1,
+                    "data": 1582029871745, "$$hashKey": "object:27", "item":
+                      { "netInicial": "1200", "displaykey": "10930 - HLL2360DW", "codigo": "10930", "gpInicial": "10", "gpSugerido": "14", "rebateTotal": "100", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "100", "netSugerido": "1300", "descricao": "HLL2360DW" },
+                    "srpInicial": 100, "srpSugerido": 100, "qtde": 1000, "rebateTotal": 100000
+                  },
+                  {
+                    $id: 2,
+                    "data": 1582029871745, "$$hashKey": "object:27", "item":
+                      { "netInicial": "1200", "displaykey": "11000 - HLL2370DW", "codigo": "11000", "gpInicial": "5", "gpSugerido": "6", "rebateTotal": "1000", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "1000", "netSugerido": "13000", "descricao": "HLL2370DW" },
+                    "srpInicial": 100, "srpSugerido": 100, "qtde": 3000, "rebateTotal": 30000
+                  }
+                ],
+              "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1
+            };
 
             vm.Formulario.valorResultado = 150000;
             vm.Formulario.valorLiberado = 150000;
             vm.Formulario.arquivosEvidencias = [
-              { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
+              // { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
             ];
             vm.Formulario.duplicatas = [
               { seq: 1, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 2, valorOriginal: 200000, saldo: 180000 },
@@ -109,7 +129,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (vm.Params.edit) {
           vm.Formulario.necEnvioNd = !vm.Formulario.userValidacaoEvid ? true : vm.Formulario.necEnvioNd;
         }
-        
+
         fluigService.getUsuarios(vm.Params.user).then(resp => {
           vm.Usuario = resp[0];
           vm.checkEtapa();
@@ -128,6 +148,8 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (vm.Params.edit) {
           vm.Formulario.importado = false;
         }
+
+        vm.getItens()
       };
 
       vm.checkRegras = function checkRegras() {
@@ -603,6 +625,117 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         })
       }
 
+      vm.selecionaArquivosEvidencias = (item, files) => {
+        // vm.selectFiles(vm.Formulario.arquivosEvidencias, null, $files);
+
+        files.forEach(file => {
+          file.uploading = true;
+          file.descricao = file.name;
+          file.nome = file.name;
+          file.novo = true;
+          file.item = item;
+
+          vm.Formulario.arquivosEvidencias.push(file);
+
+          Upload.upload({
+            url: '/ecm/upload',
+            data: {
+              "userId": vm.Params.user || 'fluigpost2',
+              "uploadWithTimeStamp": true,
+              file: file
+            },
+            // headers: $oauth.oauth.toHeader($oauth.oauth.authorize(reqUpload, $oauth.token))
+          }).then(function (resp) {
+            resp.data.files.forEach(uploadedFile => {
+              vm.createDocument(file, uploadedFile);
+            })
+          }, function (resp) {
+            console.log('Error status: ' + resp.status);
+          }, function (evt) {
+            file.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        });
+      }
+
+      vm.getItens = () => {
+
+        console.log('vm.getItens')
+
+        vm.Itens = [];
+
+
+        console.log('vm.Formulario.tipoAcao = ', vm.Formulario.tipoAcao)
+
+        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+
+          switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+            case 'sellout':
+              vm.Formulario.itensSellout.forEach((it, index) => {
+                vm.Itens.push({ tablename: 'itensSellout', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
+              })
+              break
+
+            case 'sellin':
+              if (vm.Formulario.tipoSellin == 'item') {
+                vm.Formulario.itensSellinIt.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
+                })
+              } else {
+                vm.Formulario.itensSellinTg.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
+                })
+                vm.Formulario.itensSellinTgAc.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
+                })
+              }
+              break
+
+            case 'vpc':
+              if (vm.Formulario.tipoVpc == 'eventos') {
+                vm.Formulario.itensVpcEvt.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
+                })
+              } else {
+                vm.Formulario.itensVpcOutros.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
+                })
+              }
+
+              break
+
+            case 'spiff':
+              if (vm.Formulario.tipoSpiff == 'item') {
+                vm.Formulario.itensSpiffIt.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
+                })
+              } else {
+                vm.Formulario.itensSpiffTg.forEach((it, index) => {
+                  vm.Itens.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
+                })
+              }
+
+              break
+          }
+        }
+        
+        vm.Itens.forEach(item => {
+          vm.calculaTotalItemEvidencia(item)
+        })
+      }
+
+      vm.calculaTotalItemEvidencia = item => {
+
+        vm.Formulario[item.tablename][item.index].valEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia || 0
+        vm.Formulario[item.tablename][item.index].qtdEvidencia = vm.Formulario[item.tablename][item.index].qtdEvidencia || 0
+
+        vm.Formulario[item.tablename][item.index].totEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia * vm.Formulario[item.tablename][item.index].qtdEvidencia
+        vm.Formulario.valorResultado = 0;
+        vm.Itens.forEach(item => {
+          vm.Formulario.valorResultado += vm.Formulario[item.tablename][item.index].totEvidencia || 0
+        })
+
+      }
+
       vm.calculaTotais = function calculaTotais() {
         vm.Formulario.valorTotalVerba = 0;
         vm.Formulario.gpMedioSugerido = 0;
@@ -707,7 +840,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               }
             })
               .then(function (response) {
-                console.log(result);
                 arquivo.anexo = {};
               }, function (rejection) {
                 console.log(rejection.data);
@@ -781,12 +913,11 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           internalVisualizer: true
         })
           .then((response) => {
-            console.log(response)
             file.documentid = response.data.content.documentId;
             file.version = response.data.content.version;
             $http.get('/api/public/2.0/documents/getDownloadURL/' + response.data.content.documentId)
               .then((url) => {
-                console.log(url)
+
                 file.url = url.data.content;
                 delete file.uploading;
                 delete file.progressPercentage;
@@ -822,7 +953,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
       vm.updateFile = function updateFile(file, uploadedFile) {
-        console.log(file, uploadedFile);
+
         $http.post('/api/public/ecm/document/updateFile', {
           comments: "",
           fileName: uploadedFile.name,
@@ -830,7 +961,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           version: file.arquivo_version,
           versionAction: "KEEP_VERSION",
         }).then((response) => {
-          console.log(response)
+
           file.arquivo_version = response.data.content.version;
           $http.get('/api/public/2.0/documents/getDownloadURL/' + file.arquivo_documentId)
             .then((url) => {
@@ -852,8 +983,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           user: vm.Params.user,
           userName: vm.Usuario.colleagueName
         })
-
-        console.log(vm.Formulario.chat)
 
         vm.chatMessage = null;
       }

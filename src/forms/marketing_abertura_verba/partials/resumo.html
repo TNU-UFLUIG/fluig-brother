@@ -170,7 +170,7 @@
         <th>C. Custo</th>
       </thead>
       <tbody>
-        <tr ng-repeat="itemSellout in vm.Formulario.itensSellout">
+        <tr ng-repeat="itemSellout in vm.Formulario.itensSellout track by $index">
           <td>
             {{itemSellout.item.displaykey}}
           </td>

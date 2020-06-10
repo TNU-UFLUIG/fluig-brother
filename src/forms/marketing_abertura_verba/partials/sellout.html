@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody ng-non-bindable>
-    <tr ng-repeat="itemSellout in vm.Formulario.itensSellout">
+    <tr ng-repeat="itemSellout in vm.Formulario.itensSellout track by $index">
       <td ng-if="vm.regras.enableSolicitacao">
         <span ng-click="vm.removeChild(vm.Formulario.itensSellout, itemSellout)"
           class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
@@ -142,8 +142,18 @@
               <input type="hidden" name="itemSellout_usuarioNome" ng-value="itemSellout.usuario.colleagueName">
               <input type="hidden" name="itemSellout_data_f" ng-value="itemSellout.data | date:'fullDate'">
               <input type="hidden" name="itemSellout_data" ng-value="itemSellout.data">
+
             </div>
           </div>
+
+          <input type="hidden" name="itemSellout_qtdEvidencia_f" ng-value="itemSellout.qtdEvidencia | number:'2'">
+          <input type="hidden" name="itemSellout_valEvidencia_f" ng-value="itemSellout.valEvidencia | currency">
+          <input type="hidden" name="itemSellout_totEvidencia_f" ng-value="itemSellout.totEvidencia | currency">
+
+          <input type="hidden" name="itemSellout_qtdEvidencia" ng-value="itemSellout.qtdEvidencia">
+          <input type="hidden" name="itemSellout_valEvidencia" ng-value="itemSellout.valEvidencia">
+          <input type="hidden" name="itemSellout_totEvidencia" ng-value="itemSellout.totEvidencia">
+
         </div>
       </td>
     </tr>

@@ -94,7 +94,7 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
         // }).success(function (result, status, headers) {
 
         // console.log(result)
-        $http.get('../../../resources/verbas2.csv')
+        $http.get('../../../resources/verbas3.csv')
           .then((result) => {
 
             // let textDecoder = new TextDecoder('ISO-8859-15'); // your encoding may vary!
@@ -164,6 +164,9 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
                       field.name = `${camposCsv[col].field}`;
                     }
 
+                    if (field.name.match('tipoAcaoCodigo') || field.name.match('tipoQuantidade')) {
+                      value = value.toLowerCase();
+                    }
 
                     switch (camposCsv[col].filter) {
                       case 'date':
@@ -232,6 +235,7 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
                       field.name.match('itemVpcOutros_vlTotal')) {
                       solicitacao.valorTotalVerba += parseFloat(field.value);
                     }
+                    
                     solicitacao.formData.push(field);
                   }
                 }
