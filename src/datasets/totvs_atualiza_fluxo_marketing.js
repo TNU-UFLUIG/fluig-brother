@@ -59,7 +59,7 @@ function buscaDataset(fields, constraints, sortFields) {
     { name: 'responsavel' }, { name: 'statusAprovGerMarketing' }, { name: 'dataAprovGerMarketing', type: 'date' },
     { name: 'userAprovGerMarketingNome' }, { name: 'userAprovGerMarketingCodigo' }, { name: 'obsAprovGerMarketing' },
     { name: 'statusAprovPresidenciaVp' }, { name: 'dataAprovPresidenciaVp', type: 'date' }, { name: 'userAprovPresidenciaVpNome' },
-    { name: 'userAprovPresidenciaVpCodigo' }, { name: 'obsAprovPresidenciaVp' }
+    { name: 'userAprovPresidenciaVpCodigo' }, { name: 'obsAprovPresidenciaVp' }, { name: 'status', ttName: 'statusSolicitacao' }, { name: 'motivoCancelamento' }
   ]
 
   // log.info(`solicitacoes.length = ${solicitacoes.length}`);
@@ -67,7 +67,7 @@ function buscaDataset(fields, constraints, sortFields) {
   solicitacoes.forEach(solicitacao => {
 
     let objSolicitacao = {};
-    solicitacaoCampos.forEach(c => { objSolicitacao[c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : String(solicitacao[c.name]) });
+    solicitacaoCampos.forEach(c => { objSolicitacao[c.ttName || c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : String(solicitacao[c.name]) });
 
     ttParams.ttParam.push(objSolicitacao);
 
@@ -164,7 +164,7 @@ function buscaDataset(fields, constraints, sortFields) {
         paramTable.campos.forEach(c => {
 
           let value = String(objTable[`${paramTable.fieldPref}_${c.name}`] || '');
-          obj[c.name] = String(value) == "null" ? "" : String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : String(value);
+          obj[c.ttName || c.name] = String(value) == "null" ? "" : String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : String(value);
         })
 
         if (!ttParams[paramTable.tt]) {

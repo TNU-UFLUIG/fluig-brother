@@ -50,7 +50,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: "enviarEvidencias",
+            etapa: "validarEvidencias",
             user: 'ckayama',
             formMode: 'MOD',
             companyId: 1
@@ -75,11 +75,11 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                     "srpInicial": 100, "srpSugerido": 100, "qtde": 3000, "rebateTotal": 30000
                   }
                 ],
-              "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1
+              "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "tipoAcaoCodigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1
             };
 
             vm.Formulario.valorResultado = 150000;
-            vm.Formulario.valorLiberado = 150000;
+            // vm.Formulario.valorLiberado = 150000;
             vm.Formulario.arquivosEvidencias = [
               // { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
             ];
@@ -90,7 +90,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             ]
 
             vm.Formulario.valorResultado = 150000;
-            vm.Formulario.valorLiberado = 150000;
+            // vm.Formulario.valorLiberado = 150000;
             vm.Formulario.valorTotalVerba = 100000;
             vm.Formulario.gpMedioSugerido = 10000;
 
@@ -122,7 +122,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           })
         }
 
-        if (vm.Params.edit && !vm.Formulario.guid) {
+        if (vm.Params.edit && !vm.Formulario.guid && vm.Params.formMode != 'ADD') {
           vm.Formulario.guid = vm.guid();
         }
 
@@ -661,8 +661,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
         console.log('vm.getItens')
 
-        vm.Itens = [];
-
+        vm.ItensEvidencia = [];
 
         console.log('vm.Formulario.tipoAcao = ', vm.Formulario.tipoAcao)
 
@@ -671,54 +670,54 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.Formulario.itensSellout.forEach((it, index) => {
-                vm.Itens.push({ tablename: 'itensSellout', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
+                vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
               })
               break
 
             case 'sellin':
               if (vm.Formulario.tipoSellin == 'item') {
                 vm.Formulario.itensSellinIt.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
+                  vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
                 })
               } else {
-                vm.Formulario.itensSellinTg.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
-                })
-                vm.Formulario.itensSellinTgAc.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
-                })
+                // vm.Formulario.itensSellinTg.forEach((it, index) => {
+                //   vm.ItensEvidencia.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
+                // })
+                // vm.Formulario.itensSellinTgAc.forEach((it, index) => {
+                //   vm.ItensEvidencia.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
+                // })
               }
               break
 
-            case 'vpc':
-              if (vm.Formulario.tipoVpc == 'eventos') {
-                vm.Formulario.itensVpcEvt.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
-                })
-              } else {
-                vm.Formulario.itensVpcOutros.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
-                })
-              }
+            // case 'vpc':
+            //   if (vm.Formulario.tipoVpc == 'eventos') {
+            //     vm.Formulario.itensVpcEvt.forEach((it, index) => {
+            //       vm.ItensEvidencia.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
+            //     })
+            //   } else {
+            //     vm.Formulario.itensVpcOutros.forEach((it, index) => {
+            //       vm.ItensEvidencia.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
+            //     })
+            //   }
 
-              break
+            //   break
 
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.Formulario.itensSpiffIt.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
+                  vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
                 })
               } else {
-                vm.Formulario.itensSpiffTg.forEach((it, index) => {
-                  vm.Itens.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
-                })
+                // vm.Formulario.itensSpiffTg.forEach((it, index) => {
+                //   vm.ItensEvidencia.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
+                // })
               }
 
               break
           }
         }
         
-        vm.Itens.forEach(item => {
+        vm.ItensEvidencia.forEach(item => {
           vm.calculaTotalItemEvidencia(item)
         })
       }
@@ -730,7 +729,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
         vm.Formulario[item.tablename][item.index].totEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia * vm.Formulario[item.tablename][item.index].qtdEvidencia
         vm.Formulario.valorResultado = 0;
-        vm.Itens.forEach(item => {
+        vm.ItensEvidencia.forEach(item => {
           vm.Formulario.valorResultado += vm.Formulario[item.tablename][item.index].totEvidencia || 0
         })
 
@@ -813,7 +812,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
       vm.calculaTarget = function calculaTarget(item) {
-        item.vlTotal = item.target * item.perc;
+        item.vlTotal = item.target * item.qtde;
         item.vlTotal = parseFloat(item.vlTotal.toFixed(4));
         vm.calculaTotais();
       }
@@ -877,6 +876,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           file.descricao = file.name;
           file.nome = file.name;
           file.novo = true;
+          file.item = {}
 
           if (array) {
             array.push(file);

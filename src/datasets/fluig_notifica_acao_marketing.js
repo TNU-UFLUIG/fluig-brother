@@ -89,7 +89,7 @@ function createDataset(fields, constraints, sortFields) {
         var campo = new java.util.HashMap();
 
         campo.put('label', c.campo_label);
-        campo.put('valor', solicitacao[c.campo_name]);
+        campo.put('valor', String(solicitacao[c.campo_name]).replace(/(?:\r\n|\r|\n)/g, '<br>'));
 
         tplArrCamposSolicitacao.add(campo);
       }
@@ -118,7 +118,7 @@ function createDataset(fields, constraints, sortFields) {
             }
             
             var campo = new java.util.HashMap();
-            campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + item[c[`${table.campoName}_name`]]);
+            campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + String(item[c[`${table.campoName}_name`]]).replace(/(?:\r\n|\r|\n)/g, '<br>'));
             tplArrItem.add(campo);
 
           })
@@ -139,7 +139,7 @@ function createDataset(fields, constraints, sortFields) {
     let linkPortalCliente = `${sdk.getServerURL()}/portal/BROTHER/acao-marketing-cliente#!/${solicitacao.guid}`
 
     tplParamsSolicitacao.put('linkPortalCliente', linkPortalCliente);
-    tplParamsSolicitacao.put('observacoes', solicitacao.obsNotificacaoCliente);
+    tplParamsSolicitacao.put('observacoes', String(solicitacao.obsNotificacaoCliente).replace(/(?:\r\n|\r|\n)/g, '<br>'));
     tplParamsSolicitacao.put('solicitacao', solicitacao.solicitacao);
     tplParamsSolicitacao.put('camposSolicitacao', tplArrCamposSolicitacao);
     tplParamsSolicitacao.put('tables', tplArrTables);

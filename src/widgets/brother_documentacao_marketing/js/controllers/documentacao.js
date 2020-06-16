@@ -193,7 +193,7 @@ angular
           file.nome = file.name;
           // file.descricao = file.name;
           file.tipo = file.type;
-          file.item = item;
+          file.item = item || {};
           vm.Formulario[tablename].push(file);
           vm.upload(file);
         });
@@ -277,7 +277,16 @@ angular
           return;
         }
 
-        FLUIGC.message.confirm({ message: 'Confirma o envio dos arquivos?', title: 'Enviar documentação' }, result => {
+        let message;
+        if (vm.regras.enableEnvioEvidencias) {
+          message = vm.Formulario.evidencias.filter(s => !s.removed).length > 0 ? 'Confirma o envio dos arquivos?' : 'ATENÇÃO. Não foram selecionados os arquivos de evidência. Confirma o envio da solicitação sem arquivos?';
+        }
+        
+        if (vm.regras.enableND) {
+          message = vm.Formulario.nd.filter(s => !s.removed).length > 0 ? 'Confirma o envio dos arquivos?' : 'ATENÇÃO. Não foram selecionados os arquivos de ND. Confirma o envio da solicitação sem arquivos?';
+        }
+
+        FLUIGC.message.confirm({ message: message, title: 'Enviar documentação' }, result => {
           if (result) {
 
             vm.Formulario.currentStepPortal++;
@@ -301,39 +310,40 @@ angular
       vm.getItens = () => {
 
         console.log('getItens', vm.Formulario)
-        vm.Itens = [];
+        vm.ItensEvidencia = [];
 
         vm.Formulario.itensSellout.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensSellout', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
+          vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
         })
         vm.Formulario.itensSellinIt.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
+          vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
         })
 
-        vm.Formulario.itensSellinTg.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
-        })
-        vm.Formulario.itensSellinTgAc.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
-        })
-        vm.Formulario.itensVpcEvt.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
-        })
-        vm.Formulario.itensVpcOutros.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
-        })
+        // vm.Formulario.itensSellinTg.forEach((it, index) => {
+        //   vm.ItensEvidencia.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
+        // })
+
+        // vm.Formulario.itensSellinTgAc.forEach((it, index) => {
+        //   vm.ItensEvidencia.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
+        // })
+        // vm.Formulario.itensVpcEvt.forEach((it, index) => {
+        //   vm.ItensEvidencia.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
+        // })
+        // vm.Formulario.itensVpcOutros.forEach((it, index) => {
+        //   vm.ItensEvidencia.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
+        // })
         vm.Formulario.itensSpiffIt.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
+          vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
         })
-        vm.Formulario.itensSpiffTg.forEach((it, index) => {
-          vm.Itens.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
-        })
+        // vm.Formulario.itensSpiffTg.forEach((it, index) => {
+        //   vm.ItensEvidencia.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
+        // })
 
-        vm.Itens.forEach(item => {
+        vm.ItensEvidencia.forEach(item => {
           vm.calculaTotalItemEvidencia(item)
         })
 
-        console.log(vm.Itens)
+        console.log(vm.ItensEvidencia)
       }
 
       vm.calculaTotalItemEvidencia = item => {
@@ -343,7 +353,7 @@ angular
 
         vm.Formulario[item.tablename][item.index].totEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia * vm.Formulario[item.tablename][item.index].qtdEvidencia
         vm.Formulario.valorResultado = 0;
-        vm.Itens.forEach(item => {
+        vm.ItensEvidencia.forEach(item => {
           vm.Formulario.valorResultado += vm.Formulario[item.tablename][item.index].totEvidencia || 0
         })
 

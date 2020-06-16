@@ -300,9 +300,17 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <h3 class="text-muted " for="valorResultado_i" class="control-label">
-                                            Resultado Apresentado</h3>
-                                        <h2 class="fs-no-margin">
+                                            Resultado</h3>
+                                        <h2 ng-show="!vm.regras.enableEnvioEvidencias || vm.ItensEvidencia.length > 0"
+                                            class="fs-no-margin">
                                             {{vm.Formulario.valorResultado | currency}}</h2>
+
+                                        <div ng-show="vm.regras.enableEnvioEvidencias && vm.ItensEvidencia.length == 0">
+                                            <input type="text" class="form-control input-lg" name="valorResultado_i"
+                                                ng-model="vm.Formulario.valorResultado" fluig-money-mask
+                                                fluig-negative-number>
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -329,41 +337,118 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
+                                    <h3 class="text-muted" class="control-label">Arquivos de Evidências</h3>
+                                </div>
+                                <div class="col-sm-3" ng-if="vm.regras.enableEnvioEvidencias">
+                                    <div class="drop-box fs-cursor-pointer"
+                                        ngf-select="vm.selectFiles('evidencias', $files, {})"
+                                        ngf-drop="vm.selectFiles('evidencias', $files, {})" ng-model="files"
+                                        ngf-multiple="true" ngf-drag-over-class="'dragover'">
+                                        <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
+                                    </div>
+                                </div>
+
+                                <div
+                                    ng-class="{'col-sm-9': vm.regras.enableEnvioEvidencias, 'col-sm-12': !vm.regras.enableEnvioEvidencias}">
+                                    <div ng-show="vm.Formulario.evidencias.length == 0">
+                                        <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
+                                    </div>
+                                    <div class="table" ng-show="vm.Formulario.evidencias.length > 0">
+                                        <!-- <!- <caption>Arquivos de Evidência</caption> -> -->
+                                        <div ng-repeat="arquivoEv in vm.Formulario.evidencias"
+                                            ng-show="!arquivoEv.removed" class="row">
+
+                                            <div class="col-sm-1">
+                                                <span ng-click="vm.removeArquivo(arquivoEv)"
+                                                    ng-if="vm.regras.enableEnvioEvidencias && !arquivoEv.aceito"
+                                                    class="flaticon icon-lg flaticon-trash fs-cursor-pointer "></span>
+
+                                                <span ng-if="arquivoEv.aceito"
+                                                    class="flaticon flaticon-done icon-lg text-success"></span>
+                                            </div>
+                                            <div class="col-sm-11">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Descrição do Arquivo</label>
+                                                        <input type="text"
+                                                            ng-if="vm.regras.enableEnvioEvidencias && !arquivoEv.aceito"
+                                                            class="form-control input-lg" ng-model="arquivoEv.descricao"
+                                                            ng-value="arquivoEv.descricao"
+                                                            ng-change="vm.alterado = true" ng-blur="vm.salvar()"
+                                                            placeholder="Descrição do arquivo">
+                                                        <h4 class="fs-no-margin"
+                                                            ng-if="!vm.regras.enableEnvioEvidencias || arquivoEv.aceito">
+                                                            {{arquivoEv.descricao}}</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <a target="_blank" href="{{arquivoEv.url}}">
+                                                            <h4>
+                                                                <i
+                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivoEv.nome || 'Sem descrição'}}
+                                                            </h4>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div style="padding-top: 10px">
+                                                            <div ng-if="!arquivoEv.aceito && arquivoEv.motivoRecusa"
+                                                                class="alert alert-warning" role="alert">
+                                                                <p>Arquivo Recusado. Motivo:
+                                                                    {{arquivoEv.motivoRecusa}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" ng-show="vm.ItensEvidencia.length > 0">
+                                <div class="col-sm-12">
                                     <h3 class="text-muted" class="control-label">
-                                        Evidências por item</h3>
+                                        Valores por item</h3>
                                     <!-- <h2 class="fs-no-margin text-muted text-center"></h2> -->
                                 </div>
-                                <div ng-repeat="item in vm.Itens track by $index" class="col-sm-12"
-                                    style="margin-bottom: 15px;">
+                                <div class="col-sm-12" style="margin-bottom: 15px;">
 
                                     <div class="panel panel-default">
-                                        <div class="panel-heading" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                                            <h2 class="fs-no-margin text-muted text-center">{{item.descricao}}</h2>
-                                            <!-- <h2 class="fs-no-margin text-muted text-center">
-                                                {{item.valorTotal | currency}}</h2> -->
-                                        </div>
-
                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-sm-3">
+                                            <div class="row" ng-repeat="item in vm.ItensEvidencia track by $index">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="itemEv_qtdVendida" class="text-right">Item</label>
+                                                        <h4 class="fs-no-margin" class="text-right">{{item.descricao}}
+                                                        </h4>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="itemEv_qtdVendida">Quantidade</label>
                                                         <div ng-if="vm.regras.enableEnvioEvidencias">
 
-                                                            <input type="text"
-                                                                class="form-control input-lg" name="itemEv_qtdVendida"
+                                                            <input type="text" class="form-control input-lg"
+                                                                name="itemEv_qtdVendida"
                                                                 ng-model="vm.Formulario[item.tablename][item.index].qtdEvidencia"
                                                                 ng-change="vm.calculaTotalItemEvidencia(item)"
                                                                 ng-blur="vm.salvar()" fluig-number-mask>
                                                         </div>
 
-                                                        <h1 ng-if="!vm.regras.enableEnvioEvidencias"
+                                                        <h2 ng-if="!vm.regras.enableEnvioEvidencias"
                                                             class="fs-no-margin">
                                                             {{vm.Formulario[item.tablename][item.index].qtdEvidencia | number:'2'}}
-                                                        </h1>
+                                                        </h2>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label for="itemEv_valEvidencia">Valor</label>
                                                         <div ng-if="vm.regras.enableEnvioEvidencias">
@@ -375,96 +460,18 @@
                                                                 fluig-money-mask>
                                                         </div>
 
-                                                        <h1 ng-if="!vm.regras.enableEnvioEvidencias"
+                                                        <h2 ng-if="!vm.regras.enableEnvioEvidencias"
                                                             class="fs-no-margin">
                                                             {{vm.Formulario[item.tablename][item.index].valEvidencia | currency}}
-                                                        </h1>
+                                                        </h2>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-5">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label for="">Total</label>
-                                                        <h1 class="fs-no-margin">
+                                                        <h2 class="fs-no-margin">
                                                             {{vm.Formulario[item.tablename][item.index].totEvidencia | currency}}
-                                                        </h1>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3" ng-if="vm.regras.enableEnvioEvidencias">
-                                                    <div class="drop-box fs-cursor-pointer"
-                                                        ngf-select="vm.selectFiles('evidencias', $files, item)"
-                                                        ngf-drop="vm.selectFiles('evidencias', $files, item)"
-                                                        ng-model="files" ngf-multiple="true"
-                                                        ngf-drag-over-class="'dragover'">
-                                                        <h4>Clique para Selecionar ou Arraste os Arquivos Aqui</h4>
-                                                    </div>
-                                                </div>
-
-                                                <div
-                                                    ng-class="{'col-sm-9': vm.regras.enableEnvioEvidencias, 'col-sm-12': !vm.regras.enableEnvioEvidencias}">
-                                                    <div
-                                                        ng-show="(vm.Formulario.evidencias|filter:{item:item}).length == 0">
-                                                        <h1 class="fs-lg-space">Nenhum arquivo enviado!</h1>
-                                                    </div>
-                                                    <div class="table"
-                                                        ng-show="(vm.Formulario.evidencias|filter:{item:item}).length > 0">
-                                                        <!-- <!- <caption>Arquivos de Evidência</caption> -> -->
-                                                        <div ng-repeat="arquivoEv in (vm.Formulario.evidencias|filter:{item:item})"
-                                                            ng-show="!arquivoEv.removed" class="row">
-
-                                                            <div class="col-sm-1">
-                                                                <span ng-click="vm.removeArquivo(arquivoEv)"
-                                                                    ng-if="vm.regras.enableEnvioEvidencias && !arquivoEv.aceito"
-                                                                    class="flaticon icon-lg flaticon-trash fs-cursor-pointer "></span>
-
-                                                                <span ng-if="arquivoEv.aceito"
-                                                                    class="flaticon flaticon-done icon-lg text-success"></span>
-                                                            </div>
-                                                            <div class="col-sm-11">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <label>Descrição do Arquivo</label>
-                                                                        <input type="text"
-                                                                            ng-if="vm.regras.enableEnvioEvidencias && !arquivoEv.aceito"
-                                                                            class="form-control input-lg"
-                                                                            ng-model="arquivoEv.descricao"
-                                                                            ng-value="arquivoEv.descricao"
-                                                                            ng-change="vm.alterado = true"
-                                                                            ng-blur="vm.salvar()"
-                                                                            placeholder="Descrição do arquivo">
-                                                                        <h4 class="fs-no-margin"
-                                                                            ng-if="!vm.regras.enableEnvioEvidencias || arquivoEv.aceito">
-                                                                            {{arquivoEv.descricao}}</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <a target="_blank" href="{{arquivoEv.url}}">
-                                                                            <h4>
-                                                                                <i
-                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivoEv.nome || 'Sem descrição'}}
-                                                                            </h4>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div style="padding-top: 10px">
-                                                                            <div ng-if="!arquivoEv.aceito && arquivoEv.motivoRecusa"
-                                                                                class="alert alert-warning"
-                                                                                role="alert">
-                                                                                <p>Arquivo Recusado. Motivo:
-                                                                                    {{arquivoEv.motivoRecusa}}
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
+                                                        </h2>
                                                     </div>
                                                 </div>
                                             </div>

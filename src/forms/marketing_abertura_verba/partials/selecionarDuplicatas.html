@@ -30,7 +30,7 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label class="control-label">Valor Liberado</label>
-      <h1 class="fs-no-margin">{{vm.Formulario.valorLiberado | currency}}</h1>
+      <h1 class="fs-no-margin">{{vm.Formulario.valorLiberado || 0 | currency}}</h1>
 
     </div>
   </div>
@@ -38,7 +38,7 @@
     <div class="form-group">
       <label class="control-label">Diferença</label>
       <h1 ng-class="{'text-danger': vm.Formulario.difValorLiberado != 0}" class="fs-no-margin">
-        {{vm.Formulario.difValorLiberado | currency}}
+        {{vm.Formulario.difValorLiberado || 0 | currency}}
       </h1>
       <input type="hidden" name="difValorLiberado_f" ng-value="vm.Formulario.difValorLiberado | currency">
       <input type="hidden" name="difValorLiberado" ng-value="vm.Formulario.difValorLiberado">
@@ -49,7 +49,7 @@
     <div class="form-group">
       <label class="control-label">Saldo de Títulos</label>
       <h1 class="fs-no-margin">
-        {{vm.Formulario.saldoTitulos | currency}}
+        {{vm.Formulario.saldoTitulos || 0 | currency}}
       </h1>
       <input type="hidden" name="saldoTitulos_f" ng-value="vm.Formulario.saldoTitulos | currency">
       <input type="hidden" name="saldoTitulos" ng-value="vm.Formulario.saldoTitulos">

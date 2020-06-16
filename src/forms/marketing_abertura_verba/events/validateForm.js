@@ -217,12 +217,17 @@ function validateForm(form) {
   if (regras.enableValidacaoEvidencias) {
     // 1. Enviar para Aprovação
     if (nextStateTxt == `gtwAprovarVerbaMaior`) {
+
+      if (form.getValue('valorLiberado') == '') {
+        Errors.push(`Informe o valor liberado. Caso não tenha valor a liberar, informe 0,00`);
+      }
+
       if (arquivosEvidencias.filter(arquivo => !arquivo.arquivoEv_removed && !arquivo.arquivoEv_aceito).length > 0) {
         Errors.push(`Para enviar para aprovação, dê o aceite em todos os arquivos de evidências`);
       }
     }
     // 2. Devolver para o Cliente
-    if (nextStateTxt == `enviarEvidencias`) {
+    if (nextStateTxt == `enviarEvidencias` && arquivosEvidencias.length > 0) {
 
       if (arquivosEvidencias.filter(arquivo => !arquivo.arquivoEv_removed && !arquivo.arquivoEv_aceito).length == 0) {
         Errors.push(`Recuse ao menos um arquivo para devolver ao cliente`);
@@ -258,7 +263,7 @@ function validateForm(form) {
       }
     }
     // 2. Reprovar
-    if (nextStateTxt == `enviarND`) {
+    if (nextStateTxt == `enviarND` && arquivosND.length > 0) {
       if (arquivosND.filter(arquivo => !arquivo.arquivoND_removed && !arquivo.arquivoND_aceito).length == 0) {
         Errors.push(`Recuse ao menos um arquivo para devolver ao cliente`);
       }
