@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-3">
               <label>Target R$</label>
-              <input class="form-control input-lg" name="itemSellinTg_target_i" fluig-money-mask fluig-negative-number
+              <input class="form-control input-lg" name="itemSellinTg_target_i" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSellinTg.target" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSellinTg)">
               <input type="hidden" name="itemSellinTg_target_f" ng-value="itemSellinTg.target | currency">
@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-3">
               <label>Valor / Target</label>
-              <input class="form-control input-lg" name="itemSellinTg_vlTarget_i" fluig-money-mask fluig-negative-number
+              <input class="form-control input-lg" name="itemSellinTg_vlTarget_i" fluig-money-mask="5" fluig-negative-number
                 ng-model="itemSellinTg.vlTarget" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSellinTg)">
               <input type="hidden" name="itemSellinTg_vlTarget_f" ng-value="itemSellinTg.vlTarget | currency">
@@ -54,7 +54,7 @@
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemSellinTg_vlTotal_i" fluig-money-mask fluig-negative-number
+              <input class="form-control input-lg" name="itemSellinTg_vlTotal_i" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSellinTg.vlTotal" disabled>
               <input type="hidden" name="itemSellinTg_vlTotal_f" ng-value="itemSellinTg.vlTotal | currency">
               <input type="hidden" name="itemSellinTg_vlTotal" ng-value="itemSellinTg.vlTotal">

@@ -31,7 +31,7 @@
               class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
           </td>
           <td>
-            <input type="email" class="form-control" name="email_email_i" ng-model="email.email">
+            <input type="email" ng-required="true" fluig-error="form.email_email_i___{{$index}}.$error" class="form-control" name="email_email_i" ng-model="email.email">
             <input type="hidden" name="email_email" ng-value="email.email">
           </td>
           <td>

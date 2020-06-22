@@ -180,7 +180,12 @@ function createDataset(fields, constraints, sortFields) {
 
   // log.info('tplArrSolicitacoes.size = ' + tplArrSolicitacoes.size());
 
-  tplParams.put('subject', dsComposicao[`${params.tipo}Titulo`]);
+  let txtSolicitacao = ' - Ação | '
+  dsSolicitacoes.forEach((s, i) => {
+    txtSolicitacao += s.solicitacao + ' | '
+  })
+
+  tplParams.put('subject', dsComposicao[`${params.tipo}Titulo`] + txtSolicitacao);
   tplParams.put('titulo', dsComposicao[`${params.tipo}Titulo`]);
   tplParams.put('textoPadrao', dsComposicao[`${params.tipo}Texto`]);
   tplParams.put('solicitacoes', tplArrSolicitacoes);

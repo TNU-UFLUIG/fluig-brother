@@ -679,40 +679,15 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                 vm.Formulario.itensSellinIt.forEach((it, index) => {
                   vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
                 })
-              } else {
-                // vm.Formulario.itensSellinTg.forEach((it, index) => {
-                //   vm.ItensEvidencia.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
-                // })
-                // vm.Formulario.itensSellinTgAc.forEach((it, index) => {
-                //   vm.ItensEvidencia.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
-                // })
               }
               break
-
-            // case 'vpc':
-            //   if (vm.Formulario.tipoVpc == 'eventos') {
-            //     vm.Formulario.itensVpcEvt.forEach((it, index) => {
-            //       vm.ItensEvidencia.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
-            //     })
-            //   } else {
-            //     vm.Formulario.itensVpcOutros.forEach((it, index) => {
-            //       vm.ItensEvidencia.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
-            //     })
-            //   }
-
-            //   break
 
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.Formulario.itensSpiffIt.forEach((it, index) => {
                   vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
                 })
-              } else {
-                // vm.Formulario.itensSpiffTg.forEach((it, index) => {
-                //   vm.ItensEvidencia.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
-                // })
               }
-
               break
           }
         }
@@ -812,7 +787,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
       vm.calculaTarget = function calculaTarget(item) {
-        item.vlTotal = item.target * item.qtde;
+        item.vlTotal = (item.vlTarget || item.vlUnit || 0) * (item.qtde || 0);
         item.vlTotal = parseFloat(item.vlTotal.toFixed(4));
         vm.calculaTotais();
       }

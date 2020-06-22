@@ -281,7 +281,7 @@ angular
         if (vm.regras.enableEnvioEvidencias) {
           message = vm.Formulario.evidencias.filter(s => !s.removed).length > 0 ? 'Confirma o envio dos arquivos?' : 'ATENÇÃO. Não foram selecionados os arquivos de evidência. Confirma o envio da solicitação sem arquivos?';
         }
-        
+
         if (vm.regras.enableND) {
           message = vm.Formulario.nd.filter(s => !s.removed).length > 0 ? 'Confirma o envio dos arquivos?' : 'ATENÇÃO. Não foram selecionados os arquivos de ND. Confirma o envio da solicitação sem arquivos?';
         }
@@ -319,25 +319,9 @@ angular
           vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
         })
 
-        // vm.Formulario.itensSellinTg.forEach((it, index) => {
-        //   vm.ItensEvidencia.push({ tablename: 'itensSellinTg', index, descricao: it.descricao, valorTotal: it.vlTotal });
-        // })
-
-        // vm.Formulario.itensSellinTgAc.forEach((it, index) => {
-        //   vm.ItensEvidencia.push({ tablename: 'itensSellinTgAc', index, descricao: it.descricao, valorTotal: it.vlTotal });
-        // })
-        // vm.Formulario.itensVpcEvt.forEach((it, index) => {
-        //   vm.ItensEvidencia.push({ tablename: 'itensVpcEvt', index, descricao: it.nomeEvento, valorTotal: it.vlTotal });
-        // })
-        // vm.Formulario.itensVpcOutros.forEach((it, index) => {
-        //   vm.ItensEvidencia.push({ tablename: 'itensVpcOutros', index, descricao: `${it.tipo} - ${it.finalidade}`, valorTotal: it.vlTotal });
-        // })
         vm.Formulario.itensSpiffIt.forEach((it, index) => {
           vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
         })
-        // vm.Formulario.itensSpiffTg.forEach((it, index) => {
-        //   vm.ItensEvidencia.push({ tablename: 'itensSpiffTg', index, descricao: it.target, valorTotal: it.vlTotal });
-        // })
 
         vm.ItensEvidencia.forEach(item => {
           vm.calculaTotalItemEvidencia(item)
@@ -360,43 +344,6 @@ angular
         vm.alterado = true
 
       }
-
-      // vm.selecionaArquivosEvidencias = (item, files) => {
-      //   // vm.selectFiles(vm.Formulario.arquivosEvidencias, null, $files);
-
-      //   vm.Formulario.evidencias = vm.Formulario.evidencias || []
-
-      //   files.forEach(file => {
-      //     file.uploading = true;
-      //     file.descricao = file.name;
-      //     file.nome = file.name;
-      //     file.novo = true;
-      //     file.item = item;
-
-      //     vm.Formulario.evidencias.push(file);
-
-      //     vm.upload(file);
-
-      //     // Upload.upload({
-      //     //   url: '/ecm/upload',
-      //     //   data: {
-      //     //     "userId": vm.Params.user || 'fluigpost2',
-      //     //     "uploadWithTimeStamp": true,
-      //     //     file: file
-      //     //   },
-      //     //   // headers: $oauth.oauth.toHeader($oauth.oauth.authorize(reqUpload, $oauth.token))
-      //     // }).then(function (resp) {
-      //     //   resp.data.files.forEach(uploadedFile => {
-      //     //     vm.createDocument(file, uploadedFile);
-      //     //   })
-      //     // }, function (resp) {
-      //     //   console.log('Error status: ' + resp.status);
-      //     // }, function (evt) {
-      //     //   file.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-      //     // });
-      //   });
-      //   console.log(vm.Formulario.evidencias)
-      // }
 
       vm.inicia();
 

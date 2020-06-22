@@ -36,7 +36,7 @@
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-4">
               <label>SRP Inicial</label>
-              <input class="form-control input-lg" name="itemSellinIt_srpInicial_i" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_srpInicial_i" fluig-money-mask="2"
                 ng-disabled="itemSellinIt.loading" fluig-negative-number ng-model="itemSellinIt.srpInicial"
                 ng-readonly="!vm.regras.enableSolicitacao" ng-blur="vm.calculaItemErp(itemSellinIt)"
                 ng-change="itemSellinIt.alterado = true">
@@ -47,7 +47,7 @@
             <div class="col-sm-4">
               <label>Net R$ Inicial</label>
               <input class="form-control input-lg" name="itemSellinIt_netInicial_i"
-                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask fluig-negative-number
+                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSellinIt.netInicial" disabled>
               <input type="hidden" name="itemSellinIt_netInicial_f" ng-value="itemSellinIt.netInicial | currency">
               <input type="hidden" name="itemSellinIt_netInicial" ng-value="itemSellinIt.netInicial">
@@ -65,7 +65,7 @@
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-4">
               <label>SRP Sugerido</label>
-              <input class="form-control input-lg" name="itemSellinIt_srpSugerido_i" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_srpSugerido_i" fluig-money-mask="2"
                 ng-disabled="itemSellinIt.loading" fluig-negative-number ng-model="itemSellinIt.srpSugerido"
                 ng-readonly="!vm.regras.enableSolicitacao" ng-blur="vm.calculaItemErp(itemSellinIt)"
                 ng-change="itemSellinIt.alterado = true">
@@ -76,7 +76,7 @@
             <div class="col-sm-4">
               <label>Net R$ Sugerido</label>
               <input class="form-control input-lg" name="itemSellinIt_netSugerido_i"
-                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask fluig-negative-number
+                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSellinIt.netSugerido" disabled>
               <input type="hidden" name="itemSellinIt_netSugerido_f" ng-value="itemSellinIt.netSugerido | currency">
               <input type="hidden" name="itemSellinIt_netSugerido" ng-value="itemSellinIt.netSugerido">
@@ -95,7 +95,7 @@
             <div class="col-sm-4">
               <label>Rebate Unit</label>
               <input class="form-control input-lg" name="itemSellinIt_rebateUnit_i"
-                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask fluig-negative-number
+                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSellinIt.rebateUnit" disabled>
               <input type="hidden" name="itemSellinIt_rebateUnit_f" ng-value="itemSellinIt.rebateUnit | currency">
               <input type="hidden" name="itemSellinIt_rebateUnit" ng-value="itemSellinIt.rebateUnit">
@@ -103,7 +103,7 @@
 
             <div class="col-sm-4">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSellinIt_qtde_i" fluig-number-mask
+              <input class="form-control input-lg" name="itemSellinIt_qtde_i" fluig-number-mask="2"
                 ng-disabled="itemSellinIt.loading" ng-model="itemSellinIt.qtde"
                 ng-readonly="!vm.regras.enableSolicitacao" ng-change="vm.calculaRebateTotal(itemSellinIt)">
               <input type="hidden" name="itemSellinIt_qtde_f" ng-value="itemSellinIt.qtde | number:'2'">
@@ -111,7 +111,7 @@
             </div>
             <div class="col-sm-4">
               <label>Rebate Total</label>
-              <input class="form-control input-lg" name="itemSellinIt_rebateTotal_i" fluig-money-mask
+              <input class="form-control input-lg" name="itemSellinIt_rebateTotal_i" fluig-money-mask="2"
                 fluig-negative-number ng-model="itemSellinIt.rebateTotal" disabled>
               <input type="hidden" name="itemSellinIt_rebateTotal_f" ng-value="itemSellinIt.rebateTotal | currency">
               <input type="hidden" name="itemSellinIt_rebateTotal" ng-value="itemSellinIt.rebateTotal">
@@ -121,7 +121,7 @@
             <div class="col-sm-4">
               <label>Dolar</label>
               <input class="form-control input-lg" name="itemSellinIt_dolar_i"
-                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask fluig-negative-number currency-symbol="US$"
+                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="2" fluig-negative-number currency-symbol="US$"
                 ng-model="itemSellinIt.dolar" disabled>
               <input type="hidden" name="itemSellinIt_dolar_f" ng-value="itemSellinIt.dolar | currency:'US$'">
               <input type="hidden" name="itemSellinIt_dolar" ng-value="itemSellinIt.dolar">

@@ -47,6 +47,9 @@ function buscaDataset(fields, constraints, sortFields) {
     { field: 'tablename', value: 'duplicatas' },
   ]);
 
+  // log.info( "*** totvs_cria_titulo_antecipacao 3 = " + solicitacao.userFinanceiro)
+  let userFinanceiro = JSON.parse(solicitacao.userFinanceiro);  
+
   let ttParam = [{ solicitacao: String(solicitacao.solicitacao), valorTotal: String(solicitacao.valorLiberado) }];
   let ttTitulos = [];
 
@@ -71,7 +74,7 @@ function buscaDataset(fields, constraints, sortFields) {
   // const json = jsonLocal();
   let json;
   try {
-    json = callDatasul("esp/criaAntecipacao.p", "piCria", { ttParam, ttTitulos }, null, properties);
+    json = callDatasul("esp/criaAntecipacao.p", "piCria", { ttParam, ttTitulos }, null, properties, userFinanceiro.mail);
   } catch (error) {
     json = { ttErro: [{ mensagem: String(error) }] }
   }

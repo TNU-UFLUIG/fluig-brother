@@ -35,7 +35,7 @@
           <div class="row animation" ng-show="itemSpiffIt.item.codigo">
             <div class="col-sm-3">
               <label>Spiff Unitário</label>
-              <input class="form-control input-lg" name="itemSpiffIt_spiffUnit_i" fluig-money-mask fluig-negative-number
+              <input class="form-control input-lg" name="itemSpiffIt_spiffUnit_i" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSpiffIt.spiffUnit" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
               <input type="hidden" name="itemSpiffIt_spiffUnit_f" ng-value="itemSpiffIt.spiffUnit | currency">
@@ -44,7 +44,7 @@
 
             <div class="col-sm-3">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSpiffIt_qtde_i" fluig-number-mask
+              <input class="form-control input-lg" name="itemSpiffIt_qtde_i" fluig-number-mask="2"
                 ng-model="itemSpiffIt.qtde" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
               <input type="hidden" name="itemSpiffIt_qtde_f" ng-value="itemSpiffIt.qtde | number:'2'">
@@ -52,7 +52,7 @@
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemSpiffIt_vlTotal_i" fluig-money-mask fluig-negative-number
+              <input class="form-control input-lg" name="itemSpiffIt_vlTotal_i" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSpiffIt.vlTotal" disabled>
               <input type="hidden" name="itemSpiffIt_vlTotal_f" ng-value="itemSpiffIt.vlTotal | currency">
               <input type="hidden" name="itemSpiffIt_vlTotal" ng-value="itemSpiffIt.vlTotal">

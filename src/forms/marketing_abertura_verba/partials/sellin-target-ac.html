@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-3">
               <label>Target R$</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_target_i" fluig-money-mask fluig-negative-number
+              <input class="form-control input-lg" name="itemSellinTgAc_target_i" fluig-money-mask="2" fluig-negative-number
                 ng-model="itemSellinTgAc.target" ng-readonly="!vm.regras.enableSolicitacao">
               <input type="hidden" name="itemSellinTgAc_target_f" ng-value="itemSellinTgAc.target | currency">
               <input type="hidden" name="itemSellinTgAc_target" ng-value="itemSellinTgAc.target">
@@ -30,7 +30,8 @@
             <div class="col-sm-2">
               <label>Target Qtde</label>
               <input class="form-control input-lg" name="itemSellinTgAc_qtde_i" fluig-number-mask="2"
-                ng-model="itemSellinTgAc.qtde" ng-readonly="!vm.regras.enableSolicitacao">
+                ng-model="itemSellinTgAc.qtde" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSellinTgAc)">
               <input type="hidden" name="itemSellinTgAc_qtde_f" ng-value="itemSellinTgAc.qtde | number:'2'">
               <input type="hidden" name="itemSellinTgAc_qtde" ng-value="itemSellinTgAc.qtde">
             </div>
@@ -43,16 +44,17 @@
             </div>
             <div class="col-sm-3">
               <label>Valor / Target</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_vlTarget_i" fluig-money-mask fluig-negative-number
-                ng-model="itemSellinTgAc.vlTarget" ng-readonly="!vm.regras.enableSolicitacao">
+              <input class="form-control input-lg" name="itemSellinTgAc_vlTarget_i" fluig-money-mask="5"
+                fluig-negative-number ng-model="itemSellinTgAc.vlTarget" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTarget(itemSellinTgAc)">
               <input type="hidden" name="itemSellinTgAc_vlTarget_f" ng-value="itemSellinTgAc.vlTarget | currency">
               <input type="hidden" name="itemSellinTgAc_vlTarget" ng-value="itemSellinTgAc.vlTarget">
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemSellinTgAc_vlTotal_i" fluig-money-mask fluig-negative-number
-                ng-model="itemSellinTgAc.vlTotal" ng-readonly="!vm.regras.enableSolicitacao"
-                ng-change="vm.calculaTotais()">
+              <input class="form-control input-lg" name="itemSellinTgAc_vlTotal_i" fluig-money-mask="2"
+                fluig-negative-number ng-model="itemSellinTgAc.vlTotal" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaTotais()" disabled>
               <input type="hidden" name="itemSellinTgAc_vlTotal_f" ng-value="itemSellinTgAc.vlTotal | currency">
               <input type="hidden" name="itemSellinTgAc_vlTotal" ng-value="itemSellinTgAc.vlTotal">
             </div>

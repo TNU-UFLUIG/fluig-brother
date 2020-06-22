@@ -3,6 +3,8 @@ function callDatasul(programa, metodo, json, tenantId, properties, usuario) {
   properties = properties || {};
   usuario = usuario || 'super';
 
+  log.info(`callDatasul usuario: ${usuario}`)
+
   const serviceProvider = ServiceManager.getServiceInstance('WSEXECBO');
   const serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
   const service = serviceLocator.getWebServiceExecBOPort();
