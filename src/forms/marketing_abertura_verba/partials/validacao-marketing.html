@@ -43,7 +43,7 @@
       <label for="executivo_i" class="control-label">Executivo de Contas</label>
       <input ng-required="true" fluig-error="form.executivo_i.$error" class="form-control input-lg" fluig-autocomplete
         dataset="totvs_busca_executivo" display-key="displaykey" ng-model="vm.Formulario.executivo" name="executivo_i"
-        ng-readonly="!vm.regras.enableValidacaoMarketing">
+        ng-disabled="!vm.regras.enableValidacaoMarketing">
 
       <textarea hidden name="executivo" ng-value="vm.Formulario.executivo | json:0"
         ng-bind="vm.Formulario.executivo | json:0"></textarea>

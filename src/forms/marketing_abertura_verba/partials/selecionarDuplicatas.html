@@ -152,12 +152,11 @@
                 <label for="titulo_nd_i___{{$index + 1}}">ND</label>
                 <input type="text" fluig-error="form.titulo_nd_i___{{$index + 1}}.$error" class="form-control"
                   name="titulo_nd_i" ng-model="titulo.nd" fluig-autocomplete values="vm.Formulario.arquivosND"
-                  display-key="numero" ng-readonly="!vm.regras.enableSelecionarDuplicatas">
+                  display-key="numero" ng-disabled="!vm.regras.enableSelecionarDuplicatas" ng-required="true">
                 <input type="hidden" name="titulo_nd_f" ng-value="titulo.nd.numero">
                 <textarea hidden name="titulo_nd" ng-value="titulo.nd || {} | json:0"
                   ng-bind="titulo.nd || {} | json:0"></textarea>
               </div>
-
             </div>
 
             <div class="row">
@@ -221,6 +220,13 @@
                 <input type="hidden" name="titulo_saldoAposAbatimento_f"
                   ng-value="titulo.saldoAposAbatimento | currency">
                 <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento">
+              </div>
+            </div>
+            <div class="row" ng-if="!titulo.nd.numero && titulo.valorAntecipa != 0">
+              <div class="col-sm-12">
+                <div class="alert alert-warning animate" role="alert">
+                  ND não informada!
+                </div>
               </div>
             </div>
           </td>

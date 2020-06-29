@@ -1,4 +1,4 @@
-const campos = ['codigo', 'razaoSocial', 'nomeAbrev', 'cnpj', 'executivo', 'subcanal', 'matriz'];
+const campos = ['codigo', 'razaoSocial', 'nomeAbrev', 'cnpj', 'executivo', 'subcanal', 'matriz', 'ativo'];
 const display = ['codigo', 'razaoSocial', 'cnpj'];
 const dePara = campos;
 

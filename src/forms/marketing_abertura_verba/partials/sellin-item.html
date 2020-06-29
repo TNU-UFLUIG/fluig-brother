@@ -19,7 +19,7 @@
               <label>Item</label>
               <input class="form-control input-lg" name="itemSellinIt_item_i" fluig-autocomplete
                 dataset="totvs_busca_item" display-key="displaykey" ng-model="itemSellinIt.item"
-                ng-readonly="!vm.regras.enableSolicitacao" ng-disabled="itemSellinIt.loading"
+                ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSellinIt.loading"
                 ng-change="itemSellinIt.alterado=true;vm.changeItemSellinIt(itemSellinIt, $index)">
               <textarea hidden name="itemSellinIt_item" ng-value="itemSellinIt.item | json:0"
                 ng-bind="itemSellinIt.item | json:0"></textarea>

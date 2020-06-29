@@ -3,9 +3,9 @@
     <div class="form-group">
       <label for="cliente_i" class="control-label">Cliente</label>
       <input ng-required="true" fluig-error="form.cliente_i.$error" class="form-control input-lg" fluig-autocomplete
-        dataset="totvs_busca_cliente" filter-fields="['matriz', 'SIM']" display-key="displaykey"
+        dataset="totvs_busca_cliente" filter-fields="['matriz', 'SIM', 'ativo', 'SIM']" display-key="displaykey"
         ng-model="vm.Formulario.cliente" name="cliente_i" ng-change="vm.changeCliente()"
-        ng-readonly="!vm.regras.enableSolicitacao">
+        ng-disabled="!vm.regras.enableSolicitacao">
 
       <textarea hidden name="cliente" ng-value="vm.Formulario.cliente | json:0"
         ng-bind="vm.Formulario.cliente | json:0"></textarea>
@@ -19,7 +19,7 @@
       <label for="executivo_i_s" class="control-label">Executivo de Contas</label>
       <input ng-required="true" fluig-error="form.executivo_i_s.$error" class="form-control input-lg" fluig-autocomplete
         dataset="totvs_busca_executivo" display-key="displaykey" ng-model="vm.Formulario.executivo" name="executivo_i_s"
-        ng-readonly="!vm.regras.enableSolicitacao">
+        ng-disabled="!vm.regras.enableSolicitacao">
     </div>
   </div>
 </div>
@@ -41,7 +41,7 @@
       <label for="tipoAcao_i" class="control-label">Tipo da Ação</label>
       <input ng-required="true" fluig-error="form.tipoAcao_i.$error" class="form-control input-lg" fluig-autocomplete
         dataset values="vm.TiposAcao" display-key="displaykey" ng-model="vm.Formulario.tipoAcao" name="tipoAcao_i"
-        ng-change="vm.changeTipoAcao()" ng-readonly="!vm.regras.enableSolicitacao">
+        ng-change="vm.changeTipoAcao()" ng-disabled="!vm.regras.enableSolicitacao">
 
       <textarea hidden name="tipoAcao" ng-value="vm.Formulario.tipoAcao | json:0"
         ng-bind="vm.Formulario.tipoAcao | json:0"></textarea>

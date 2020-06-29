@@ -201,6 +201,9 @@ function validateForm(form) {
   }
 
   if (regras.enableNotificacaoCliente) {
+    if (emailsCliente.length == 0) {
+      Errors.push(`Informe os contatos no cliente que serão notificados`);
+    }
     emailsCliente.forEach((email, index) => {
       if (!email.email_email) {
         Errors.push(`Informe o endereço de e-mail corretamente na linha ${index + 1}`);
