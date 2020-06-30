@@ -23,9 +23,9 @@ function buscaDataset(fields, constraints, sortFields) {
 
   let erros = [];
 
-  log.info(params.campos);
-  log.info(params.valores);
-  log.info(params.documentid);
+  // log.info(params.campos);
+  // log.info(params.valores);
+  // log.info(params.documentid);
 
   if (params.fullParam) {
     params.campos = String(params.fullParam).split('@$')[0];
@@ -69,7 +69,9 @@ function buscaDataset(fields, constraints, sortFields) {
     formCampos
   }
 
-  atualizaFormulario("1", "admin", "adm", csDocumentid, formCampos)
+  const dsParametros = getDataset('marketing_parametros');
+
+  atualizaFormulario("1", dsParametros[0].usuarioFluig, dsParametros[0].senhaFluig, csDocumentid, formCampos)
 
   return montaDataset(json.ttErro, json.formCampos, campos, display);
 }

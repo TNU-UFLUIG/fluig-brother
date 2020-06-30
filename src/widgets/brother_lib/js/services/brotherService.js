@@ -4,7 +4,7 @@ angular.module('brother.services')
 
       getMarketingTipoAcao: function getMarketingTipoAcao(tipoAcaoCodigo, fields) {
         return fluigService.getDatasetAsync('marketing_tipo_acao', {
-          
+          tipoAcaoCodigo
         }, fields);
       },
       getMarketingAberturaVerba: function getMarketingAberturaVerba(solicitacao, fields) {

@@ -75,6 +75,26 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
 
       }
 
+      vm.CSVtoArray = (text) => {
+        var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^;'"\s\\]*(?:\s+[^;'"\s\\]+)*)\s*(?:;\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^;'"\s\\]*(?:\s+[^;'"\s\\]+)*)\s*)*$/;
+        var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^;'"\s\\]*(?:\s+[^;'"\s\\]+)*))\s*(?:;|$)/g;
+        // Return NULL if input string is not well formed CSV string.
+        if (!re_valid.test(text)) return null;
+        var a = [];                     // Initialize array to receive values.
+        text.replace(re_value, // "Walk" the string using replace with callback.
+          function (m0, m1, m2, m3) {
+            // Remove backslash from \' in single quoted values.
+            if (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+            // Remove backslash from \" in double quoted values.
+            else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+            else if (m3 !== undefined) a.push(m3);
+            return ''; // Return empty string.
+          });
+        // Handle special case of empty last value.
+        if (/,\s*$/.test(text)) a.push('');
+        return a;
+      };
+
       vm.readLocalFile = function readLocalFile() {
 
         if (!vm.Usuarios || !vm.Executivos || !vm.Itens || !vm.TiposAcao || !vm.BusinessSegment || !vm.Clientes) return;
@@ -94,7 +114,7 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
         // }).success(function (result, status, headers) {
 
         // console.log(result)
-        $http.get('../../../resources/verbas3.csv')
+        $http.get('../../../resources/verbas5.csv')
           .then((result) => {
 
             // let textDecoder = new TextDecoder('ISO-8859-15'); // your encoding may vary!
@@ -110,7 +130,8 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
 
             for (let i = 0; i < allTextLines.length; i++) {
               // let registro = allTextLines[i].split(';');
-              let registro = allTextLines[i].split(/;(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+              let registro = vm.CSVtoArray(allTextLines[i])
+              // let registro = allTextLines[i].split(/;(?=(?:(?:[^"]*"){2})*[^"]*$)/);
               // let registro = allTextLines[i].match(/(".*?"|[^";]+)(?=\s*;|\s*$)/g);
               console.log(registro)
 
@@ -235,7 +256,7 @@ angular.module('BrotherImportaVerbasApp', ['brother.directives', 'angular.fluig'
                       field.name.match('itemVpcOutros_vlTotal')) {
                       solicitacao.valorTotalVerba += parseFloat(field.value);
                     }
-                    
+
                     solicitacao.formData.push(field);
                   }
                 }

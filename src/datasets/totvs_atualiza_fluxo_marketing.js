@@ -34,6 +34,7 @@ function buscaDataset(fields, constraints, sortFields) {
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
     { field: 'pendenteTotvs', value: 'S' }
+    // { field: 'tipoAcaoCodigo', value: 'spiff' }
   ]);
 
   // busca filhos e monta params 
@@ -229,7 +230,7 @@ function buscaDataset(fields, constraints, sortFields) {
 
   // log.info('*** totvs_atualiza_fluxo_marketing 4');
 
-  log.info(JSON.stringify(json))
+  // log.info(JSON.stringify(json))
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display, dePara, true);
 }

@@ -2,10 +2,27 @@
   <div class="col-sm-4">
     <div class="form-group">
       <label for="limiteResultado" class="control-label">Limite Excedente do Resultado</label>
-      <input type="text" class="form-control input-lg" name="limiteResultado_i"
-        ng-model="vm.Formulario.limiteResultado" fluig-money-mask fluig-negative-number>
+      <input type="text" class="form-control input-lg" name="limiteResultado_i" ng-model="vm.Formulario.limiteResultado"
+        fluig-money-mask fluig-negative-number>
 
       <input type="hidden" name="limiteResultado" ng-value="vm.Formulario.limiteResultado">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="usuarioFluig" class="control-label">Usuário Fluig</label>
+      <input type="text" class="form-control input-lg" name="usuarioFluig" ng-required="true"
+        ng-model="vm.Formulario.usuarioFluig" ng-value="vm.Formulario.usuarioFluig">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="senhaFluig" class="control-label">Senha Fluig</label>
+      <input type="password" class="form-control input-lg" name="senhaFluig" ng-required="true"
+        ng-model="vm.Formulario.senhaFluig" ng-value="vm.Formulario.senhaFluig">
     </div>
   </div>
 </div>

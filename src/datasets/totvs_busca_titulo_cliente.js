@@ -32,7 +32,7 @@ function buscaDataset(fields, constraints, sortFields) {
   var properties = {};
   properties["receive.timeout"] = "0";
 
-  log.info('totvs_busca_titulo_cliente WKUser = ' + getValue('WKUser'));
+  // log.info('totvs_busca_titulo_cliente WKUser = ' + getValue('WKUser'));
 
   // const json = jsonLocal();
   let json;

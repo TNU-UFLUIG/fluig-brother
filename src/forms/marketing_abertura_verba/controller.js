@@ -135,7 +135,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.checkEtapa();
         });
 
-        fluigService.getPasta(vm.Params.companyId, 'Cadastros|Marketing|Anexos').then(pasta => {
+        fluigService.getPasta(vm.Params.companyId, 'Cadastros%7CMarketing%7CAnexos').then(pasta => {
           vm.PastaAnexos = pasta[0];
         });
 
