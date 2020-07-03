@@ -28,14 +28,14 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  // log.info("*** totvs_cria_titulo_antecipacao 1");
+  log.info("*** totvs_cria_titulo_antecipacao 1");
 
   let params = getConstraints(constraints);
 
   // log.info("*** totvs_cria_titulo_antecipacao 2");
 
   var properties = {};
-  properties["receive.timeout"] = "0";
+  properties["receive.timeout"] = "30000";
 
   // log.info("*** totvs_cria_titulo_antecipacao 3");
 

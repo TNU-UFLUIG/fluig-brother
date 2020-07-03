@@ -28,14 +28,14 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  // log.info("*** totvs_retorna_status_marketing 1");
+  log.info("*** totvs_retorna_status_marketing 1");
 
   let params = getConstraints(constraints);
 
   // log.info("*** totvs_retorna_status_marketing 2");
 
   var properties = {};
-  properties["receive.timeout"] = "0";
+  properties["receive.timeout"] = "10000";
 
   // log.info("*** totvs_retorna_status_marketing 3");
 

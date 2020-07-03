@@ -209,7 +209,7 @@ angular
           url: '/brother-api/v1/file/upload',
           data: {
             file: file,
-            parentDocumentId: 2438
+            parentDocumentId: 485 //ALTERAR PARA PEGAR DO PARAMETRO
           }
         }).then(function (resp) {
           file.documentid = resp.data.documentid;

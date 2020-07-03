@@ -30,7 +30,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   var properties = {};
-  properties["receive.timeout"] = "0";
+  properties["receive.timeout"] = "30000";
 
   // const json = jsonLocal();
   let json;

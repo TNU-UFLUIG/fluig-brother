@@ -181,7 +181,7 @@ function buscaDataset(fields, constraints, sortFields) {
   if (ttParams.ttParam.length > 0) {
 
     var properties = {};
-    properties["receive.timeout"] = "0";
+    properties["receive.timeout"] = "60000";
 
     // log.info('*** totvs_atualiza_fluxo_marketing 1');
 

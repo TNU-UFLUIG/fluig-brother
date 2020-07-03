@@ -30,7 +30,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   var properties = {};
-  properties["receive.timeout"] = "0";
+  properties["receive.timeout"] = "60000";
 
   // log.info('totvs_busca_titulo_cliente WKUser = ' + getValue('WKUser'));
 
