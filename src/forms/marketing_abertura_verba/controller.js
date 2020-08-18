@@ -27,16 +27,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             if (!vm.Params.mobile && parent && parent.WCMAPI) {
 
               vm.WCMAPI = parent.WCMAPI;
-              if (vm.WCMAPI.browserName != 'chrome') {
-                vm.Errors.push("Favor acessar o Fluig pelo navegador Chrome");
-                FLUIGC.message.error({
-                  message: 'Favor acessar o Fluig pelo navegador Chrome',
-                  title: 'Oops'
-                }, (result) => {
-
-                });
-                return;
-              }
             }
 
             vm.inicia();
@@ -292,6 +282,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             // vm.Formulario.valorLiberado = vm.Formulario.valorLiberado ? vm.Formulario.valorLiberado : vm.Formulario.valorResultado;
             vm.Formulario.obsValidacaoEvid = '';
             vm.checkEtapaNotificacao();
+            vm.checkUrlArquivos()
             break;
 
           case vm.Params.etapa == 'validarND' || vm.Params.etapa == 'enviarND':
@@ -300,6 +291,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.Formulario.statusValidacaoND = 'PENDENTE';
             vm.Formulario.obsValidacaoND = '';
             vm.checkEtapaNotificacao();
+            vm.checkUrlArquivos()
             break;
 
           case vm.Params.etapa == 'aprovarPagamento':
@@ -317,6 +309,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.Formulario.obsConferenciaFinanceiro = '';
             vm.buscaDuplicatas();
             vm.calculaTotalDuplicatas();
+            vm.checkUrlArquivos()
             break;
         }
 
@@ -333,6 +326,21 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         }
       }
 
+      vm.checkUrlArquivos = () => {
+        vm.Formulario.arquivosEvidencias.forEach(a => {
+          $http.get(`/api/public/2.0/documents/getDownloadURL/${a.documentid}`).then(res => {
+            console.log(res)
+            a.url = res.data.content
+          })
+        })
+
+        vm.Formulario.arquivosND.forEach(a => {
+          $http.get(`/api/public/2.0/documents/getDownloadURL/${a.documentid}`).then(res => {
+            console.log(res)
+            a.url = res.data.content
+          })
+        })
+      }
       vm.checkEtapaNotificacao = function checkEtapaNotificacao() {
         if (vm.Params.etapa == 'validarEvidencias') {
 
@@ -583,7 +591,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
           loading.hide();
 
-          if (duplicatas[0].erro) {
+          if (duplicatas[0] && duplicatas[0].erro) {
             let msg = `Ocorreu um erro ao buscar as duplicatas. Não será possível movimentar a solicitação \n\n ${duplicatas[0].erro}`;
             FLUIGC.message.error({
               message: msg,
@@ -595,7 +603,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           }
 
           duplicatas.forEach(duplicata => {
-            regDuplicata = vm.Formulario.duplicatas.filter(d => d.numTitulo == duplicata.numTitulo)[0];
+            regDuplicata = vm.Formulario.duplicatas.filter(d => d.numTitulo == duplicata.numTitulo && d.parcela == duplicata.parcela)[0];
 
             if (!regDuplicata) {
               vm.Formulario.duplicatas.push(duplicata);
@@ -691,7 +699,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               break
           }
         }
-        
+
         vm.ItensEvidencia.forEach(item => {
           vm.calculaTotalItemEvidencia(item)
         })

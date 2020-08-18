@@ -33,8 +33,8 @@ function callDatasul(programa, metodo, json, tenantId, properties, usuario) {
 
   const jsonParams = JSON.stringify(params);
 
-  log.info('*** callDatasul');
-  log.info(jsonParams)
+  // log.info('*** callDatasul');
+  // log.info(jsonParams)
 
   const token = client.userLogin(usuario);
 
@@ -49,6 +49,10 @@ function callDatasul(programa, metodo, json, tenantId, properties, usuario) {
   // Converte o resultado para um objeto
   const respObj = JSON.parse(resp);
   const value = respObj[0].value != '' ? JSON.parse(respObj[0].value) : '';
+
+  let ret = client.logoutSession(token);
+
+  log.info('Ret logoutSession = ' + ret)
 
   return value.dsOutput || value;
 }

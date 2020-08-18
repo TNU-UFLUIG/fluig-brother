@@ -37,7 +37,8 @@ angular.module('brother.directives')
           });
 
           // force text reflow
-          var text = ta.value;
+          var text = ta.value || "";
+          text = text == "null" ? "" : text
           ta.value = '';
           ta.value = text;
 
@@ -131,7 +132,7 @@ angular.module('brother.directives')
             if (!active) {
               active = true;
 
-              mirror.value = ta.value + append; // optional whitespace to improve animation
+              mirror.value = ta.value || "" + append || ""; // optional whitespace to improve animation
               mirror.style.overflowY = ta.style.overflowY;
 
               taHeight = ta.style.height === '' ? 'auto' : parseInt(ta.style.height, 10);

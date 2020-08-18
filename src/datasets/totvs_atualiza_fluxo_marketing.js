@@ -33,8 +33,11 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
-    { field: 'pendenteTotvs', value: 'S' }
-    // { field: 'tipoAcaoCodigo', value: 'spiff' }
+    { field: 'pendenteTotvs', value: 'S' },
+    // { field: 'atividade', value: 'validarMarketing' },
+    // { field: 'tipoAcaoCodigo', value: 'spiff' },
+    // { field: 'solicitacao', value: '1092' },
+    // { field: 'STATUS', value: 'CANCELADA' }
   ]);
 
   // busca filhos e monta params 
@@ -67,8 +70,10 @@ function buscaDataset(fields, constraints, sortFields) {
 
   solicitacoes.forEach(solicitacao => {
 
+    // log.info(replaceSpecialChars(solicitacao.descricaoDetalhada));
+
     let objSolicitacao = {};
-    solicitacaoCampos.forEach(c => { objSolicitacao[c.ttName || c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : String(solicitacao[c.name]) });
+    solicitacaoCampos.forEach(c => { objSolicitacao[c.ttName || c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : replaceSpecialChars(String(solicitacao[c.name])) });
 
     ttParams.ttParam.push(objSolicitacao);
 
@@ -191,11 +196,11 @@ function buscaDataset(fields, constraints, sortFields) {
     } catch (error) {
       solicitacoes.forEach(solicitacao => {
         if (solicitacao.statusIntegraTotvs != error) {
-          getDataset('fluig_atualiza_formulario', null, [
-            { field: 'campos', value: 'pendenteTotvs|statusIntegraTotvs|dataIntegraTotvs' },
-            { field: 'valores', value: `S|${String(error) || 'N/D'}|${String(new Date().getTime())}` },
-            { field: 'documentid', value: String(solicitacao.documentid) }
-          ])
+          // getDataset('fluig_atualiza_formulario', null, [
+          //   { field: 'campos', value: 'pendenteTotvs|statusIntegraTotvs|dataIntegraTotvs' },
+          //   { field: 'valores', value: `S|${String(error) || 'N/D'}|${String(new Date().getTime())}` },
+          //   { field: 'documentid', value: String(solicitacao.documentid) }
+          // ])
         }
 
       })
@@ -215,11 +220,13 @@ function buscaDataset(fields, constraints, sortFields) {
         // log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
 
         if (solicitacao) {
+
           getDataset('fluig_atualiza_formulario', null, [
             { field: 'campos', value: 'pendenteTotvs|statusIntegraTotvs|dataIntegraTotvs' },
             { field: 'valores', value: `N|${status.retorno || 'N/D'}|${String(new Date().getTime())}` },
             { field: 'documentid', value: String(solicitacao.documentid) }
           ])
+
         }
       })
     }
@@ -233,6 +240,16 @@ function buscaDataset(fields, constraints, sortFields) {
   // log.info(JSON.stringify(json))
 
   return montaDataset(json.ttErro, json.ttStatus, campos, display, dePara, true);
+}
+
+function replaceSpecialChars(str) {
+  return str
+    .replace('–', '-')
+    .replace('•', '-')
+    .replace('"', "'")
+    // .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;<>?!@$%&*{}\/ ]/g, "");
+    .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, "");
+  // .substr(0,600)
 }
 
 /*$$ partials/getConstraintsParams.js $$*/

@@ -215,6 +215,7 @@ angular
           file.documentid = resp.data.documentid;
           file.numero = "";
           file.descricao = "";
+          file.nome = resp.data.filename;
           file.filename = resp.data.filename;
           file.url = resp.data.url;
           file.description = resp.data.description;
@@ -320,7 +321,7 @@ angular
         })
 
         vm.Formulario.itensSpiffIt.forEach((it, index) => {
-          vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
+          vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.vlTotal });
         })
 
         vm.ItensEvidencia.forEach(item => {
