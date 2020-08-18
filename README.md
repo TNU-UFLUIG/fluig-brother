@@ -58,7 +58,9 @@ Estrutura de pastas:
 * brother-fluig: Pasta do projeto no Eclipse. Deverá ser renomeado para nomeDoCliente-fluig.
 * src/datasets: Datasets do projeto. Serão compilados pelo gulp e copiados para o diretório nomeDoCliente-fluig/datasets. Na pasta partials encontram-se algumas funções auxiliares que podem ser usadas nos datasets. Para utilizá-las cole no dataset no formato abaixo:
 
+```
 /*$$ partials/executaSql.js $$*/
+```
 
 * src/forms: Formulários do projeto. Serão compilados pelo gulp e copiados para o diretório nomeDoCliente-fluig/forms. Na pasta partials encontram-se pedaços de marcação HTML que podem ser reaproveitadas no formulário. Para utilizálos cole nos formulários no formato abaixo:
 
