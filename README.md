@@ -1,14 +1,10 @@
 # Brother
 
-Projeto Brother Fluig (start para novos projetos)
+Projeto Brother Fluig
 
 ### Instalação
 
 Requer [Node.js](https://nodejs.org/) v4+.
-
-Substitua a string "brother" em todos os locais pelo nome do cliente
-Substitua o nome da pasta brother_lib em src/widgets por nomeDoCliente_lib
-Substitua o nome da pasta brother-fluig por nomeDoCliente-fluig
 
 Instale as dependências e inicie:
 
@@ -66,8 +62,10 @@ Estrutura de pastas:
 
 * src/forms: Formulários do projeto. Serão compilados pelo gulp e copiados para o diretório nomeDoCliente-fluig/forms. Na pasta partials encontram-se pedaços de marcação HTML que podem ser reaproveitadas no formulário. Para utilizálos cole nos formulários no formato abaixo:
 
+```
 <!-- partial:../partials/head.html -->
 <!-- partial -->
+```
 
 * src/widgets: Widgets do projeto. Serão compilados pelo gulp e copiados para o diretório nomeDoCliente-fluig/widgets.
 * tasks: Tarefas do gulp
