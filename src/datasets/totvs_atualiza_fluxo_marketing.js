@@ -28,16 +28,12 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  // log.info('******** totvs_atualiza_fluxo_marketing INICIO ');
+  log.info('******** totvs_atualiza_fluxo_marketing INICIO ');
 
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
-    { field: 'pendenteTotvs', value: 'S' },
-    // { field: 'atividade', value: 'validarMarketing' },
-    // { field: 'tipoAcaoCodigo', value: 'spiff' },
-    // { field: 'solicitacao', value: '1092' },
-    // { field: 'STATUS', value: 'CANCELADA' }
+    { field: 'pendenteTotvs', value: 'S' }
   ]);
 
   // busca filhos e monta params 
@@ -69,8 +65,6 @@ function buscaDataset(fields, constraints, sortFields) {
   // log.info(`solicitacoes.length = ${solicitacoes.length}`);
 
   solicitacoes.forEach(solicitacao => {
-
-    // log.info(replaceSpecialChars(solicitacao.descricaoDetalhada));
 
     let objSolicitacao = {};
     solicitacaoCampos.forEach(c => { objSolicitacao[c.ttName || c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : replaceSpecialChars(String(solicitacao[c.name])) });
@@ -206,18 +200,18 @@ function buscaDataset(fields, constraints, sortFields) {
       })
     }
 
-    // log.info('*** totvs_atualiza_fluxo_marketing 2');
+    log.info('*** totvs_atualiza_fluxo_marketing 2');
 
     if (json && json.ttStatus) {
-      // log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
+      log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
       json.ttStatus.forEach(status => {
 
-        // log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
+        log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
 
         let solicitacao = solicitacoes.filter(s => s.solicitacao == status.solicitacao)[0];
 
-        // log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
-        // log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
+        log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
+        log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
 
         if (solicitacao) {
 
@@ -244,8 +238,10 @@ function buscaDataset(fields, constraints, sortFields) {
 
 function replaceSpecialChars(str) {
   return str
-    .replace('–', '-')
-    .replace('•', '-')
+    .replace(/•/g, '*')
+    .replace(/–/g, '-')
+    .replace('”', "'")
+    .replace('“', "'")
     .replace('"', "'")
     // .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;<>?!@$%&*{}\/ ]/g, "");
     .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, "");
