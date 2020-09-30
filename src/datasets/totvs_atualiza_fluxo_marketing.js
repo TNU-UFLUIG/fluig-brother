@@ -33,7 +33,10 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
-    { field: 'pendenteTotvs', value: 'S' }
+    { field: 'pendenteTotvs', value: 'S' },
+    // { field: 'tipoAcaoCodigo', value: 'spiff' },
+    // { field: 'tipoSpiff', value: 'target' },
+
   ]);
 
   // busca filhos e monta params 
@@ -240,9 +243,9 @@ function replaceSpecialChars(str) {
   return str
     .replace(/•/g, '*')
     .replace(/–/g, '-')
-    .replace('”', "'")
-    .replace('“', "'")
-    .replace('"', "'")
+    .replace(/”/g, "'")
+    .replace(/“/g, "'")
+    .replace(/"/g, "'")
     // .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;<>?!@$%&*{}\/ ]/g, "");
     .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, "");
   // .substr(0,600)
