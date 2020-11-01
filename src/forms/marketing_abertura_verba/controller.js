@@ -126,7 +126,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         });
 
         fluigService.getPasta(vm.Params.companyId, 'Cadastros%7CMarketing%7CAnexos').then(pasta => {
-          vm.PastaAnexos = pasta[0];
+          vm.Formulario.folderAttach = pasta[0].documentId;
         });
 
         brotherService.getMarketingParametros().then(resp => {
@@ -342,11 +342,10 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         })
       }
       vm.checkEtapaNotificacao = function checkEtapaNotificacao() {
-        if (vm.Params.etapa == 'validarEvidencias') {
-
-          let arquivoRecusado = vm.Formulario.arquivosEvidencias.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
-
-          if (arquivoRecusado) {
+        if (vm.Params.etapa === 'validarEvidencias') {
+          vm.Formulario.evRecusada = vm.Formulario.arquivosEvidencias.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
+          vm.Formulario.revisao = vm.Formulario.evRecusada;
+          if (vm.Formulario.evRecusada) {
             vm.Formulario.notificacaoEtapa = 'ENVIO DAS EVIDÊNCIAS';
             vm.etapaNotificacao = 3;
             vm.regras.showNotificacaoCliente = true;
@@ -364,9 +363,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
         } else {
           if (vm.Params.etapa == 'validarND') {
-            let arquivoRecusado = vm.Formulario.arquivosND.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
-
-            if (arquivoRecusado) {
+            vm.Formulario.ndRecusada = vm.Formulario.arquivosND.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
+            vm.Formulario.revisao = vm.Formulario.ndRecusada;
+            if (vm.Formulario.ndRecusada) {
               vm.Formulario.notificacaoEtapa = 'ENVIO DA ND';
               vm.etapaNotificacao = 4;
 
@@ -808,7 +807,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           if (result) {
             let docsToDelete = [];
 
-            docsToDelete.push({ docId: arquivo.anexo.documentId, isLink: false, parentId: vm.PastaAnexos.documentId });
+            docsToDelete.push({ docId: arquivo.anexo.documentId, isLink: false, parentId: vm.Formulario.folderAttach });
 
             $http({
               method: 'DELETE',
@@ -890,7 +889,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
       vm.createDocument = function createDocument(file, uploadedFile) {
         $http.post('/api/public/2.0/documents/createDocument', {
-          parentDocumentId: vm.PastaAnexos.documentId,
+          parentDocumentId: vm.Formulario.folderAttach,
           documentDescription: uploadedFile.name,
           inheritSecurity: true,
           internalVisualizer: true
@@ -976,8 +975,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             .toString(16)
             .substring(1);
         }
-        return `${s4() + s4()}$${s4()}$${s4()}$${
-          s4()}$${s4()}${s4()}${s4()}`;
+        return `${s4() + s4()}$${s4()}$${s4()}$${s4()}$${s4()}${s4()}${s4()}`;
       }
 
     }

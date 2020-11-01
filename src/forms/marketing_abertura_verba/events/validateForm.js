@@ -11,13 +11,11 @@ function validateForm(form) {
 
   const arquivosEvidencias = getChildren(form, `arquivosEvidencias`,
     [`arquivoEv_nome`, `arquivoEv_type`, `arquivoEv_documentid`, `arquivoEv_version`,
-      `arquivoEv_url`, `arquivoEv_removed`, `arquivoEv_descricao`, `arquivoEv_aceito`,
-      `arquivoEv_motivoRecusa`]);
+      `arquivoEv_url`, `arquivoEv_removed`, `arquivoEv_descricao`, `arquivoEv_aceito`]);
 
   const arquivosND = getChildren(form, `arquivosND`,
     [`arquivoND_nome`, `arquivoND_type`, `arquivoND_documentid`, `arquivoND_version`,
-      `arquivoND_url`, `arquivoND_removed`, `arquivoND_descricao`, `arquivoND_aceito`,
-      `arquivoND_motivoRecusa`, `arquivoND_numero`]);
+      `arquivoND_url`, `arquivoND_removed`, `arquivoND_descricao`, `arquivoND_aceito`, `arquivoND_numero`]);
 
   const duplicatas = getChildren(form, `duplicatas`,
     [`titulo_seq`, `titulo_codCliente`, `titulo_codEspec`, `titulo_codSerie`,
@@ -36,6 +34,8 @@ function validateForm(form) {
   const descricaoDetalhada = value(form, `descricaoDetalhada`);
   const totalRateio = value(form, `totalRateio`);
   const nomeAcao = value(form, `nomeAcao`);
+  const motivoRecusaEv = value(form, `motivoRecusaEv`);
+  const motivoRecusaND = value(form, `motivoRecusaND`);
 
   const anteciparEncerramento = value(form, `anteciparEncerramento`);
   const obsEncerramentoAntecip = value(form, `obsEncerramentoAntecip`);
@@ -236,8 +236,10 @@ function validateForm(form) {
         Errors.push(`Recuse ao menos um arquivo para devolver ao cliente`);
       }
 
-      if (arquivosEvidencias.filter(arquivo => !arquivo.arquivoEv_removed && !arquivo.arquivoEv_aceito && !arquivo.arquivoEv_motivoRecusa).length > 0) {
-        Errors.push(`Informe o motivo da recusa em todos os arquivos não aceitos`);
+      if (arquivosEvidencias.filter(arquivo => !arquivo.arquivoEv_removed && !arquivo.arquivoEv_aceito).length > 0) {
+        if (!motivoRecusaEv) {
+          Errors.push(`Informe o motivo da recusa dos arquivos não aceitos`);
+        }
       }
     }
     // 3. Devolver para Financeiro
@@ -271,8 +273,10 @@ function validateForm(form) {
         Errors.push(`Recuse ao menos um arquivo para devolver ao cliente`);
       }
 
-      if (arquivosND.filter(arquivo => !arquivo.arquivoND_removed && !arquivo.arquivoND_aceito && !arquivo.arquivoND_motivoRecusa).length > 0) {
-        Errors.push(`Informe o motivo da recusa em todos os arquivos não aceitos`);
+      if (arquivosND.filter(arquivo => !arquivo.arquivoND_removed && !arquivo.arquivoND_aceito).length > 0) {
+        if (!motivoRecusaND) {
+          Errors.push(`Informe o motivo da recusa dos arquivos não aceitos`);
+        }
       }
     }
   }

@@ -63,7 +63,6 @@
 </div>
 
 <div class="row">
-
   <div class="col-sm-3" ng-if="vm.regras.enableND">
     <div class="drop-box fs-cursor-pointer" ngf-select="vm.selectFiles(vm.Formulario.arquivosND, null, $files)"
       ngf-drop="vm.selectFiles(vm.Formulario.arquivosND, null, $files)" ng-model="files" ngf-multiple="true"
@@ -86,7 +85,6 @@
           <th class="col-sm-1">Número da ND</th>
           <th class="col-sm-2">Arquivo</th>
           <th class="col-sm-1">Aceito</th>
-          <th class="col-sm-5">Motivo da Recusa</th>
         </tr>
       </thead>
       <tbody ng-non-bindable>
@@ -121,13 +119,18 @@
               ng-change="vm.checkEtapaNotificacao()">
             <input type="hidden" name="arquivoND_aceito" ng-value="arquivoND.aceito">
           </td>
-          <td>
-            <input ng-readonly="!vm.regras.enableValidacaoND" ng-show="!arquivoND.aceito" class="form-control"
-              ng-model="arquivoND.motivoRecusa" name="arquivoND_motivoRecusa" ng-value="arquivoND.motivoRecusa">
-            <p ng-show="arquivoND.aceito">ND aceita</p>
-          </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<input type="hidden" name="ndRecusada" ng-value="vm.Formulario.ndRecusada">
+<div ng-show="vm.Formulario.ndRecusada" class="row">
+  <div class="col-sm-12">
+    <h3 for="motivoRecusaND" class="text-muted control-label">Motivo da Recusa</h3>
+    <textarea elastic ng-readonly="!vm.regras.enableValidacaoND" class="form-control"
+      fluig-error="form.motivoRecusaND.$error" ng-required="vm.Formulario.ndRecusada"
+      ng-model="vm.Formulario.motivoRecusaND" name="motivoRecusaND" ng-value="vm.Formulario.motivoRecusaND"></textarea>
   </div>
 </div>

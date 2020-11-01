@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-3">
               <label>Target R$</label>
-              <input class="form-control input-lg" name="itemSellinTg_target_i" fluig-money-mask="2" fluig-negative-number
+              <input class="form-control input-lg" name="itemSellinTg_target_i" fluig-money-mask="5" fluig-negative-number
                 ng-model="itemSellinTg.target" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTarget(itemSellinTg)">
               <input type="hidden" name="itemSellinTg_target_f" ng-value="itemSellinTg.target | currency">

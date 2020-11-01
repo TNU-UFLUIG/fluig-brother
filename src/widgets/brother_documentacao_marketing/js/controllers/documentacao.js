@@ -209,7 +209,7 @@ angular
           url: '/brother-api/v1/file/upload',
           data: {
             file: file,
-            parentDocumentId: 485 //ALTERAR PARA PEGAR DO PARAMETRO
+            parentDocumentId: vm.Formulario.folderAttach
           }
         }).then(function (resp) {
           file.documentid = resp.data.documentid;
@@ -266,7 +266,10 @@ angular
             if (!arquivo.numero && !arquivo.removed) {
               Errors.push(`<li>Informe o número da ND no arquivo ${arquivo.nome}</li>`);
             }
-          })
+            if (!isNaN(Number(arquivo.numero)) && Number(arquivo.numero) === 0) {
+              Errors.push(`<li>Número da ND no arquivo ${arquivo.nome} deve ser diferente de 0</li>`);
+            }
+          });
         }
 
         if (Errors.length > 0) {

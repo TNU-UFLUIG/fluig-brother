@@ -13,6 +13,7 @@ brother-fluig/workflow/.resources
 dist
 tmp
 build
+src/java/*/target/**/*
 
 # dependencies
 /node_modules

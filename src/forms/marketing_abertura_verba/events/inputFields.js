@@ -8,6 +8,15 @@ function inputFields(form) {
   const nextState = getValue("WKNextState");
 
   const clienteNome = value(form, `clienteNome`);
+  const arquivosEvidencias = getChildren(form, `arquivosEvidencias`,
+    [`arquivoEv_nome`, `arquivoEv_type`, `arquivoEv_documentid`, `arquivoEv_version`,
+      `arquivoEv_url`, `arquivoEv_removed`, `arquivoEv_descricao`, `arquivoEv_aceito`,
+      `arquivoEv_motivoRecusa`]);
+
+  const arquivosND = getChildren(form, `arquivosND`,
+    [`arquivoND_nome`, `arquivoND_type`, `arquivoND_documentid`, `arquivoND_version`,
+      `arquivoND_url`, `arquivoND_removed`, `arquivoND_descricao`, `arquivoND_aceito`,
+      `arquivoND_motivoRecusa`, `arquivoND_numero`]);
 
   form.setValue('displaykey', clienteNome);
 

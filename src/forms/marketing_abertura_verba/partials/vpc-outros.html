@@ -42,7 +42,7 @@
             </div>
             <div class="col-sm-3">
               <label>Valor Total</label>
-              <input class="form-control input-lg" name="itemVpcOutros_vlTotal_i" fluig-money-mask="2"
+              <input class="form-control input-lg" name="itemVpcOutros_vlTotal_i" fluig-money-mask="5"
                 ng-model="itemVpcOutros.vlTotal" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="vm.calculaTotais()">
               <input type="hidden" name="itemVpcOutros_vlTotal_f" ng-value="itemVpcOutros.vlTotal | currency">

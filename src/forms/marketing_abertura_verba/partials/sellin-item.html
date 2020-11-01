@@ -15,17 +15,28 @@
       <td>
         <div class="td-content">
           <div class="row">
-            <div class="col-sm-9">
-              <label>Item</label>
-              <input class="form-control input-lg" name="itemSellinIt_item_i" fluig-autocomplete
-                dataset="totvs_busca_item" display-key="displaykey" ng-model="itemSellinIt.item"
+
+            <div class="col-sm-3">
+              <label>Cód. Item</label>
+              <input class="form-control input-lg" name="itemSellinIt_itemC_i" fluig-autocomplete
+                dataset="totvs_busca_item" display-key="codigo" ng-model="itemSellinIt.item"
                 ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSellinIt.loading"
                 ng-change="itemSellinIt.alterado=true;vm.changeItemSellinIt(itemSellinIt, $index)">
-              <textarea hidden name="itemSellinIt_item" ng-value="itemSellinIt.item | json:0"
-                ng-bind="itemSellinIt.item | json:0"></textarea>
-              <input type="hidden" name="itemSellinIt_itemDescricao" ng-value="itemSellinIt.item.descricao">
-              <input type="hidden" name="itemSellinIt_itemCodigo" ng-value="itemSellinIt.item.codigo">
+
             </div>
+            <div class="col-sm-6">
+              <label>Descrição</label>
+              <input class="form-control input-lg" name="itemSellinIt_itemD_i" fluig-autocomplete
+                dataset="totvs_busca_item" display-key="descricao" ng-model="itemSellinIt.item"
+                ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSellinIt.loading"
+                ng-change="itemSellinIt.alterado=true;vm.changeItemSellinIt(itemSellinIt, $index)">
+            </div>
+
+            <textarea hidden name="itemSellinIt_item" ng-value="itemSellinIt.item | json:0"
+              ng-bind="itemSellinIt.item | json:0"></textarea>
+            <input type="hidden" name="itemSellinIt_itemDescricao" ng-value="itemSellinIt.item.descricao">
+            <input type="hidden" name="itemSellinIt_itemCodigo" ng-value="itemSellinIt.item.codigo">
+
             <div class="col-sm-3 animation" ng-show="itemSellinIt.item.codigo">
               <label>Categoria</label>
               <input class="form-control input-lg" name="itemSellinIt_categoria" ng-value="itemSellout.item.categoria"
@@ -36,7 +47,7 @@
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-4">
               <label>SRP Inicial</label>
-              <input class="form-control input-lg" name="itemSellinIt_srpInicial_i" fluig-money-mask="2"
+              <input class="form-control input-lg" name="itemSellinIt_srpInicial_i" fluig-money-mask="5"
                 ng-disabled="itemSellinIt.loading" fluig-negative-number ng-model="itemSellinIt.srpInicial"
                 ng-readonly="!vm.regras.enableSolicitacao" ng-blur="vm.calculaItemErp(itemSellinIt)"
                 ng-change="itemSellinIt.alterado = true">
@@ -65,7 +76,7 @@
           <div class="row animation" ng-show="itemSellinIt.item.codigo">
             <div class="col-sm-4">
               <label>SRP Sugerido</label>
-              <input class="form-control input-lg" name="itemSellinIt_srpSugerido_i" fluig-money-mask="2"
+              <input class="form-control input-lg" name="itemSellinIt_srpSugerido_i" fluig-money-mask="5"
                 ng-disabled="itemSellinIt.loading" fluig-negative-number ng-model="itemSellinIt.srpSugerido"
                 ng-readonly="!vm.regras.enableSolicitacao" ng-blur="vm.calculaItemErp(itemSellinIt)"
                 ng-change="itemSellinIt.alterado = true">
@@ -103,7 +114,7 @@
 
             <div class="col-sm-4">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSellinIt_qtde_i" fluig-number-mask="2"
+              <input class="form-control input-lg" name="itemSellinIt_qtde_i" fluig-number-mask="5"
                 ng-disabled="itemSellinIt.loading" ng-model="itemSellinIt.qtde"
                 ng-readonly="!vm.regras.enableSolicitacao" ng-change="vm.calculaRebateTotal(itemSellinIt)">
               <input type="hidden" name="itemSellinIt_qtde_f" ng-value="itemSellinIt.qtde | number:'2'">
@@ -121,8 +132,8 @@
             <div class="col-sm-4">
               <label>Dolar</label>
               <input class="form-control input-lg" name="itemSellinIt_dolar_i"
-                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="2" fluig-negative-number currency-symbol="US$"
-                ng-model="itemSellinIt.dolar" disabled>
+                ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="5" fluig-negative-number
+                currency-symbol="US$" ng-model="itemSellinIt.dolar" disabled>
               <input type="hidden" name="itemSellinIt_dolar_f" ng-value="itemSellinIt.dolar | currency:'US$'">
               <input type="hidden" name="itemSellinIt_dolar" ng-value="itemSellinIt.dolar">
             </div>
