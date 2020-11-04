@@ -152,7 +152,7 @@ function createDataset(fields, constraints, sortFields) {
       solicitacao.executivo = JSON.parse(solicitacao.executivo);
 
       if (solicitacao.executivo && solicitacao.executivo.email) {
-        // arrDestinatarios.add(solicitacao.executivo.email);
+        arrDestinatarios.add(solicitacao.executivo.email);
       }
     }
 
@@ -197,7 +197,7 @@ function createDataset(fields, constraints, sortFields) {
 
   dsDestinatariosGrupoBrother.forEach(destinatario => {
     if (destinatario[`email_${params.tipo}`] == 'true') {
-      // arrDestinatarios.add(destinatario.email_email);
+      arrDestinatarios.add(destinatario.email_email);
     }
   });
 
