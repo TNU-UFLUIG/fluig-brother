@@ -57,7 +57,7 @@
             <div class="col-sm-4">
               <label>Net R$ Inicial</label>
               <input class="form-control input-lg" name="itemSellout_netInicial_i"
-                ng-class="{'loading':itemSellout.loading}" fluig-money-mask="2" fluig-negative-number
+                ng-class="{'loading':itemSellout.loading}" fluig-money-mask="5" fluig-negative-number
                 fluig-negative-number ng-model="itemSellout.netInicial" disabled>
               <input type="hidden" name="itemSellout_netInicial_f" ng-value="itemSellout.netInicial | currency">
               <input type="hidden" name="itemSellout_netInicial" ng-value="itemSellout.netInicial">
@@ -86,7 +86,7 @@
             <div class="col-sm-4">
               <label>Net R$ Sugerido</label>
               <input class="form-control input-lg" name="itemSellout_netSugerido_i"
-                ng-class="{'loading':itemSellout.loading}" fluig-money-mask="2" fluig-negative-number
+                ng-class="{'loading':itemSellout.loading}" fluig-money-mask="5" fluig-negative-number
                 fluig-negative-number ng-model="itemSellout.netSugerido" disabled>
               <input type="hidden" name="itemSellout_netSugerido_f" ng-value="itemSellout.netSugerido | currency">
               <input type="hidden" name="itemSellout_netSugerido" ng-value="itemSellout.netSugerido">
@@ -105,7 +105,7 @@
             <div class="col-sm-4">
               <label>Rebate Unit</label>
               <input class="form-control input-lg" name="itemSellout_rebateUnit_i"
-                ng-class="{'loading':itemSellout.loading}" fluig-money-mask="2" fluig-negative-number
+                ng-class="{'loading':itemSellout.loading}" fluig-money-mask="5" fluig-negative-number
                 fluig-negative-number ng-model="itemSellout.rebateUnit" disabled>
               <input type="hidden" name="itemSellout_rebateUnit_f" ng-value="itemSellout.rebateUnit | currency">
               <input type="hidden" name="itemSellout_rebateUnit" ng-value="itemSellout.rebateUnit">
@@ -113,7 +113,7 @@
 
             <div class="col-sm-4">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSellout_qtde_i" fluig-number-mask="5" fluig-negative-number
+              <input class="form-control input-lg" name="itemSellout_qtde_i" fluig-number-mask="2" fluig-negative-number
                 ng-model="itemSellout.qtde" ng-readonly="!vm.regras.enableSolicitacao" ng-disabled="itemSellout.loading"
                 ng-change="vm.calculaRebateTotal(itemSellout)">
               <input type="hidden" name="itemSellout_qtde_f" ng-value="itemSellout.qtde | number:'2'">

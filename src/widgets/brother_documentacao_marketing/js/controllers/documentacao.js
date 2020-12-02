@@ -260,14 +260,16 @@ angular
 
         if (vm.regras.enableND) {
           vm.Formulario.nd.forEach(arquivo => {
-            if (!arquivo.descricao && !arquivo.removed) {
-              Errors.push(`<li>Informe a descrição no arquivo ${arquivo.nome}</li>`);
-            }
-            if (!arquivo.numero && !arquivo.removed) {
-              Errors.push(`<li>Informe o número da ND no arquivo ${arquivo.nome}</li>`);
-            }
-            if (!isNaN(Number(arquivo.numero)) && Number(arquivo.numero) === 0) {
-              Errors.push(`<li>Número da ND no arquivo ${arquivo.nome} deve ser diferente de 0</li>`);
+            if (!arquivo.removed) {
+              if (!arquivo.descricao) {
+                Errors.push(`<li>Informe a descrição no arquivo ${arquivo.nome}</li>`);
+              }
+              if (!arquivo.numero) {
+                Errors.push(`<li>Informe o número da ND no arquivo ${arquivo.nome}</li>`);
+              }
+              if (!isNaN(Number(arquivo.numero)) && Number(arquivo.numero) === 0) {
+                Errors.push(`<li>Número da ND no arquivo ${arquivo.nome} deve ser diferente de 0</li>`);
+              }
             }
           });
         }

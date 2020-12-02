@@ -417,7 +417,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
       vm.calculaItemErp = function (item, loadContainer) {
         if (item.item.codigo && item.alterado) {
-          if (item.srpInicial && item.srpSugerido) {
+          if (item.srpInicial || item.srpSugerido) {
 
             item.loading = true;
 

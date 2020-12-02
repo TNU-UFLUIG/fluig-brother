@@ -52,7 +52,7 @@
 
             <div class="col-sm-3">
               <label>Qtde</label>
-              <input class="form-control input-lg" name="itemSpiffIt_qtde_i" fluig-number-mask="5"
+              <input class="form-control input-lg" name="itemSpiffIt_qtde_i" fluig-number-mask="2"
                 ng-model="itemSpiffIt.qtde" ng-readonly="!vm.regras.enableSolicitacao"
                 ng-change="itemSpiffIt.vlTotal = itemSpiffIt.spiffUnit * itemSpiffIt.qtde;vm.calculaTotais()">
               <input type="hidden" name="itemSpiffIt_qtde_f" ng-value="itemSpiffIt.qtde | number:'2'">
