@@ -7,7 +7,7 @@ function onSync(lastSyncDate) {
 }
 
 function createDataset(fields, constraints, sortFields) {
-  var codDoctoPai = 2618;
+  var codDoctoPai = 476;
   var codEmpresa = 1;
   var altera = true;
 
@@ -24,8 +24,8 @@ function createDataset(fields, constraints, sortFields) {
 
   var versaoAtiva = documentoPai[0].nr_versao;
 
-  var Documentos = executaSql("SELECT * FROM documento WHERE num_docto_propried = " + codDoctoPai + " and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
-  // var Documentos = executaSql("SELECT * FROM documento WHERE nr_documento = 128255 and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
+  // var Documentos = executaSql("SELECT * FROM documento WHERE num_docto_propried = " + codDoctoPai + " and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
+  var Documentos = executaSql("SELECT * FROM documento WHERE nr_documento = 1515 and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
   // log.info(Documentos)
   Documentos.forEach(function (documento) {
     // log.info(documento.num_vers_propried);

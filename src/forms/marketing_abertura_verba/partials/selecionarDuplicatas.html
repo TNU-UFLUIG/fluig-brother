@@ -87,65 +87,78 @@
     </div>
   </div>
 
+  <table class="fs-display-none" tablename="duplicatas" noaddbutton="true" nodeletebutton="true">
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody ng-non-bindable>
+      <tr ng-repeat="titulo in vm.Formulario.duplicatas" ng-if="titulo.valorAntecipa > 0">
+        <td>
+          <input type="hidden" name="titulo_seq" ng-value="titulo.seq">
+          <input type="hidden" name="titulo_numTitulo_f" ng-value="titulo.numTitulo || 'N/D'">
+          <input type="hidden" name="titulo_numTitulo" ng-value="titulo.numTitulo">
+          <input type="hidden" name="titulo_parcela" ng-value="titulo.parcela">
+          <input type="hidden" name="titulo_tituloParcela" ng-value="titulo.parcela"
+            ng-value="(titulo.numTitulo) + '/' +  (titulo.parcela)">
+          <input type="hidden" name="titulo_dataEmissao_f" ng-value="titulo.dataEmissao | date:'fullDate'">
+          <input type="hidden" name="titulo_dataEmissao" ng-value="titulo.dataEmissao">
+          <input type="hidden" name="titulo_dataVencto_f" ng-value="titulo.dataVencto | date:'fullDate'">
+          <input type="hidden" name="titulo_dataVencto" ng-value="titulo.dataVencto">
+          <input type="hidden" name="titulo_codEspec" ng-value="titulo.codEspec">
+          <input type="hidden" name="titulo_nd_f" ng-value="titulo.nd.numero">
+          <textarea hidden name="titulo_nd" ng-value="titulo.nd || {} | json:0"
+            ng-bind="titulo.nd || {} | json:0"></textarea>
+
+          <input type="hidden" name="titulo_codCliente" ng-value="titulo.codCliente">
+          <input type="hidden" name="titulo_matriz" ng-value="titulo.matriz">
+          <input type="hidden" name="titulo_codEstab" ng-value="titulo.codEstab">
+          <input type="hidden" name="titulo_valorOriginal_f" ng-value="titulo.valorOriginal | currency">
+          <input type="hidden" name="titulo_valorOriginal" ng-value="titulo.valorOriginal">
+          <input type="hidden" name="titulo_codSerie" ng-value="titulo.codSerie">
+          <input type="hidden" name="titulo_valorSaldo_f" ng-value="titulo.valorSaldo | currency">
+          <input type="hidden" name="titulo_valorSaldo" ng-value="titulo.valorSaldo">
+          <input type="hidden" name="titulo_valorAntecipa_f" ng-value="titulo.valorAntecipa | currency">
+          <input type="hidden" name="titulo_valorAntecipa" ng-value="titulo.valorAntecipa">
+          <input type="hidden" name="titulo_saldoAposAbatimento_f" ng-value="titulo.saldoAposAbatimento | currency">
+          <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <div class="col-sm-12">
 
-    <table class="table" tablename="duplicatas" noaddbutton="true" nodeletebutton="true"
-      ng-show="vm.Formulario.duplicatas.length > 0">
+    <table class="table" ng-show="vm.Formulario.duplicatas.length > 0">
       <caption>Duplicatas</caption>
       <thead>
         <tr>
           <th></th>
-          <!-- <th class="col-sm-1">Seq</th>
-          <th class="col-sm-1">Cliente</th>
-          <th class="col-sm-1">Estab</th>
-          <th class="col-sm-1">Matriz</th>
-          <th class="col-sm-1">Emissão</th>
-          <th class="col-sm-1">Vencimento</th>
-          <th class="col-sm-1">Número</th>
-          <th class="col-sm-1">Parcela</th>
-          <th class="col-sm-1">Valor Original</th>
-          <th class="col-sm-1">Saldo</th>
-          <th class="col-sm-2">Valor a Antecipar</th>
-          <th class="col-sm-1">Saldo Final</th> -->
         </tr>
       </thead>
-      <tbody ng-non-bindable>
-        <tr ng-repeat="titulo in vm.Formulario.duplicatas | orderBy:'dataVencto'"
-          ng-if="vm.regras.enableSelecionarDuplicatas || titulo.valorAntecipa > 0">
-
+      <tbody>
+        <tr ng-repeat="titulo in vm.Formulario.duplicatas | orderBy:'dataVencto'">
           <td>
-
-            <input type="hidden" name="titulo_seq" ng-value="titulo.seq">
-
             <div class="row">
               <div class="col-sm-3">
                 <label>Núm. Título / Parcela</label>
                 <h3 class="fs-no-margin">{{titulo.numTitulo || 'N/D'}} / {{titulo.parcela}}</h3>
-                <input type="hidden" name="titulo_numTitulo_f" ng-value="titulo.numTitulo || 'N/D'">
-                <input type="hidden" name="titulo_numTitulo" ng-value="titulo.numTitulo">
-                <input type="hidden" name="titulo_parcela" ng-value="titulo.parcela">
-                <input type="hidden" name="titulo_tituloParcela" ng-value="titulo.parcela"
-                  ng-value="(titulo.numTitulo) + '/' +  (titulo.parcela)">
               </div>
 
               <div class="col-sm-3">
                 <label>Emissão</label>
                 <h3 class="fs-no-margin">{{titulo.dataEmissao | date}}</h3>
-                <input type="hidden" name="titulo_dataEmissao_f" ng-value="titulo.dataEmissao | date:'fullDate'">
-                <input type="hidden" name="titulo_dataEmissao" ng-value="titulo.dataEmissao">
               </div>
 
               <div class="col-sm-3">
                 <label>Vencimento</label>
                 <h3 class="fs-no-margin">{{titulo.dataVencto | date}}</h3>
-                <input type="hidden" name="titulo_dataVencto_f" ng-value="titulo.dataVencto | date:'fullDate'">
-                <input type="hidden" name="titulo_dataVencto" ng-value="titulo.dataVencto">
               </div>
 
               <div class="col-sm-1">
                 <label>Espécie</label>
                 <h3 class="fs-no-margin">{{titulo.codEspec || 'N/D'}}</h3>
-                <input type="hidden" name="titulo_codEspec" ng-value="titulo.codEspec">
               </div>
 
               <div class="col-sm-2" ng-show="titulo.valorAntecipa > 0">
@@ -153,9 +166,6 @@
                 <input type="text" fluig-error="form.titulo_nd_i___{{$index + 1}}.$error" class="form-control"
                   name="titulo_nd_i" ng-model="titulo.nd" fluig-autocomplete values="vm.Formulario.arquivosND"
                   display-key="numero" ng-disabled="!vm.regras.enableSelecionarDuplicatas" ng-required="true">
-                <input type="hidden" name="titulo_nd_f" ng-value="titulo.nd.numero">
-                <textarea hidden name="titulo_nd" ng-value="titulo.nd || {} | json:0"
-                  ng-bind="titulo.nd || {} | json:0"></textarea>
               </div>
             </div>
 
@@ -163,43 +173,33 @@
               <div class="col-sm-3">
                 <label>Cliente</label>
                 <h3 class="fs-no-margin">{{titulo.codCliente || 'N/D'}}</h3>
-                <input type="hidden" name="titulo_codCliente" ng-value="titulo.codCliente">
               </div>
 
               <div class="col-sm-3">
                 <label>Matriz</label>
                 <h3 class="fs-no-margin">{{titulo.matriz || 'N/D'}}</h3>
-                <input type="hidden" name="titulo_matriz" ng-value="titulo.matriz">
               </div>
 
               <div class="col-sm-3">
                 <label>Estab</label>
                 <h3 class="fs-no-margin">{{titulo.codEstab || 'N/D'}}</h3>
-                <input type="hidden" name="titulo_codEstab" ng-value="titulo.codEstab">
               </div>
 
               <div class="col-sm-3">
                 <label>Série</label>
                 <h3 class="fs-no-margin">{{titulo.codSerie || 'N/D'}}</h3>
-                <input type="hidden" name="titulo_codSerie" ng-value="titulo.codSerie">
               </div>
-
-
             </div>
 
             <div class="row">
               <div class="col-sm-3">
                 <label>Valor Original</label>
                 <h3 class="fs-no-margin">{{titulo.valorOriginal | currency}}</h3>
-                <input type="hidden" name="titulo_valorOriginal_f" ng-value="titulo.valorOriginal | currency">
-                <input type="hidden" name="titulo_valorOriginal" ng-value="titulo.valorOriginal">
               </div>
 
               <div class="col-sm-3">
                 <label>Saldo Atual</label>
                 <h3 class="fs-no-margin">{{titulo.valorSaldo | currency}}</h3>
-                <input type="hidden" name="titulo_valorSaldo_f" ng-value="titulo.valorSaldo | currency">
-                <input type="hidden" name="titulo_valorSaldo" ng-value="titulo.valorSaldo">
               </div>
 
               <div class="col-sm-3">
@@ -209,17 +209,12 @@
                     class="form-control" name="titulo_valorAntecipa_i" ng-model="titulo.valorAntecipa" fluig-money-mask
                     max="titulo.valorSaldo" ng-change="vm.calculaTotalDuplicatas()"
                     ng-readonly="!vm.regras.enableSelecionarDuplicatas || vm.Formulario.valorAntecipacao > 0">
-                  <input type="hidden" name="titulo_valorAntecipa_f" ng-value="titulo.valorAntecipa | currency">
-                  <input type="hidden" name="titulo_valorAntecipa" ng-value="titulo.valorAntecipa">
                 </div>
               </div>
 
               <div class="col-sm-3">
                 <label>Saldo Final</label>
                 <h3 class="fs-no-margin">{{titulo.saldoAposAbatimento | currency}}</h3>
-                <input type="hidden" name="titulo_saldoAposAbatimento_f"
-                  ng-value="titulo.saldoAposAbatimento | currency">
-                <input type="hidden" name="titulo_saldoAposAbatimento" ng-value="titulo.saldoAposAbatimento">
               </div>
             </div>
             <div class="row" ng-if="!titulo.nd.numero && titulo.valorAntecipa != 0">

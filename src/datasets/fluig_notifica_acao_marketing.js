@@ -54,15 +54,11 @@ function createDataset(fields, constraints, sortFields) {
   const dsCamposSolicitacao = getDataset('marketing_composicao_email', null, [{ field: 'tablename', value: 'campos' }]);
   const dsCampos = {};
 
-  // log.info('dsSolicitacoes.length = ' + dsSolicitacoes.length);
-  // log.info('dsCamposSolicitacao.length = ' + dsCamposSolicitacao.length);
-
   tables.forEach((table) => {
     dsCampos[table.name] = getDataset('marketing_composicao_email', null, [
       { field: 'tablename', value: table.tableCampos },
       { field: `${table.campoName}_${params.tipo}`, value: 'true' }
     ]);
-    // log.info(`dsCampos.${table.name}.length = ${dsCampos[table.name].length}`);
   });
 
   const tplParams = new java.util.HashMap();
@@ -82,7 +78,7 @@ function createDataset(fields, constraints, sortFields) {
     const tplArrTables = new java.util.ArrayList();
 
     dsCamposSolicitacao.forEach((c) => {
-      if (c[`campo_${params.tipo}`] === 'true') {
+      if (String(c[`campo_${params.tipo}`]) == 'true') {
         const campo = new java.util.HashMap();
 
         campo.put('label', c.campo_label);
@@ -138,9 +134,6 @@ function createDataset(fields, constraints, sortFields) {
     tplParamsSolicitacao.put('camposSolicitacao', tplArrCamposSolicitacao);
     tplParamsSolicitacao.put('tables', tplArrTables);
 
-    // log.info('tplArrCamposSolicitacao.size = ' + tplArrCamposSolicitacao.size());
-    // log.info('tplArrTables.size = ' + tplArrTables.size());
-
     tplArrSolicitacoes.add(tplParamsSolicitacao);
 
     dsDestinatariosCliente = [];
@@ -152,7 +145,7 @@ function createDataset(fields, constraints, sortFields) {
       solicitacao.executivo = JSON.parse(solicitacao.executivo);
 
       if (solicitacao.executivo && solicitacao.executivo.email) {
-        arrDestinatarios.add(solicitacao.executivo.email);
+        // arrDestinatarios.add(solicitacao.executivo.email);
       }
     }
 
@@ -167,8 +160,8 @@ function createDataset(fields, constraints, sortFields) {
       dsDestinatariosCliente.forEach(destinatario => {
         // log.info(`email_${params.tipo} => ` + destinatario[`email_${params.tipo}`]);
 
-        if (destinatario[`email_${params.tipo}`] == 'true') {
-          arrDestinatarios.add(destinatario.email_email);
+        if (String(destinatario[`email_${params.tipo}`]) == 'true') {
+          // arrDestinatarios.add(destinatario.email_email);
         }
       })
     }
@@ -178,8 +171,7 @@ function createDataset(fields, constraints, sortFields) {
 
   let txtSolicitacao = ' BROTHER | ';
   dsSolicitacoes.forEach((s) => {
-    log.info(`s.revisao ====== ${s.revisao}`);
-    txtSolicitacao += `${s.solicitacao} | ${s.clienteNome} | ${s.nomeAcao} ${s.revisao == 'true' ? ' | REVISÃO' : ''} | `;
+    txtSolicitacao += `${s.solicitacao} | ${s.clienteNome} | ${s.nomeAcao} ${String(s.revisao) == 'true' ? ' | REVISÃO' : ''} | `;
   });
 
   tplParams.put('subject', dsComposicao[`${params.tipo}Titulo`] + txtSolicitacao);
@@ -196,8 +188,8 @@ function createDataset(fields, constraints, sortFields) {
   }
 
   dsDestinatariosGrupoBrother.forEach(destinatario => {
-    if (destinatario[`email_${params.tipo}`] == 'true') {
-      arrDestinatarios.add(destinatario.email_email);
+    if (String(destinatario[`email_${params.tipo}`]) == 'true') {
+      // arrDestinatarios.add(destinatario.email_email);
     }
   });
 
