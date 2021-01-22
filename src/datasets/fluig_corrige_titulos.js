@@ -29,9 +29,7 @@ function onMobileSync(user) {
 
 function buscaDataset(fields, constraints, sortFields) {
 
-  log.info('******** totvs_atualiza_fluxo_marketing INICIO ');
-
-  let params = getConstraints(constraints);
+  log.info('******** fluig_corrige_titulos INICIO ');
 
   let solicitacoesRet = [];
 
@@ -51,8 +49,6 @@ function buscaDataset(fields, constraints, sortFields) {
 
     let duplicatas = s.status == 'FINALIZADO SEM ANTECIPAÇÃO' || s.status == 'CANCELADA' ? dsDuplicatas : dsDuplicatas.filter(d => Number(d.titulo_valorAntecipa) > 0);
 
-    log.info(`s.documentid: ${s.documentid} | s.solicitacao: ${s.solicitacao} | s.status: ${s.status} | duplicatas.length = ${duplicatas.length}`);
-
     if (duplicatas.length > 0) {
       let params = [];
 
@@ -63,7 +59,7 @@ function buscaDataset(fields, constraints, sortFields) {
         });
       }
 
-      if (status == 'APROVAÇÃO FINANCEIRA') {
+      if (s.status == 'APROVAÇÃO FINANCEIRA') {
         duplicatas.forEach((dr, di) => {
 
           for (let dc in dr) {
@@ -72,13 +68,6 @@ function buscaDataset(fields, constraints, sortFields) {
               value: String(dr[dc])
             });
           }
-
-          // dsDuplicatas.columns.forEach((dc) => {
-          //   params.push({
-          //     name: `${dc}___${(di + 1)}`,
-          //     value: dr[dc]
-          //   });
-          // });
         });
       }
 
@@ -105,38 +94,26 @@ function buscaDataset(fields, constraints, sortFields) {
         }
       });
 
-      log.info(params);
-
       var data = {
         companyId: getValue("WKCompany") + '',
         serviceCode: 'fluig-post',
         endpoint: `/ecm/api/rest/ecm/cardView/editCard/${s.documentid}/${s.version}`,
         method: 'post',
         timeoutService: '100',
-        params,
+        strParams: JSON.stringify(params)
       }
 
       var clientService = fluigAPI.getAuthorizeClientService();
-      // var vo = clientService.invoke(JSON.stringify(data));
+      var vo = clientService.invoke(JSON.stringify(data));
       var status = '';
 
-      // if (vo.getResult() == null || vo.getResult().isEmpty()) {
-      //   status = "Retorno vazio";
-      // } else {
-      //   status = vo.getResult();
-      // }
+      if (vo.getResult() == null || vo.getResult().isEmpty()) {
+        status = "Retorno vazio";
+      } else {
+        status = vo.getResult();
+      }
 
       solicitacoesRet.push({ solicitacao: s.solicitacao, status });
-
-      // $.ajax({
-      //   url: `/ecm/api/rest/ecm/cardView/editCard/${s.documentid}/${s.version}`,
-      //   type: "POST",
-      //   dataType: "json",
-      //   contentType: "application/json",
-      //   data: JSON.stringify(params)
-      // });
-
-      // $.post(`/ecm/api/rest/ecm/cardView/editCard/${s.documentid}/${s.version}`, JSON.stringify(params));
     }
   });
 
