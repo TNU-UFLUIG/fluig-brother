@@ -19,6 +19,11 @@ angular.module('brother.services')
       getMarketingComposicaoEmail: function getMarketingComposicaoEmail(fields) {
         return fluigService.getDatasetAsync('marketing_composicao_email', {
         }, fields);
+      },
+      getMarketingCliente: function getMarketingCliente(clienteCodigo, fields) {
+        return fluigService.getDatasetAsync('marketing_cliente', {
+          clienteCodigo
+        }, fields);
       }
 
     })

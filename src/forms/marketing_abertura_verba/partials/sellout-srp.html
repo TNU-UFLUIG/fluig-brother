@@ -1,0 +1,175 @@
+<table class="table" tablename="itensSellout" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.itensSellout.length > 0">
+  <thead>
+    <tr>
+      <th class="col-sm-1" ng-if="vm.regras.enableSolicitacao"></th>
+      <th class="col-sm-11"></th>
+    </tr>
+  </thead>
+  <tbody ng-non-bindable>
+    <tr ng-repeat="itemSellout in vm.Formulario.itensSellout track by $index">
+      <td ng-if="vm.regras.enableSolicitacao">
+        <span ng-click="vm.removeChild(vm.Formulario.itensSellout, itemSellout)"
+          class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+      </td>
+      <td>
+        <div class="td-content">
+          <div class="row">
+            <div class="col-sm-3">
+              <label>Cód. Item</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_itemC_i" fluig-autocomplete
+                dataset="totvs_busca_item" display-key="codigo" ng-model="itemSelloutSrp.item"
+                ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSelloutSrp.loading"
+                ng-change="itemSelloutSrp.alterado = true;vm.changeItemSellout(itemSellout, $index)">
+
+            </div>
+            <div class="col-sm-6">
+              <label>Descrição</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_itemD_i" fluig-autocomplete
+                dataset="totvs_busca_item" display-key="descricao" ng-model="itemSelloutSrp.item"
+                ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSelloutSrp.loading"
+                ng-change="itemSelloutSrp.alterado = true;vm.changeItemSellout(itemSellout, $index)">
+            </div>
+
+            <textarea hidden name="itemSelloutSrp_item" ng-value="itemSelloutSrp.item | json:0"
+              ng-bind="itemSelloutSrp.item | json:0"></textarea>
+            <input type="hidden" name="itemSelloutSrp_itemDescricao" ng-value="itemSelloutSrp.item.descricao">
+            <input type="hidden" name="itemSelloutSrp_itemCodigo" ng-value="itemSelloutSrp.item.codigo">
+
+            <div class="col-sm-3 animation" ng-show="itemSelloutSrp.item.codigo">
+              <label>Categoria</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_categoria"
+                ng-value="itemSelloutSrp.item.categoria" disabled>
+            </div>
+          </div>
+
+          <div class="row animation" ng-show="itemSelloutSrp.item.codigo">
+            <div class="col-sm-4">
+              <label>SRP Inicial</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_srpInicial_i" fluig-money-mask="5"
+                fluig-negative-number fluig-negative-number ng-model="itemSelloutSrp.srpInicial"
+                ng-disabled="itemSelloutSrp.loading" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-blur="vm.calculaItemErp(itemSellout)" ng-change="itemSelloutSrp.alterado = true">
+              <input type="hidden" name="itemSelloutSrp_srpInicial_f" ng-value="itemSelloutSrp.srpInicial | currency">
+              <input type="hidden" name="itemSelloutSrp_srpInicial" ng-value="itemSelloutSrp.srpInicial">
+            </div>
+
+            <div class="col-sm-4">
+              <label>Net R$ Inicial</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_netInicial_i"
+                ng-class="{'loading':itemSelloutSrp.loading}" fluig-money-mask="5" fluig-negative-number
+                fluig-negative-number ng-model="itemSelloutSrp.netInicial" disabled>
+              <input type="hidden" name="itemSelloutSrp_netInicial_f" ng-value="itemSelloutSrp.netInicial | currency">
+              <input type="hidden" name="itemSelloutSrp_netInicial" ng-value="itemSelloutSrp.netInicial">
+            </div>
+            <!-- <div class="col-sm-4">
+              <label>GP</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_gpInicial_i"
+                ng-class="{'loading':itemSelloutSrp.loading}" fluig-percentage-mask fluig-negative-number="true"
+                ng-model="itemSelloutSrp.gpInicial" disabled fluig-negative-number="true">
+              <input type="hidden" name="itemSelloutSrp_gpInicial_f" ng-value="itemSelloutSrp.gpInicial | percentage:'2'">
+              <input type="hidden" name="itemSelloutSrp_gpInicial" ng-value="itemSelloutSrp.gpInicial">
+            </div> -->
+          </div>
+
+          <div class="row animation" ng-show="itemSelloutSrp.item.codigo">
+            <div class="col-sm-4">
+              <label>SRP Sugerido</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_srpSugerido_i" fluig-money-mask="5"
+                fluig-negative-number fluig-negative-number ng-model="itemSelloutSrp.srpSugerido"
+                ng-disabled="itemSelloutSrp.loading" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-blur="vm.calculaItemErp(itemSellout)" ng-change="itemSelloutSrp.alterado = true">
+              <input type="hidden" name="itemSelloutSrp_srpSugerido_f" ng-value="itemSelloutSrp.srpSugerido | currency">
+              <input type="hidden" name="itemSelloutSrp_srpSugerido" ng-value="itemSelloutSrp.srpSugerido">
+            </div>
+
+            <div class="col-sm-4">
+              <label>Net R$ Sugerido</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_netSugerido_i"
+                ng-class="{'loading':itemSelloutSrp.loading}" fluig-money-mask="5" fluig-negative-number
+                fluig-negative-number ng-model="itemSelloutSrp.netSugerido" disabled>
+              <input type="hidden" name="itemSelloutSrp_netSugerido_f" ng-value="itemSelloutSrp.netSugerido | currency">
+              <input type="hidden" name="itemSelloutSrp_netSugerido" ng-value="itemSelloutSrp.netSugerido">
+            </div>
+            <!-- <div class="col-sm-4">
+              <label>GP</label>
+              <input class="form-control input-lg" ng-class="{'loading':itemSelloutSrp.loading}"
+                name="itemSelloutSrp_gpSugerido_i" fluig-percentage-mask fluig-negative-number="true"
+                ng-model="itemSelloutSrp.gpSugerido" disabled>
+              <input type="hidden" name="itemSelloutSrp_gpSugerido_f" ng-value="itemSelloutSrp.gpSugerido | percentage:'2'">
+              <input type="hidden" name="itemSelloutSrp_gpSugerido" ng-value="itemSelloutSrp.gpSugerido">
+            </div> -->
+          </div>
+
+          <div class="row animation" ng-show="itemSelloutSrp.item.codigo">
+            <div class="col-sm-4">
+              <label>Rebate Unit</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_rebateUnit_i"
+                ng-class="{'loading':itemSelloutSrp.loading}" fluig-money-mask="5" fluig-negative-number
+                fluig-negative-number ng-model="itemSelloutSrp.rebateUnit" disabled>
+              <input type="hidden" name="itemSelloutSrp_rebateUnit_f" ng-value="itemSelloutSrp.rebateUnit | currency">
+              <input type="hidden" name="itemSelloutSrp_rebateUnit" ng-value="itemSelloutSrp.rebateUnit">
+            </div>
+
+            <div class="col-sm-4">
+              <label>Qtde</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_qtde_i" fluig-number-mask="2"
+                fluig-negative-number ng-model="itemSelloutSrp.qtde" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-disabled="itemSelloutSrp.loading" ng-change="vm.calculaRebateTotal(itemSellout)">
+              <input type="hidden" name="itemSelloutSrp_qtde_f" ng-value="itemSelloutSrp.qtde | number:'2'">
+              <input type="hidden" name="itemSelloutSrp_qtde" ng-value="itemSelloutSrp.qtde">
+            </div>
+            <div class="col-sm-4">
+              <label>Rebate Total</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_rebateTotal_i" fluig-money-mask="2"
+                fluig-negative-number ng-model="itemSelloutSrp.rebateTotal" disabled>
+              <input type="hidden" name="itemSelloutSrp_rebateTotal_f" ng-value="itemSelloutSrp.rebateTotal | currency">
+              <input type="hidden" name="itemSelloutSrp_rebateTotal" ng-value="itemSelloutSrp.rebateTotal">
+            </div>
+          </div>
+          <div class="row animation" ng-show="itemSelloutSrp.item.codigo">
+            <div class="col-sm-4">
+              <label>Dolar</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_dolar_i"
+                ng-class="{'loading':itemSelloutSrp.loading}" fluig-money-mask="2" fluig-negative-number
+                currency-symbol="US$" ng-model="itemSelloutSrp.dolar" disabled>
+              <input type="hidden" name="itemSelloutSrp_dolar_f" ng-value="itemSelloutSrp.dolar | currency:'US$'">
+              <input type="hidden" name="itemSelloutSrp_dolar" ng-value="itemSelloutSrp.dolar">
+            </div>
+            <div class="col-sm-4">
+              <label>Centro de Custo</label>
+              <input class="form-control input-lg" name="itemSelloutSrp_ccusto" ng-value="itemSelloutSrp.item.ccusto"
+                disabled>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- <h4>{{itemSelloutSrp.usuario.colleagueName}} incluiu em {{itemSelloutSrp.data | date}}</h4> -->
+              <textarea hidden name="itemSelloutSrp_usuario" ng-value="itemSelloutSrp.usuario | json:0"
+                ng-bind="itemSelloutSrp.usuario | json:0"></textarea>
+              <input type="hidden" name="itemSelloutSrp_usuarioCodigo" ng-value="itemSelloutSrp.usuario.colleagueId">
+              <input type="hidden" name="itemSelloutSrp_usuarioNome" ng-value="itemSelloutSrp.usuario.colleagueName">
+              <input type="hidden" name="itemSelloutSrp_data_f" ng-value="itemSelloutSrp.data | date:'fullDate'">
+              <input type="hidden" name="itemSelloutSrp_data" ng-value="itemSelloutSrp.data">
+
+            </div>
+          </div>
+
+          <input type="hidden" name="itemSelloutSrp_qtdEvidencia_f" ng-value="itemSelloutSrp.qtdEvidencia | number:'2'">
+          <input type="hidden" name="itemSelloutSrp_valEvidencia_f" ng-value="itemSelloutSrp.valEvidencia | currency">
+          <input type="hidden" name="itemSelloutSrp_totEvidencia_f" ng-value="itemSelloutSrp.totEvidencia | currency">
+
+          <input type="hidden" name="itemSelloutSrp_qtdEvidencia" ng-value="itemSelloutSrp.qtdEvidencia">
+          <input type="hidden" name="itemSelloutSrp_valEvidencia" ng-value="itemSelloutSrp.valEvidencia">
+          <input type="hidden" name="itemSelloutSrp_totEvidencia" ng-value="itemSelloutSrp.totEvidencia">
+
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a ng-if="vm.regras.enableSolicitacao" class="btn btn-default"
+  ng-click="vm.incluiItem(vm.Formulario.itensSellout)">Incluir
+  Item</a>

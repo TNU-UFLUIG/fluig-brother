@@ -14,14 +14,14 @@
     </div>
   </div>
 
-  <div class="col-sm-12">
+  <!-- <div class="col-sm-12">
     <div class="form-group">
       <label for="executivo_i_s" class="control-label">Executivo de Contas</label>
       <input ng-required="true" fluig-error="form.executivo_i_s.$error" class="form-control input-lg" fluig-autocomplete
         dataset="totvs_busca_executivo" display-key="displaykey" ng-model="vm.Formulario.executivo" name="executivo_i_s"
         ng-disabled="!vm.regras.enableSolicitacao">
     </div>
-  </div>
+  </div> -->
 </div>
 
 <div class="row">
@@ -88,6 +88,33 @@
         </label>
       </div>
       <input type="hidden" name="tipoQuantidade" ng-value="vm.Formulario.tipoQuantidade">
+    </div>
+  </div>
+
+  <div class="col-sm-4 animation" ng-show="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout'">
+    <div class="form-group">
+      <label for="tipoSellout_i" class="control-label">Tipo</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellout_i"
+            ng-model="vm.Formulario.tipoSellout" value="srp" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout'" fluig-error="form.tipoSellout_i.$error">
+          SRP
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellout_i"
+            ng-model="vm.Formulario.tipoSellout" value="net" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'net'" fluig-error="form.tipoSellout_i.$error">
+          NET
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellout_i"
+            ng-model="vm.Formulario.tipoSellout" value="target" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout'" fluig-error="form.tipoSellout_i.$error">
+          Target
+        </label>
+      </div>
+      <input type="hidden" name="tipoSellout" ng-value="vm.Formulario.tipoSellout">
     </div>
   </div>
 

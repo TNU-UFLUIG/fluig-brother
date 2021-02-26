@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="suspenderAcao" class="control-label">Suspender Ação</label>
+      <input type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success"
+        name="suspenderAcao_i" ng-model="vm.Formulario.suspenderAcao" ng-readonly="!vm.regras.enableSuspenderAcao">
+      <input type="hidden" name="suspenderAcao" ng-value="vm.Formulario.suspenderAcao">
+    </div>
+  </div>
+  <div class="col-sm-12" ng-show="vm.Formulario.suspenderAcao && vm.regras.enableSuspenderAcao">
+    <div class="alert alert-warning" role="alert">
+      Para confirmar a suspensão da ação, informe o motivo abaixo e clique em Salvar. Não será mais possível
+      movimenta-la até que a suspensão seja encerrada ou a ação seja cancelada
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="vm.Formulario.suspenderAcao">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Data da Suspensão</label>
+      <h4>{{vm.Formulario.dataSuspensao | date:'fullDate' | uppercase}}</h4>
+      <input type="hidden" name="dataSuspensao_f" ng-value="vm.Formulario.dataSuspensao | date:'fullDate' | uppercase">
+      <input type="hidden" name="dataSuspensao" ng-value="vm.Formulario.dataSuspensao">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label class="control-label">Responsável</label>
+      <h4>{{vm.Formulario.userSuspensao.colleagueName | uppercase}}</h4>
+      <textarea hidden name="userSuspensao" ng-value="vm.Formulario.userSuspensao | json:0"
+        ng-bind="vm.Formulario.userSuspensao | json:0"></textarea>
+      <input type="hidden" name="userSuspensaoNome" ng-value="vm.Formulario.userSuspensao.colleagueName">
+      <input type="hidden" name="userSuspensaoCodigo" ng-value="vm.Formulario.userSuspensao.colleagueId">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="obsSuspensao" class="control-label">Observações</label>
+      <textarea ng-show="vm.regras.enableSuspenderAcao" fluig-error="form.obsSuspensao.$error" name="obsSuspensao"
+        elastic class="form-control input-lg" placeholder="Informe aqui o motivo da suspensão da ação"
+        ng-required="vm.Formulario.suspenderAcao" ng-model="vm.Formulario.obsSuspensao"
+        ng-value="vm.Formulario.obsSuspensao"></textarea>
+      <p ng-show="!vm.regras.enableSuspenderAcao">{{vm.Formulario.obsSuspensao || 'Sem observações'}}
+      </p>
+    </div>
+  </div>
+
+</div>

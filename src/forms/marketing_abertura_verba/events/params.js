@@ -7,6 +7,7 @@ function getParams(form) {
   Params.user = String(getValue('WKUser'));
   Params.mobile = form.getMobile();
   Params.companyId = form.getCompanyId();
+  Params.managerMode = getValue('WKManagerMode');
 
   Params.atividades = {
     inicio: [1],
@@ -38,7 +39,7 @@ function getParams(form) {
   };
 
   for (var atividade in Params.atividades) {
-    if (Params.atividades[atividade].indexOf(parseInt(getValue('WKNumState'))) > -1 ) {
+    if (Params.atividades[atividade].indexOf(parseInt(getValue('WKNumState'))) > -1) {
       Params.etapa = atividade;
     }
   }

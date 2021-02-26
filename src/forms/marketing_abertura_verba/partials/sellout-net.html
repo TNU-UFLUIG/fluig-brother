@@ -44,61 +44,25 @@
           </div>
 
           <div class="row animation" ng-show="itemSellout.item.codigo">
-            <div class="col-sm-4">
-              <label>SRP Inicial</label>
-              <input class="form-control input-lg" name="itemSellout_srpInicial_i" fluig-money-mask="5"
-                fluig-negative-number fluig-negative-number ng-model="itemSellout.srpInicial"
-                ng-disabled="itemSellout.loading" ng-readonly="!vm.regras.enableSolicitacao"
-                ng-blur="vm.calculaItemErp(itemSellout)" ng-change="itemSellout.alterado = true">
-              <input type="hidden" name="itemSellout_srpInicial_f" ng-value="itemSellout.srpInicial | currency">
-              <input type="hidden" name="itemSellout_srpInicial" ng-value="itemSellout.srpInicial">
-            </div>
 
             <div class="col-sm-4">
               <label>Net R$ Inicial</label>
               <input class="form-control input-lg" name="itemSellout_netInicial_i"
                 ng-class="{'loading':itemSellout.loading}" fluig-money-mask="5" fluig-negative-number
-                fluig-negative-number ng-model="itemSellout.netInicial" disabled>
+                fluig-negative-number ng-model="itemSellout.netInicial">
               <input type="hidden" name="itemSellout_netInicial_f" ng-value="itemSellout.netInicial | currency">
               <input type="hidden" name="itemSellout_netInicial" ng-value="itemSellout.netInicial">
-            </div>
-            <div class="col-sm-4">
-              <label>GP</label>
-              <input class="form-control input-lg" name="itemSellout_gpInicial_i"
-                ng-class="{'loading':itemSellout.loading}" fluig-percentage-mask fluig-negative-number="true"
-                ng-model="itemSellout.gpInicial" disabled fluig-negative-number="true">
-              <input type="hidden" name="itemSellout_gpInicial_f" ng-value="itemSellout.gpInicial | percentage:'2'">
-              <input type="hidden" name="itemSellout_gpInicial" ng-value="itemSellout.gpInicial">
-            </div>
-          </div>
-
-          <div class="row animation" ng-show="itemSellout.item.codigo">
-            <div class="col-sm-4">
-              <label>SRP Sugerido</label>
-              <input class="form-control input-lg" name="itemSellout_srpSugerido_i" fluig-money-mask="5"
-                fluig-negative-number fluig-negative-number ng-model="itemSellout.srpSugerido"
-                ng-disabled="itemSellout.loading" ng-readonly="!vm.regras.enableSolicitacao"
-                ng-blur="vm.calculaItemErp(itemSellout)" ng-change="itemSellout.alterado = true">
-              <input type="hidden" name="itemSellout_srpSugerido_f" ng-value="itemSellout.srpSugerido | currency">
-              <input type="hidden" name="itemSellout_srpSugerido" ng-value="itemSellout.srpSugerido">
             </div>
 
             <div class="col-sm-4">
               <label>Net R$ Sugerido</label>
               <input class="form-control input-lg" name="itemSellout_netSugerido_i"
                 ng-class="{'loading':itemSellout.loading}" fluig-money-mask="5" fluig-negative-number
-                fluig-negative-number ng-model="itemSellout.netSugerido" disabled>
+                fluig-negative-number ng-model="itemSellout.netSugerido">
               <input type="hidden" name="itemSellout_netSugerido_f" ng-value="itemSellout.netSugerido | currency">
               <input type="hidden" name="itemSellout_netSugerido" ng-value="itemSellout.netSugerido">
             </div>
-            <div class="col-sm-4">
-              <label>GP</label>
-              <input class="form-control input-lg" ng-class="{'loading':itemSellout.loading}"
-                name="itemSellout_gpSugerido_i" fluig-percentage-mask fluig-negative-number="true"
-                ng-model="itemSellout.gpSugerido" disabled>
-              <input type="hidden" name="itemSellout_gpSugerido_f" ng-value="itemSellout.gpSugerido | percentage:'2'">
-              <input type="hidden" name="itemSellout_gpSugerido" ng-value="itemSellout.gpSugerido">
-            </div>
+
           </div>
 
           <div class="row animation" ng-show="itemSellout.item.codigo">

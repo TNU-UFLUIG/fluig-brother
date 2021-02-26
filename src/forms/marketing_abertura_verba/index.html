@@ -21,6 +21,28 @@
 
 				<div class="panel-group" id="accordion">
 
+					<div ng-show="vm.regras.showCopiarAcao" class="panel" id="panelCopiarAcao"
+						ng-class="vm.regras.enableCopiarAcao ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableCopiarAcao}" data-toggle="collapse"
+									href="#collapseCopiarAcao">
+									Copiar Ação
+								</a>
+							</h4>
+						</div>
+						<div id="collapseCopiarAcao" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableCopiarAcao}">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12">
+										<!-- partial:partials/copiarAcao.html -->
+										<!-- partial -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
 						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
@@ -49,20 +71,85 @@
 						</div>
 					</div>
 
-					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellout' && vm.Formulario.cliente.codigo"
-						class="panel" id="panelSellout" ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+					<div ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
-									href="#collapseSellout">
-									Sell-Out
+									href="#collapseSolicitacao">
+									Executivos Responsáveis
 								</a>
 							</h4>
 						</div>
-						<div id="collapseSellout" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableSolicitacao}">
+						<div id="collapseSolicitacao" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSolicitacao}">
 							<div class="panel-body">
-								<!-- partial:partials/sellout.html -->
+								<div class="row">
+									<div class="col-sm-12">
+										<!-- partial:partials/executivos.html -->
+										<!-- partial -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellout' && vm.Formulario.tipoSellout == 'srp' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSelloutSrp"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
+									href="#collapseSelloutSrp">
+									Sell-Out - SRP
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSelloutSrp" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableSolicitacao}">
+							<div class="panel-body">
+								<!-- partial:partials/sellout-srp.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellout' && vm.Formulario.tipoSellout == 'net' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSelloutNet"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
+									href="#collapseSelloutNet">
+									Sell-Out - NET
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSelloutNet" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableSolicitacao}">
+							<div class="panel-body">
+								<!-- partial:partials/sellout-net.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellout' && vm.Formulario.tipoSellout == 'target' && vm.Formulario.cliente.codigo"
+						class="panel" id="panelSelloutTarget"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
+									href="#collapseSelloutTarget">
+									Sell-Out - Target
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSelloutTarget" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSolicitacao}">
+							<div class="panel-body">
+								<!-- partial:partials/sellout-target.html -->
 								<!-- partial -->
 							</div>
 						</div>
@@ -291,8 +378,26 @@
 						</div>
 					</div>
 
-					<div ng-show="vm.regras.showEvidencias" class="panel"
-						id="panelEvidencias"
+					<div ng-show="vm.regras.showSuspenderAcao || vm.Formulario.userSuspensao.colleagueId"
+						class="panel panel-danger" id="panelSuspenderAcao">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSuspenderAcao}" data-toggle="collapse"
+									href="#collapseSuspenderAcao">
+									Suspender Ação
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSuspenderAcao" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSuspenderAcao}">
+							<div class="panel-body">
+								<!-- partial:partials/suspenderAcao.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showEvidencias" class="panel" id="panelEvidencias"
 						ng-class="vm.Formulario.statusValidacaoEvid == 'APROVADO' ? 'panel-success' : vm.Formulario.statusValidacaoEvid == 'REPROVADO' ? 'panel-danger' : vm.regras.enableValidacaoEvidencias || vm.regras.enableEvidencias ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
@@ -373,6 +478,23 @@
 						</div>
 					</div>
 
+					<div ng-show="vm.regras.showGerenciarVales" class="panel" id="panelGerenciarVales">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableGerenciarVales}" data-toggle="collapse"
+									href="#collapseGerenciarVales">
+									Gerenciar Vales
+								</a>
+							</h4>
+						</div>
+						<div id="collapseGerenciarVales" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableGerenciarVales}">
+							<div class="panel-body">
+								<!-- partial:partials/gerenciarVales.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
 
 					<div ng-show="vm.regras.showSelecionarDuplicatas && vm.Formulario.userFinanceiro.colleagueId" class="panel"
 						id="panelSelecionarDuplicatas"
@@ -435,7 +557,7 @@
 						</div>
 					</div>
 
-					
+
 
 					<div ng-show="vm.regras.showResumo" class="panel panel-default " id="panelResumo">
 						<div class="panel-heading">
@@ -463,7 +585,8 @@
 								</a>
 							</h4>
 						</div>
-						<div id="collapseObsInternas" class="panel-collapse collapse" ng-class="{'in': vm.regras.enableObsInternas}">
+						<div id="collapseObsInternas" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableObsInternas}">
 							<div class="panel-body">
 								<!-- partial:partials/obsInternas.html -->
 								<!-- partial -->
@@ -489,7 +612,7 @@
 						</div>
 					</div>
 
-					
+
 				</div>
 
 			</form>

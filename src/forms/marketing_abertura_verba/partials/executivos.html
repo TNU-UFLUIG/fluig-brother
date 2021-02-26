@@ -1,0 +1,32 @@
+<table class="table" tablename="executivos" noaddbutton="true" nodeletebutton="true"
+  ng-show="vm.Formulario.executivos.length > 0">
+  <thead>
+    <tr>
+      <th class="col-sm-1" ng-if="vm.regras.enableSolicitacao"></th>
+      <th class="col-sm-11"></th>
+    </tr>
+  </thead>
+  <tbody ng-non-bindable>
+    <tr ng-repeat="executivo in vm.Formulario.executivos">
+      <td ng-if="vm.regras.enableSolicitacao">
+        <span ng-click="vm.removeChild(vm.Formulario.executivos, executivo)"
+          class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+      </td>
+      <td>
+        <div class="td-content">
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Executivo</label>
+              <input class="form-control input-lg" name="executivo_executivo_i" fluig-autocomplete
+                dataset="totvs_busca_executivo" display-key="nome" ng-model="executivo.executivo"
+                ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.changeExecutivo(executivo, $index)">
+            </div>
+          </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a ng-if="vm.regras.enableSolicitacao" class="btn btn-default" ng-click="vm.incluiItem(vm.Formulario.executivos)">
+  Incluir Executivo
+</a>

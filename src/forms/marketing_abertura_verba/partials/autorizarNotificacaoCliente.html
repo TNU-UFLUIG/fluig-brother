@@ -18,10 +18,11 @@
           </th>
           <th class="col-sm-6">E-mail</th>
           <th class="col-sm-1">Início da Ação</th>
-          <th class="col-sm-1">Fim da Ação</th>
+          <!-- <th class="col-sm-1">Fim da Ação</th> -->
           <th class="col-sm-1">Envio de Evidências</th>
           <th class="col-sm-1">Envio da ND</th>
           <th class="col-sm-1">Pagamento</th>
+          <th class="col-sm-1">Cancelamento</th>
         </tr>
       </thead>
       <tbody ng-non-bindable>
@@ -29,9 +30,11 @@
           <td ng-show="vm.regras.enableNotificacaoCliente">
             <span ng-click="vm.removeChild(vm.Formulario.emailsCliente, email)"
               class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+            <span ng-click="vm.reenviar(email)" class="fluigicon fluigicon-test-refresh fs-cursor-pointer icon-md"></span>
           </td>
           <td>
-            <input type="email" ng-required="true" fluig-error="form.email_email_i___{{$index}}.$error" class="form-control" name="email_email_i" ng-model="email.email">
+            <input type="email" ng-required="true" fluig-error="form.email_email_i___{{$index}}.$error"
+              class="form-control" name="email_email_i" ng-model="email.email">
             <input type="hidden" name="email_email" ng-value="email.email">
           </td>
           <td>
@@ -42,7 +45,7 @@
             <h4 ng-show="vm.etapaNotificacao > 1 || !vm.Params.edit">{{email.iniAcao ? 'SIM' : 'NÃO'}}</h4>
             <input type="hidden" name="email_iniAcao" ng-value="email.iniAcao">
           </td>
-          <td>
+          <!-- <td>
             <div ng-show="vm.etapaNotificacao <= 2">
               <input ng-show="vm.Params.etapa=='autorizarNotificacaoFim'" type="checkbox" name="email_fimAcao_i"
                 ng-model="email.fimAcao" fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
@@ -50,7 +53,7 @@
 
             <h4 ng-show="vm.etapaNotificacao > 2 || !vm.Params.edit">{{email.fimAcao ? 'SIM' : 'NÃO'}}</h4>
             <input type="hidden" name="email_fimAcao" ng-value="email.fimAcao">
-          </td>
+          </td> -->
           <td>
             <div ng-show="vm.etapaNotificacao <= 3">
               <input type="checkbox" name="email_evidencia_i" ng-model="email.evidencia" fluig-switch
@@ -78,11 +81,20 @@
             <h4 ng-show="vm.etapaNotificacao > 5 || !vm.Params.edit">{{email.pagamento ? 'SIM' : 'NÃO'}}</h4>
             <input type="hidden" name="email_pagamento" ng-value="email.pagamento">
           </td>
+          <td>
+            <div>
+              <input type="checkbox" name="email_cancelamento_i" ng-model="email.cancelamento" fluig-switch
+                data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+            </div>
+
+            <input type="hidden" name="email_cancelamento" ng-value="email.cancelamento">
+          </td>
         </tr>
       </tbody>
     </table>
     <div ng-show="vm.regras.enableNotificacaoCliente">
       <a class="btn btn-default btn-lg" ng-click="vm.incluirEmailNotificacao()">Incluir E-mail</a>
+      <a class="btn btn-default btn-lg" ng-click="vm.incluirEmailNotificacao()">Reenviar Para Todos</a>
     </div>
   </div>
 </div>

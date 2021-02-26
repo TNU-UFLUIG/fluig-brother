@@ -40,21 +40,26 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: "validarEvidencias",
-            user: 'ckayama',
+            etapa: 'conferirFinanceiro', //"gerenciarVales",
+            user: 'admin',
             formMode: 'MOD',
-            companyId: 1
+            companyId: 1,
+            managerMode: true
           };
 
           if (vm.Params.formMode != 'ADD') {
             vm.Formulario = {
-              "rateioCategoria": [
-                { "categoria": { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }],
-              "itensSellout":
+              dataSuspensao: new Date().getTime(),
+              userSuspensao: { colleagueName: 'USUÁRIO GESTOR' },
+              rateioCategoria: [
+                { categoria: { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }],
+              itensSellout:
                 [
                   {
                     $id: 1,
-                    "data": 1582029871745, "$$hashKey": "object:27", "item":
+                    data: 1582029871745,
+                    $$hashKey: "object:27",
+                    item:
                       { "netInicial": "1200", "displaykey": "10930 - HLL2360DW", "codigo": "10930", "gpInicial": "10", "gpSugerido": "14", "rebateTotal": "100", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "100", "netSugerido": "1300", "descricao": "HLL2360DW" },
                     "srpInicial": 100, "srpSugerido": 100, "qtde": 1000, "rebateTotal": 100000
                   },
@@ -74,9 +79,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               // { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
             ];
             vm.Formulario.duplicatas = [
-              { seq: 1, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 2, valorOriginal: 200000, saldo: 180000 },
-              { seq: 2, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 3, valorOriginal: 200000, saldo: 160000 },
-              { seq: 3, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 4, valorOriginal: 200000, saldo: 140000 },
+              { seq: 1, emAprovacao: true, dataEmissao: new Date().getTime(), dataVencto: new Date().getTime(), numero: 987849, parcela: 2, valorOriginal: 200000, valorSaldo: 180000 },
+              { seq: 2, dataEmissao: new Date().getTime(), dataVencto: new Date().getTime(), numero: 987849, parcela: 3, valorOriginal: 200000, valorSaldo: 160000 },
+              { seq: 3, dataEmissao: new Date().getTime(), dataVencto: new Date().getTime(), numero: 987849, parcela: 4, valorOriginal: 200000, valorSaldo: 140000 },
             ]
 
             vm.Formulario.valorResultado = 150000;
@@ -145,13 +150,16 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       vm.checkRegras = function checkRegras() {
         vm.etapas = ['consulta', 'inicio', 'validarMarketing', 'revisarSolicitacao', 'aprovarGerMarketing', 'aprovarPresidencia', 'analisarErros',
           'autorizarNotificacaoInicio', 'aguardandoFimDaAcao', 'autorizarNotificacaoFim', 'enviarEvidencias', 'validarEvidencias', 'aprovarVerbaMaior',
-          'aprovarVerbaMenor', 'enviarND', 'validarND', 'conferirFinanceiro', 'aprovarPagamento', 'atualizarStatus', 'autorizarNotificacaoPagamento'];
+          'aprovarVerbaMenor', 'enviarND', 'validarND', 'gerenciarVales', 'conferirFinanceiro', 'aprovarPagamento', 'atualizarStatus', 'autorizarNotificacaoPagamento'];
 
         vm.regras = {};
         [
           { regra: 'showResumo', def: true, etapas: vm.etapas },
           { regra: 'showSolicitacao', def: true, etapas: ['inicio', 'consulta', 'revisarSolicitacao', 'analisarErros'] },
           { regra: 'enableSolicitacao', def: vm.Params.edit, etapas: ['inicio', 'revisarSolicitacao'] },
+
+          { regra: 'showCopiarAcao', def: true, etapas: ['inicio'] },
+          { regra: 'enableCopiarAcao', def: vm.Params.edit, etapas: ['inicio'] },
 
           { regra: 'showObsInternas', def: true, etapas: vm.etapas },
           { regra: 'enableObsInternas', def: vm.Params.edit, etapas: vm.etapas },
@@ -172,13 +180,16 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'showAprovVerbaMaior', def: true, etapas: ['consulta', 'aprovarVerbaMaior', 'aprovarGerMarketing', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovVerbaMaior', def: true, etapas: ['aprovarVerbaMaior'] },
 
+          { regra: 'showSuspenderAcao', def: vm.Params.managerMode, etapas: ['consulta', 'validarMarketing', 'aprovarGerMarketing', 'aprovarPresidencia'] },
+          { regra: 'enableSuspenderAcao', def: vm.Params.managerMode, etapas: ['validarMarketing', 'aprovarGerMarketing', 'aprovarPresidencia'] },
+
           { regra: 'showAprovVerbaMenor', def: true, etapas: ['consulta', 'aprovarVerbaMenor', 'aprovarGerMarketing', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovVerbaMenor', def: true, etapas: ['aprovarVerbaMenor'] },
 
-          { regra: 'showNotificacaoCliente', def: true, etapas: ['consulta', 'autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento', 'validarEvidencias', 'validarND'] },
-          { regra: 'enableNotificacaoCliente', def: true, etapas: ['autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento', 'validarEvidencias', 'validarND'] },
+          { regra: 'showNotificacaoCliente', def: true, etapas: vm.etapas },
+          { regra: 'enableNotificacaoCliente', def: true, etapas: vm.etapas },
 
-          { regra: 'showEvidencias', def: true, etapas: ['consulta', 'enviarEvidencias', 'validarND', 'aprovarVerbaMaior', 'aprovarVerbaMenor', 'validarEvidencias', 'aprovarPagamento', 'analisarErros', 'conferirFinanceiro'] },
+          { regra: 'showEvidencias', def: true, etapas: ['consulta', 'enviarEvidencias', 'validarND', 'aprovarVerbaMaior', 'aprovarVerbaMenor', 'validarEvidencias', 'aprovarPagamento', 'analisarErros', 'conferirFinanceiro', 'gerenciarVales'] },
           { regra: 'enableEvidencias', def: true, etapas: ['enviarEvidencias', 'analisarErros'] },
           { regra: 'enableValidacaoEvidencias', def: true, etapas: ['validarEvidencias', 'analisarErros'] },
 
@@ -188,6 +199,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
           { regra: 'showSelecionarDuplicatas', def: true, etapas: ['consulta', 'conferirFinanceiro', 'aprovarPagamento', 'validarEvidencias', 'analisarErros', 'autorizarNotificacaoPagamento'] },
           { regra: 'enableSelecionarDuplicatas', def: true, etapas: ['conferirFinanceiro', 'analisarErros'] },
+
+          { regra: 'showGerenciarVales', def: true, etapas: ['consulta', 'gerenciarVales', 'analisarErros'] },
+          { regra: 'enableGerenciarVales', def: true, etapas: ['gerenciarVales', 'analisarErros'] },
 
           { regra: 'showAprovPagamento', def: true, etapas: ['consulta', 'aprovarPagamento', 'conferirFinanceiro', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovPagamento', def: true, etapas: ['aprovarPagamento'] },
@@ -202,7 +216,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
       vm.checkEtapa = function checkEtapa() {
-
+        vm.etapaNotificacao = 0;
         switch (true) {
           case vm.Params.etapa == 'inicio':
             vm.Formulario.solicitante = vm.Usuario;
@@ -307,7 +321,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.Formulario.dataFinanceiro = vm.dataAtual;
             vm.Formulario.statusFinanceiro = 'PENDENTE';
             vm.Formulario.obsConferenciaFinanceiro = '';
-            vm.buscaDuplicatas();
+            // vm.buscaDuplicatas();
             vm.calculaTotalDuplicatas();
             vm.checkUrlArquivos()
             break;
