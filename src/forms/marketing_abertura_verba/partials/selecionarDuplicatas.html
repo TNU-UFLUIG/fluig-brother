@@ -109,7 +109,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="titulo in vm.Formulario.duplicatas | orderBy:'dataVencto'">
+          <tr ng-repeat="titulo in vm.Formulario.duplicatas | filter:vm.filtro | orderBy:'dataVencto'">
             <td>
 
               <div class="row">

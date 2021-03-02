@@ -6,10 +6,6 @@ angular.module('MarketingClienteApp', ['angular.fluig', 'ngAnimate', 'brother.se
       formService.atualizaFormulario($scope, vm)
         .then(() => {
           try {
-            vm.Params = {
-              formMode: 'ADD',
-              edit: true
-            };
             vm.inicia();
           } catch (error) {
             vm.Errors.push(error);
@@ -25,8 +21,8 @@ angular.module('MarketingClienteApp', ['angular.fluig', 'ngAnimate', 'brother.se
       vm.changeCliente = function changeCliente() {
         vm.Errors = [];
 
-        if (vm.Formulario.Cliente.codigo) {
-          brotherService.getMarketingCliente(vm.Formulario.Cliente.codigo).then((cliente) => {
+        if (vm.Formulario.cliente && vm.Formulario.cliente.codigo) {
+          brotherService.getMarketingCliente(vm.Formulario.cliente.codigo).then((cliente) => {
             if (cliente[0]) {
               vm.Errors.push('Cliente já informado');
             }

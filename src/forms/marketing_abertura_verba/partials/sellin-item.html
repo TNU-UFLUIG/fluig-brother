@@ -16,19 +16,19 @@
         <div class="td-content">
           <div class="row">
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label>Cód. Item</label>
               <input class="form-control input-lg" name="itemSellinIt_itemC_i" fluig-autocomplete
                 dataset="totvs_busca_item" display-key="codigo" ng-model="itemSellinIt.item"
-                ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSellinIt.loading"
+                ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="itemSellinIt.alterado=true;vm.changeItemSellinIt(itemSellinIt, $index)">
 
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
               <label>Descrição</label>
               <input class="form-control input-lg" name="itemSellinIt_itemD_i" fluig-autocomplete
                 dataset="totvs_busca_item" display-key="descricao" ng-model="itemSellinIt.item"
-                ng-disabled="!vm.regras.enableSolicitacao" ng-readonly="itemSellinIt.loading"
+                ng-disabled="!vm.regras.enableSolicitacao"
                 ng-change="itemSellinIt.alterado=true;vm.changeItemSellinIt(itemSellinIt, $index)">
             </div>
 
@@ -37,20 +37,14 @@
             <input type="hidden" name="itemSellinIt_itemDescricao" ng-value="itemSellinIt.item.descricao">
             <input type="hidden" name="itemSellinIt_itemCodigo" ng-value="itemSellinIt.item.codigo">
 
-            <div class="col-sm-3 animation" ng-show="itemSellinIt.item.codigo">
-              <label>Categoria</label>
-              <input class="form-control input-lg" name="itemSellinIt_categoria" ng-value="itemSellout.item.categoria"
-                disabled>
-            </div>
           </div>
 
-          <div class="row animation" ng-show="itemSellinIt.item.codigo">
+          <div class="row animation">
             <div class="col-sm-4">
               <label>SRP Inicial</label>
               <input class="form-control input-lg" name="itemSellinIt_srpInicial_i" fluig-money-mask="5"
-                ng-disabled="itemSellinIt.loading" fluig-negative-number ng-model="itemSellinIt.srpInicial"
-                ng-readonly="!vm.regras.enableSolicitacao" ng-blur="vm.calculaItemErp(itemSellinIt)"
-                ng-change="itemSellinIt.alterado = true">
+                fluig-negative-number ng-model="itemSellinIt.srpInicial" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-blur="vm.calculaItemErp(itemSellinIt)" ng-change="itemSellinIt.alterado = true">
               <input type="hidden" name="itemSellinIt_srpInicial_f" ng-value="itemSellinIt.srpInicial | currency">
               <input type="hidden" name="itemSellinIt_srpInicial" ng-value="itemSellinIt.srpInicial">
             </div>
@@ -73,13 +67,12 @@
             </div>
           </div>
 
-          <div class="row animation" ng-show="itemSellinIt.item.codigo">
+          <div class="row animation">
             <div class="col-sm-4">
               <label>SRP Sugerido</label>
               <input class="form-control input-lg" name="itemSellinIt_srpSugerido_i" fluig-money-mask="5"
-                ng-disabled="itemSellinIt.loading" fluig-negative-number ng-model="itemSellinIt.srpSugerido"
-                ng-readonly="!vm.regras.enableSolicitacao" ng-blur="vm.calculaItemErp(itemSellinIt)"
-                ng-change="itemSellinIt.alterado = true">
+                fluig-negative-number ng-model="itemSellinIt.srpSugerido" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-blur="vm.calculaItemErp(itemSellinIt)" ng-change="itemSellinIt.alterado = true">
               <input type="hidden" name="itemSellinIt_srpSugerido_f" ng-value="itemSellinIt.srpSugerido | currency">
               <input type="hidden" name="itemSellinIt_srpSugerido" ng-value="itemSellinIt.srpSugerido">
             </div>
@@ -102,7 +95,7 @@
             </div>
           </div>
 
-          <div class="row animation" ng-show="itemSellinIt.item.codigo">
+          <div class="row animation">
             <div class="col-sm-4">
               <label>Rebate Unit</label>
               <input class="form-control input-lg" name="itemSellinIt_rebateUnit_i"
@@ -115,8 +108,8 @@
             <div class="col-sm-4">
               <label>Qtde</label>
               <input class="form-control input-lg" name="itemSellinIt_qtde_i" fluig-number-mask="2"
-                ng-disabled="itemSellinIt.loading" ng-model="itemSellinIt.qtde"
-                ng-readonly="!vm.regras.enableSolicitacao" ng-change="vm.calculaRebateTotal(itemSellinIt)">
+                ng-model="itemSellinIt.qtde" ng-readonly="!vm.regras.enableSolicitacao"
+                ng-change="vm.calculaRebateTotal(itemSellinIt)">
               <input type="hidden" name="itemSellinIt_qtde_f" ng-value="itemSellinIt.qtde | number:'2'">
               <input type="hidden" name="itemSellinIt_qtde" ng-value="itemSellinIt.qtde">
             </div>
@@ -128,8 +121,18 @@
               <input type="hidden" name="itemSellinIt_rebateTotal" ng-value="itemSellinIt.rebateTotal">
             </div>
           </div>
-          <div class="row animation" ng-show="itemSellinIt.item.codigo">
-            <div class="col-sm-4">
+          <div class="row animation">
+            <div class="col-sm-2 animation">
+              <label>Categoria</label>
+              <input class="form-control input-lg" name="itemSellinIt_categoria" ng-value="itemSellinIt.item.categoria"
+                disabled>
+            </div>
+            <div class="col-sm-2">
+              <label>Centro de Custo</label>
+              <input class="form-control input-lg" name="itemSellinIt_ccusto" ng-value="itemSellinIt.item.ccusto"
+                disabled>
+            </div>
+            <div class="col-sm-3">
               <label>Dolar</label>
               <input class="form-control input-lg" name="itemSellinIt_dolar_i"
                 ng-class="{'loading':itemSellinIt.loading}" fluig-money-mask="5" fluig-negative-number
@@ -137,11 +140,7 @@
               <input type="hidden" name="itemSellinIt_dolar_f" ng-value="itemSellinIt.dolar | currency:'US$'">
               <input type="hidden" name="itemSellinIt_dolar" ng-value="itemSellinIt.dolar">
             </div>
-            <div class="col-sm-4">
-              <label>Centro de Custo</label>
-              <input class="form-control input-lg" name="itemSellinIt_ccusto" ng-value="itemSellinIt.item.ccusto"
-                disabled>
-            </div>
+            
           </div>
 
           <div class="row">

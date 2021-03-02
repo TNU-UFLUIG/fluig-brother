@@ -55,9 +55,12 @@ function validateForm(form) {
   const obsConferenciaFinanceiro = value(form, `obsConferenciaFinanceiro`);
   const difValorLiberado = value(form, `difValorLiberado`);
   const obsAprovPagamento = value(form, `obsAprovPagamento`);
+  const suspenderAcao = value(form, `suspenderAcao`);
 
   const currentState = getValue(`WKNumState`);
   const nextState = getValue(`WKNextState`);
+  const completeTask = getValue("WKCompletTask") == 'true';
+  const managerMode = getValue("WKManagerMode") == 'true';
 
   let nextStateTxt = ''
   let currentStateTxt = ''
@@ -77,8 +80,16 @@ function validateForm(form) {
     }
   }
 
+  if (suspenderAcao && !managerMode) {
+    Errors.push(`A ação está suspensa e não poderá ser alterada. Em caso de dúvidas, entre em contato com o gestor do processo.`);
+  }
+
   if (currentState == nextState) {
     return;
+  }
+
+  if (managerMode && suspenderAcao && completeTask) {
+    Errors.push(`A ação está (sendo) suspensa. Salve a ação ao invés de Enviar.`);
   }
 
   if (regras.enableSolicitacao || importado) {

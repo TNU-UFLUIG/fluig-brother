@@ -24,7 +24,11 @@ angular.module('brother.services')
         return fluigService.getDatasetAsync('marketing_cliente', {
           clienteCodigo
         }, fields);
+      },
+      getContatosCliente: function getContatosCliente(documentid, fields) {
+        return fluigService.getDatasetAsync('marketing_cliente', {
+          documentid, tablename: 'contatos'
+        }, fields);
       }
-
     })
   ]);

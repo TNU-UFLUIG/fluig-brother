@@ -11,14 +11,9 @@
                         <tr>
                             <th ng-show="vm.Params.edit" class="col-sm-1"></th>
                             <th></th>
-                            <!-- <th class="col-sm-3">Nome</th>
-                            <th class="col-sm-2">Função</th>
-                            <th class="col-sm-2">Telefone</th>
-                            <th class="col-sm-3">E-mail</th>
-                            <th class="col-sm-1">Notifica Portal</th> -->
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody ng-non-bindable>
                         <tr ng-repeat="contato in vm.Formulario.contatos">
                             <td ng-show="vm.Params.edit">
                                 <span class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"
@@ -36,8 +31,8 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="">E-mail</label>
-                                            <input class="form-control input-lg" name="contato_funcao"
-                                                ng-model="contato.funcao" ng-value="contato.funcao">
+                                            <input class="form-control input-lg" name="contato_email"
+                                                ng-model="contato.email" ng-value="contato.email">
                                         </div>
                                     </div>
                                 </div>

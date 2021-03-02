@@ -8,10 +8,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <label for="tipoAcao_i" class="control-label">Cliente</label>
           <input ng-required="true" fluig-error="form.cliente_i.$error" class="form-control input-lg" fluig-autocomplete
             dataset="totvs_busca_cliente" display-key="displaykey" ng-model="vm.Formulario.cliente" name="cliente_i"
-            ng-change="vm.changeCliente()" ng-disabled="vm.Params.formMode != 'ADD'">
+            ng-change="vm.changeCliente()" ng-readonly="vm.Params.formMode != 'ADD'">
 
           <textarea hidden name="cliente" ng-value="vm.Formulario.cliente | json:0"
             ng-bind="vm.Formulario.cliente | json:0"></textarea>

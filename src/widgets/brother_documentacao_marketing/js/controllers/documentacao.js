@@ -314,32 +314,29 @@ angular
       }
 
       vm.getItens = () => {
-
-        console.log('getItens', vm.Formulario)
         vm.ItensEvidencia = [];
 
         vm.Formulario.itensSellout.forEach((it, index) => {
+          if (!it.valEvidencia) it.valEvidencia = it.rebateUnit;
           vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
-        })
+        });
         vm.Formulario.itensSellinIt.forEach((it, index) => {
+          if (!it.valEvidencia) it.valEvidencia = it.rebateUnit;
           vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
-        })
-
+        });
         vm.Formulario.itensSpiffIt.forEach((it, index) => {
+          if (!it.valEvidencia) it.valEvidencia = it.rebateUnit;
           vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.vlTotal });
-        })
+        });
 
-        vm.ItensEvidencia.forEach(item => {
-          vm.calculaTotalItemEvidencia(item)
-        })
+        vm.ItensEvidencia.forEach((item) => {
+          vm.calculaTotalItemEvidencia(item);
+        });
+      };
 
-        console.log(vm.ItensEvidencia)
-      }
-
-      vm.calculaTotalItemEvidencia = item => {
-
-        vm.Formulario[item.tablename][item.index].valEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia || 0
-        vm.Formulario[item.tablename][item.index].qtdEvidencia = vm.Formulario[item.tablename][item.index].qtdEvidencia || 0
+      vm.calculaTotalItemEvidencia = (item) => {
+        vm.Formulario[item.tablename][item.index].valEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia || 0;
+        vm.Formulario[item.tablename][item.index].qtdEvidencia = vm.Formulario[item.tablename][item.index].qtdEvidencia || 0;
 
         vm.Formulario[item.tablename][item.index].totEvidencia = vm.Formulario[item.tablename][item.index].valEvidencia * vm.Formulario[item.tablename][item.index].qtdEvidencia
         vm.Formulario.valorResultado = 0;

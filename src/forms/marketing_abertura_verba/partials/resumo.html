@@ -88,7 +88,7 @@
     <div class="form-group animation">
       <label class="control-label">Tipo de Ação</label>
       <h4>
-        {{vm.Formulario.tipoAcao.displaykey  || '-' | uppercase}}
+        {{vm.Formulario.tipoAcao.displaykey || '-' | uppercase}}
         <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='item'"> /
           ITEM</span>
         <span ng-if="vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin=='target'"> /
@@ -106,13 +106,13 @@
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
       <label class="control-label">Início da Ação</label>
-      <h4>{{vm.Formulario.inicioAcao  || '-' | date:'fullDate' | uppercase}}</h4>
+      <h4>{{vm.Formulario.inicioAcao || '-' | date:'fullDate' | uppercase}}</h4>
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
       <label class="control-label">Término da Ação</label>
-      <h4>{{vm.Formulario.terminoAcao  || '-' | date:'fullDate' | uppercase}}</h4>
+      <h4>{{vm.Formulario.terminoAcao || '-' | date:'fullDate' | uppercase}}</h4>
       <i ng-if="vm.Formulario.dataEncerramentoAntecipado">Encerramento antecipado para
         {{vm.Formulario.dataEncerramentoAntecipado}}</i>
     </div>
@@ -130,14 +130,15 @@
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
       <label class="control-label">Conta Contábil</label>
-      <h4>{{vm.Formulario.tipoAcao.contaContabil.displaykey  || '-' | uppercase}}</h4>
+      <h4>{{vm.Formulario.tipoAcao.contaContabil.displaykey || '-' | uppercase}}</h4>
     </div>
   </div>
   <div class="col-md-4 col-sm-6">
     <div class="form-group animation">
       <label class="control-label">Quantidade</label>
       <h4>
-        {{vm.Formulario.tipoQuantidade == 'limitada' ? 'Limitada' : vm.Formulario.tipoQuantidade == 'estimada' ? 'Estimada' : '-' | uppercase}}
+        {{vm.Formulario.tipoQuantidade == 'limitada' ? 'Limitada' : vm.Formulario.tipoQuantidade == 'estimada' ?
+        'Estimada' : '-' | uppercase}}
       </h4>
     </div>
   </div>
@@ -162,7 +163,6 @@
         <th>Categoria</th>
         <th>SRP I/S</th>
         <th>Net I/S</th>
-        <th>GP I/S</th>
         <th>Rebate Unit</th>
         <th>Qtde</th>
         <th>Rebate Total</th>
@@ -184,10 +184,6 @@
           <td>
             <p>{{itemSellout.netInicial | currency}}</p>
             <p>{{itemSellout.netSugerido | currency}}</p>
-          </td>
-          <td>
-            <p>{{itemSellout.gpInicial | percentage}}</p>
-            <p>{{itemSellout.gpSugerido | percentage}}</p>
           </td>
           <td>
             {{itemSellout.rebateUnit | currency}}
