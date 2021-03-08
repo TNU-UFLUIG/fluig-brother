@@ -38,9 +38,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: 'inicio', //"gerenciarVales",
+            etapa: 'conferirFinanceiro', //"gerenciarVales",
             user: 'admin',
-            formMode: 'ADD',
+            formMode: 'MOD',
             companyId: 1,
             managerMode: true
           };
