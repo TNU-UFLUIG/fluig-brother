@@ -9,14 +9,14 @@
 
         <table class="table" tablename="camposSpiffTg" noaddbutton="true" nodeletebutton="true"
           ng-show="vm.Formulario.camposSpiffTg.length > 0">
-          
+
           <thead>
             <tr>
               <th ng-show="vm.Params.edit"></th>
               <th></th>
             </tr>
           </thead>
-          
+
           <tbody ng-non-bindable>
             <tr ng-repeat="campoSpiffTg in vm.Formulario.camposSpiffTg">
               <td ng-show="vm.Params.edit">
@@ -52,26 +52,26 @@
 
                   <div class="col-sm-2">
                     <label>Início da Ação</label>
-                    <input type="checkbox" name="campoSpiffTg_iniAcao_i" ng-model="campoSpiffTg.iniAcao"
-                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="checkbox" name="campoSpiffTg_iniAcao_i" ng-model="campoSpiffTg.iniAcao" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoSpiffTg_iniAcao" ng-value="campoSpiffTg.iniAcao">
                   </div>
-                  <div class="col-sm-2">
+                  <!-- <div class="col-sm-2">
                     <label>Término da Ação</label>
                     <input type="checkbox" name="campoSpiffTg_fimAcao_i" ng-model="campoSpiffTg.fimAcao"
                       fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoSpiffTg_fimAcao" ng-value="campoSpiffTg.fimAcao">
-                  </div>
+                  </div> -->
                   <div class="col-sm-3">
-                    <label>Envio de Evidências</label>
+                    <label>Evidências</label>
                     <input type="checkbox" name="campoSpiffTg_evidencia_i" ng-model="campoSpiffTg.evidencia"
                       fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoSpiffTg_evidencia" ng-value="campoSpiffTg.evidencia">
                   </div>
                   <div class="col-sm-2">
                     <label>Envio da ND</label>
-                    <input type="checkbox" name="campoSpiffTg_envioND_i" ng-model="campoSpiffTg.envioND"
-                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="checkbox" name="campoSpiffTg_envioND_i" ng-model="campoSpiffTg.envioND" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoSpiffTg_envioND" ng-value="campoSpiffTg.envioND">
                   </div>
                   <div class="col-sm-2">
@@ -79,6 +79,12 @@
                     <input type="checkbox" name="campoSpiffTg_pagamento_i" ng-model="campoSpiffTg.pagamento"
                       fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoSpiffTg_pagamento" ng-value="campoSpiffTg.pagamento">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Cancelamento</label>
+                    <input type="checkbox" name="campoSpiffTg_cancelamento_i" ng-model="campoSpiffTg.cancelamento"
+                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoSpiffTg_cancelamento" ng-value="campoSpiffTg.cancelamento">
                   </div>
                 </div>
 

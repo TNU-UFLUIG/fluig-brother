@@ -159,29 +159,37 @@
     <table class="table table-stripped" ng-show="vm.Formulario.itensSellout.length > 0">
       <caption>Sell-Out</caption>
       <thead>
-        <th>Item</th>
-        <th>Categoria</th>
-        <th>SRP I/S</th>
-        <th>Net I/S</th>
+        <th ng-if="vm.Formulario.tipoSellout != 'target'">Item</th>
+        <th ng-if="vm.Formulario.tipoSellout != 'target'">Categoria</th>
+        <th ng-if="vm.Formulario.tipoSellout == 'target'">Target</th>
+        <th ng-if="vm.Formulario.tipoSellout == 'target'">Finalidade</th>
+        <th ng-if="vm.Formulario.tipoSellout == 'srp'">SRP I/S</th>
+        <th ng-if="vm.Formulario.tipoSellout != 'target'">Net I/S</th>
         <th>Rebate Unit</th>
         <th>Qtde</th>
         <th>Rebate Total</th>
-        <th>Dolar</th>
-        <th>C. Custo</th>
+        <th ng-if="vm.Formulario.tipoSellout != 'target'">Dolar</th>
+        <th ng-if="vm.Formulario.tipoSellout != 'target'">C. Custo</th>
       </thead>
       <tbody>
         <tr ng-repeat="itemSellout in vm.Formulario.itensSellout track by $index">
-          <td>
+          <td ng-if="vm.Formulario.tipoSellout != 'target'">
             {{itemSellout.item.displaykey}}
           </td>
-          <td>
+          <td ng-if="vm.Formulario.tipoSellout == 'target'">
+            {{itemSellout.target}}
+          </td>
+          <td ng-if="vm.Formulario.tipoSellout != 'target'">
             {{itemSellout.item.categoria}}
           </td>
-          <td>
+          <td ng-if="vm.Formulario.tipoSellout == 'target'">
+            {{itemSellout.finalidade}}
+          </td>
+          <td ng-if="vm.Formulario.tipoSellout == 'srp'">
             <p>{{itemSellout.srpInicial | currency}}</p>
             <p>{{itemSellout.srpSugerido | currency}}</p>
           </td>
-          <td>
+          <td ng-if="vm.Formulario.tipoSellout != 'target'">
             <p>{{itemSellout.netInicial | currency}}</p>
             <p>{{itemSellout.netSugerido | currency}}</p>
           </td>
@@ -194,10 +202,10 @@
           <td>
             {{itemSellout.rebateTotal | currency}}
           </td>
-          <td>
+          <td ng-if="vm.Formulario.tipoSellout != 'target'">
             {{itemSellout.dolar | currency:'U$'}}
           </td>
-          <td>
+          <td ng-if="vm.Formulario.tipoSellout != 'target'">
             {{itemSellout.item.ccusto}}
           </td>
         </tr>

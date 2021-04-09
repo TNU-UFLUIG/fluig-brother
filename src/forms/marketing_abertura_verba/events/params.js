@@ -7,7 +7,9 @@ function getParams(form) {
   Params.user = String(getValue('WKUser'));
   Params.mobile = form.getMobile();
   Params.companyId = form.getCompanyId();
-  Params.managerMode = getValue('WKManagerMode');
+  Params.managerMode = getValue("WKManagerMode") == 'true';
+
+  log.info(`getValue("WKManagerMode") = ${getValue("WKManagerMode")}`)
 
   Params.atividades = {
     inicio: [1],

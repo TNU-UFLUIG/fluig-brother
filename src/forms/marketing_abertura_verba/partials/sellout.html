@@ -17,13 +17,13 @@
           <div class="row" ng-show="vm.Formulario.tipoSellout == 'target'">
             <div class="col-sm-4">
               <label>Target</label>
-              <input class="form-control input-lg" name="itemSelloutTg_target" ng-model="itemSelloutTg.target"
+              <input class="form-control input-lg" name="itemSellout_target" ng-model="itemSellout.target"
                 ng-disabled="!vm.regras.enableSolicitacao">
 
             </div>
             <div class="col-sm-8">
               <label>Finalidade</label>
-              <input class="form-control input-lg" name="itemSelloutTg_finalidade" ng-model="itemSelloutTg.finalidade"
+              <input class="form-control input-lg" name="itemSellout_finalidade" ng-model="itemSellout.finalidade"
                 ng-disabled="!vm.regras.enableSolicitacao">
             </div>
           </div>
@@ -103,7 +103,7 @@
               <label>Rebate Unit</label>
               <input class="form-control input-lg" name="itemSellout_rebateUnit_i"
                 ng-class="{'loading':itemSellout.loading}" fluig-money-mask="5" fluig-negative-number
-                fluig-negative-number ng-model="itemSellout.rebateUnit"
+                fluig-negative-number ng-model="itemSellout.rebateUnit" ng-change="vm.calculaRebateTotal(itemSellout)"
                 ng-disabled="vm.Formulario.tipoSellout != 'target'">
               <input type="hidden" name="itemSellout_rebateUnit_f" ng-value="itemSellout.rebateUnit | currency">
               <input type="hidden" name="itemSellout_rebateUnit" ng-value="itemSellout.rebateUnit">

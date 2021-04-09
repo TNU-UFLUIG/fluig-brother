@@ -1,7 +1,7 @@
 <html ng-app="MarketingAberturaVerbaApp">
 
 <head>
-	<!-- partial:../partials/headLocal.html -->
+	<!-- partial:../partials/head.html -->
 	<!-- partial -->
 
 	<title>Abertura de Verba para Ação de Marketing</title>
@@ -21,7 +21,7 @@
 
 				<div class="panel-group" id="accordion">
 
-					<div ng-show="vm.regras.showCopiarAcao" class="panel" id="panelCopiarAcao"
+					<div hidden ng-show="vm.regras.showCopiarAcao" class="panel" id="panelCopiarAcao"
 						ng-class="vm.regras.enableCopiarAcao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
@@ -56,36 +56,8 @@
 							ng-class="{'in': vm.regras.enableSolicitacao}">
 							<div class="panel-body">
 								<div class="row">
-									<div class="col-sm-9">
-										<!-- partial:partials/solicitacao.html -->
-										<!-- partial -->
-									</div>
-									<div class="col-sm-3">
-										<!-- partial:partials/rateio-categoria.html -->
-										<!-- partial -->
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
-						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
-									href="#collapseSolicitacao">
-									Executivos Responsáveis
-								</a>
-							</h4>
-						</div>
-						<div id="collapseSolicitacao" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableSolicitacao}">
-							<div class="panel-body">
-								<div class="row">
 									<div class="col-sm-12">
-										<!-- partial:partials/executivos.html -->
+										<!-- partial:partials/solicitacao.html -->
 										<!-- partial -->
 									</div>
 								</div>
@@ -95,8 +67,7 @@
 
 					<div
 						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellout' && vm.Formulario.cliente.codigo"
-						class="panel" id="panelSellout"
-						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						class="panel" id="panelSellout" ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
@@ -252,6 +223,53 @@
 							<div class="panel-body">
 								<!-- partial:partials/spiff-target.html -->
 								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
+					<div ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
+									href="#collapseSolicitacao">
+									Rateio
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSolicitacao" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSolicitacao}">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12">
+										<!-- partial:partials/rateio-categoria.html -->
+										<!-- partial -->
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<div hidden ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
+									href="#collapseSolicitacao">
+									Executivos Responsáveis
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSolicitacao" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSolicitacao}">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12">
+										<!-- partial:partials/executivos.html -->
+										<!-- partial -->
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

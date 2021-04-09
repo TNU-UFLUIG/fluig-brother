@@ -18,7 +18,7 @@ function createDataset(fields, constraints, sortFields) {
   const params = getConstraints(constraints);
   // constraints:
   // solicitacoes = 3245|3247|3250
-  // tipo = iniAcao / fimAcao / evidencia / envioND / pagamento
+  // tipo = iniAcao / fimAcao / evidencia / envioND / pagamento / cancelamento
 
   if (!params.solicitacoes) {
     throw 'Informe o código da solicitação';
