@@ -13,7 +13,7 @@
                         <h1 ng-class="{'text-center': vm.Params.edit, 'text-right': !vm.Params.edit}">Ação de Marketing
                         </h1>
                     </div>
-                    <div class="col-sm-4" ng-if="vm.Params.edit">
+                    <div class="col-sm-4" ng-if="vm.Params.edit" style="position: fixed; right: 25px; top: 25px;">
                         <div class="pull-right">
                             <button type="button" class="btn btn-success btn-lg" ng-click="vm.enviar()"
                                 ng-disabled="vm.loading">

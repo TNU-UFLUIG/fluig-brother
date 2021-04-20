@@ -96,7 +96,11 @@
     <h4 class="fs-md-space">Duplicatas</h4>
   </div>
   <div class="panel-body">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
+      <input name="filtroCliente" ng-model="vm.filtroCliente" class="form-control input-lg" placeholder="Filtro Cliente">
+    </div>
+
+    <div class="col-sm-9">
       <input name="filtroDuplicatas" ng-model="vm.filtro" class="form-control input-lg" placeholder="Filtro Global">
     </div>
 
@@ -109,7 +113,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="titulo in vm.Formulario.duplicatas | filter:vm.filtro | orderBy:'dataVencto'">
+          <tr ng-repeat="titulo in vm.Formulario.duplicatas | filter:vm.filtro | filter: {codCliente: vm.filtroCliente} | orderBy:'dataVencto'">
             <td>
 
               <div class="row">

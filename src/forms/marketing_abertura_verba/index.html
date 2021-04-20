@@ -21,6 +21,25 @@
 
 				<div class="panel-group" id="accordion">
 
+					<div ng-show="vm.regras.showSuspenderAcao || vm.Formulario.suspenderAcao" class="panel panel-danger"
+						id="panelSuspenderAcao">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSuspenderAcao}" data-toggle="collapse"
+									href="#collapseSuspenderAcao">
+									{{vm.Formulario.suspenderAcao ? 'Ação Suspensa' : 'Suspender Ação'}}
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSuspenderAcao" class="panel-collapse collapse"
+							ng-class="{'in': vm.regras.enableSuspenderAcao}">
+							<div class="panel-body">
+								<!-- partial:partials/suspenderAcao.html -->
+								<!-- partial -->
+							</div>
+						</div>
+					</div>
+
 					<div hidden ng-show="vm.regras.showCopiarAcao" class="panel" id="panelCopiarAcao"
 						ng-class="vm.regras.enableCopiarAcao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
@@ -349,25 +368,6 @@
 							ng-class="{'in': vm.regras.enableEncerramentoAntecipado}">
 							<div class="panel-body">
 								<!-- partial:partials/encerramento-antecipado.html -->
-								<!-- partial -->
-							</div>
-						</div>
-					</div>
-
-					<div ng-show="vm.regras.showSuspenderAcao || vm.Formulario.suspenderAcao" class="panel panel-danger"
-						id="panelSuspenderAcao">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSuspenderAcao}" data-toggle="collapse"
-									href="#collapseSuspenderAcao">
-									Suspender Ação
-								</a>
-							</h4>
-						</div>
-						<div id="collapseSuspenderAcao" class="panel-collapse collapse"
-							ng-class="{'in': vm.regras.enableSuspenderAcao}">
-							<div class="panel-body">
-								<!-- partial:partials/suspenderAcao.html -->
 								<!-- partial -->
 							</div>
 						</div>

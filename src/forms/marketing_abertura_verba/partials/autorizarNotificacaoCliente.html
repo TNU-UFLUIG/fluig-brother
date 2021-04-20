@@ -30,7 +30,8 @@
           <td ng-show="vm.regras.enableNotificacaoCliente">
             <span ng-click="vm.removeChild(vm.Formulario.emailsCliente, email)"
               class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
-            <span ng-click="vm.reenviar(email)" class="fluigicon fluigicon-test-refresh fs-cursor-pointer icon-md"
+            <span ng-click="vm.reenviar(email)"
+              class="fluigicon fluigicon-test-refresh fs-cursor-pointer icon-md fs-display-none"
               ng-show="vm.Params.formMode !== 'ADD'"></span>
           </td>
           <td>
@@ -95,8 +96,7 @@
     </table>
     <div ng-show="vm.regras.enableNotificacaoCliente">
       <a class="btn btn-default btn-lg" ng-click="vm.incluirEmailNotificacao()">Incluir E-mail</a>
-      <a class="btn btn-default btn-lg" ng-click="vm.incluirEmailNotificacao()"
-        ng-show="vm.Params.formMode !== 'ADD'">Reenviar Para Todos</a>
+      <a class="btn btn-default btn-lg fs-display-none" ng-show="vm.Params.formMode !== 'ADD'">Reenviar Para Todos</a>
     </div>
   </div>
 </div>

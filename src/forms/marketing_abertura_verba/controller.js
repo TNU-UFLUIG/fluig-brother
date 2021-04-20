@@ -73,7 +73,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         }
 
         if (vm.Params.edit && vm.Params.etapa == 'validarEvidencias') {
-          vm.Formulario.necEnvioNd = !vm.Formulario.userValidacaoEvid && vm.Formulario.tipoAcao.codigo !== 'spiff' ? true : vm.Formulario.necEnvioNd;
+          vm.Formulario.necEnvioNd = vm.Formulario.userValidacaoEvid ? vm.Formulario.necEnvioNd : vm.Formulario.tipoAcao.tipoAcaoCodigo == 'spiff' ? false : true;
         }
 
         fluigService.getUsuarios(vm.Params.user).then(resp => {
@@ -205,7 +205,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                   let cat = vm.Formulario.rateioCategoria.filter(c => c.categoria.descricao == it.item.ccusto)[0];
                   console.log(cat);
                   if (cat) {
-                    cat.valor += it.rebateTotal;
+                    cat.valor += it.vlTotal;
                   }
                 }
               });
