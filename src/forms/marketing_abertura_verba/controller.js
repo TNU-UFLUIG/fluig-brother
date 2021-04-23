@@ -539,15 +539,17 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.Formulario.itensSpiffTg = [];
         vm.calculaTotais();
         vm.bloqRateio = false;
+        vm.Formulario.rateioCategoria.forEach(r => r.perc = 0);
 
         if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
 
           switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.incluiItem(vm.Formulario.itensSellout);
-              vm.bloqRateio = true;
-              break
-
+              if (vm.Formulario.tipoSellout == 'srp' || vm.Formulario.tipoSellout == 'net') {
+                vm.bloqRateio = true;
+              }
+              break;
             case 'sellin':
               if (vm.Formulario.tipoSellin == 'item') {
                 vm.incluiItem(vm.Formulario.itensSellinIt);
@@ -556,18 +558,14 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                 vm.incluiItem(vm.Formulario.itensSellinTg);
                 // vm.incluiItem(vm.Formulario.itensSellinTgAc);
               }
-
-              break
-
+              break;
             case 'vpc':
               if (vm.Formulario.tipoVpc == 'eventos') {
                 vm.incluiItem(vm.Formulario.itensVpcEvt);
               } else {
                 vm.incluiItem(vm.Formulario.itensVpcOutros);
               }
-
-              break
-
+              break;
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.incluiItem(vm.Formulario.itensSpiffIt);
@@ -575,8 +573,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               } else {
                 vm.incluiItem(vm.Formulario.itensSpiffTg);
               }
-
-              break
+              break;
           }
         }
       }
