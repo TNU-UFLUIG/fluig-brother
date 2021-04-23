@@ -13,7 +13,7 @@
               <th></th>
             </tr>
           </thead>
-          
+
           <tbody ng-non-bindable>
             <tr ng-repeat="email in vm.Formulario.destinatarios">
               <td ng-show="vm.Params.edit">
@@ -74,6 +74,12 @@
                     <input type="checkbox" name="email_cancelamento_i" ng-model="email.cancelamento" fluig-switch
                       data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="email_cancelamento" ng-value="email.cancelamento">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Vales</label>
+                    <input type="checkbox" name="email_vales_i" ng-model="email.vales" fluig-switch data-off-text="NÃO"
+                      data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="email_vales" ng-value="email.vales">
                   </div>
                 </div>
 

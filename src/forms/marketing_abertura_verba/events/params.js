@@ -31,6 +31,7 @@ function getParams(form) {
     aprovarVerbaMenor: [75],
     enviarND: [186],
     validarND: [103],
+    gerenciarVales: [202],
     conferirFinanceiro: [113],
     aprovarPagamento: [116],
     gerarAbatimentos: [121],

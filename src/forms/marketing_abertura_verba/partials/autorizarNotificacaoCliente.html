@@ -23,6 +23,7 @@
           <th class="col-sm-1">Envio da ND</th>
           <th class="col-sm-1">Pagamento</th>
           <th class="col-sm-1">Cancelamento</th>
+          <th class="col-sm-1">Vales</th>
         </tr>
       </thead>
       <tbody ng-non-bindable>
@@ -90,6 +91,14 @@
             </div>
 
             <input type="hidden" name="email_cancelamento" ng-value="email.cancelamento">
+          </td>
+          <td>
+            <div>
+              <input type="checkbox" name="email_vales_i" ng-model="email.vales" fluig-switch data-off-text="NÃO"
+                data-on-text="SIM" data-on-color="success">
+            </div>
+
+            <input type="hidden" name="email_vales" ng-value="email.vales">
           </td>
         </tr>
       </tbody>

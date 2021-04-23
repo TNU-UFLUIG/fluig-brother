@@ -439,7 +439,8 @@
                                                         <a target="_blank" href="{{arquivoEv.url}}">
                                                             <h4>
                                                                 <i
-                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivoEv.nome || 'Sem descrição'}}
+                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivoEv.nome
+                                                                || 'Sem descrição'}}
                                                             </h4>
                                                         </a>
                                                     </div>
@@ -497,7 +498,8 @@
 
                                                         <h2 ng-if="!vm.regras.enableEnvioEvidencias"
                                                             class="fs-no-margin">
-                                                            {{vm.Formulario[item.tablename][item.index].qtdEvidencia | number:'2'}}
+                                                            {{vm.Formulario[item.tablename][item.index].qtdEvidencia |
+                                                            number:'2'}}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -506,7 +508,7 @@
                                                         <label for="itemEv_valEvidencia">Valor</label>
                                                         <div ng-if="vm.regras.enableEnvioEvidencias">
                                                             <input type="text" class="form-control input-lg"
-                                                                name="itemEv_valEvidencia"
+                                                                ng-disabled="true" name="itemEv_valEvidencia"
                                                                 ng-model="vm.Formulario[item.tablename][item.index].valEvidencia"
                                                                 ng-blur="vm.salvar()"
                                                                 ng-change="vm.calculaTotalItemEvidencia(item)"
@@ -515,7 +517,8 @@
 
                                                         <h2 ng-if="!vm.regras.enableEnvioEvidencias"
                                                             class="fs-no-margin">
-                                                            {{vm.Formulario[item.tablename][item.index].valEvidencia | currency}}
+                                                            {{vm.Formulario[item.tablename][item.index].valEvidencia |
+                                                            currency}}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -523,7 +526,8 @@
                                                     <div class="form-group">
                                                         <label for="">Total</label>
                                                         <h2 class="fs-no-margin">
-                                                            {{vm.Formulario[item.tablename][item.index].totEvidencia | currency}}
+                                                            {{vm.Formulario[item.tablename][item.index].totEvidencia |
+                                                            currency}}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -746,7 +750,8 @@
                                                                         <a target="_blank" href="{{arquivo.url}}">
                                                                             <h4>
                                                                                 <i
-                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivo.nome || 'Sem descrição'}}
+                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivo.nome
+                                                                                || 'Sem descrição'}}
                                                                             </h4>
                                                                         </a>
                                                                     </div>

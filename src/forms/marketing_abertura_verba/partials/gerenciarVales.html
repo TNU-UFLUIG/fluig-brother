@@ -5,19 +5,19 @@
       <div>
         <label class="radio-inline">
           <input type="radio" ng-readonly="!vm.regras.enableGerenciarVales" name="statusVales_i"
-            ng-model="vm.Formulario.statusVales" value="comprado" ng-required="true"
+            ng-model="vm.Formulario.statusVales" value="COMPRADO" ng-required="true"
             fluig-error="form.statusVales_i.$error">
           Comprado
         </label>
         <label class="radio-inline">
           <input type="radio" ng-readonly="!vm.regras.enableGerenciarVales" name="statusVales_i"
-            ng-model="vm.Formulario.statusVales" value="enviado" ng-required="true"
+            ng-model="vm.Formulario.statusVales" value="ENVIADO" ng-required="true"
             fluig-error="form.statusVales_i.$error">
           Enviado
         </label>
         <label class="radio-inline">
           <input type="radio" ng-readonly="!vm.regras.enableGerenciarVales" name="statusVales_i"
-            ng-model="vm.Formulario.statusVales" value="entregue" ng-required="true"
+            ng-model="vm.Formulario.statusVales" value="ENTREGUE" ng-required="true"
             fluig-error="form.statusVales_i.$error">
           Entregue
         </label>
@@ -39,22 +39,22 @@
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="dataPostagemVales_i" class="control-label">Data da Postagem</label>
-      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataPostagemVales_i"
-        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataPostagemVales"
-        ng-required="true" fluig-error="form.dataPostagemVales_i.$error" readonly>
-      <input type="hidden" name="dataPostagemVales_f" ng-value="vm.Formulario.dataPostagemVales | date:'fullDate'">
-      <input type="hidden" name="dataPostagemVales" ng-value="vm.Formulario.dataPostagemVales">
+      <label for="dataEnvioVales_i" class="control-label">Data do Envio</label>
+      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataEnvioVales_i"
+        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEnvioVales"
+        ng-required="true" fluig-error="form.dataEnvioVales_i.$error" readonly>
+      <input type="hidden" name="dataEnvioVales_f" ng-value="vm.Formulario.dataEnvioVales | date:'fullDate'">
+      <input type="hidden" name="dataEnvioVales" ng-value="vm.Formulario.dataEnvioVales">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="dataEnvioVales_i" class="control-label">Data do Envio</label>
-      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataEnvioVales_i"
-        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEnvioVales" ng-required="true"
-        fluig-error="form.dataEnvioVales_i.$error" readonly>
-      <input type="hidden" name="dataEnvioVales_f" ng-value="vm.Formulario.dataEnvioVales | date:'fullDate'">
-      <input type="hidden" name="dataEnvioVales" ng-value="vm.Formulario.dataEnvioVales">
+      <label for="dataEntregaVales_i" class="control-label">Data da Entrega</label>
+      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataEntregaVales_i"
+        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEntregaVales" ng-required="true"
+        fluig-error="form.dataEntregaVales_i.$error" readonly>
+      <input type="hidden" name="dataEntregaVales_f" ng-value="vm.Formulario.dataEntregaVales | date:'fullDate'">
+      <input type="hidden" name="dataEntregaVales" ng-value="vm.Formulario.dataEntregaVales">
     </div>
   </div>
 </div>
@@ -62,8 +62,9 @@
   <div class="col-sm-12">
     <div class="form-group">
       <label for="codRastreioVales_i" class="control-label">Código de Rastreio</label>
-      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="codRastreioVales_i" ng-model="vm.Formulario.codRastreioVales"
-        ng-value="vm.Formulario.codRastreioVales" ng-required="true" fluig-error="form.codRastreioVales_i.$error">
+      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="codRastreioVales_i"
+        ng-model="vm.Formulario.codRastreioVales" ng-value="vm.Formulario.codRastreioVales" ng-required="true"
+        fluig-error="form.codRastreioVales_i.$error">
     </div>
   </div>
 </div>

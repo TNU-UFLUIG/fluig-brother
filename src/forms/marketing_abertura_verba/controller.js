@@ -420,7 +420,8 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                     evidencia: contato.contato_evidencia,
                     envioND: contato.contato_envioND,
                     pagamento: contato.contato_pagamento,
-                    cancelamento: contato.contato_cancelamento
+                    cancelamento: contato.contato_cancelamento,
+                    vales: contato.contato_vales
                   });
                 });
               });
@@ -537,17 +538,20 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.Formulario.itensSpiffIt = [];
         vm.Formulario.itensSpiffTg = [];
         vm.calculaTotais();
+        vm.bloqRateio = false;
 
         if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
 
           switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.incluiItem(vm.Formulario.itensSellout);
+              vm.bloqRateio = true;
               break
 
             case 'sellin':
               if (vm.Formulario.tipoSellin == 'item') {
                 vm.incluiItem(vm.Formulario.itensSellinIt);
+                vm.bloqRateio = true;
               } else {
                 vm.incluiItem(vm.Formulario.itensSellinTg);
                 // vm.incluiItem(vm.Formulario.itensSellinTgAc);
@@ -567,6 +571,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.incluiItem(vm.Formulario.itensSpiffIt);
+                vm.bloqRateio = true;
               } else {
                 vm.incluiItem(vm.Formulario.itensSpiffTg);
               }
@@ -739,7 +744,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'sellout':
               vm.Formulario.itensSellout.forEach((it, index) => {
                 vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: it.item.displaykey, valEvidencia: it.rebateUnit, valorTotal: it.rebateTotal });
-              })
+              });
               break
 
             case 'sellin':

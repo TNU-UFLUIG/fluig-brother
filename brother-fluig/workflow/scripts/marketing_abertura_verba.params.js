@@ -21,6 +21,8 @@ function params() {
     aprovarPagamento: [116],
     atualizarStatus: [132],
     autorizarNotificacaoPagamento: [139],
+    gerenciarVales: [202],
+    gtwVales: [204],
     finalizado: [148],
     finalizadoSemAntecipacao: [173]
   };

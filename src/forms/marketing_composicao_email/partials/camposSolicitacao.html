@@ -7,7 +7,7 @@
       <div class="panel-body">
         <table class="table" tablename="campos" noaddbutton="true" nodeletebutton="true"
           ng-show="vm.Formulario.campos.length > 0">
-          
+
           <thead>
             <tr>
               <th ng-show="vm.Params.edit"></th>
@@ -82,6 +82,12 @@
                     <input type="checkbox" name="campo_cancelamento_i" ng-model="campo.cancelamento" fluig-switch
                       data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campo_cancelamento" ng-value="campo.cancelamento">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Vales</label>
+                    <input type="checkbox" name="campo_vales_i" ng-model="campo.vales" fluig-switch data-off-text="NÃO"
+                      data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campo_vales" ng-value="campo.vales">
                   </div>
                 </div>
 

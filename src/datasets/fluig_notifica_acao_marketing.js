@@ -18,14 +18,14 @@ function createDataset(fields, constraints, sortFields) {
   const params = getConstraints(constraints);
   // constraints:
   // solicitacoes = 3245|3247|3250
-  // tipo = iniAcao / fimAcao / evidencia / envioND / pagamento / cancelamento
+  // tipo = iniAcao / fimAcao / evidencia / envioND / pagamento / cancelamento / vales
 
   if (!params.solicitacoes) {
     throw 'Informe o código da solicitação';
   }
 
   if (!params.tipo) {
-    throw "Informe o tipo do e-mail";
+    throw 'Informe o tipo do e-mail';
   }
 
   const filtros = [];
