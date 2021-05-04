@@ -269,9 +269,9 @@ angular
             if (vm.Formulario[item.tablename][item.index].valEvidencia === 0) {
               Errors.push(`<li>Informe o valor no item ${item.descricao}</li>`);
             }
-            if (vm.Formulario[item.tablename][item.index].qtdEvidencia === 0) {
-              Errors.push(`<li>Informe a quantidade no item ${item.descricao}</li>`);
-            }
+            // if (vm.Formulario[item.tablename][item.index].qtdEvidencia === 0) {
+            //   Errors.push(`<li>Informe a quantidade no item ${item.descricao}</li>`);
+            // }
 
             vm.calculaTotalItemEvidencia(item);
           });
@@ -343,9 +343,11 @@ angular
           vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
         });
         vm.Formulario.itensSpiffIt.forEach((it, index) => {
-          if (!it.valEvidencia || it.valEvidencia === 0) it.valEvidencia = it.rebateUnit;
-          vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.vlTotal });
+          if (!it.valEvidencia || it.valEvidencia === 0) it.valEvidencia = it.valorUnit;
+          vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.valorTotal });
         });
+
+        console.log(vm.Formulario.itensSpiffIt, vm.ItensEvidencia);
 
         vm.ItensEvidencia.forEach((item) => {
           // vm.Formulario[item.tablename][item.index].valEvidencia = vm.Formulario[item.tablename][item.index].valorUnit || vm.Formulario[item.tablename][item.index].rebateUnit || 0;

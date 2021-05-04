@@ -527,7 +527,8 @@
                                     src="http://fluig.brother.com.br/portal/api/servlet/image/BROTHER/custom/logo_image.png"
                                     alt
                                     style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;"
-                                    width="225"></td>
+                                    width="225">
+                                </td>
                               </tr>
 
                               <tr style="border-collapse:collapse;">
@@ -603,7 +604,7 @@
             <hr style="border: 2px #ccc; border-style: dashed;">
 
             <h1 style="margin:10px;text-align:center">Nº de Controle/Registro: ${solicitacao.solicitacao}</h1>
-            
+
             <table class="es-content" cellspacing="0" cellpadding="0" align="center"
               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;">
 
@@ -612,17 +613,17 @@
                   <table class="es-content-body"
                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;"
                     width="820" cellspacing="0" cellpadding="0" align="center">
-                    
+
                     <#if solicitacao.observacoes?has_content>
-                    
-                    <tr style="border-collapse:collapse;">
-                      <td
-                        style="Margin:0;padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:35px;background-color:#eee;">
-                        <p
-                          style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:18px;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;white-space: pre-line;">
-                          ${solicitacao.observacoes}</p>
-                      </td>
-                    </tr>
+
+                      <tr style="border-collapse:collapse;">
+                        <td
+                          style="Margin:0;padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:35px;background-color:#eee;">
+                          <p
+                            style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:18px;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;white-space: pre-line;">
+                            ${solicitacao.observacoes}</p>
+                        </td>
+                      </tr>
                     </#if>
                     <tr>
                       <td class="es-m-txt-l" bgcolor="#ffffff" align="left"
@@ -644,72 +645,75 @@
                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;"
                     width="820" cellspacing="0" cellpadding="0" align="center">
                     <#list solicitacao.camposSolicitacao as campoSolicitacao>
-                      <tr style="border-collapse:collapse;">
-                        <td style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
-                          <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 740px;"><tr class="layout-full-width" style="background-color:#FFFFFF;"><![endif]-->
 
-                          <!--[if (mso)|(IE)]><td align="center" width="493" style=" width:493px; padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:0px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
-                          <div class="col num4" style="display: table-cell;vertical-align: top;width: 20%;">
-                            <div style="background-color: transparent; width: 100% !important;">
-                              <!--[if (!mso)&(!IE)]><!-->
-                              <div
-                                style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
-                                <!--<![endif]-->
+                      <#if campoSolicitacao.valor?has_content>
+                        <tr style="border-collapse:collapse;">
+                          <td style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
+                            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 740px;"><tr class="layout-full-width" style="background-color:#FFFFFF;"><![endif]-->
 
-
-                                <div class="">
-                                  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-                                  <div
-                                    style="color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-                                    <div
-                                      style="font-size:12px;line-height:14px;font-family:Lato, Tahoma, Verdana, Segoe, sans-serif;color:#3c3c3c;text-align:left;">
-                                      <p style="margin: 0;font-size: 14px;line-height: 17px">
-                                        <span
-                                          style="color: rgb(0, 0, 0); font-size: 14px; line-height: 16px; font-weight: bold">${campoSolicitacao.label}
-                                        </span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <!--[if mso]></td></tr></table><![endif]-->
-                                </div>
-
+                            <!--[if (mso)|(IE)]><td align="center" width="493" style=" width:493px; padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:0px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+                            <div class="col num4" style="display: table-cell;vertical-align: top;width: 20%;">
+                              <div style="background-color: transparent; width: 100% !important;">
                                 <!--[if (!mso)&(!IE)]><!-->
-                              </div>
-                              <!--<![endif]-->
-                            </div>
-                          </div>
-                          <!--[if (mso)|(IE)]></td><td align="center" width="247" style=" width:247px; padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:0px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
-                          <div class="col num8" style="display: table-cell;vertical-align: top;width: 80%;">
-                            <div style="background-color: transparent; width: 100% !important;">
-                              <!--[if (!mso)&(!IE)]><!-->
-                              <div
-                                style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
-                                <!--<![endif]-->
+                                <div
+                                  style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+                                  <!--<![endif]-->
 
 
-                                <div class="">
-                                  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-                                  <div
-                                    style="color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
+                                  <div class="">
+                                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
                                     <div
-                                      style="font-size:12px;line-height:14px;color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;text-align:left;">
-                                      <p style="margin: 0;font-size: 12px;line-height: 14px">
-                                        <span
-                                          style="font-size: 14px; line-height: 16px;white-space: pre-line;">${campoSolicitacao.valor}</span>
-                                      </p>
+                                      style="color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
+                                      <div
+                                        style="font-size:12px;line-height:14px;font-family:Lato, Tahoma, Verdana, Segoe, sans-serif;color:#3c3c3c;text-align:left;">
+                                        <p style="margin: 0;font-size: 14px;line-height: 17px">
+                                          <span
+                                            style="color: rgb(0, 0, 0); font-size: 14px; line-height: 16px; font-weight: bold">${campoSolicitacao.label}
+                                          </span>
+                                        </p>
+                                      </div>
                                     </div>
+                                    <!--[if mso]></td></tr></table><![endif]-->
                                   </div>
-                                  <!--[if mso]></td></tr></table><![endif]-->
-                                </div>
 
-                                <!--[if (!mso)&(!IE)]><!-->
+                                  <!--[if (!mso)&(!IE)]><!-->
+                                </div>
+                                <!--<![endif]-->
                               </div>
-                              <!--<![endif]-->
                             </div>
-                          </div>
-                          <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-                        </td>
-                      </tr>
+                            <!--[if (mso)|(IE)]></td><td align="center" width="247" style=" width:247px; padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:0px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+                            <div class="col num8" style="display: table-cell;vertical-align: top;width: 80%;">
+                              <div style="background-color: transparent; width: 100% !important;">
+                                <!--[if (!mso)&(!IE)]><!-->
+                                <div
+                                  style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+                                  <!--<![endif]-->
+
+
+                                  <div class="">
+                                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
+                                    <div
+                                      style="color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
+                                      <div
+                                        style="font-size:12px;line-height:14px;color:#3c3c3c;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;text-align:left;">
+                                        <p style="margin: 0;font-size: 12px;line-height: 14px">
+                                          <span
+                                            style="font-size: 14px; line-height: 16px;white-space: pre-line;">${campoSolicitacao.valor}</span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <!--[if mso]></td></tr></table><![endif]-->
+                                  </div>
+
+                                  <!--[if (!mso)&(!IE)]><!-->
+                                </div>
+                                <!--<![endif]-->
+                              </div>
+                            </div>
+                            <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+                          </td>
+                        </tr>
+                      </#if>
                     </#list>
                   </table>
 
@@ -724,7 +728,6 @@
 
                       <tbody>
                         <#list table.itens as item>
-
                           <tr style="border-collapse:collapse">
                             <td
                               style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;padding:10px;margin:10px">
@@ -732,9 +735,11 @@
 
                               <!--[if (mso)|(IE)]><td align="center" width="493" style=" width:493px; padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:0px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
                               <#list item.content as contentItem>
-                                <div style="display: block;vertical-align: top;width: 100%;">
-                                  ${contentItem.valor}
-                                </div>
+                                <#if contentItem.valor?has_content>
+                                  <div style="display: block;vertical-align: top;width: 100%;">
+                                    ${contentItem.valor}
+                                  </div>
+                                </#if>
                               </#list>
                             </td>
                           </tr>
@@ -751,7 +756,7 @@
             </table>
 
             <hr style="border: 2px #ccc; border-style: dashed;">
-            
+
           </#list>
 
           <table class="es-content" cellspacing="0" cellpadding="0" align="center"

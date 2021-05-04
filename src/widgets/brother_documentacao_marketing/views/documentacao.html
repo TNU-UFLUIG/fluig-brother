@@ -82,8 +82,10 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Item</th>
-                                                <th>Categoria</th>
+                                                <th ng-if="vm.Formulario.tipoSellout == 'target'">Target</th>
+                                                <th ng-if="vm.Formulario.tipoSellout == 'target'">Finalidade</th>
+                                                <th ng-if="vm.Formulario.tipoSellout != 'target'">Item</th>
+                                                <th ng-if="vm.Formulario.tipoSellout != 'target'">Categoria</th>
                                                 <th>Rebate Unitário</th>
                                                 <th>Quantidade</th>
                                                 <th>Rebate Total</th>
@@ -91,54 +93,13 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in vm.Formulario.itensSellout">
-                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
-                                                <td>{{item.item.categoria}}</td>
-                                                <td>{{item.rebateUnit | currency}}</td>
-                                                <td>{{item.qtde | number:2}}</td>
-                                                <td>{{item.rebateTotal | currency}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-sm-12" ng-if="vm.Formulario.itensSelloutNet.length > 0">
-                                    <h3 class="text-muted">Itens de Sellout</h3>
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Item</th>
-                                                <th>Categoria</th>
-                                                <th>Rebate Unitário</th>
-                                                <th>Quantidade</th>
-                                                <th>Rebate Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="item in vm.Formulario.itensSelloutNet">
-                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
-                                                <td>{{item.item.categoria}}</td>
-                                                <td>{{item.rebateUnit | currency}}</td>
-                                                <td>{{item.qtde | number:2}}</td>
-                                                <td>{{item.rebateTotal | currency}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-sm-12" ng-if="vm.Formulario.itensSelloutTg.length > 0">
-                                    <h3 class="text-muted">Itens de Sellout</h3>
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Item</th>
-                                                <th>Categoria</th>
-                                                <th>Rebate Unitário</th>
-                                                <th>Quantidade</th>
-                                                <th>Rebate Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="item in vm.Formulario.itensSelloutTg">
-                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
-                                                <td>{{item.item.categoria}}</td>
+                                                <td ng-if="vm.Formulario.tipoSellout == 'target'">{{item.target}}</td>
+                                                <td ng-if="vm.Formulario.tipoSellout == 'target'">{{item.finalidade}}
+                                                </td>
+                                                <td ng-if="vm.Formulario.tipoSellout != 'target'">{{item.item.codigo}} -
+                                                    {{item.item.descricao}}</td>
+                                                <td ng-if="vm.Formulario.tipoSellout != 'target'">
+                                                    {{item.item.categoria}}</td>
                                                 <td>{{item.rebateUnit | currency}}</td>
                                                 <td>{{item.qtde | number:2}}</td>
                                                 <td>{{item.rebateTotal | currency}}</td>

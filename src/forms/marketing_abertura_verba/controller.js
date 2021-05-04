@@ -183,7 +183,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             });
             break;
           case 'sellin':
-            if (vm.Formulario.tipoSellin == 'item') {
+            if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
               vm.Formulario.itensSellinIt.forEach((it, index) => {
                 if (it.item) {
                   console.log(it.item.ccusto)
@@ -454,7 +454,8 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
       vm.calculaItemErp = function (item, loadContainer) {
         if (item.item && item.item.codigo && item.alterado) {
-          if (vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout' && vm.Formulario.tipoSellout == 'net') {
+          if ((vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout' && vm.Formulario.tipoSellout == 'net') ||
+            (vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellin' && vm.Formulario.tipoSellin == 'net')) {
             item.rebateUnit = parseFloat(Number(item.netInicial - item.netSugerido).toFixed(4));
 
             vm.calculaRebateTotal(item);
@@ -551,7 +552,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               }
               break;
             case 'sellin':
-              if (vm.Formulario.tipoSellin == 'item') {
+              if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
                 vm.incluiItem(vm.Formulario.itensSellinIt);
                 vm.bloqRateio = true;
               } else {
@@ -627,6 +628,20 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         });
       };
 
+      vm.changeDataVales = () => {
+        if (vm.Formulario.dataEntregaVales) {
+          vm.Formulario.statusVales = 'ENTREGUE';
+        } else {
+          if (vm.Formulario.dataEnvioVales) {
+            vm.Formulario.statusVales = 'ENVIADO';
+          } else {
+            if (vm.Formulario.dataCompraVales) {
+              vm.Formulario.statusVales = 'COMPRADO';
+            }
+          }
+        }
+      };
+
       vm.buscaDuplicatas = function buscaDuplicatas() {
 
         let loading = FLUIGC.loading(`#collapseSelecionarDuplicatas`);
@@ -653,7 +668,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           }
 
           brotherService.getMarketingAberturaVerba(vm.Formulario.cliente.codigo).then(solicitacoes => {
-            let solicitacoesEmAprovacao = solicitacoes.filter(s => s.atividade == 'aprovarPagamento');
+            let solicitacoesEmAprovacao = solicitacoes.filter(s => s.status == 'APROVAÇÃO FINANCEIRA');
             let titulos = [];
             solicitacoesEmAprovacao.forEach(s => {
               titulos = titulos.concat(DatasetFactory.getDataset('marketing_abertura_verba', null, [
@@ -745,7 +760,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               break
 
             case 'sellin':
-              if (vm.Formulario.tipoSellin == 'item') {
+              if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
                 vm.Formulario.itensSellinIt.forEach((it, index) => {
                   vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valEvidencia: it.rebateUnit, valorTotal: it.rebateTotal });
                 })
@@ -797,7 +812,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               vm.calculaPercCategoria();
               break
             case 'sellin':
-              if (vm.Formulario.tipoSellin == 'item') {
+              if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
                 vm.Formulario.itensSellinIt.forEach(it => {
                   vm.Formulario.valorTotalVerba += it.rebateTotal || 0;
                   vm.Formulario.gpMedioSugerido += it.gpSugerido || 0;

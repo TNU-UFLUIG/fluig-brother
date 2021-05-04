@@ -32,7 +32,7 @@
       <label for="dataCompraVales_i" class="control-label">Data da Compra</label>
       <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataCompraVales_i"
         fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataCompraVales"
-        ng-required="true" fluig-error="form.dataCompraVales_i.$error" readonly>
+        ng-required="true" fluig-error="form.dataCompraVales_i.$error" readonly ng-change="vm.changeDataVales()">
       <input type="hidden" name="dataCompraVales_f" ng-value="vm.Formulario.dataCompraVales | date:'fullDate'">
       <input type="hidden" name="dataCompraVales" ng-value="vm.Formulario.dataCompraVales">
     </div>
@@ -41,8 +41,8 @@
     <div class="form-group">
       <label for="dataEnvioVales_i" class="control-label">Data do Envio</label>
       <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataEnvioVales_i"
-        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEnvioVales"
-        ng-required="true" fluig-error="form.dataEnvioVales_i.$error" readonly>
+        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEnvioVales" ng-required="true"
+        fluig-error="form.dataEnvioVales_i.$error" readonly ng-change="vm.changeDataVales()">
       <input type="hidden" name="dataEnvioVales_f" ng-value="vm.Formulario.dataEnvioVales | date:'fullDate'">
       <input type="hidden" name="dataEnvioVales" ng-value="vm.Formulario.dataEnvioVales">
     </div>
@@ -51,8 +51,8 @@
     <div class="form-group">
       <label for="dataEntregaVales_i" class="control-label">Data da Entrega</label>
       <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="dataEntregaVales_i"
-        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEntregaVales" ng-required="true"
-        fluig-error="form.dataEntregaVales_i.$error" readonly>
+        fluig-date-mask date-pattern="LL" use-current="false" ng-model="vm.Formulario.dataEntregaVales"
+        ng-required="true" fluig-error="form.dataEntregaVales_i.$error" readonly ng-change="vm.changeDataVales()">
       <input type="hidden" name="dataEntregaVales_f" ng-value="vm.Formulario.dataEntregaVales | date:'fullDate'">
       <input type="hidden" name="dataEntregaVales" ng-value="vm.Formulario.dataEntregaVales">
     </div>
@@ -62,7 +62,7 @@
   <div class="col-sm-12">
     <div class="form-group">
       <label for="codRastreioVales_i" class="control-label">Código de Rastreio</label>
-      <input class="form-control input-lg" ng-disabled="!vm.regras.enableGerenciarVales" name="codRastreioVales_i"
+      <input class="form-control input-lg" ng-readonly="!vm.regras.enableGerenciarVales" name="codRastreioVales_i"
         ng-model="vm.Formulario.codRastreioVales" ng-value="vm.Formulario.codRastreioVales" ng-required="true"
         fluig-error="form.codRastreioVales_i.$error">
     </div>

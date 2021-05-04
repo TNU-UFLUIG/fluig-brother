@@ -24,8 +24,8 @@ function createDataset(fields, constraints, sortFields) {
 
   var versaoAtiva = documentoPai[0].nr_versao;
 
-  // var Documentos = executaSql("SELECT * FROM documento WHERE num_docto_propried = " + codDoctoPai + " and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
-  var Documentos = executaSql("SELECT * FROM documento WHERE nr_documento = 8549 and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
+  var Documentos = executaSql("SELECT * FROM documento WHERE num_docto_propried = " + codDoctoPai + " and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
+  // var Documentos = executaSql("SELECT * FROM documento WHERE nr_documento = 8549 and versao_ativa = 1 and tp_documento = 5 and cod_empresa = " + codEmpresa + " ", 'query', campos, '/jdbc/FluigDS');
   // log.info(Documentos)
   Documentos.forEach(function (documento) {
     // log.info(documento.num_vers_propried);

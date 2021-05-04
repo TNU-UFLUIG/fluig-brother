@@ -18,13 +18,13 @@
             <div class="col-sm-4">
               <label>Target</label>
               <input class="form-control input-lg" name="itemSellout_target" ng-model="itemSellout.target"
-                ng-disabled="!vm.regras.enableSolicitacao">
+                ng-value="itemSellout.target" ng-readonly="!vm.regras.enableSolicitacao">
 
             </div>
             <div class="col-sm-8">
               <label>Finalidade</label>
               <input class="form-control input-lg" name="itemSellout_finalidade" ng-model="itemSellout.finalidade"
-                ng-disabled="!vm.regras.enableSolicitacao">
+                ng-value="itemSellout.finalidade" ng-readonly="!vm.regras.enableSolicitacao">
             </div>
           </div>
 

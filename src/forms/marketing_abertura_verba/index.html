@@ -104,14 +104,14 @@
 					</div>
 
 					<div
-						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && vm.Formulario.tipoSellin == 'item' && vm.Formulario.cliente.codigo"
+						ng-show="vm.regras.showSolicitacao && vm.Formulario.tipoAcao.tipoAcaoCodigo=='sellin' && (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') && vm.Formulario.cliente.codigo"
 						class="panel" id="panelSellinItem"
 						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
 									href="#collapseSellinItem">
-									Sell-In - Item
+									Sell-In - <span class="text-capitalize">{{vm.Formulario.tipoSellin}}</span>
 								</a>
 							</h4>
 						</div>
