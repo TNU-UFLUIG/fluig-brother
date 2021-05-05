@@ -34,8 +34,8 @@ function buscaDataset(fields, constraints, sortFields) {
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
     { field: 'pendenteTotvs', value: 'S' },
-    // { field: 'tipoAcaoCodigo', value: 'spiff' },
-    // { field: 'tipoSpiff', value: 'target' },
+    // { field: 'tipoAcaoCodigo', value: 'sellin' },
+    // { field: 'solicitacao', value: '12619' },
 
   ]);
 
@@ -246,8 +246,9 @@ function replaceSpecialChars(str) {
     .replace(/”/g, "'")
     .replace(/“/g, "'")
     .replace(/"/g, "'")
+    .replace(/…/g, '.')
     // .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;<>?!@$%&*{}\/ ]/g, "");
-    .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, "");
+    .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, '');
   // .substr(0,600)
 }
 
