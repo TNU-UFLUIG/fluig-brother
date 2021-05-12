@@ -247,16 +247,16 @@
 					</div>
 
 					<div ng-show="vm.regras.showSolicitacao" class="panel" id="panelSolicitacao"
-						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'">
+						ng-class="vm.regras.enableSolicitacao ? 'panel-primary' : 'panel-default'" id="panelRateio">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="collapse-icon" ng-class="{'up': vm.regras.enableSolicitacao}" data-toggle="collapse"
-									href="#collapseSolicitacao">
+									href="#collapseRateio">
 									Rateio
 								</a>
 							</h4>
 						</div>
-						<div id="collapseSolicitacao" class="panel-collapse collapse"
+						<div id="collapseRateio" class="panel-collapse collapse"
 							ng-class="{'in': vm.regras.enableSolicitacao}">
 							<div class="panel-body">
 								<div class="row">

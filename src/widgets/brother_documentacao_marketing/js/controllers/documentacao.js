@@ -334,10 +334,12 @@ angular
       vm.getItens = () => {
         vm.ItensEvidencia = [];
 
-        vm.Formulario.itensSellout.forEach((it, index) => {
-          if (!it.valEvidencia || it.valEvidencia === 0) it.valEvidencia = it.rebateUnit;
-          vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
-        });
+        if (vm.Formulario.tipoSellout !== 'target') {
+          vm.Formulario.itensSellout.forEach((it, index) => {
+            if (!it.valEvidencia || it.valEvidencia === 0) it.valEvidencia = it.rebateUnit;
+            vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });
+          });
+        }
         vm.Formulario.itensSellinIt.forEach((it, index) => {
           if (!it.valEvidencia || it.valEvidencia === 0) it.valEvidencia = it.rebateUnit;
           vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: `${it.item.codigo} - ${it.item.descricao}`, valorTotal: it.rebateTotal });

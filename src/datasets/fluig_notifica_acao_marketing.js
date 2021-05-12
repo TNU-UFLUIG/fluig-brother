@@ -78,7 +78,7 @@ function createDataset(fields, constraints, sortFields) {
     const tplArrTables = new java.util.ArrayList();
 
     dsCamposSolicitacao.forEach((c) => {
-      if (String(c[`campo_${params.tipo}`]) == 'true') {
+      if (String(c[`campo_${params.tipo}`]) == 'true' && String(solicitacao[c.campo_name]) !== 'null') {
         const campo = new java.util.HashMap();
 
         campo.put('label', c.campo_label);
@@ -108,7 +108,7 @@ function createDataset(fields, constraints, sortFields) {
               tplArrLabelsItens.add(campo);
             }
 
-            if (String(item[c[`${table.campoName}_name`]]) !== '') {
+            if (String(item[c[`${table.campoName}_name`]]) !== '' && String(item[c[`${table.campoName}_name`]]) !== 'null') {
               var campo = new java.util.HashMap();
               campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + String(item[c[`${table.campoName}_name`]]).replace(/(?:\r\n|\r|\n)/g, '<br>'));
               tplArrItem.add(campo);
