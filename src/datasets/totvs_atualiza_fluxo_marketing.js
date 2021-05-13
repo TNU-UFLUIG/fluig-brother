@@ -33,6 +33,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
+    // { field: 'solicitacao', value: '1813' },
     { field: 'pendenteTotvs', value: 'S' },
     // { field: 'tipoAcaoCodigo', value: 'spiff' },
     // { field: 'tipoSpiff', value: 'target' },
