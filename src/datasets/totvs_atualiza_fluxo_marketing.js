@@ -35,7 +35,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
     { field: 'pendenteTotvs', value: 'S' },
     // { field: 'tipoAcaoCodigo', value: 'sellin' },
-    // { field: 'solicitacao', value: '12619' },
+    // { field: 'solicitacao', value: '13461' },
 
   ]);
 
@@ -185,7 +185,7 @@ function buscaDataset(fields, constraints, sortFields) {
     var properties = {};
     properties["receive.timeout"] = "60000";
 
-    // log.info('*** totvs_atualiza_fluxo_marketing 1');
+    // log.info(`*** totvs_atualiza_fluxo_marketing 1 ${JSON.stringify(ttParams)}`);
 
     // const json = jsonLocal();
     try {
