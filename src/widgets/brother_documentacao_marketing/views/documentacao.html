@@ -13,7 +13,7 @@
                         <h1 ng-class="{'text-center': vm.Params.edit, 'text-right': !vm.Params.edit}">Ação de Marketing
                         </h1>
                     </div>
-                    <div class="col-sm-4" ng-if="vm.Params.edit">
+                    <div class="col-sm-4" ng-if="vm.Params.edit" style="position: fixed; right: 25px; top: 25px;">
                         <div class="pull-right">
                             <button type="button" class="btn btn-success btn-lg" ng-click="vm.enviar()"
                                 ng-disabled="vm.loading">
@@ -82,8 +82,10 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Item</th>
-                                                <th>Categoria</th>
+                                                <th ng-if="vm.Formulario.tipoSellout == 'target'">Target</th>
+                                                <th ng-if="vm.Formulario.tipoSellout == 'target'">Finalidade</th>
+                                                <th ng-if="vm.Formulario.tipoSellout != 'target'">Item</th>
+                                                <th ng-if="vm.Formulario.tipoSellout != 'target'">Categoria</th>
                                                 <th>Rebate Unitário</th>
                                                 <th>Quantidade</th>
                                                 <th>Rebate Total</th>
@@ -91,8 +93,13 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in vm.Formulario.itensSellout">
-                                                <td>{{item.item.codigo}} - {{item.item.descricao}}</td>
-                                                <td>{{item.item.categoria}}</td>
+                                                <td ng-if="vm.Formulario.tipoSellout == 'target'">{{item.target}}</td>
+                                                <td ng-if="vm.Formulario.tipoSellout == 'target'">{{item.finalidade}}
+                                                </td>
+                                                <td ng-if="vm.Formulario.tipoSellout != 'target'">{{item.item.codigo}} -
+                                                    {{item.item.descricao}}</td>
+                                                <td ng-if="vm.Formulario.tipoSellout != 'target'">
+                                                    {{item.item.categoria}}</td>
                                                 <td>{{item.rebateUnit | currency}}</td>
                                                 <td>{{item.qtde | number:2}}</td>
                                                 <td>{{item.rebateTotal | currency}}</td>
@@ -300,7 +307,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <h3 class="text-muted " for="valorResultado_i" class="control-label">
-                                            Valor Total Spiff / Rebate</h3>
+                                            Valor Total a Receber</h3>
                                         <h2 ng-show="!vm.regras.enableEnvioEvidencias || vm.ItensEvidencia.length > 0"
                                             class="fs-no-margin">
                                             {{vm.Formulario.valorResultado | currency}}</h2>
@@ -393,7 +400,8 @@
                                                         <a target="_blank" href="{{arquivoEv.url}}">
                                                             <h4>
                                                                 <i
-                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivoEv.nome || 'Sem descrição'}}
+                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivoEv.nome
+                                                                || 'Sem descrição'}}
                                                             </h4>
                                                         </a>
                                                     </div>
@@ -451,7 +459,8 @@
 
                                                         <h2 ng-if="!vm.regras.enableEnvioEvidencias"
                                                             class="fs-no-margin">
-                                                            {{vm.Formulario[item.tablename][item.index].qtdEvidencia | number:'2'}}
+                                                            {{vm.Formulario[item.tablename][item.index].qtdEvidencia |
+                                                            number:'2'}}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -460,7 +469,7 @@
                                                         <label for="itemEv_valEvidencia">Valor</label>
                                                         <div ng-if="vm.regras.enableEnvioEvidencias">
                                                             <input type="text" class="form-control input-lg"
-                                                                name="itemEv_valEvidencia"
+                                                                ng-disabled="true" name="itemEv_valEvidencia"
                                                                 ng-model="vm.Formulario[item.tablename][item.index].valEvidencia"
                                                                 ng-blur="vm.salvar()"
                                                                 ng-change="vm.calculaTotalItemEvidencia(item)"
@@ -469,7 +478,8 @@
 
                                                         <h2 ng-if="!vm.regras.enableEnvioEvidencias"
                                                             class="fs-no-margin">
-                                                            {{vm.Formulario[item.tablename][item.index].valEvidencia | currency}}
+                                                            {{vm.Formulario[item.tablename][item.index].valEvidencia |
+                                                            currency}}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -477,7 +487,8 @@
                                                     <div class="form-group">
                                                         <label for="">Total</label>
                                                         <h2 class="fs-no-margin">
-                                                            {{vm.Formulario[item.tablename][item.index].totEvidencia | currency}}
+                                                            {{vm.Formulario[item.tablename][item.index].totEvidencia |
+                                                            currency}}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -700,7 +711,8 @@
                                                                         <a target="_blank" href="{{arquivo.url}}">
                                                                             <h4>
                                                                                 <i
-                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivo.nome || 'Sem descrição'}}
+                                                                                    class="flaticon flaticon-link icon-md"></i>{{arquivo.nome
+                                                                                || 'Sem descrição'}}
                                                                             </h4>
                                                                         </a>
                                                                     </div>

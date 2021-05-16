@@ -1,0 +1,47 @@
+.relatorio {
+  visibility: hidden;
+  display: none !important;
+}
+
+#report-title {
+  background-color: #ddd !important;
+  padding: 20px !important;
+}
+
+/* @page {
+  size: A4;
+  margin: 11mm 17mm 17mm 17mm;
+} */
+
+@media print {
+  .report-header {
+    /* position: fixed;
+    top: 0; */
+  }
+  .report-content {
+    /* margin-top: 50px; */
+  }
+  .form {
+    visibility: hidden;
+    display: none !important;
+  }
+  .relatorio {
+    visibility: visible;
+    display: block !important;
+  }
+
+  @page {
+    margin: 0;
+  }
+
+  .fluig-style-guide hr {
+    margin-top: 20px;
+    border: 0;
+    border-top: 2px solid #333;
+  }
+
+  .fluig-style-guide td,
+  .fluig-style-guide th {
+    font-size: 12px !important;
+  }
+}

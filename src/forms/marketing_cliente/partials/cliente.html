@@ -1,0 +1,22 @@
+<div class="panel animation" ng-class="{'panel-primary': vm.Params.edit, 'panel-default': !vm.Params.edit}">
+  <div class="panel-heading">
+    <h4 class="panel-title">Cliente</h4>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input ng-required="true" fluig-error="form.cliente_i.$error" class="form-control input-lg" fluig-autocomplete
+            dataset="totvs_busca_cliente" display-key="displaykey" ng-model="vm.Formulario.cliente" name="cliente_i"
+            ng-change="vm.changeCliente()" ng-readonly="vm.Params.formMode != 'ADD'">
+
+          <textarea hidden name="cliente" ng-value="vm.Formulario.cliente | json:0"
+            ng-bind="vm.Formulario.cliente | json:0"></textarea>
+          <input type="hidden" name="clienteCodigo" ng-value="vm.Formulario.cliente.codigo">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

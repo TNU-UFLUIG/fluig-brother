@@ -18,14 +18,14 @@ function createDataset(fields, constraints, sortFields) {
   const params = getConstraints(constraints);
   // constraints:
   // solicitacoes = 3245|3247|3250
-  // tipo = iniAcao / fimAcao / evidencia / envioND / pagamento
+  // tipo = iniAcao / fimAcao / evidencia / envioND / pagamento / cancelamento / vales
 
   if (!params.solicitacoes) {
     throw 'Informe o código da solicitação';
   }
 
   if (!params.tipo) {
-    throw "Informe o tipo do e-mail";
+    throw 'Informe o tipo do e-mail';
   }
 
   const filtros = [];
@@ -78,7 +78,7 @@ function createDataset(fields, constraints, sortFields) {
     const tplArrTables = new java.util.ArrayList();
 
     dsCamposSolicitacao.forEach((c) => {
-      if (String(c[`campo_${params.tipo}`]) == 'true') {
+      if (String(c[`campo_${params.tipo}`]) == 'true' && String(solicitacao[c.campo_name]) !== 'null') {
         const campo = new java.util.HashMap();
 
         campo.put('label', c.campo_label);
@@ -108,9 +108,11 @@ function createDataset(fields, constraints, sortFields) {
               tplArrLabelsItens.add(campo);
             }
 
-            var campo = new java.util.HashMap();
-            campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + String(item[c[`${table.campoName}_name`]]).replace(/(?:\r\n|\r|\n)/g, '<br>'));
-            tplArrItem.add(campo);
+            if (String(item[c[`${table.campoName}_name`]]) !== '' && String(item[c[`${table.campoName}_name`]]) !== 'null') {
+              var campo = new java.util.HashMap();
+              campo.put('valor', '<b>' + c[`${table.campoName}_label`] + ': </b> ' + String(item[c[`${table.campoName}_name`]]).replace(/(?:\r\n|\r|\n)/g, '<br>'));
+              tplArrItem.add(campo);
+            }
 
           })
 
@@ -138,14 +140,14 @@ function createDataset(fields, constraints, sortFields) {
 
     dsDestinatariosCliente = [];
 
-    arrDestinatarios.add('alexson_ferreira@hotmail.com');
+    // arrDestinatarios.add('alexson_ferreira@hotmail.com');
 
     if (params.enviaExecutivo == 'S') {
 
       solicitacao.executivo = JSON.parse(solicitacao.executivo);
 
       if (solicitacao.executivo && solicitacao.executivo.email) {
-        // arrDestinatarios.add(solicitacao.executivo.email);
+        arrDestinatarios.add(solicitacao.executivo.email);
       }
     }
 
@@ -161,7 +163,7 @@ function createDataset(fields, constraints, sortFields) {
         // log.info(`email_${params.tipo} => ` + destinatario[`email_${params.tipo}`]);
 
         if (String(destinatario[`email_${params.tipo}`]) == 'true') {
-          // arrDestinatarios.add(destinatario.email_email);
+          arrDestinatarios.add(destinatario.email_email);
         }
       })
     }
@@ -189,7 +191,7 @@ function createDataset(fields, constraints, sortFields) {
 
   dsDestinatariosGrupoBrother.forEach(destinatario => {
     if (String(destinatario[`email_${params.tipo}`]) == 'true') {
-      // arrDestinatarios.add(destinatario.email_email);
+      arrDestinatarios.add(destinatario.email_email);
     }
   });
 

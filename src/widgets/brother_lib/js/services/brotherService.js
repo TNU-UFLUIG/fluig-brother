@@ -7,9 +7,15 @@ angular.module('brother.services')
           tipoAcaoCodigo
         }, fields);
       },
-      getMarketingAberturaVerba: function getMarketingAberturaVerba(solicitacao, fields) {
+      getMarketingAberturaVerba: function getMarketingAberturaVerba(clienteCodigo, fields) {
         return fluigService.getDatasetAsync('marketing_abertura_verba', {
-          solicitacao,
+          clienteCodigo,
+        }, fields);
+      },
+      getTitulosCliente: function getTitulosCliente(documentid, fields) {
+        return fluigService.getDatasetAsync('marketing_abertura_verba', {
+          tablename: 'duplicatas',
+          documentid
         }, fields);
       },
       getMarketingParametros: function getMarketingParametros(fields) {
@@ -19,7 +25,16 @@ angular.module('brother.services')
       getMarketingComposicaoEmail: function getMarketingComposicaoEmail(fields) {
         return fluigService.getDatasetAsync('marketing_composicao_email', {
         }, fields);
+      },
+      getMarketingCliente: function getMarketingCliente(clienteCodigo, fields) {
+        return fluigService.getDatasetAsync('marketing_cliente', {
+          clienteCodigo
+        }, fields);
+      },
+      getContatosCliente: function getContatosCliente(documentid, fields) {
+        return fluigService.getDatasetAsync('marketing_cliente', {
+          documentid, tablename: 'contatos'
+        }, fields);
       }
-
     })
   ]);

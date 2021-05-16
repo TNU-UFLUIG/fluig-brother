@@ -91,6 +91,33 @@
     </div>
   </div>
 
+  <div class="col-sm-4 animation" ng-show="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout'">
+    <div class="form-group">
+      <label for="tipoSellout_i" class="control-label">Tipo</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellout_i"
+            ng-model="vm.Formulario.tipoSellout" value="srp" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout'" fluig-error="form.tipoSellout_i.$error">
+          SRP
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellout_i"
+            ng-model="vm.Formulario.tipoSellout" value="net" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'net'" fluig-error="form.tipoSellout_i.$error">
+          NET
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellout_i"
+            ng-model="vm.Formulario.tipoSellout" value="target" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout'" fluig-error="form.tipoSellout_i.$error">
+          Target
+        </label>
+      </div>
+      <input type="hidden" name="tipoSellout" ng-value="vm.Formulario.tipoSellout">
+    </div>
+  </div>
+
   <div class="col-sm-4 animation" ng-show="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellin'">
     <div class="form-group">
       <label for="tipoSellin_i" class="control-label">Tipo</label>
@@ -100,6 +127,12 @@
             ng-model="vm.Formulario.tipoSellin" value="item" ng-change="vm.changeTipoAcao()"
             ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellin'" fluig-error="form.tipoSellin_i.$error">
           Item
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellin_i"
+            ng-model="vm.Formulario.tipoSellin" value="net" ng-change="vm.changeTipoAcao()"
+            ng-required="vm.Formulario.tipoAcao.tipoAcaoCodigo == 'net'" fluig-error="form.tipoSellin_i.$error">
+          Net
         </label>
         <label class="radio-inline">
           <input type="radio" ng-readonly="!vm.regras.enableSolicitacao" name="tipoSellin_i"

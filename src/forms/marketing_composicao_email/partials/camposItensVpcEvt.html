@@ -9,14 +9,14 @@
 
         <table class="table" tablename="camposVpcEvt" noaddbutton="true" nodeletebutton="true"
           ng-show="vm.Formulario.camposVpcEvt.length > 0">
-          
+
           <thead>
             <tr>
               <th ng-show="vm.Params.edit"></th>
               <th></th>
             </tr>
           </thead>
-          
+
           <tbody ng-non-bindable>
             <tr ng-repeat="campoVpcEvt in vm.Formulario.camposVpcEvt">
               <td ng-show="vm.Params.edit">
@@ -56,16 +56,16 @@
                       data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoVpcEvt_iniAcao" ng-value="campoVpcEvt.iniAcao">
                   </div>
-                  <div class="col-sm-2">
+                  <!-- <div class="col-sm-2">
                     <label>Término da Ação</label>
                     <input type="checkbox" name="campoVpcEvt_fimAcao_i" ng-model="campoVpcEvt.fimAcao" fluig-switch
                       data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoVpcEvt_fimAcao" ng-value="campoVpcEvt.fimAcao">
-                  </div>
-                  <div class="col-sm-3">
-                    <label>Envio de Evidências</label>
-                    <input type="checkbox" name="campoVpcEvt_evidencia_i" ng-model="campoVpcEvt.evidencia"
-                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                  </div> -->
+                  <div class="col-sm-2">
+                    <label>Evidências</label>
+                    <input type="checkbox" name="campoVpcEvt_evidencia_i" ng-model="campoVpcEvt.evidencia" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoVpcEvt_evidencia" ng-value="campoVpcEvt.evidencia">
                   </div>
                   <div class="col-sm-2">
@@ -76,9 +76,21 @@
                   </div>
                   <div class="col-sm-2">
                     <label>Pagamento</label>
-                    <input type="checkbox" name="campoVpcEvt_pagamento_i" ng-model="campoVpcEvt.pagamento"
-                      fluig-switch data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="checkbox" name="campoVpcEvt_pagamento_i" ng-model="campoVpcEvt.pagamento" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
                     <input type="hidden" name="campoVpcEvt_pagamento" ng-value="campoVpcEvt.pagamento">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Cancelamento</label>
+                    <input type="checkbox" name="campoVpcEvt_cancelamento_i" ng-model="campoVpcEvt.cancelamento" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcEvt_cancelamento" ng-value="campoVpcEvt.cancelamento">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Vales</label>
+                    <input type="checkbox" name="campoVpcEvt_vales_i" ng-model="campoVpcEvt.vales" fluig-switch
+                      data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                    <input type="hidden" name="campoVpcEvt_vales" ng-value="campoVpcEvt.vales">
                   </div>
                 </div>
 

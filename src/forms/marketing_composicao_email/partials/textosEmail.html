@@ -104,3 +104,46 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Cancelamento</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="cancelamentoTitulo" class="control-label">Título</label>
+          <input name="cancelamentoTitulo" class="form-control input-lg" ng-model="vm.Formulario.cancelamentoTitulo"
+            ng-value="vm.Formulario.cancelamentoTitulo" placeholder="Título">
+        </div>
+        <div class="form-group">
+          <label for="cancelamentoTexto" class="control-label">Texto</label>
+          <textarea fluig-error="form.cancelamentoTexto.$error" name="cancelamentoTexto" elastic
+            class="form-control input-lg" ng-model="vm.Formulario.cancelamentoTexto"
+            ng-value="vm.Formulario.cancelamentoTexto"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Vales</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="valesTitulo" class="control-label">Título</label>
+          <input name="valesTitulo" class="form-control input-lg" ng-model="vm.Formulario.valesTitulo"
+            ng-value="vm.Formulario.valesTitulo" placeholder="Título">
+        </div>
+        <div class="form-group">
+          <label for="valesTexto" class="control-label">Texto</label>
+          <textarea fluig-error="form.valesTexto.$error" name="valesTexto" elastic class="form-control input-lg"
+            ng-model="vm.Formulario.valesTexto" ng-value="vm.Formulario.valesTexto"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

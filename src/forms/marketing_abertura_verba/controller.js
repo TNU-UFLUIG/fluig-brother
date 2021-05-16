@@ -12,82 +12,38 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               angular.element(tbody)
                 .attr('ng-non-bindable', null);
               $compile(table)($scope);
-            })
+            });
           });
       }
 
       formService.atualizaFormulario($scope, vm)
         .then(() => {
-          try {
+          vm.loading = FLUIGC.loading('.collapse');
 
-            vm.loading = FLUIGC.loading('.collapse');
+          vm.checkLocal();
 
-            vm.checkLocal();
+          if (!vm.Params.mobile && parent && parent.WCMAPI) {
 
-            if (!vm.Params.mobile && parent && parent.WCMAPI) {
-
-              vm.WCMAPI = parent.WCMAPI;
-            }
-
-            vm.inicia();
-          } catch (error) {
-            vm.Errors.push(error);
+            vm.WCMAPI = parent.WCMAPI;
           }
 
+          vm.inicia();
         });
 
       vm.checkLocal = function checkLocal() {
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: "validarEvidencias",
-            user: 'ckayama',
+            etapa: 'conferirFinanceiro', //"gerenciarVales",
+            user: 'admin',
             formMode: 'MOD',
-            companyId: 1
+            companyId: 1,
+            managerMode: false
           };
 
           if (vm.Params.formMode != 'ADD') {
-            vm.Formulario = {
-              "rateioCategoria": [
-                { "categoria": { "displaykey": "1 - P&S", "codigo": 1, "descricao": "P&S" }, "perc": 0.25, "$$hashKey": "object:7" }, { "categoria": { "displaykey": "2 - S&S", "codigo": 2, "descricao": "S&S" }, "perc": 0.15, "$$hashKey": "object:8" }, { "categoria": { "displaykey": "3 - L&M", "codigo": 3, "descricao": "L&M" }, "perc": 0.6, "$$hashKey": "object:9" }, { "categoria": { "displaykey": "4 - P&H", "codigo": 4, "descricao": "P&H" }, "perc": 0, "$$hashKey": "object:10" }],
-              "itensSellout":
-                [
-                  {
-                    $id: 1,
-                    "data": 1582029871745, "$$hashKey": "object:27", "item":
-                      { "netInicial": "1200", "displaykey": "10930 - HLL2360DW", "codigo": "10930", "gpInicial": "10", "gpSugerido": "14", "rebateTotal": "100", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "100", "netSugerido": "1300", "descricao": "HLL2360DW" },
-                    "srpInicial": 100, "srpSugerido": 100, "qtde": 1000, "rebateTotal": 100000
-                  },
-                  {
-                    $id: 2,
-                    "data": 1582029871745, "$$hashKey": "object:27", "item":
-                      { "netInicial": "1200", "displaykey": "11000 - HLL2370DW", "codigo": "11000", "gpInicial": "5", "gpSugerido": "6", "rebateTotal": "1000", "categoria": "2.2-MLL HW", "dolar": "4.1", "rebateUnit": "1000", "netSugerido": "13000", "descricao": "HLL2370DW" },
-                    "srpInicial": 100, "srpSugerido": 100, "qtde": 3000, "rebateTotal": 30000
-                  }
-                ],
-              "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensSpiffIt": [], "itensSpiffTg": [], "cliente": { "displaykey": "385 - REIS OFFICE - 00.00.000/0001-01", "codigo": "385", "nome": "REIS OFFICE", "cnpj": "00.00.000/0001-01", "canal": "DISTRIBUTOR", "executivo": "ckayama" }, "numControle": "2020.0056", "dataAbertura": 1582029841458, "status": "INÍCIO", "importado": false, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "tipoAcaoCodigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "itensVpcOutros": [], "valorTotalVerba": 100000, "gpMedioSugerido": 14, "inicioAcao": 1580612399000, "terminoAcao": 1583031599000, "tipoQuantidade": "limitada", "descricaoDetalhada": "Praesent nec nisl a purus blandit viverra. Ut id nisl quis enim dignissim sagittis. Phasellus consectetuer vestibulum elit. Fusce fermentum odio nec arcu. Phasellus ullamcorper ipsum rutrum nunc.", "totalRateio": 1
-            };
-
-            vm.Formulario.valorResultado = 150000;
-            // vm.Formulario.valorLiberado = 150000;
-            vm.Formulario.arquivosEvidencias = [
-              // { descricao: 'Notas Fiscais', nome: 'nf-vendas-brother.pdf' },
-            ];
-            vm.Formulario.duplicatas = [
-              { seq: 1, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 2, valorOriginal: 200000, saldo: 180000 },
-              { seq: 2, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 3, valorOriginal: 200000, saldo: 160000 },
-              { seq: 3, emissao: new Date().getTime(), vencimento: new Date().getTime(), numero: 987849, parcela: 4, valorOriginal: 200000, saldo: 140000 },
-            ]
-
-            vm.Formulario.valorResultado = 150000;
-            // vm.Formulario.valorLiberado = 150000;
-            vm.Formulario.valorTotalVerba = 100000;
-            vm.Formulario.gpMedioSugerido = 10000;
-
+            vm.Formulario = { "rateioCategoria": [{ "categoria": { "displaykey": "1 - P&S", "codigo": "1", "descricao": "P&S" }, "categoriaDescricao": "P&S", "categoriaCodigo": 1, "perc": 1, "$$hashKey": "object:18" }, { "categoria": { "displaykey": "2 - S&S", "codigo": "2", "descricao": "S&S" }, "categoriaDescricao": "S&S", "categoriaCodigo": 2, "perc": 0, "$$hashKey": "object:19" }, { "categoria": { "displaykey": "3 - L&M", "codigo": "3", "descricao": "L&M" }, "categoriaDescricao": "L&M", "categoriaCodigo": 3, "perc": 0, "$$hashKey": "object:20" }, { "categoria": { "displaykey": "4 - P&H", "codigo": "4", "descricao": "P&H" }, "categoriaDescricao": "P&H", "categoriaCodigo": 4, "perc": 0, "$$hashKey": "object:21" }], "itensSellout": [{ "item": { "ccusto": "P&S", "displaykey": "DCPT710W - MULTIFUNCIONAL JATO DE TINTA 27/23 PPM JATO DE TINTA 27/23 P", "codigo": "DCPT710W", "categoria": "1.1- INK A4", "descricao": "MULTIFUNCIONAL JATO DE TINTA 27/23 PPM JATO DE TINTA 27/23 P" }, "itemDescricao": "MULTIFUNCIONAL JATO DE TINTA 27/23 PPM JATO DE TINTA 27/23 P", "itemCodigo": "DCPT710W", "categoria": "", "srpInicial": 3000, "netInicial": 1327.1639, "gpInicial": 0.43, "srpSugerido": 2365, "netSugerido": 1046.2409, "gpSugerido": 0.28, "rebateUnit": 280.923, "qtde": 50, "rebateTotal": 14046.15, "dolar": 5.2, "ccusto": "", "usuario": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "usuarioCodigo": "rugeda", "usuarioNome": "Rosi Ugeda", "data": 1605271682118, "qtdEvidencia": 30, "valEvidencia": 280.92, "totEvidencia": 8427.6 }], "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensVpcOutros": [], "itensSpiffIt": [], "itensSpiffTg": [], "arquivosEvidencias": [{ "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8465, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY1JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG TESTE", "aceito": true, "motivoRecusa": "", "$$hashKey": "object:9" }], "arquivosND": [{ "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8466, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY2JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG", "numero": "00256", "aceito": true, "$$hashKey": "object:35" }], "duplicatas": [{ "seq": "", "numTitulo": "0003756", "parcela": "01", "tituloParcela": "0003756/01", "dataEmissao": "2019-12-30", "dataVencto": "2020-05-21", "codEspec": "DP", "nd": { "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8466, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY2JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG", "numero": "00256", "aceito": true }, "codCliente": 4426, "matriz": "NAO", "codEstab": 3, "valorOriginal": 386053.67, "codSerie": 2, "valorSaldo": 386053.67, "valorAntecipa": 4000, "saldoAposAbatimento": 382053.67, "$$hashKey": "object:11" }, { "seq": "", "numTitulo": "0121534", "parcela": "01", "tituloParcela": "0121534/01", "dataEmissao": "2020-02-26", "dataVencto": "2020-06-02", "codEspec": "DP", "nd": { "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8466, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY2JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG", "numero": "00256", "aceito": true }, "codCliente": 4426, "matriz": "NAO", "codEstab": 1, "valorOriginal": 369858.43, "codSerie": 2, "valorSaldo": 369858.43, "valorAntecipa": 4427.6, "saldoAposAbatimento": 365430.83, "$$hashKey": "object:12" }], "emailsCliente": [{ "email": "rosi.ugeda@brother.com.br", "iniAcao": true, "fimAcao": true, "evidencia": true, "envioND": true, "pagamento": true, "$$hashKey": "object:39" }], "chat": [], "statusErp": [{ "data": "", "descricao": null, "$$hashKey": "object:41" }], "Params": { "formMode": "MOD", "edit": true, "numState": "132", "etapa": "atualizarStatus", "user": "csilva", "mobile": false, "companyId": 1, "atividades": { "inicio": [1], "validarMarketing": [2], "gtwAprovarGerMarketing": [176], "revisarSolicitacao": [8], "aprovarGerMarketing": [4], "aprovarPresidencia": [6], "analisarErros": [27, 36, 53, 54, 143, 125], "aguardandoFimDaAcao": [129], "notificarGrupoBrotherInicio": [23], "notificarGrupoBrotherFim": [41], "autorizarNotificacaoInicio": [32], "autorizarNotificacaoFim": [43], "enviarEvidencias": [180], "validarEvidencias": [62], "gtwAprovarVerbaMaior": [67], "aprovarVerbaMaior": [151], "aprovarVerbaMenor": [75], "enviarND": [186], "validarND": [103], "conferirFinanceiro": [113], "aprovarPagamento": [116], "gerarAbatimentos": [121], "atualizarStatus": [132], "autorizarNotificacaoPagamento": [139], "finalizadoSemAntecipacao": [173] } }, "Errors": [], "regras": { "showResumo": true, "showSolicitacao": false, "enableSolicitacao": false, "showObsInternas": true, "enableObsInternas": true, "showEncerramentoAntecipado": false, "enableEncerramentoAntecipado": false, "showValidacaoMarketing": false, "enableValidacaoMarketing": false, "showRateioCategoria": true, "showResumoVerbasCliente": true, "showAprovGerMarketing": false, "enableAprovGerMarketing": false, "showAprovPresidenciaVp": false, "enableAprovPresidenciaVp": false, "showAprovVerbaMaior": false, "enableAprovVerbaMaior": false, "showAprovVerbaMenor": false, "enableAprovVerbaMenor": false, "showNotificacaoCliente": false, "enableNotificacaoCliente": false, "showEvidencias": true, "enableEvidencias": false, "enableValidacaoEvidencias": false, "showND": true, "enableND": false, "enableValidacaoND": false, "showSelecionarDuplicatas": true, "enableSelecionarDuplicatas": false, "showAprovPagamento": true, "enableAprovPagamento": true, "showStatusErp": true, "enableStatusErp": false }, "displaykey": "AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA", "importado": false, "solicitacao": 6312, "atividade": "aprovarPagamento", "responsavel": "mcarvalho", "guid": "5a337f57$6f1f$dcf9$5519$d88ce651fe7d", "pendenteTotvs": "N", "statusIntegraTotvs": "OK", "dataIntegraTotvs": 1605637214510, "currentStepPortal": 5, "notificaGrupoBrotherFimAcao": "N", "revisao": false, "folderAttach": "2438", "cliente": { "displaykey": "4 - AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA - 68993641000128", "codigo": "4", "ativo": "SIM", "nomeAbrev": "AGIS EQUIP", "subcanal": "100", "cnpj": "68993641000128", "executivo": "", "razaoSocial": "AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA", "matriz": "SIM" }, "clienteNome": "AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA", "clienteCodigo": 4, "nomeAcao": "TESTE FLUIG", "tipoAcao": { "metadata#parent_id": 2514, "descricaoTipoAcao": "Sed libero. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Phasellus gravida semper nisi. Quisque id odio. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.", "metadata#card_index_id": 2514, "companyid": 1, "metadata#version": 3000, "cardid": 2514, "tipoAcao_input": null, "metadata#active": true, "tableid": "principal", "contaContabil_input": "41301012 - DESCONTO FINANCEIRO - SELL OUT PROMOTION", "documentid": 2545, "id": 7, "tipoAcaoCodigo": "sellout", "metadata#id": 2545, "displaykey": "SELL-OUT PROMOTIONS", "contaContabil_i": null, "Params": "{\"formMode\":\"MOD\",\"edit\":true,\"user\":\"rugeda\",\"mobile\":false,\"companyId\":1}", "contaContabilCodigo": "41301012", "version": 3000, "Errors": "[]", "contaContabil": { "displaykey": "41301012 - DESCONTO FINANCEIRO - SELL OUT PROMOTION", "codigo": "41301012", "descricao": "DESCONTO FINANCEIRO - SELL OUT PROMOTION" }, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "importado": "false", "tipoAcao_i": null, "metadata#card_index_version": 1000 }, "tipoAcaoDescricao": "SELL-OUT PROMOTIONS", "tipoAcaoCodigo": "sellout", "inicioAcao_f": "domingo, 1 de novembro de 2020", "inicioAcao": 1604285999000, "terminoAcao_f": "quinta-feira, 5 de novembro de 2020", "terminoAcao": 1604631599000, "tipoQuantidade": "estimada", "descricaoDetalhada": "TESTE FLUIG\n22222\nPPPP\nBLABLAPGPGPGPGPGPGPGP", "totalRateio": 1, "statusValidacaoMarketing": "APROVADO", "dataValidacaoMarketing_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataValidacaoMarketing": 1605272152825, "userValMarketing": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userValMarketingNome": "Rosi Ugeda", "userValMarketingCodigo": "rugeda", "executivo": { "displaykey": "EDUARDO MEDEIROS - eduardo.medeiros@brother.com.br", "codigo": "3", "nome": "EDUARDO MEDEIROS", "email": "eduardo.medeiros@brother.com.br" }, "executivoCodigo": 3, "executivoNome": "EDUARDO MEDEIROS", "necAprovacaoGerMkt": true, "statusAprovGerMarketing": "APROVADO", "dataAprovGerMarketing_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataAprovGerMarketing": 1605272180170, "userAprovGerMarketing": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userAprovGerMarketingNome": "Rosi Ugeda", "userAprovGerMarketingCodigo": "rugeda", "statusAprovPresidenciaVp": "APROVADO", "dataAprovPresidenciaVp_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataAprovPresidenciaVp": 1605272199596, "userAprovPresidenciaVp": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userAprovPresidenciaVpNome": "Rosi Ugeda", "userAprovPresidenciaVpCodigo": "rugeda", "anteciparEncerramento": true, "dataEncerramentoAntecip_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataEncerramentoAntecip": 1605272323005, "userEncerramentoAntecip": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userEncerramentoAntecipNome": "Rosi Ugeda", "userEncerramentoAntecipCodigo": "rugeda", "obsEncerramentoAntecip": "teste", "statusValidacaoEvid": "APROVADO", "dataValidacaoEvid": 1605272602737, "userValidacaoEvid": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userValidacaoEvidNome": "Rosi Ugeda", "userValidacaoEvidCodigo": "rugeda", "valorTotalVerba_f": "R$14.046,15", "valorTotalVerba": 14046.15, "valorResultado_f": "R$8.427,60", "valorResultado": 8427.6, "valorLiberado_f": "R$8.427,60", "valorLiberado": 8427.6, "necEnvioNd": true, "evRecusada": false, "envioEvidenciasConcluido": true, "statusValidacaoND": "APROVADO", "dataValidacaoND_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataValidacaoND": 1605272758696, "userValidacaoND": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userValidacaoNDNome": "Rosi Ugeda", "userValidacaoNDCodigo": "rugeda", "envioNDConcluido": true, "ndRecusada": false, "statusFinanceiro": "APROVADO", "dataFinanceiro": 1605636805525, "userFinanceiro": { "colleagueName": "MANUELA CARVALHO", "mail": "manuela.carvalho@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "10", "active": "true", "login": "mcarvalho", "currentProject": "", "especializationArea": "", "colleagueId": "mcarvalho", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userFinanceiroNome": "MANUELA CARVALHO", "userFinanceiroCodigo": "mcarvalho", "difValorLiberado_f": "R$0,00", "difValorLiberado": 0, "saldoTitulos_f": "R$7.865.902,22", "saldoTitulos": 7865902.22, "valorAntecipacao_f": "R$0,00", "valorAntecipacao": 0, "statusAprovPagamento": "APROVADO", "dataAprovPagamento_f": "TERÇA-FEIRA, 17 DE NOVEMBRO DE 2020", "dataAprovPagamento": 1605636945318, "userAprovPagamento": { "colleagueName": "MANUELA CARVALHO", "mail": "manuela.carvalho@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "10", "active": "true", "login": "mcarvalho", "currentProject": "", "especializationArea": "", "colleagueId": "mcarvalho", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userAprovPagamentoNome": "MANUELA CARVALHO", "userAprovPagamentoCodigo": "mcarvalho", "notificacaoEtapa": "ENVIO DA ND", "gpMedioSugerido_f": "28,000%", "gpMedioSugerido": 0.28, "dataAbertura_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataAbertura": 1605271667983, "solicitante": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "solicitanteNome": "Rosi Ugeda", "solicitanteCodigo": "rugeda", "status": "ENVIO BANCÁRIO" };
           }
-
-          // vm.Formulario.emailsCliente = [{}];
-
         }
       }
       vm.inicia = function inicia() {
@@ -116,8 +72,8 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.Formulario.guid = vm.guid();
         }
 
-        if (vm.Params.edit) {
-          vm.Formulario.necEnvioNd = !vm.Formulario.userValidacaoEvid ? true : vm.Formulario.necEnvioNd;
+        if (vm.Params.edit && vm.Params.etapa == 'validarEvidencias') {
+          vm.Formulario.necEnvioNd = vm.Formulario.userValidacaoEvid ? vm.Formulario.necEnvioNd : vm.Formulario.tipoAcao.tipoAcaoCodigo == 'spiff' ? false : true;
         }
 
         fluigService.getUsuarios(vm.Params.user).then(resp => {
@@ -145,13 +101,16 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       vm.checkRegras = function checkRegras() {
         vm.etapas = ['consulta', 'inicio', 'validarMarketing', 'revisarSolicitacao', 'aprovarGerMarketing', 'aprovarPresidencia', 'analisarErros',
           'autorizarNotificacaoInicio', 'aguardandoFimDaAcao', 'autorizarNotificacaoFim', 'enviarEvidencias', 'validarEvidencias', 'aprovarVerbaMaior',
-          'aprovarVerbaMenor', 'enviarND', 'validarND', 'conferirFinanceiro', 'aprovarPagamento', 'atualizarStatus', 'autorizarNotificacaoPagamento'];
+          'aprovarVerbaMenor', 'enviarND', 'validarND', 'gerenciarVales', 'conferirFinanceiro', 'aprovarPagamento', 'atualizarStatus', 'autorizarNotificacaoPagamento'];
 
         vm.regras = {};
         [
           { regra: 'showResumo', def: true, etapas: vm.etapas },
           { regra: 'showSolicitacao', def: true, etapas: ['inicio', 'consulta', 'revisarSolicitacao', 'analisarErros'] },
           { regra: 'enableSolicitacao', def: vm.Params.edit, etapas: ['inicio', 'revisarSolicitacao'] },
+
+          { regra: 'showCopiarAcao', def: true, etapas: ['inicio'] },
+          { regra: 'enableCopiarAcao', def: vm.Params.edit, etapas: ['inicio'] },
 
           { regra: 'showObsInternas', def: true, etapas: vm.etapas },
           { regra: 'enableObsInternas', def: vm.Params.edit, etapas: vm.etapas },
@@ -172,13 +131,16 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'showAprovVerbaMaior', def: true, etapas: ['consulta', 'aprovarVerbaMaior', 'aprovarGerMarketing', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovVerbaMaior', def: true, etapas: ['aprovarVerbaMaior'] },
 
+          { regra: 'showSuspenderAcao', def: vm.Params.managerMode, etapas: vm.etapas.filter(e => e !== 'inicio') },
+          { regra: 'enableSuspenderAcao', def: vm.Params.managerMode, etapas: vm.etapas.filter(e => e !== 'consulta') },
+
           { regra: 'showAprovVerbaMenor', def: true, etapas: ['consulta', 'aprovarVerbaMenor', 'aprovarGerMarketing', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovVerbaMenor', def: true, etapas: ['aprovarVerbaMenor'] },
 
-          { regra: 'showNotificacaoCliente', def: true, etapas: ['consulta', 'autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento', 'validarEvidencias', 'validarND'] },
-          { regra: 'enableNotificacaoCliente', def: true, etapas: ['autorizarNotificacaoInicio', 'analisarErros', 'autorizarNotificacaoFim', 'autorizarNotificacaoPagamento', 'validarEvidencias', 'validarND'] },
+          { regra: 'showNotificacaoCliente', def: true, etapas: vm.etapas },
+          { regra: 'enableNotificacaoCliente', def: true, etapas: vm.etapas },
 
-          { regra: 'showEvidencias', def: true, etapas: ['consulta', 'enviarEvidencias', 'validarND', 'aprovarVerbaMaior', 'aprovarVerbaMenor', 'validarEvidencias', 'aprovarPagamento', 'analisarErros', 'conferirFinanceiro'] },
+          { regra: 'showEvidencias', def: true, etapas: ['consulta', 'enviarEvidencias', 'validarND', 'aprovarVerbaMaior', 'aprovarVerbaMenor', 'validarEvidencias', 'aprovarPagamento', 'analisarErros', 'conferirFinanceiro', 'gerenciarVales'] },
           { regra: 'enableEvidencias', def: true, etapas: ['enviarEvidencias', 'analisarErros'] },
           { regra: 'enableValidacaoEvidencias', def: true, etapas: ['validarEvidencias', 'analisarErros'] },
 
@@ -188,6 +150,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
           { regra: 'showSelecionarDuplicatas', def: true, etapas: ['consulta', 'conferirFinanceiro', 'aprovarPagamento', 'validarEvidencias', 'analisarErros', 'autorizarNotificacaoPagamento'] },
           { regra: 'enableSelecionarDuplicatas', def: true, etapas: ['conferirFinanceiro', 'analisarErros'] },
+
+          { regra: 'showGerenciarVales', def: true, etapas: ['consulta', 'gerenciarVales', 'analisarErros'] },
+          { regra: 'enableGerenciarVales', def: true, etapas: ['gerenciarVales', 'analisarErros'] },
 
           { regra: 'showAprovPagamento', def: true, etapas: ['consulta', 'aprovarPagamento', 'conferirFinanceiro', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovPagamento', def: true, etapas: ['aprovarPagamento'] },
@@ -199,10 +164,64 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         ].forEach(o => {
           vm.regras[o.regra] = vm.Params.user == "adminx" && vm.Params.edit ? true : o.etapas.indexOf(vm.Params.etapa) >= 0 ? o.def : false;
         });
-      }
+      };
+
+      vm.calculaPercCategoria = () => {
+        console.log(vm.calculaPercCategoria)
+
+        vm.Formulario.rateioCategoria.forEach(cat => cat.valor = 0);
+
+        switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+          case 'sellout':
+            vm.Formulario.itensSellout.forEach((it, index) => {
+              if (it.item) {
+                let cat = vm.Formulario.rateioCategoria.filter(c => c.categoria.descricao == it.item.ccusto)[0];
+                if (cat) {
+                  cat.valor += it.rebateTotal;
+                }
+              }
+            });
+            break;
+          case 'sellin':
+            if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
+              vm.Formulario.itensSellinIt.forEach((it, index) => {
+                if (it.item) {
+                  console.log(it.item.ccusto)
+                  let cat = vm.Formulario.rateioCategoria.filter(c => c.categoria.descricao == it.item.ccusto)[0];
+                  console.log(cat);
+                  if (cat) {
+                    cat.valor += it.rebateTotal;
+                  }
+                }
+              });
+            }
+            break
+
+          case 'spiff':
+            if (vm.Formulario.tipoSpiff == 'item') {
+              vm.Formulario.itensSpiffIt.forEach((it, index) => {
+                if (it.item) {
+                  console.log(it.item.ccusto)
+                  let cat = vm.Formulario.rateioCategoria.filter(c => c.categoria.descricao == it.item.ccusto)[0];
+                  console.log(cat);
+                  if (cat) {
+                    cat.valor += it.vlTotal;
+                  }
+                }
+              });
+            }
+            break
+        };
+
+        vm.Formulario.rateioCategoria.forEach(cat => {
+          cat.perc = cat.valor / vm.Formulario.valorTotalVerba;
+        });
+
+        vm.calculaTotalRateio();
+      };
 
       vm.checkEtapa = function checkEtapa() {
-
+        vm.etapaNotificacao = 0;
         switch (true) {
           case vm.Params.etapa == 'inicio':
             vm.Formulario.solicitante = vm.Usuario;
@@ -358,9 +377,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               vm.etapaNotificacao = 5;
               vm.regras.showNotificacaoCliente = false;
             }
-
           }
-
         } else {
           if (vm.Params.etapa == 'validarND') {
             vm.Formulario.ndRecusada = vm.Formulario.arquivosND.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
@@ -375,23 +392,43 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             }
           }
         }
-      }
+      };
 
       vm.changeCliente = function changeCliente() {
+        vm.Formulario.emailsCliente = [];
         if (vm.Formulario.cliente && vm.Formulario.cliente.codigo) {
           if (vm.Formulario.cliente.executivo) {
             vm.Formulario.executivo = fluigService.getUsuarios(vm.Formulario.cliente.executivo)[0];
           }
 
-          vm.Formulario.itensSellinIt.forEach(itemSellinIt => {
-            vm.calculaItemErp(itemSellinIt)
-          })
+          vm.Formulario.itensSellinIt.forEach((itemSellinIt) => {
+            vm.calculaItemErp(itemSellinIt);
+          });
 
           vm.Formulario.itensSellout.forEach(itemSellout => {
             vm.calculaItemErp(itemSellout)
           })
+
+          brotherService.getMarketingCliente(vm.Formulario.cliente.codigo).then((cliente) => {
+            if (cliente[0]) {
+              brotherService.getContatosCliente(cliente[0].documentid).then((contatos) => {
+                vm.Formulario.emailsCliente = [];
+                contatos.forEach((contato) => {
+                  vm.Formulario.emailsCliente.push({
+                    email: contato.contato_email,
+                    iniAcao: contato.contato_iniAcao,
+                    evidencia: contato.contato_evidencia,
+                    envioND: contato.contato_envioND,
+                    pagamento: contato.contato_pagamento,
+                    cancelamento: contato.contato_cancelamento,
+                    vales: contato.contato_vales
+                  });
+                });
+              });
+            }
+          });
         }
-      }
+      };
 
       vm.buscaResumoVerbas = function buscaResumoVerbas() {
         // erpService.getResumoVerbas(vm.Formulario.cliente.codigo);
@@ -404,65 +441,77 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         // ]
       }
       vm.changeItemSellout = function changeItemSellout(item, index) {
-        if (item.item.codigo) {
+        if (item.item && item.item.codigo) {
           vm.calculaItemErp(item);
         }
       }
 
       vm.changeItemSellinIt = function changeItemSellinIt(item, index) {
-        if (item.item.codigo) {
+        if (item.item && item.item.codigo) {
           vm.calculaItemErp(item);
         }
       }
 
       vm.calculaItemErp = function (item, loadContainer) {
-        if (item.item.codigo && item.alterado) {
-          if (item.srpInicial || item.srpSugerido) {
+        if (item.item && item.item.codigo && item.alterado) {
+          if ((vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout' && vm.Formulario.tipoSellout == 'net') ||
+            (vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellin' && vm.Formulario.tipoSellin == 'net')) {
+            item.rebateUnit = parseFloat(Number(item.netInicial - item.netSugerido).toFixed(4));
 
-            item.loading = true;
+            vm.calculaRebateTotal(item);
 
-            vm.Errors = [];
+            item.alterado = false;
 
-            erpService.calculaItemErp(item.item.codigo, vm.Formulario.cliente.codigo, item.srpInicial, item.srpSugerido).then(result => {
+          } else if (vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout' && vm.Formulario.tipoSellout == 'target') {
+            vm.calculaRebateTotal(item);
+          } else {
+            if (item.srpInicial || item.srpSugerido) {
 
-              item.alterado = false;
-              item.loading = false;
+              item.loading = true;
 
-              if (result[0].erro) {
-                let msg = `Ocorreu um erro ao calcular o item. Não será possível iniciar a solicitação \n\n ${result[0].erro}`
-                FLUIGC.message.error({
-                  message: msg,
-                  title: 'Oops'
-                });
-                vm.Errors.push(msg);
-                return;
-              }
+              vm.Errors = [];
 
-              let valores = fluigService.fixDataset(result);
+              erpService.calculaItemErp(item.item.codigo, vm.Formulario.cliente.codigo, item.srpInicial, item.srpSugerido).then(result => {
 
-              if (valores.length == 0) {
-                FLUIGC.message.error({
-                  message: 'Não foi possível calcular o item no ERP',
-                  title: 'Oops'
-                }, (result) => {
+                item.alterado = false;
+                item.loading = false;
 
-                });
-                return;
-              }
+                if (result[0].erro) {
+                  let msg = `Ocorreu um erro ao calcular o item. Não será possível iniciar a solicitação \n\n ${result[0].erro}`
+                  FLUIGC.message.error({
+                    message: msg,
+                    title: 'Oops'
+                  });
+                  vm.Errors.push(msg);
+                  return;
+                }
 
-              item.netInicial = parseFloat(valores[0].netInicial.toFixed(4));
-              item.netSugerido = parseFloat(valores[0].netSugerido.toFixed(4));
-              item.gpInicial = parseFloat(valores[0].gpInicial.toFixed(4));
-              item.gpSugerido = parseFloat(valores[0].gpSugerido.toFixed(4));
-              item.dolar = parseFloat(valores[0].dolar.toFixed(4));
-              item.rebateUnit = parseFloat(Number(item.netInicial - item.netSugerido).toFixed(4));
+                let valores = fluigService.fixDataset(result);
 
-              vm.calculaRebateTotal(item);
-            }, (error) => {
-              item.alterado = false;
-              item.loading = false;
-              FLUIGC.loading('.panel-heading').hide()
-            })
+                if (valores.length == 0) {
+                  FLUIGC.message.error({
+                    message: 'Não foi possível calcular o item no ERP',
+                    title: 'Oops'
+                  }, (result) => {
+
+                  });
+                  return;
+                }
+
+                item.netInicial = parseFloat(valores[0].netInicial.toFixed(4));
+                item.netSugerido = parseFloat(valores[0].netSugerido.toFixed(4));
+                // item.gpInicial = parseFloat(valores[0].gpInicial.toFixed(4));
+                // item.gpSugerido = parseFloat(valores[0].gpSugerido.toFixed(4));
+                item.dolar = parseFloat(valores[0].dolar.toFixed(4));
+                item.rebateUnit = parseFloat(Number(item.netInicial - item.netSugerido).toFixed(4));
+
+                vm.calculaRebateTotal(item);
+              }, (error) => {
+                item.alterado = false;
+                item.loading = false;
+                FLUIGC.loading('.panel-heading').hide()
+              })
+            }
           }
         }
       }
@@ -490,40 +539,42 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.Formulario.itensSpiffIt = [];
         vm.Formulario.itensSpiffTg = [];
         vm.calculaTotais();
+        vm.bloqRateio = false;
+        vm.Formulario.rateioCategoria.forEach(r => r.perc = 0);
 
         if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+
           switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.incluiItem(vm.Formulario.itensSellout);
-              break
-
+              if (vm.Formulario.tipoSellout == 'srp' || vm.Formulario.tipoSellout == 'net') {
+                vm.bloqRateio = true;
+              }
+              break;
             case 'sellin':
-              if (vm.Formulario.tipoSellin == 'item') {
+              if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
                 vm.incluiItem(vm.Formulario.itensSellinIt);
+                vm.bloqRateio = true;
               } else {
                 vm.incluiItem(vm.Formulario.itensSellinTg);
                 // vm.incluiItem(vm.Formulario.itensSellinTgAc);
               }
-
-              break
-
+              break;
             case 'vpc':
               if (vm.Formulario.tipoVpc == 'eventos') {
                 vm.incluiItem(vm.Formulario.itensVpcEvt);
               } else {
                 vm.incluiItem(vm.Formulario.itensVpcOutros);
               }
-
-              break
-
+              break;
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.incluiItem(vm.Formulario.itensSpiffIt);
+                vm.bloqRateio = true;
               } else {
                 vm.incluiItem(vm.Formulario.itensSpiffTg);
               }
-
-              break
+              break;
           }
         }
       }
@@ -546,6 +597,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       vm.incluiItem = function incluiItem(obj) {
         obj.push({
           data: new Date().getTime(),
+          item: {},
           usuario: vm.Usuario,
           qtde: 0,
           vlTotal: 0,
@@ -576,6 +628,20 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         });
       };
 
+      vm.changeDataVales = () => {
+        if (vm.Formulario.dataEntregaVales) {
+          vm.Formulario.statusVales = 'ENTREGUE';
+        } else {
+          if (vm.Formulario.dataEnvioVales) {
+            vm.Formulario.statusVales = 'ENVIADO';
+          } else {
+            if (vm.Formulario.dataCompraVales) {
+              vm.Formulario.statusVales = 'COMPRADO';
+            }
+          }
+        }
+      };
+
       vm.buscaDuplicatas = function buscaDuplicatas() {
 
         let loading = FLUIGC.loading(`#collapseSelecionarDuplicatas`);
@@ -600,6 +666,21 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.Errors.push(msg);
             return;
           }
+
+          brotherService.getMarketingAberturaVerba(vm.Formulario.cliente.codigo).then(solicitacoes => {
+            let solicitacoesEmAprovacao = solicitacoes.filter(s => s.status == 'APROVAÇÃO FINANCEIRA');
+            let titulos = [];
+            solicitacoesEmAprovacao.forEach(s => {
+              titulos = titulos.concat(DatasetFactory.getDataset('marketing_abertura_verba', null, [
+                DatasetFactory.createConstraint('documentid', s.documentid, s.documentid, ConstraintType.MUST),
+                DatasetFactory.createConstraint('tablename', 'duplicatas', 'duplicatas', ConstraintType.MUST),
+              ]).values);
+            })
+
+            vm.Formulario.duplicatas.forEach(d => {
+              d.emAprovacao = titulos.filter(t => t.titulo_numTitulo == d.numTitulo).length > 0;
+            })
+          })
 
           duplicatas.forEach(duplicata => {
             regDuplicata = vm.Formulario.duplicatas.filter(d => d.numTitulo == duplicata.numTitulo && d.parcela == duplicata.parcela)[0];
@@ -665,26 +746,23 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       }
 
       vm.getItens = () => {
-
-        console.log('vm.getItens')
-
         vm.ItensEvidencia = [];
 
         console.log('vm.Formulario.tipoAcao = ', vm.Formulario.tipoAcao)
 
-        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo && vm.Formulario.tipoSellout !== 'target') {
 
           switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':
               vm.Formulario.itensSellout.forEach((it, index) => {
-                vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
-              })
+                vm.ItensEvidencia.push({ tablename: 'itensSellout', index, descricao: it.item.displaykey, valEvidencia: it.rebateUnit, valorTotal: it.rebateTotal });
+              });
               break
 
             case 'sellin':
-              if (vm.Formulario.tipoSellin == 'item') {
+              if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
                 vm.Formulario.itensSellinIt.forEach((it, index) => {
-                  vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valorTotal: it.rebateTotal });
+                  vm.ItensEvidencia.push({ tablename: 'itensSellinIt', index, descricao: it.item.displaykey, valEvidencia: it.rebateUnit, valorTotal: it.rebateTotal });
                 })
               }
               break
@@ -692,7 +770,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'spiff':
               if (vm.Formulario.tipoSpiff == 'item') {
                 vm.Formulario.itensSpiffIt.forEach((it, index) => {
-                  vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valorTotal: it.vlTotal });
+                  vm.ItensEvidencia.push({ tablename: 'itensSpiffIt', index, descricao: it.item.displaykey, valEvidencia: it.rebateUnit, valorTotal: it.vlTotal });
                 })
               }
               break
@@ -727,20 +805,21 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             case 'sellout':
               vm.Formulario.itensSellout.forEach(it => {
                 vm.Formulario.valorTotalVerba += it.rebateTotal || 0;
-                vm.Formulario.gpMedioSugerido += it.gpSugerido || 0;
+                // vm.Formulario.gpMedioSugerido += it.gpSugerido || 0;
                 qtdItem++;
               })
-              vm.Formulario.gpMedioSugerido = vm.Formulario.gpMedioSugerido / qtdItem;
+              // vm.Formulario.gpMedioSugerido = vm.Formulario.gpMedioSugerido / qtdItem;
+              vm.calculaPercCategoria();
               break
-
             case 'sellin':
-              if (vm.Formulario.tipoSellin == 'item') {
+              if (vm.Formulario.tipoSellin == 'item' || vm.Formulario.tipoSellin == 'net') {
                 vm.Formulario.itensSellinIt.forEach(it => {
                   vm.Formulario.valorTotalVerba += it.rebateTotal || 0;
                   vm.Formulario.gpMedioSugerido += it.gpSugerido || 0;
                   qtdItem++;
                 })
                 vm.Formulario.gpMedioSugerido = vm.Formulario.gpMedioSugerido / qtdItem;
+                vm.calculaPercCategoria();
               } else {
                 vm.Formulario.itensSellinTg.forEach(it => {
                   vm.Formulario.valorTotalVerba += it.vlTotal || 0;
@@ -770,6 +849,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                 vm.Formulario.itensSpiffIt.forEach(it => {
                   vm.Formulario.valorTotalVerba += it.vlTotal || 0;
                 })
+                vm.calculaPercCategoria();
               } else {
                 vm.Formulario.itensSpiffTg.forEach(it => {
                   vm.Formulario.valorTotalVerba += it.vlTotal || 0;

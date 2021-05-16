@@ -1,0 +1,110 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-flat.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../brother_lib/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../brother_consulta_verbas/css/main.css" />
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="../../../../brother_lib/js/vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../brother_lib/js/script.min.js"></script>
+    <script type="text/javascript" src="../../../../brother_consulta_verbas/js/script.min.js"></script>
+</head>
+
+<body>
+    <div id="BrotherConsultaVerbas" ng-controller="BrotherConsultaVerbasController as vm"
+        class="fluig-style-guide ng-cloak">
+        <div class="page-header header hidden-xs">
+            <h3 class="row header-content">
+                <div class="col-sm-4">
+                    <a href="/" style="outline: none;" data-toggle="tooltip" data-placement="bottom"
+                        title="Ir para o Fluig" class="fs-sm-space">
+                        <img class="logo" src="/portal/resources/images/logo.png" alt="Home"
+                            style="margin-left: 30px;height: 50px;">
+                    </a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <span class="text-green-gradient" tabindex="0">CONSULTA DE VERBAS</span>
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="header-icons pull-right">
+                        <span class="text-green-gradient user-name ng-binding">Olá,{{vm.User.colleagueName}}</span>
+                        <img class="user-picture" src="/social/api/rest/social/image/profile/admin/X_SMALL_PICTURE"
+                            alt="{{vm.User.colleagueName}}">
+                    </div>
+                </div>
+            </h3>
+        </div>
+
+        <div style="margin-top: 80px;">
+
+            <div class="panel-group" id="accordion">
+
+                <div class="panel panel-default" id="panelFiltros">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="collapse-icon" data-toggle="collapse" href="#collapseFiltros">
+                                Status
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFiltros" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3" ng-repeat="status in vm.Status">
+                                    <div class="form-group">
+                                        <label class="control-label">{{status.name}}</label>
+                                        <input type="checkbox" ng-model="status.selected" fluig-switch
+                                            data-off-text="NÃO" data-on-text="SIM" data-on-color="success">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input ng-model="vm.filtro" class="form-control input-lg" placeholder="Filtro Global">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-stripped" ng-show="vm.Solicitacoes.length > 0">
+                        <thead>
+                            <th>Solicitação</th>
+                            <th>Cliente</th>
+                            <th>Início</th>
+                            <th>Término</th>
+                            <th>Tipo da Ação</th>
+                            <th>Nome da Ação</th>
+                            <th>Total da Verba</th>
+                            <th>Resultado</th>
+                            <th>Valor Liberado</th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="solicitacao in vm.Solicitacoes">
+                                <td>{{solicitacao.solicitacao}}</td>
+                                <td>{{solicitacao.clienteNome}}</td>
+                                <td>{{solicitacao.inicioAcao | date}}</td>
+                                <td>{{solicitacao.terminoAcao | date}}</td>
+                                <td>{{solicitacao.tipoAcaoDescricao}}</td>
+                                <td>{{solicitacao.nomeAcao}}</td>
+                                <td>{{solicitacao.valorTotalVerba | currency}}</td>
+                                <td>{{solicitacao.valorResultado | currency}}</td>
+                                <td>{{solicitacao.valorLiberado | currency}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

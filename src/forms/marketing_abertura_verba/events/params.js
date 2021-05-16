@@ -7,6 +7,9 @@ function getParams(form) {
   Params.user = String(getValue('WKUser'));
   Params.mobile = form.getMobile();
   Params.companyId = form.getCompanyId();
+  Params.managerMode = getValue("WKManagerMode") == 'true';
+
+  log.info(`getValue("WKManagerMode") = ${getValue("WKManagerMode")}`)
 
   Params.atividades = {
     inicio: [1],
@@ -28,6 +31,7 @@ function getParams(form) {
     aprovarVerbaMenor: [75],
     enviarND: [186],
     validarND: [103],
+    gerenciarVales: [202],
     conferirFinanceiro: [113],
     aprovarPagamento: [116],
     gerarAbatimentos: [121],
@@ -38,7 +42,7 @@ function getParams(form) {
   };
 
   for (var atividade in Params.atividades) {
-    if (Params.atividades[atividade].indexOf(parseInt(getValue('WKNumState'))) > -1 ) {
+    if (Params.atividades[atividade].indexOf(parseInt(getValue('WKNumState'))) > -1) {
       Params.etapa = atividade;
     }
   }

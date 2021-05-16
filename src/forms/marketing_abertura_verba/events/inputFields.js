@@ -8,6 +8,8 @@ function inputFields(form) {
   const nextState = getValue("WKNextState");
 
   const clienteNome = value(form, `clienteNome`);
+  const suspenderAcao = value(form, `suspenderAcao`);
+
   const arquivosEvidencias = getChildren(form, `arquivosEvidencias`,
     [`arquivoEv_nome`, `arquivoEv_type`, `arquivoEv_documentid`, `arquivoEv_version`,
       `arquivoEv_url`, `arquivoEv_removed`, `arquivoEv_descricao`, `arquivoEv_aceito`,
@@ -18,7 +20,9 @@ function inputFields(form) {
       `arquivoND_url`, `arquivoND_removed`, `arquivoND_descricao`, `arquivoND_aceito`,
       `arquivoND_motivoRecusa`, `arquivoND_numero`]);
 
-  form.setValue('displaykey', clienteNome);
+  const displaykey = `${suspenderAcao ? 'SUSPENSA - ' : ''} ${clienteNome}`;
+
+  form.setValue('displaykey', displaykey);
 
   if (currentState == Params.atividades.validarMarketing[0]) {
     if (nextState == Params.atividades.gtwAprovarGerMarketing[0]) {
