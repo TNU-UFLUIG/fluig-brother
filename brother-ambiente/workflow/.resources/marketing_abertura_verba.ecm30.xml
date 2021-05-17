@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Abertura de Verba para Ação de Marketing</processId>
-      <version>8</version>
+      <version>9</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>476</formId>
@@ -1393,6 +1393,58 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
+        <sequence>202</sequence>
+      </processStatePK>
+      <stateName>Gerenciar Vales</stateName>
+      <stateDescription>Gerenciar Vales</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AM-Marketing&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>2180</positionX>
+      <positionY>511</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
         <sequence>28</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -1938,6 +1990,31 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
+        <sequence>204</sequence>
+      </processStatePK>
+      <stateName>Concluído?</stateName>
+      <stateDescription>Concluído?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>2200</positionX>
+      <positionY>611</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
         <sequence>148</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -2027,6 +2104,53 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
     </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <sequence>206</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>2130</positionX>
+      <positionY>721</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>6</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
   </list>
   <list>
     <ConditionProcessState>
@@ -2034,7 +2158,7 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>67</sequence>
       </conditionProcessStatePK>
       <condition>checkValor30k()==&apos;maior&apos;</condition>
@@ -2046,7 +2170,7 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>67</sequence>
       </conditionProcessStatePK>
       <condition>checkValor30k()==&apos;ate&apos;</condition>
@@ -2058,7 +2182,7 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>3</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>67</sequence>
       </conditionProcessStatePK>
       <condition>checkValor30k()==&apos;&apos;</condition>
@@ -2070,7 +2194,7 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>176</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -2084,7 +2208,7 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>176</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -2098,7 +2222,7 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>194</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -2110,11 +2234,35 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>194</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
-      <destinationSequenceId>113</destinationSequenceId>
+      <destinationSequenceId>202</destinationSequenceId>
+      <conditionType>1</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>9</version>
+        <sequence>204</sequence>
+      </conditionProcessStatePK>
+      <condition>false</condition>
+      <destinationSequenceId>206</destinationSequenceId>
+      <conditionType>1</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>9</version>
+        <sequence>204</sequence>
+      </conditionProcessStatePK>
+      <condition>false</condition>
+      <destinationSequenceId>202</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
   </list>
@@ -2420,7 +2568,7 @@
       <initialStateSequence>125</initialStateSequence>
       <finalStateSequence>121</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
+      <name>1. Tentar Novamente</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -3011,14 +3159,99 @@
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
-        <linkSequence>201</linkSequence>
+        <linkSequence>203</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>194</initialStateSequence>
+      <finalStateSequence>202</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não. Pagamento em Vales</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <linkSequence>205</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>202</initialStateSequence>
+      <finalStateSequence>204</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <linkSequence>207</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>204</initialStateSequence>
+      <finalStateSequence>206</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>SIM</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <linkSequence>208</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>204</initialStateSequence>
+      <finalStateSequence>202</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>NÃO</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <linkSequence>209</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>125</initialStateSequence>
+      <finalStateSequence>139</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>2. Continuar sem analisar erros</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <linkSequence>210</linkSequence>
+      </processLinkPK>
+      <actionLabel>3. Devolver para Financeiro</actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>125</initialStateSequence>
       <finalStateSequence>113</finalStateSequence>
       <returnLabel></returnLabel>
-      <name>Não</name>
+      <name> 3. Devolver para Financeiro</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -3213,6 +3446,14 @@ function servicetask49(attempt, message) {
   if (Params.atividades.atualizarStatus.indexOf(sequenceId) &gt;= 0) {
     hAPI.setCardValue(&quot;status&quot;, &quot;ENVIO BANCÁRIO&quot;);
     hAPI.setCardValue(&quot;currentStepPortal&quot;, &quot;5&quot;);
+  }
+
+  if (Params.atividades.gerenciarVales.indexOf(sequenceId) &gt;= 0) {
+    hAPI.setCardValue(&quot;status&quot;, &quot;ENVIO DE VALES&quot;);
+    hAPI.setCardValue(&quot;currentStepPortal&quot;, &quot;5&quot;);
+  }
+  if (Params.atividades.gtwVales.indexOf(sequenceId) &gt;= 0) {
+    enviaEmail(&quot;vales&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;);
   }
 
   if (Params.atividades.finalizado.indexOf(sequenceId) &gt;= 0) {
@@ -3416,7 +3657,9 @@ function intermediateconditional132() {
     aprovarPagamento: [116],
     atualizarStatus: [132],
     autorizarNotificacaoPagamento: [139],
-    finalizado: [148],
+    gerenciarVales: [202],
+    gtwVales: [204],
+    finalizado: [148, 206],
     finalizadoSemAntecipacao: [173]
   };
 
@@ -3503,6 +3746,7 @@ function servicetask121(attempt, message) {
   hAPI.setCardValue(&quot;status&quot;, &quot;CANCELADA&quot;);
   hAPI.setCardValue(&quot;motivoCancelamento&quot;, getValue(&quot;WKUserComment&quot;));
   hAPI.setCardValue(&quot;pendenteTotvs&quot;, &quot;S&quot;);
+  enviaEmail(&quot;cancelamento&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;);
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -3689,10 +3933,10 @@ function intermediateconditional180() {
     <SwimLane>
       <color>FFFFFF</color>
       <height>145</height>
-      <width>1601</width>
-      <positionX>520</positionX>
+      <width>511</width>
+      <positionX>10</positionX>
       <positionY>329</positionY>
-      <stateName>Cliente</stateName>
+      <stateName>Gerência de Marketing</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
@@ -3704,11 +3948,11 @@ function intermediateconditional180() {
     </SwimLane>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>186</height>
-      <width>441</width>
-      <positionX>1680</positionX>
-      <positionY>0</positionY>
-      <stateName>Presidência / VP</stateName>
+      <height>145</height>
+      <width>2291</width>
+      <positionX>10</positionX>
+      <positionY>185</positionY>
+      <stateName>Marketing</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
@@ -3716,54 +3960,6 @@ function intermediateconditional180() {
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
         <sequence>2</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>FFFFFF</color>
-      <height>186</height>
-      <width>1051</width>
-      <positionX>10</positionX>
-      <positionY>0</positionY>
-      <stateName>Solicitante</stateName>
-      <type>2</type>
-      <parentSequence>0</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>marketing_abertura_verba</processId>
-        <version>1</version>
-        <sequence>3</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>FFFFFF</color>
-      <height>145</height>
-      <width>511</width>
-      <positionX>10</positionX>
-      <positionY>473</positionY>
-      <stateName>Presidência / VP</stateName>
-      <type>2</type>
-      <parentSequence>0</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>marketing_abertura_verba</processId>
-        <version>1</version>
-        <sequence>4</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>FFFFFF</color>
-      <height>186</height>
-      <width>621</width>
-      <positionX>1060</positionX>
-      <positionY>0</positionY>
-      <stateName>Gerência Financeira</stateName>
-      <type>2</type>
-      <parentSequence>0</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>marketing_abertura_verba</processId>
-        <version>1</version>
-        <sequence>5</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
@@ -3779,39 +3975,23 @@ function intermediateconditional180() {
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
-        <sequence>6</sequence>
+        <sequence>3</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>145</height>
-      <width>2111</width>
-      <positionX>10</positionX>
-      <positionY>185</positionY>
-      <stateName>Marketing</stateName>
-      <type>2</type>
-      <parentSequence>0</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>marketing_abertura_verba</processId>
-        <version>1</version>
-        <sequence>7</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>FFFFFF</color>
-      <height>145</height>
-      <width>241</width>
-      <positionX>1450</positionX>
+      <height>349</height>
+      <width>611</width>
+      <positionX>1690</positionX>
       <positionY>473</positionY>
-      <stateName>Totvs</stateName>
+      <stateName>Financeiro</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
-        <sequence>8</sequence>
+        <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
@@ -3819,15 +3999,15 @@ function intermediateconditional180() {
       <height>145</height>
       <width>511</width>
       <positionX>10</positionX>
-      <positionY>329</positionY>
-      <stateName>Gerência de Marketing</stateName>
+      <positionY>473</positionY>
+      <stateName>Presidência / VP</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
-        <sequence>9</sequence>
+        <sequence>5</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
@@ -3843,16 +4023,80 @@ function intermediateconditional180() {
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
         <version>1</version>
+        <sequence>6</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>145</height>
+      <width>1781</width>
+      <positionX>520</positionX>
+      <positionY>329</positionY>
+      <stateName>Cliente</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>186</height>
+      <width>621</width>
+      <positionX>1060</positionX>
+      <positionY>0</positionY>
+      <stateName>Gerência Financeira</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <sequence>8</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>145</height>
+      <width>241</width>
+      <positionX>1450</positionX>
+      <positionY>473</positionY>
+      <stateName>Totvs</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>186</height>
+      <width>1051</width>
+      <positionX>10</positionX>
+      <positionY>0</positionY>
+      <stateName>Solicitante</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>1</version>
         <sequence>10</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>349</height>
-      <width>431</width>
-      <positionX>1690</positionX>
-      <positionY>473</positionY>
-      <stateName>Financeiro</stateName>
+      <height>186</height>
+      <width>621</width>
+      <positionX>1680</positionX>
+      <positionY>0</positionY>
+      <stateName>Presidência / VP</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
@@ -3916,7 +4160,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -3927,7 +4171,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -3938,7 +4182,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>22</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -3949,7 +4193,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>34</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -3960,7 +4204,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>50</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -3971,7 +4215,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>77</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -3982,7 +4226,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>115</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -3993,7 +4237,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>115</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4004,7 +4248,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>115</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -4015,7 +4259,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>115</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -4026,7 +4270,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>117</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4037,7 +4281,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>135</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4048,7 +4292,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>141</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4059,7 +4303,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>141</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4070,7 +4314,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>141</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -4081,7 +4325,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>149</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4092,7 +4336,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>152</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4103,7 +4347,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>152</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4114,7 +4358,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>160</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4125,7 +4369,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>162</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4136,7 +4380,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>166</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4147,7 +4391,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>166</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4158,7 +4402,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>166</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -4169,7 +4413,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>167</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4180,7 +4424,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>167</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4191,7 +4435,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>169</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4202,7 +4446,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>171</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4213,7 +4457,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>172</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4224,7 +4468,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>172</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4235,7 +4479,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>174</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4246,7 +4490,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>175</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4257,7 +4501,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>178</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4268,7 +4512,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>178</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4279,7 +4523,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>179</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4290,7 +4534,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>181</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4301,7 +4545,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>182</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4312,7 +4556,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>182</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4323,7 +4567,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>182</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -4334,7 +4578,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>183</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4345,7 +4589,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>183</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4356,7 +4600,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>191</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4367,7 +4611,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>195</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4378,7 +4622,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>195</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4389,7 +4633,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>198</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4400,7 +4644,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>198</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4411,7 +4655,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>199</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4422,7 +4666,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>199</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -4433,7 +4677,7 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>200</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -4444,23 +4688,100 @@ function intermediateconditional180() {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
-        <linkSequence>201</linkSequence>
+        <version>9</version>
+        <linkSequence>203</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>1663</positionX>
-      <positionY>435</positionY>
+      <positionX>1705</positionX>
+      <positionY>420</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
-        <linkSequence>201</linkSequence>
+        <version>9</version>
+        <linkSequence>203</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>1996</positionX>
-      <positionY>435</positionY>
+      <positionX>2232</positionX>
+      <positionY>420</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>207</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>2231</positionX>
+      <positionY>738</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>208</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>2143</positionX>
+      <positionY>662</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>208</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>2143</positionX>
+      <positionY>546</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>209</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1773</positionX>
+      <positionY>661</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>210</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1592</positionX>
+      <positionY>806</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>210</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>2118</positionX>
+      <positionY>806</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
+        <version>9</version>
+        <linkSequence>210</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>2118</positionX>
+      <positionY>601</positionY>
     </ProcessLinkBend>
   </list>
   <list>
@@ -4468,21 +4789,21 @@ function intermediateconditional180() {
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <stateSequence>129</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
-      <runType>1</runType>
+      <runType>2</runType>
       <type>3</type>
       <value>marketing_abertura_verba.intermediateconditional129.js</value>
-      <timeTrigger>0:0:0</timeTrigger>
-      <frequencia>06</frequencia>
+      <timeTrigger>6:0:0</timeTrigger>
+      <frequencia>01</frequencia>
     </ProcessStateTrigger>
     <ProcessStateTrigger>
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <stateSequence>132</stateSequence>
         <triggerSequence>1</triggerSequence>
       </processStateTriggerPK>
@@ -4496,7 +4817,7 @@ function intermediateconditional180() {
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <stateSequence>180</stateSequence>
         <triggerSequence>2</triggerSequence>
       </processStateTriggerPK>
@@ -4510,7 +4831,7 @@ function intermediateconditional180() {
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
-        <version>8</version>
+        <version>9</version>
         <stateSequence>186</stateSequence>
         <triggerSequence>3</triggerSequence>
       </processStateTriggerPK>
@@ -4608,10 +4929,19 @@ function intermediateconditional180() {
       <processFormFieldPK>
         <companyId>1</companyId>
         <processId>marketing_abertura_verba</processId>
+        <fieldId>statusVales</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Status Vales</fieldDescription>
+      <slotId>10</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>marketing_abertura_verba</processId>
         <fieldId>terminoAcao_f</fieldId>
       </processFormFieldPK>
       <fieldDescription>Término da Ação</fieldDescription>
-      <slotId>10</slotId>
+      <slotId>11</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
@@ -4620,7 +4950,7 @@ function intermediateconditional180() {
         <fieldId>tipoAcaoDescricao</fieldId>
       </processFormFieldPK>
       <fieldDescription>Tipo da Ação</fieldDescription>
-      <slotId>11</slotId>
+      <slotId>12</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
@@ -4629,7 +4959,7 @@ function intermediateconditional180() {
         <fieldId>valorLiberado_f</fieldId>
       </processFormFieldPK>
       <fieldDescription>Valor Liberado</fieldDescription>
-      <slotId>12</slotId>
+      <slotId>13</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
@@ -4638,7 +4968,7 @@ function intermediateconditional180() {
         <fieldId>valorResultado_f</fieldId>
       </processFormFieldPK>
       <fieldDescription>Resultado Apresentado</fieldDescription>
-      <slotId>13</slotId>
+      <slotId>14</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
@@ -4647,7 +4977,7 @@ function intermediateconditional180() {
         <fieldId>valorTotalVerba_f</fieldId>
       </processFormFieldPK>
       <fieldDescription>Total da Verba</fieldDescription>
-      <slotId>14</slotId>
+      <slotId>15</slotId>
     </ProcessFormField>
   </list>
   <list>
@@ -4724,7 +5054,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>2</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -4734,7 +5064,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>2</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -4749,7 +5079,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>2</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -4759,7 +5089,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>2</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -4769,7 +5099,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>2</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -4779,7 +5109,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>4</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -4789,7 +5119,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>4</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -4801,7 +5131,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>4</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -4811,7 +5141,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>4</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -4821,7 +5151,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>4</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -4831,7 +5161,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>6</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -4841,7 +5171,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>6</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -4853,7 +5183,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>6</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -4863,7 +5193,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>6</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -4873,7 +5203,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>6</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -4883,7 +5213,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>75</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -4893,7 +5223,7 @@ function intermediateconditional180() {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>75</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -4909,7 +5239,7 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>75</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -4919,7 +5249,7 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>75</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -4929,7 +5259,7 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>75</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -4939,7 +5269,7 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>103</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -4949,7 +5279,7 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>103</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -4964,7 +5294,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>103</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -4974,7 +5304,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>103</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -4984,7 +5314,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>103</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -4994,7 +5324,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>116</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -5004,7 +5334,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>116</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -5019,7 +5349,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>116</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -5029,7 +5359,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>116</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -5039,7 +5369,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>116</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -5049,7 +5379,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>151</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -5059,7 +5389,7 @@ Valor Liberado: @[form:valorLiberado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>151</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -5075,7 +5405,7 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>marketing_abertura_verba</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>151</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -5118,6 +5448,24 @@ Diferença: @[form:diferencaResultado_f]&#xd;
       <field>necEnvioNd</field>
       <value>false</value>
       <operator>1</operator>
+      <valueType>1</valueType>
+    </ConditionProcessAutomaticRules>
+    <ConditionProcessAutomaticRules>
+      <sequence>204</sequence>
+      <expressionOrder>1</expressionOrder>
+      <ruleOrder>1</ruleOrder>
+      <field>statusVales</field>
+      <value>entregue</value>
+      <operator>1</operator>
+      <valueType>1</valueType>
+    </ConditionProcessAutomaticRules>
+    <ConditionProcessAutomaticRules>
+      <sequence>204</sequence>
+      <expressionOrder>2</expressionOrder>
+      <ruleOrder>1</ruleOrder>
+      <field>statusVales</field>
+      <value>entregue</value>
+      <operator>2</operator>
       <valueType>1</valueType>
     </ConditionProcessAutomaticRules>
   </list>

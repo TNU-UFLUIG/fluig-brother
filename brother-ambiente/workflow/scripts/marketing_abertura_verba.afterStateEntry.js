@@ -98,6 +98,14 @@ function afterStateEntry(sequenceId) {
     hAPI.setCardValue("currentStepPortal", "5");
   }
 
+  if (Params.atividades.gerenciarVales.indexOf(sequenceId) >= 0) {
+    hAPI.setCardValue("status", "ENVIO DE VALES");
+    hAPI.setCardValue("currentStepPortal", "5");
+  }
+  if (Params.atividades.gtwVales.indexOf(sequenceId) >= 0) {
+    enviaEmail("vales", "S", "S", "S");
+  }
+
   if (Params.atividades.finalizado.indexOf(sequenceId) >= 0) {
     hAPI.setCardValue("status", "FINALIZADO");
     hAPI.setCardValue("currentStepPortal", "5");

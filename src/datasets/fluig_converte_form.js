@@ -7,7 +7,7 @@ function onSync(lastSyncDate) {
 }
 
 function createDataset(fields, constraints, sortFields) {
-  var codDoctoPai = 2618;
+  var codDoctoPai = 467;
   var codEmpresa = 1;
   var altera = true;
 
