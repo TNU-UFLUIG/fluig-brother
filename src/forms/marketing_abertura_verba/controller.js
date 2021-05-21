@@ -81,7 +81,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.checkEtapa();
         });
 
-        fluigService.getPasta(vm.Params.companyId, 'Cadastros%7CMarketing%7CAnexos').then(pasta => {
+        fluigService.getPasta(vm.Params.companyId || 1, 'Cadastros%7CMarketing%7CAnexos').then(pasta => {
           vm.Formulario.folderAttach = pasta[0].documentId;
         });
 
@@ -750,7 +750,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
         console.log('vm.Formulario.tipoAcao = ', vm.Formulario.tipoAcao)
 
-        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo) {
+        if (vm.Formulario.tipoAcao && vm.Formulario.tipoAcao.tipoAcaoCodigo && vm.Formulario.tipoSellout !== 'target') {
 
           switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
             case 'sellout':

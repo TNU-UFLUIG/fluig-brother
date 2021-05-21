@@ -33,9 +33,10 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
+    // { field: 'solicitacao', value: '1813' },
     { field: 'pendenteTotvs', value: 'S' },
-    // { field: 'tipoAcaoCodigo', value: 'spiff' },
-    // { field: 'tipoSpiff', value: 'target' },
+    // { field: 'tipoAcaoCodigo', value: 'sellin' },
+    // { field: 'solicitacao', value: '13461' },
 
   ]);
 
@@ -56,7 +57,7 @@ function buscaDataset(fields, constraints, sortFields) {
   let solicitacaoCampos = [
     { name: 'solicitacao' }, { name: 'importado' }, { name: 'clienteCodigo' }, { name: 'tipoAcaoDescricao' }, { name: 'tipoAcaoCodigo' },
     { name: 'inicioAcao', type: 'date' }, { name: 'terminoAcao', type: 'date' }, { name: 'tipoQuantidade' }, { name: 'nomeAcao' },
-    { name: 'tipoSellin' }, { name: 'tipoVpc' }, { name: 'tipoSpiff' }, { name: 'descricaoDetalhada' },
+    { name: 'tipoSellin' }, { name: 'tipoSellout' }, { name: 'tipoVpc' }, { name: 'tipoSpiff' }, { name: 'descricaoDetalhada' },
     { name: 'valorTotalVerba', type: 'decimal' }, { name: 'gpMedioSugerido', type: 'perc' }, { name: 'numControle' },
     { name: 'dataAbertura', type: 'date' }, { name: 'solicitanteNome' }, { name: 'solicitanteCodigo' }, { name: 'atividade' },
     { name: 'responsavel' }, { name: 'statusAprovGerMarketing' }, { name: 'dataAprovGerMarketing', type: 'date' },
@@ -185,7 +186,7 @@ function buscaDataset(fields, constraints, sortFields) {
     var properties = {};
     properties["receive.timeout"] = "60000";
 
-    // log.info('*** totvs_atualiza_fluxo_marketing 1');
+    // log.info(`*** totvs_atualiza_fluxo_marketing 1 ${JSON.stringify(ttParams)}`);
 
     // const json = jsonLocal();
     try {
@@ -246,8 +247,10 @@ function replaceSpecialChars(str) {
     .replace(/”/g, "'")
     .replace(/“/g, "'")
     .replace(/"/g, "'")
+    .replace(/…/g, '.')
     // .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;<>?!@$%&*{}\/ ]/g, "");
-    .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, "");
+    .replace(/[•€„…†‡ˆ‰Š‹ŒŽš›œ—–žŸ¡Ÿ¢£¤¥¦¨©️ª«¬®️¯°±²³µ¶·¸¹º»¼½¾¿ÄÅÆËÎÏÐÖ×ØÜÝÞßäåæëïö÷øüýþÿ¢¥┐¤¦■±≡]/g, '')
+    .replace(/[^-a-zA-Z0-9À-ÿ\t\r\n#°.,():;'?!@$%*{}[]\/ ]/g, '');
   // .substr(0,600)
 }
 

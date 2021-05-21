@@ -23,7 +23,7 @@ function params() {
     autorizarNotificacaoPagamento: [139],
     gerenciarVales: [202],
     gtwVales: [204],
-    finalizado: [148],
+    finalizado: [148, 206],
     finalizadoSemAntecipacao: [173]
   };
 

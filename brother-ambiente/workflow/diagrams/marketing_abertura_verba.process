@@ -2,20 +2,20 @@
   <pi:Diagram diagramTypeId="BPMNdiagram" gridUnit="10" name="marketing_abertura_verba" pictogramLinks="/0/@children.10/@link /0/@children.9/@link /0/@children.8/@link /0/@children.7/@link /0/@children.6/@link /0/@children.5/@link /0/@children.4/@link /0/@children.3/@link /0/@children.2/@link /0/@children.1/@link /0/@children.0/@link /0/@children.11/@link /0/@children.12/@link /0/@children.13/@link /0/@children.14/@link /0/@children.15/@link /0/@children.16/@link /0/@children.17/@link /0/@children.18/@link /0/@children.19/@link /0/@children.20/@link /0/@children.21/@link /0/@children.22/@link /0/@children.23/@link /0/@children.24/@link /0/@children.25/@link /0/@children.26/@link /0/@children.27/@link /0/@children.28/@link /0/@children.29/@link /0/@children.30/@link /0/@children.31/@link /0/@children.32/@link /0/@children.33/@link /0/@children.34/@link /0/@children.35/@link /0/@children.36/@link /0/@children.37/@link /0/@children.38/@link /0/@children.39/@link /0/@children.40/@link /0/@children.41/@link /0/@children.42/@link /0/@children.43/@link /0/@children.44/@link /0/@children.45/@link /0/@children.46/@link /0/@children.47/@link /0/@children.48/@link /0/@children.49/@link /0/@children.50/@link /0/@children.51/@link /0/@children.52/@link /0/@children.53/@link /0/@children.54/@link /0/@children.55/@link /0/@children.56/@link /0/@connections.0/@link /0/@connections.1/@link /0/@connections.2/@link /0/@connections.3/@link /0/@connections.4/@link /0/@connections.5/@link /0/@connections.6/@link /0/@connections.7/@link /0/@connections.8/@link /0/@connections.9/@link /0/@connections.10/@link /0/@connections.11/@link /0/@connections.12/@link /0/@connections.13/@link /0/@connections.14/@link /0/@connections.15/@link /0/@connections.16/@link /0/@connections.17/@link /0/@connections.18/@link /0/@connections.19/@link /0/@connections.20/@link /0/@connections.21/@link /0/@connections.22/@link /0/@connections.23/@link /0/@connections.24/@link /0/@connections.25/@link /0/@connections.26/@link /0/@connections.27/@link /0/@connections.28/@link /0/@connections.29/@link /0/@connections.30/@link /0/@connections.31/@link /0/@connections.32/@link /0/@connections.33/@link /0/@connections.34/@link /0/@connections.35/@link /0/@connections.36/@link /0/@connections.37/@link /0/@connections.38/@link /0/@connections.39/@link /0/@connections.40/@link /0/@connections.41/@link /0/@connections.42/@link /0/@connections.43/@link /0/@connections.44/@link /0/@connections.45/@link /0/@connections.46/@link /0/@connections.47/@link /0/@connections.48/@link /0/@connections.49/@link /0/@connections.50/@link /0/@connections.51/@link /0/@connections.52/@link /0/@connections.53/@link /0/@connections.54/@link /0/@connections.55/@link /0/@connections.56/@link /0/@connections.57/@link /0/@connections.58/@link /0/@connections.59/@link" snapToGrid="true" version="0.17.0" visible="true">
     <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.0" height="1000" lineWidth="1" transparency="0.0" width="1000" xsi:type="al:Rectangle"/>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.21" transparency="0.0" width="511" x="10" xsi:type="al:Rectangle" y="329"/>
-      <link businessObjects="bpmnswimlane7"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="186" lineWidth="1" style="/0/@styles.21" transparency="0.0" width="621" x="1680" xsi:type="al:Rectangle"/>
+      <link businessObjects="bpmnswimlane4"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.0/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.22" transparency="0.0" value="Ger&#234;ncia de Marketing" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="186" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.22" transparency="0.0" value="Presid&#234;ncia / VP" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
       <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="186" lineWidth="1" style="/0/@styles.19" transparency="0.0" width="1051" x="10" xsi:type="al:Rectangle"/>
-      <link businessObjects="bpmnswimlane3"/>
+      <link businessObjects="bpmnswimlane10"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.1/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
@@ -26,31 +26,31 @@
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.17" transparency="0.0" width="1781" x="520" xsi:type="al:Rectangle" y="329"/>
-      <link businessObjects="bpmnswimlane2"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.17" transparency="0.0" width="241" x="1450" xsi:type="al:Rectangle" y="473"/>
+      <link businessObjects="bpmnswimlane5"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.2/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.18" transparency="0.0" value="Cliente" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.18" transparency="0.0" value="Totvs" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="205" lineWidth="1" style="/0/@styles.15" transparency="0.0" width="1681" x="10" xsi:type="al:Rectangle" y="617"/>
-      <link businessObjects="bpmnswimlane1"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="186" lineWidth="1" style="/0/@styles.15" transparency="0.0" width="621" x="1060" xsi:type="al:Rectangle"/>
+      <link businessObjects="bpmnswimlane3"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.3/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="205" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.16" transparency="0.0" value="TI" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="186" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.16" transparency="0.0" value="Ger&#234;ncia Financeira" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.13" transparency="0.0" width="511" x="10" xsi:type="al:Rectangle" y="473"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.13" transparency="0.0" width="1781" x="520" xsi:type="al:Rectangle" y="329"/>
       <link businessObjects="bpmnswimlane9"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -58,60 +58,60 @@
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.14" transparency="0.0" value="Presid&#234;ncia / VP" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.14" transparency="0.0" value="Cliente" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="349" lineWidth="1" style="/0/@styles.11" transparency="0.0" width="611" x="1690" xsi:type="al:Rectangle" y="473"/>
-      <link businessObjects="bpmnswimlane4"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="205" lineWidth="1" style="/0/@styles.11" transparency="0.0" width="1681" x="10" xsi:type="al:Rectangle" y="617"/>
+      <link businessObjects="bpmnswimlane8"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.5/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="349" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.12" transparency="0.0" value="Financeiro" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="205" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.12" transparency="0.0" value="TI" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.9" transparency="0.0" width="241" x="1450" xsi:type="al:Rectangle" y="473"/>
-      <link businessObjects="bpmnswimlane10"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.9" transparency="0.0" width="511" x="10" xsi:type="al:Rectangle" y="473"/>
+      <link businessObjects="bpmnswimlane7"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.6/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.10" transparency="0.0" value="Totvs" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.10" transparency="0.0" value="Presid&#234;ncia / VP" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="186" lineWidth="1" style="/0/@styles.7" transparency="0.0" width="621" x="1680" xsi:type="al:Rectangle"/>
-      <link businessObjects="bpmnswimlane11"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="349" lineWidth="1" style="/0/@styles.7" transparency="0.0" width="611" x="1690" xsi:type="al:Rectangle" y="473"/>
+      <link businessObjects="bpmnswimlane6"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.7/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="186" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.8" transparency="0.0" value="Presid&#234;ncia / VP" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="349" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.8" transparency="0.0" value="Financeiro" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="186" lineWidth="1" style="/0/@styles.5" transparency="0.0" width="621" x="1060" xsi:type="al:Rectangle"/>
-      <link businessObjects="bpmnswimlane8"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.5" transparency="0.0" width="931" x="520" xsi:type="al:Rectangle" y="473"/>
+      <link businessObjects="bpmnswimlane1"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.8/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="186" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.6" transparency="0.0" value="Ger&#234;ncia Financeira" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.6" transparency="0.0" value="Fluig" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
       <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.3" transparency="0.0" width="2291" x="10" xsi:type="al:Rectangle" y="185"/>
-      <link businessObjects="bpmnswimlane6"/>
+      <link businessObjects="bpmnswimlane2"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.9/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
@@ -122,15 +122,15 @@
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.0" transparency="0.0" width="931" x="520" xsi:type="al:Rectangle" y="473"/>
-      <link businessObjects="bpmnswimlane5"/>
+      <graphicsAlgorithm background="/0/@styles.23/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="145" lineWidth="1" style="/0/@styles.0" transparency="0.0" width="511" x="10" xsi:type="al:Rectangle" y="329"/>
+      <link businessObjects="bpmnswimlane11"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors active="true" referencedGraphicsAlgorithm="/0/@children.10/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
         <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.2" transparency="0.0" value="Fluig" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="145" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.2" transparency="0.0" value="Ger&#234;ncia de Marketing" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
       </children>
     </children>
     <children active="true" visible="true" xsi:type="pi:ContainerShape">
@@ -6653,17 +6653,17 @@
     <fonts name="Arial" size="8"/>
     <fonts bold="true" name="Arial" size="11"/>
   </pi:Diagram>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane5" name="Fluig"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane6" name="Marketing"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane8" name="Ger&#234;ncia Financeira"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane11" name="Presid&#234;ncia / VP"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane10" name="Totvs"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane4" name="Financeiro"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane9" name="Presid&#234;ncia / VP"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane1" name="TI"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane2" name="Cliente"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane3" name="Solicitante"/>
-  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane7" name="Ger&#234;ncia de Marketing"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane11" name="Ger&#234;ncia de Marketing"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane2" name="Marketing"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane1" name="Fluig"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane6" name="Financeiro"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane7" name="Presid&#234;ncia / VP"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane8" name="TI"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane9" name="Cliente"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane3" name="Ger&#234;ncia Financeira"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane5" name="Totvs"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane10" name="Solicitante"/>
+  <bpmn2:BpmnSwimLane cores="FFFFFF" id="bpmnswimlane4" name="Presid&#234;ncia / VP"/>
   <bpmn2:BpmnStartEvent esforcoCalculo="0" expediente="" extendedFields="&lt;list/&gt;" id="startevent1" name="In&#237;cio" outgoing="flow13" selecionaColaboradores="1" signalId="0" type="10"/>
   <bpmn2:BpmnTask appsConfiguration="&lt;map&gt;&#10;  &lt;entry&gt;&#10;    &lt;string&gt;approval&lt;/string&gt;&#10;    &lt;list&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;title&lt;/appField&gt;&#10;        &lt;description&gt; @[form:tipoAcaoDescricao]&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;description&lt;/appField&gt;&#10;        &lt;description&gt;A&#231;&#227;o de @[form:tipoAcaoDescricao] para o cliente @[form:clienteNome] iniciando em @[form:inicioAcao_f] at&#233; @[form:terminoAcao_f]&amp;#xd;&#10;&amp;#xd;&#10;@[form:descricaoDetalhada]&amp;#xd;&#10;&amp;#xd;&#10;&amp;#xd;&#10;&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;highlight&lt;/appField&gt;&#10;        &lt;description&gt;@[form:valorTotalVerba_f]&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;approve&lt;/appField&gt;&#10;        &lt;description&gt;176&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;reject&lt;/appField&gt;&#10;        &lt;description&gt;8&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;    &lt;/list&gt;&#10;  &lt;/entry&gt;&#10;&lt;/map&gt;" authNotify="true" esforcoCalculo="0" executionAttempts="0" expediente="" extendedFields="&lt;list/&gt;" frequency="0" id="task2" incoming="flow13 flow22 flow159" loopType="0" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;&#10;  &lt;groupId&gt;AM-Marketing&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Pool Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;" managerMechanism="Pool Grupo" name="Validar Solicita&#231;&#227;o" outgoing="flow157 flow179" selecionaColaboradores="1" type="80"/>
   <bpmn2:BpmnTask appsConfiguration="&lt;map&gt;&#10;  &lt;entry&gt;&#10;    &lt;string&gt;approval&lt;/string&gt;&#10;    &lt;list&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;title&lt;/appField&gt;&#10;        &lt;description&gt;@[form:tipoAcaoDescricao]&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;description&lt;/appField&gt;&#10;        &lt;description&gt;A&#231;&#227;o de @[form:tipoAcaoDescricao] para o cliente @[form:clienteNome] iniciando em @[form:inicioAcao_f] at&#233; @[form:terminoAcao_f]&amp;#xd;&#10;&amp;#xd;&#10;@[form:descricaoDetalhada]&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;highlight&lt;/appField&gt;&#10;        &lt;description&gt;@[form:valorTotalVerba_f]&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;approve&lt;/appField&gt;&#10;        &lt;description&gt;6&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;      &lt;org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;        &lt;appField&gt;reject&lt;/appField&gt;&#10;        &lt;description&gt;2&lt;/description&gt;&#10;      &lt;/org.eclipse.bpmn2.documentacional.BpmnProcessAppConfiguration&gt;&#10;    &lt;/list&gt;&#10;  &lt;/entry&gt;&#10;&lt;/map&gt;" authNotify="true" esforcoCalculo="0" executionAttempts="0" expediente="" extendedFields="&lt;list/&gt;" frequency="0" id="task4" incoming="flow177" loopType="0" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;&#10;  &lt;groupId&gt;AM-GerMarketing&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Pool Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;" managerMechanism="Pool Grupo" name="Aprovar Solicita&#231;&#227;o" outgoing="flow159 flow160" selecionaColaboradores="1" type="80"/>
@@ -6710,7 +6710,7 @@
   <bpmn2:BpmnEndEvent extendedFields="&lt;list/&gt;" id="endevent206" incoming="flow207" name="Fim" signalId="0" type="60"/>
   <bpmn2:BpmnAnnotation id="annotationtask184" name="Enviar Evid&#234;ncias via Portal" outgoing="flow185" type="0"/>
   <bpmn2:BpmnAnnotation id="annotationtask192" name="Enviar ND via Portal" outgoing="flow193" type="0"/>
-  <bpmn2:BpmnProcess author="" cardIndex="2618" category="Marketing" complementsLevel="1" descriptorFields="&lt;list&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;clienteNome&lt;/id&gt;&#10;    &lt;label&gt;Cliente&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;dataAbertura_f&lt;/id&gt;&#10;    &lt;label&gt;Abertura&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;descricaoDetalhada&lt;/id&gt;&#10;    &lt;label&gt;Descri&#231;&#227;o Detalhada&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;executivoNome&lt;/id&gt;&#10;    &lt;label&gt;Executivo&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;gpMedioSugerido_f&lt;/id&gt;&#10;    &lt;label&gt;GP M&#233;dio Sugerido&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;inicioAcao_f&lt;/id&gt;&#10;    &lt;label&gt;In&#237;cio da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;nomeAcao&lt;/id&gt;&#10;    &lt;label&gt;Nome da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;solicitanteNome&lt;/id&gt;&#10;    &lt;label&gt;Solicitante&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;status&lt;/id&gt;&#10;    &lt;label&gt;Status&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;statusVales&lt;/id&gt;&#10;    &lt;label&gt;Status Vales&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;terminoAcao_f&lt;/id&gt;&#10;    &lt;label&gt;T&#233;rmino da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;tipoAcaoDescricao&lt;/id&gt;&#10;    &lt;label&gt;Tipo da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;valorLiberado_f&lt;/id&gt;&#10;    &lt;label&gt;Valor Liberado&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;valorResultado_f&lt;/id&gt;&#10;    &lt;label&gt;Resultado Apresentado&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;valorTotalVerba_f&lt;/id&gt;&#10;    &lt;label&gt;Total da Verba&lt;/label&gt;&#10;    &lt;cardIndex&gt;2618 - Abertura de Verba de Marketing&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;&lt;/list&gt;" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="marketing_abertura_verba" instruction="" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;&#10;  &lt;groupId&gt;AM-Gestores&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;" managerMechanism="Grupo" mobileReady="true" name="Abertura de Verba para A&#231;&#227;o de Marketing" notifyRequisitionerComplements="true" notifyResponsibleComplements="true" publicProcess="true" serverId="Teste" version="27" volume="Default"/>
+  <bpmn2:BpmnProcess author="" cardIndex="476" category="Marketing" complementsLevel="1" descriptorFields="&lt;list&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;clienteNome&lt;/id&gt;&#10;    &lt;label&gt;Cliente&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;dataAbertura_f&lt;/id&gt;&#10;    &lt;label&gt;Abertura&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;descricaoDetalhada&lt;/id&gt;&#10;    &lt;label&gt;Descri&#231;&#227;o Detalhada&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;executivoNome&lt;/id&gt;&#10;    &lt;label&gt;Executivo&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;gpMedioSugerido_f&lt;/id&gt;&#10;    &lt;label&gt;GP M&#233;dio Sugerido&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;inicioAcao_f&lt;/id&gt;&#10;    &lt;label&gt;In&#237;cio da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;nomeAcao&lt;/id&gt;&#10;    &lt;label&gt;Nome da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;solicitanteNome&lt;/id&gt;&#10;    &lt;label&gt;Solicitante&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;status&lt;/id&gt;&#10;    &lt;label&gt;Status&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;statusVales&lt;/id&gt;&#10;    &lt;label&gt;Status Vales&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;terminoAcao_f&lt;/id&gt;&#10;    &lt;label&gt;T&#233;rmino da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;tipoAcaoDescricao&lt;/id&gt;&#10;    &lt;label&gt;Tipo da A&#231;&#227;o&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;valorLiberado_f&lt;/id&gt;&#10;    &lt;label&gt;Valor Liberado&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;valorResultado_f&lt;/id&gt;&#10;    &lt;label&gt;Resultado Apresentado&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;  &lt;org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;    &lt;id&gt;valorTotalVerba_f&lt;/id&gt;&#10;    &lt;label&gt;Total da Verba&lt;/label&gt;&#10;    &lt;cardIndex&gt;&lt;/cardIndex&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.BpmnProcessFormField&gt;&#10;&lt;/list&gt;" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="marketing_abertura_verba" instruction="" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;&#10;  &lt;groupId&gt;AM-Gestores&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;" managerMechanism="Grupo" mobileReady="true" name="Abertura de Verba para A&#231;&#227;o de Marketing" notifyRequisitionerComplements="true" notifyResponsibleComplements="true" publicProcess="true" serverId="Produ&#231;&#227;o" version="9" volume="Default"/>
   <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow13" name="" sourceRef="startevent1" targetRef="task2"/>
   <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow22" name="" sourceRef="task8" targetRef="task2"/>
   <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow29" name="" sourceRef="intermediateerror28" targetRef="task27"/>
