@@ -33,9 +33,10 @@ function buscaDataset(fields, constraints, sortFields) {
   let params = getConstraints(constraints);
 
   let solicitacoes = getDataset('marketing_abertura_verba', null, [
-    // { field: 'solicitacao', value: '1813' },
+    // { field: 'solicitacao', value: '2296' },
     { field: 'pendenteTotvs', value: 'S' },
-    // { field: 'tipoAcaoCodigo', value: 'sellin' },
+    // { field: 'tipoAcaoCodigo', value: 'spiff' },
+    // { field: 'tipoSpiff', value: 'target' },
     // { field: 'solicitacao', value: '13461' },
 
   ]);
@@ -69,6 +70,8 @@ function buscaDataset(fields, constraints, sortFields) {
   // log.info(`solicitacoes.length = ${solicitacoes.length}`);
 
   solicitacoes.forEach(solicitacao => {
+
+    // if (Number(solicitacao.solicitacao) == 12478 || Number(solicitacao.solicitacao) == 2296 || Number(solicitacao.solicitacao) == 1872 || Number(solicitacao.solicitacao) == 1370) {
 
     let objSolicitacao = {};
     solicitacaoCampos.forEach(c => { objSolicitacao[c.ttName || c.name] = String(solicitacao[c.name]) == "null" ? "" : String(solicitacao[c.name]) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(solicitacao[c.name]), true), true) : replaceSpecialChars(String(solicitacao[c.name])) });
@@ -168,7 +171,7 @@ function buscaDataset(fields, constraints, sortFields) {
         paramTable.campos.forEach(c => {
 
           let value = String(objTable[`${paramTable.fieldPref}_${c.name}`] || '');
-          obj[c.ttName || c.name] = String(value) == "null" ? "" : String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : String(value);
+          obj[c.ttName || c.name] = String(value) == "null" ? "" : String(value) == "NaN" ? "" : c.type == 'date' ? String(dateDDMMYYY(Number(value), true)) : replaceSpecialChars(String(value));
         })
 
         if (!ttParams[paramTable.tt]) {
@@ -177,6 +180,7 @@ function buscaDataset(fields, constraints, sortFields) {
         ttParams[paramTable.tt].push(obj);
       })
     })
+    // }
   })
 
   let json = {};
@@ -204,18 +208,18 @@ function buscaDataset(fields, constraints, sortFields) {
       })
     }
 
-    log.info('*** totvs_atualiza_fluxo_marketing 2');
+    // log.info('*** totvs_atualiza_fluxo_marketing 2');
 
     if (json && json.ttStatus) {
-      log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
+      // log.info('*** totvs_atualiza_fluxo_marketing entrou na json.ttStatus')
       json.ttStatus.forEach(status => {
 
-        log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
+        // log.info('*** totvs_atualiza_fluxo_marketing solicitacao: ' + status.solicitacao);
 
         let solicitacao = solicitacoes.filter(s => s.solicitacao == status.solicitacao)[0];
 
-        log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
-        log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
+        // log.info('*** totvs_atualiza_fluxo_marketing solicitacao.documentid: ' + solicitacao.documentid);
+        // log.info('*** totvs_atualiza_fluxo_marketing status.retorno: ' + status.retorno);
 
         if (solicitacao) {
 
