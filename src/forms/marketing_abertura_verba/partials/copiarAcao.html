@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="acaoCopiada_i" class="control-label">Copiar Dados da Ação</label>
       <input fluig-error="form.acaoCopiada_i.$error" class="form-control input-lg" fluig-autocomplete
-        dataset="marketing_abertura_verba" display-key="displaykey" ng-model="vm.Formulario.acaoCopiada"
+        values="vm.Solicitacoes" display-key="displaykey" ng-model="vm.Formulario.acaoCopiada"
         name="acaoCopiada_i" ng-change="vm.changeAcaoCopiada()" ng-disabled="!vm.regras.enableSolicitacao">
 
       <textarea hidden name="acaoCopiada" ng-value="vm.Formulario.acaoCopiada | json:0"

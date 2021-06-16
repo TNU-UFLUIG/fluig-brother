@@ -20,6 +20,11 @@
               <input class="form-control input-lg" name="executivo_executivo_i" fluig-autocomplete
                 dataset="totvs_busca_executivo" display-key="nome" ng-model="executivo.executivo"
                 ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.changeExecutivo(executivo, $index)">
+              <textarea hidden name="executivo" ng-value="executivo.executivo | json:0"
+                ng-bind="executivo.executivo | json:0"></textarea>
+              <input type="hidden" name="executivo_codigo" ng-value="executivo.executivo.codigo">
+              <input type="hidden" name="executivo_nome" ng-value="executivo.executivo.nome">
+              <input type="hidden" name="executivo_email" ng-value="executivo.executivo.email">
             </div>
           </div>
       </td>

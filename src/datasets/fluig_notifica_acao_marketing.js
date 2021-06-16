@@ -73,6 +73,11 @@ function createDataset(fields, constraints, sortFields) {
       ]);
     });
 
+    const executivos = getDataset('marketing_composicao_email', null, [
+      { field: 'documentid', value: solicitacao.documentid },
+      { field: 'tablename', value: 'executivos' }
+    ]);
+
     const tplParamsSolicitacao = new java.util.HashMap();
     const tplArrCamposSolicitacao = new java.util.ArrayList();
     const tplArrTables = new java.util.ArrayList();
@@ -144,10 +149,20 @@ function createDataset(fields, constraints, sortFields) {
 
     if (params.enviaExecutivo == 'S') {
 
-      solicitacao.executivo = JSON.parse(solicitacao.executivo);
+      // nova table executivos
+      if (executivos && executivos.length > 0) {
+        executivos.forEach((executivo) => {
+          if (executivo.executivo_email) {
+            arrDestinatarios.add(executivo.executivo_email);
+          }
+        });
+      } else {
+        // campo executivo antigo
+        solicitacao.executivo = JSON.parse(solicitacao.executivo);
 
-      if (solicitacao.executivo && solicitacao.executivo.email) {
-        arrDestinatarios.add(solicitacao.executivo.email);
+        if (solicitacao.executivo && solicitacao.executivo.email) {
+          arrDestinatarios.add(solicitacao.executivo.email);
+        }
       }
     }
 

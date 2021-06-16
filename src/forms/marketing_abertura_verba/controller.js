@@ -1,7 +1,7 @@
 angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brother.services', 'brother.directives', 'ngFileUpload'])
 
-  .controller('MarketingAberturaVerbaController', ['$scope', '$window', '$http', '$compile', '$timeout', '$log', 'formService', 'brotherService', 'fluigService', 'erpService', 'Upload',
-    function MarketingAberturaVerbaController($scope, $window, $http, $compile, $timeout, $log, formService, brotherService, fluigService, erpService, Upload) {
+  .controller('MarketingAberturaVerbaController', ['$scope', '$window', '$http', '$compile', '$timeout', '$log', 'formService', 'brotherService', 'fluigService', 'erpService', 'globalService', 'Upload',
+    function MarketingAberturaVerbaController($scope, $window, $http, $compile, $timeout, $log, formService, brotherService, fluigService, erpService, globalService, Upload) {
       const vm = this;
 
       if (window.location.hostname == 'localhost') {
@@ -34,9 +34,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: 'conferirFinanceiro', //"gerenciarVales",
+            etapa: 'inicio', //"gerenciarVales",
             user: 'admin',
-            formMode: 'MOD',
+            formMode: 'ADD',
             companyId: 1,
             managerMode: false
           };
@@ -228,7 +228,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.Formulario.dataAbertura = vm.dataAtual;
             // vm.Formulario.status = 'INÍCIO';
             break;
-
           case vm.Params.etapa == 'validarMarketing':
             vm.Formulario.userValMarketing = vm.Usuario;
             vm.Formulario.dataValidacaoMarketing = vm.dataAtual;
@@ -343,6 +342,77 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           });
 
         }
+
+        if (vm.regras.enableCopiarAcao) {
+          vm.Solicitacoes = [];
+          brotherService.getMarketingAberturaVerba().then(solicitacoes => {
+            solicitacoes.forEach(s => {
+              s.displaykey = `${s.suspenderAcao == 'true' ? 'SUSPENSA - ' : ''} ${s.solicitacao} - ${s.tipoAcaoDescricao} - ${s.nomeAcao} - ${s.clienteNome}`;
+              vm.Solicitacoes.push(s)
+            });
+          })
+        }
+      }
+
+      vm.changeAcaoCopiada = () => {
+        if (vm.Formulario.acaoCopiada && vm.Formulario.acaoCopiada.displaykey) {
+          FLUIGC.message.confirm({
+            message: `Deseja copiar os dados da solicitação ${vm.Formulario.acaoCopiada.displaykey}?`,
+            title: 'Copiar ação'
+          }, (result) => {
+            if (result) {
+              vm.copiaDadosAcao()
+
+              // Array.splice($index, 1);
+              $scope.$apply();
+            }
+          });
+        }
+      }
+
+      vm.copiaDadosAcao = () => {
+        [
+          'cliente', 'nomeAcao', 'tipoAcao', 'inicioAcao', 'terminoAcao', 'tipoQuantidade',
+          'tipoVpc', 'tipoSellin', 'tipoSellout', 'tipoSpiff', 'descricaoDetalhada'
+        ]
+          .forEach(field => {
+            vm.Formulario[field] = globalService.isJson(vm.Formulario.acaoCopiada[field]) ? JSON.parse(vm.Formulario.acaoCopiada[field]) : vm.Formulario.acaoCopiada[field];
+          });
+
+        const tablesToCopy = [
+          {
+            tablename: 'itensSellout', fieldPrefix: 'itemSellout', fields:
+              [
+                'target', 'finalidade', 'item', 'srpInicial', 'srpSugerido',
+                'netInicial', 'netSugerido', 'rebateUnit', 'qtde', 'rebateTotal', 'data',
+                'qtdEvidencia', 'valEvidencia', 'totEvidencia'
+              ]
+          },
+          {
+            tablename: 'rateioCategoria', fieldPrefix: 'rateio', fields: [
+              'perc', 'categoria'
+            ]
+          }
+        ]
+
+        tablesToCopy.forEach(t => {
+          vm.Formulario[t.tablename] = [];
+          fluigService.getDatasetAsync('marketing_abertura_verba', {
+            documentid: vm.Formulario.acaoCopiada.documentid, tablename: t.tablename
+          }).then(children => {
+            children.forEach(i => {
+              let item = {};
+              t.fields.forEach(field => {
+                item[field] = globalService.isJson(i[`${t.fieldPrefix}_${field}`]) ? JSON.parse(i[`${t.fieldPrefix}_${field}`]) : i[`${t.fieldPrefix}_${field}`]
+              });
+              vm.Formulario[t.tablename].push(item);
+            })
+
+            if (t.tablename === 'rateioCategoria') {
+              vm.calculaTotalRateio();
+            }
+          })
+        });
       }
 
       vm.checkUrlArquivos = () => {

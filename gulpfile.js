@@ -16,7 +16,7 @@ gulp.task('widgets', require('./tasks/widgets'));
 gulp.task('webserver', function () {
   gulp.src('')
     .pipe(webserver({
-      livereload: true,
+      // livereload: true,
       directoryListing: true,
       open: true,
       // path: 'brother-fluig',
