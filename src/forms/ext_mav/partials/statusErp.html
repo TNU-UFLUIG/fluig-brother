@@ -1,0 +1,60 @@
+<div class="row" ng-if="vm.Formulario.pendenteTotvs">
+  <div class="col-sm-12">
+    <div class="alert alert-warning animate" role="alert">
+      Solicitação em processo de atualização com o ERP. Aguarde até 1 minuto e recarregue a página para tentar
+      novamente.
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Pendente de Integração</label>
+      <input type="checkbox" name="pendenteTotvs_i" fluig-switch data-on-text="SIM" data-off-text="NÃO"
+        data-on-color="success" ng-model="vm.Formulario.pendenteTotvs">
+    </div>
+  </div>
+  <div class="col-sm-12">
+
+    Última Atualização: {{vm.Formulario.dataIntegraTotvs || 'N/D' | date:'medium'}}. Status:
+    {{vm.Formulario.statusIntegraTotvs || 'N/D'}}
+
+  </div>
+</div>
+
+<div class="row" ng-show="vm.Formulario.statusErp.length == 0">
+  <div class="col-sm-12">
+    <i>Sem histórico bancário</i>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table" tablename="statusErp" noaddbutton="true" nodeletebutton="true"
+      ng-show="vm.Formulario.statusErp.length > 0">
+      <!-- <caption>Arquivos de Evidência</caption> -->
+      <thead>
+        <tr>
+          <th class="col-sm-3">Data</th>
+          <th class="col-sm-9">Status</th>
+        </tr>
+      </thead>
+      <tbody ng-non-bindable>
+        <tr ng-repeat="statusErp in vm.Formulario.statusErp">
+
+          <td>
+            {{statusErp.data | date:'fullDate'}}
+            <input type="hidden" name="statusErp_data" ng-value="statusErp.data">
+            <input type="hidden" name="statusErp_data_f" ng-value="statusErp.data | date:'fullDate'">
+          </td>
+          <td>
+            <input type="hidden" name="statusErp_descricao" ng-value="statusErp.descricao">
+            {{statusErp.descricao}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

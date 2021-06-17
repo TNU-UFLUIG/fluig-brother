@@ -80,11 +80,11 @@ function validateForm(form) {
     }
   }
 
-  if (suspenderAcao && !managerMode) {
-    Errors.push(`A ação está suspensa e não poderá ser alterada. Em caso de dúvidas, entre em contato com o gestor do processo.`);
-  }
-
   if (currentState !== nextState) {
+
+    if (suspenderAcao && !managerMode) {
+      Errors.push(`A ação está suspensa e não poderá ser alterada. Em caso de dúvidas, entre em contato com o gestor do processo.`);
+    }
 
     if (managerMode && suspenderAcao && completeTask) {
       Errors.push(`A ação está (sendo) suspensa. Salve a ação ao invés de Enviar.`);
