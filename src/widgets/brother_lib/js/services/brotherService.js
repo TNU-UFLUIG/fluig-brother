@@ -35,6 +35,11 @@ angular.module('brother.services')
         return fluigService.getDatasetAsync('marketing_cliente', {
           documentid, tablename: 'contatos'
         }, fields);
+      },
+      getExtMav: (solicitacao, fields) => {
+        return fluigService.getDatasetAsync('ext_mav', {
+          solicitacao
+        }, fields);
       }
     })
   ]);

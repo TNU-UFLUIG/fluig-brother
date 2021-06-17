@@ -107,6 +107,27 @@ angular.module('brother.services')
         return defer.promise;
       },
 
+      createCard: (documentDescription, parentDocumentId, formData) => {
+        const defer = $q.defer();
+        const form = {
+          documentDescription,
+          parentDocumentId,
+          version: 1000,
+          inheritSecurity: true,
+          formData
+        };
+
+        $http.post('/api/public/2.0/cards/create', form)
+          .then((data) => {
+            defer.resolve(data);
+          }, (error) => {
+            $log.error('fluigService Error: ', error);
+            defer.reject(error);
+          });
+
+        return defer.promise;
+      },
+
       /**
        * Gera um id
        *

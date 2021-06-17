@@ -51,6 +51,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         vm.desktop = !vm.Params.mobile;
         vm.dataAtual = new Date().getTime();
 
+        vm.createExtMav();
         vm.checkRegras();
 
         if (vm.Params.formMode == 'ADD') {
@@ -157,7 +158,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'showAprovPagamento', def: true, etapas: ['consulta', 'aprovarPagamento', 'conferirFinanceiro', 'validarEvidencias', 'analisarErros'] },
           { regra: 'enableAprovPagamento', def: true, etapas: ['aprovarPagamento'] },
 
-          { regra: 'showStatusErp', def: true, etapas: vm.etapas },
+          { regra: 'showStatusErp', def: true, etapas: [] },
           { regra: 'enableStatusErp', def: true, etapas: [] },
 
 
@@ -1047,6 +1048,26 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         })
 
         vm.chatMessage = null;
+      }
+
+      vm.createExtMav = () => {
+        if (vm.Formulario.solicitacao) {
+          fluigService.getPasta(vm.Params.companyId || 1, 'Cadastros%7CMarketing%7CIntegração').then(pasta => {
+            // vm.Formulario.folderAttach = pasta[0].documentId;
+            if (pasta[0]) {
+              brotherService.getExtMav(vm.Formulario.solicitacao).then(result => {
+                let extMav = result[0];
+                if (!extMav) {
+                  let formData = [
+                    { name: 'solicitacao', value: vm.Formulario.solicitacao },
+                    { name: 'pendenteTotvs', value: 'true' },
+                  ];
+                  fluigService.createCard(vm.Formulario.solicitacao, pasta[0].documentId, formData)
+                }
+              })
+            }
+          });
+        }
       }
 
       vm.guid = function guid() {

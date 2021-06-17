@@ -24,6 +24,8 @@ function inputFields(form) {
 
   form.setValue('displaykey', displaykey);
 
+  atualizaPendenteTotvs(form);
+
   if (currentState == Params.atividades.validarMarketing[0]) {
     if (nextState == Params.atividades.gtwAprovarGerMarketing[0]) {
       form.setValue('statusValidacaoMarketing', 'APROVADO');
