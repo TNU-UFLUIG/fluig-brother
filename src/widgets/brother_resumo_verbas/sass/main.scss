@@ -5,3 +5,6 @@ $data-color: darken($text-color, 10%);
 $panel-color: $second-color;
 $border-panel-color: $primary-color;
 $border-card-color: #bbb;
+
+@import 'partials/default';
+@import 'partials/view';

@@ -41,7 +41,6 @@ function validateForm(form) {
   const obsEncerramentoAntecip = value(form, `obsEncerramentoAntecip`);
 
   const obsValidacaoMarketing = value(form, `obsValidacaoMarketing`);
-  const executivoCodigo = value(form, `executivoCodigo`);
 
   const obsAprovGerMarketing = value(form, `obsAprovGerMarketing`);
   const obsAprovPresidenciaVp = value(form, `obsAprovPresidenciaVp`);
@@ -145,9 +144,9 @@ function validateForm(form) {
     if (regras.enableValidacaoMarketing) {
       // 1. Enviar para Aprovação
       if (nextStateTxt == `gtwAprovarGerMarketing`) {
-        if (!executivoCodigo) {
-          Errors.push(`Informe o executivo de contas`);
-        }
+        // if (!executivoCodigo) {
+        //   Errors.push(`Informe o executivo de contas`);
+        // }
       }
       // 2. Devolver para Solicitante
       if (nextStateTxt == `revisarSolicitacao`) {

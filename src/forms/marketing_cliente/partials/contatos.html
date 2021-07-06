@@ -24,17 +24,22 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="">Nome</label>
-                                            <input class="form-control input-lg" name="contato_nome"
-                                                ng-model="contato.nome" ng-value="contato.nome">
+                                            <input class="form-control input-lg" fluig-autocomplete
+                                                dataset="marketing_usuario" display-key="nome"
+                                                ng-model="contato.usuario" name="contato_nome">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="">E-mail</label>
-                                            <input class="form-control input-lg" name="contato_email"
-                                                ng-model="contato.email" ng-value="contato.email">
+                                            <input class="form-control input-lg" fluig-autocomplete
+                                                dataset="marketing_usuario" display-key="email"
+                                                ng-model="contato.usuario" name="contato_email">
                                         </div>
                                     </div>
+                                    <textarea name="contato_usuario" id="contato_usuario" hidden
+                                        ng-value="contato.usuario | json:0"
+                                        ng-bind="contato.usuario | json:0"></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3">

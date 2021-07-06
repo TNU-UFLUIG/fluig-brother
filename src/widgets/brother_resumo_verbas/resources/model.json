@@ -1,0 +1,44 @@
+[
+  {
+    "solicitacao": "121212",
+    "tipoAcaoDescricao": "SELL-OUT PROMOTIONS",
+    "situacao": "EM ABERTO",
+    "status": "Aguardando Fim da Ação",
+    "dataSolicitacao": "5/1/21",
+    "inicioAcao": "5/2/21",
+    "terminoAcao": "5/30/21",
+    "prazoVencto": "2",
+    "clienteCodigo": "4797",
+    "clienteNome": "GMI",
+    "produtoCodigo": "DCPB7520DW",
+    "nomeAcao": "REBATE SELL-OUT - REDUÇÃO DE SRP DE 2.899,00 PARA 2.329,00 -"
+  },
+  {
+    "solicitacao": "121318",
+    "tipoAcaoDescricao": "SPIFF",
+    "situacao": "EM ABERTO",
+    "status": "Conferir Solicitação e Selecionar Duplicatas",
+    "dataSolicitacao": "3/1/21",
+    "inicioAcao": "3/2/21",
+    "terminoAcao": "3/20/21",
+    "prazoVencto": "4",
+    "clienteCodigo": "417",
+    "clienteNome": "GOLDEN",
+    "produtoCodigo": "M231",
+    "nomeAcao": "SPIFF - A BROTHER TE AJUDA A COMPRAR O QUE QUISER"
+  },
+  {
+    "solicitacao": "121548",
+    "tipoAcaoDescricao": "VPC/COOP",
+    "situacao": "EM ABERTO",
+    "status": "Enviar ND via Portal",
+    "dataSolicitacao": "4/1/21",
+    "inicioAcao": "4/2/21",
+    "terminoAcao": "4/10/21",
+    "prazoVencto": "3",
+    "clienteCodigo": "154",
+    "clienteNome": "GOMAQ",
+    "produtoCodigo": "TARGET",
+    "nomeAcao": "VPC - AÇÃO FRETE GRATIS - PGTO. MEDIANTE O CUMPRIMENTO  DO SELL-OUT DE 300.000,00"
+  }
+]

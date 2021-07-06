@@ -10,7 +10,7 @@ function inputFields(form) {
   const clienteNome = value(form, `clienteNome`);
   const nomeAcao = value(form, `nomeAcao`);
   const solicitacao = value(form, `solicitacao`);
-  const tipoAcaoDescricao = value(form, `clienteNome`);
+  const tipoAcaoDescricao = value(form, `tipoAcaoDescricao`);
   const suspenderAcao = value(form, `suspenderAcao`);
 
   const arquivosEvidencias = getChildren(form, `arquivosEvidencias`,
@@ -23,7 +23,7 @@ function inputFields(form) {
       `arquivoND_url`, `arquivoND_removed`, `arquivoND_descricao`, `arquivoND_aceito`,
       `arquivoND_motivoRecusa`, `arquivoND_numero`]);
 
-  const displaykey = `${suspenderAcao ? 'SUSPENSA - ' : ''} ${solicitacao} - ${tipoAcaoDescricao} - ${nomeAcao} - ${clienteNome}`;
+  const displaykey = `${suspenderAcao ? 'SUSPENSA - ' : ''} ${tipoAcaoDescricao} - ${nomeAcao} - ${clienteNome}`;
 
   form.setValue('displaykey', displaykey);
 

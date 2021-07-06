@@ -34,7 +34,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         if (window.location.hostname == 'localhost') {
           vm.Params = {
             edit: true,
-            etapa: 'inicio', //"gerenciarVales",
+            etapa: 'inicio', //'consulta', //'inicio', //"gerenciarVales",
             user: 'admin',
             formMode: 'ADD',
             companyId: 1,
@@ -42,7 +42,10 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           };
 
           if (vm.Params.formMode != 'ADD') {
-            vm.Formulario = { "rateioCategoria": [{ "categoria": { "displaykey": "1 - P&S", "codigo": "1", "descricao": "P&S" }, "categoriaDescricao": "P&S", "categoriaCodigo": 1, "perc": 1, "$$hashKey": "object:18" }, { "categoria": { "displaykey": "2 - S&S", "codigo": "2", "descricao": "S&S" }, "categoriaDescricao": "S&S", "categoriaCodigo": 2, "perc": 0, "$$hashKey": "object:19" }, { "categoria": { "displaykey": "3 - L&M", "codigo": "3", "descricao": "L&M" }, "categoriaDescricao": "L&M", "categoriaCodigo": 3, "perc": 0, "$$hashKey": "object:20" }, { "categoria": { "displaykey": "4 - P&H", "codigo": "4", "descricao": "P&H" }, "categoriaDescricao": "P&H", "categoriaCodigo": 4, "perc": 0, "$$hashKey": "object:21" }], "itensSellout": [{ "item": { "ccusto": "P&S", "displaykey": "DCPT710W - MULTIFUNCIONAL JATO DE TINTA 27/23 PPM JATO DE TINTA 27/23 P", "codigo": "DCPT710W", "categoria": "1.1- INK A4", "descricao": "MULTIFUNCIONAL JATO DE TINTA 27/23 PPM JATO DE TINTA 27/23 P" }, "itemDescricao": "MULTIFUNCIONAL JATO DE TINTA 27/23 PPM JATO DE TINTA 27/23 P", "itemCodigo": "DCPT710W", "categoria": "", "srpInicial": 3000, "netInicial": 1327.1639, "gpInicial": 0.43, "srpSugerido": 2365, "netSugerido": 1046.2409, "gpSugerido": 0.28, "rebateUnit": 280.923, "qtde": 50, "rebateTotal": 14046.15, "dolar": 5.2, "ccusto": "", "usuario": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "usuarioCodigo": "rugeda", "usuarioNome": "Rosi Ugeda", "data": 1605271682118, "qtdEvidencia": 30, "valEvidencia": 280.92, "totEvidencia": 8427.6 }], "itensSellinIt": [], "itensSellinTg": [], "itensSellinTgAc": [], "itensVpcEvt": [], "itensVpcOutros": [], "itensSpiffIt": [], "itensSpiffTg": [], "arquivosEvidencias": [{ "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8465, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY1JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG TESTE", "aceito": true, "motivoRecusa": "", "$$hashKey": "object:9" }], "arquivosND": [{ "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8466, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY2JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG", "numero": "00256", "aceito": true, "$$hashKey": "object:35" }], "duplicatas": [{ "seq": "", "numTitulo": "0003756", "parcela": "01", "tituloParcela": "0003756/01", "dataEmissao": "2019-12-30", "dataVencto": "2020-05-21", "codEspec": "DP", "nd": { "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8466, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY2JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG", "numero": "00256", "aceito": true }, "codCliente": 4426, "matriz": "NAO", "codEstab": 3, "valorOriginal": 386053.67, "codSerie": 2, "valorSaldo": 386053.67, "valorAntecipa": 4000, "saldoAposAbatimento": 382053.67, "$$hashKey": "object:11" }, { "seq": "", "numTitulo": "0121534", "parcela": "01", "tituloParcela": "0121534/01", "dataEmissao": "2020-02-26", "dataVencto": "2020-06-02", "codEspec": "DP", "nd": { "nome": "TEXTE ATINGIR META.xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "documentid": 8466, "version": 1000, "url": "http://fluigteste.brother.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD04NDY2JnZlcj0xMDAwJmZpbGU9VEVYVEUrQVRJTkdJUitNRVRBLnhsc3gmY3JjPTQzMjE4MDkyOCZzaXplPTAuNjI2NTI1JnVJZD0xMCZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9ZmFsc2U=.xlsx", "removed": false, "descricao": "FLUIG", "numero": "00256", "aceito": true }, "codCliente": 4426, "matriz": "NAO", "codEstab": 1, "valorOriginal": 369858.43, "codSerie": 2, "valorSaldo": 369858.43, "valorAntecipa": 4427.6, "saldoAposAbatimento": 365430.83, "$$hashKey": "object:12" }], "emailsCliente": [{ "email": "rosi.ugeda@brother.com.br", "iniAcao": true, "fimAcao": true, "evidencia": true, "envioND": true, "pagamento": true, "$$hashKey": "object:39" }], "chat": [], "statusErp": [{ "data": "", "descricao": null, "$$hashKey": "object:41" }], "Params": { "formMode": "MOD", "edit": true, "numState": "132", "etapa": "atualizarStatus", "user": "csilva", "mobile": false, "companyId": 1, "atividades": { "inicio": [1], "validarMarketing": [2], "gtwAprovarGerMarketing": [176], "revisarSolicitacao": [8], "aprovarGerMarketing": [4], "aprovarPresidencia": [6], "analisarErros": [27, 36, 53, 54, 143, 125], "aguardandoFimDaAcao": [129], "notificarGrupoBrotherInicio": [23], "notificarGrupoBrotherFim": [41], "autorizarNotificacaoInicio": [32], "autorizarNotificacaoFim": [43], "enviarEvidencias": [180], "validarEvidencias": [62], "gtwAprovarVerbaMaior": [67], "aprovarVerbaMaior": [151], "aprovarVerbaMenor": [75], "enviarND": [186], "validarND": [103], "conferirFinanceiro": [113], "aprovarPagamento": [116], "gerarAbatimentos": [121], "atualizarStatus": [132], "autorizarNotificacaoPagamento": [139], "finalizadoSemAntecipacao": [173] } }, "Errors": [], "regras": { "showResumo": true, "showSolicitacao": false, "enableSolicitacao": false, "showObsInternas": true, "enableObsInternas": true, "showEncerramentoAntecipado": false, "enableEncerramentoAntecipado": false, "showValidacaoMarketing": false, "enableValidacaoMarketing": false, "showRateioCategoria": true, "showResumoVerbasCliente": true, "showAprovGerMarketing": false, "enableAprovGerMarketing": false, "showAprovPresidenciaVp": false, "enableAprovPresidenciaVp": false, "showAprovVerbaMaior": false, "enableAprovVerbaMaior": false, "showAprovVerbaMenor": false, "enableAprovVerbaMenor": false, "showNotificacaoCliente": false, "enableNotificacaoCliente": false, "showEvidencias": true, "enableEvidencias": false, "enableValidacaoEvidencias": false, "showND": true, "enableND": false, "enableValidacaoND": false, "showSelecionarDuplicatas": true, "enableSelecionarDuplicatas": false, "showAprovPagamento": true, "enableAprovPagamento": true, "showStatusErp": true, "enableStatusErp": false }, "displaykey": "AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA", "importado": false, "solicitacao": 6312, "atividade": "aprovarPagamento", "responsavel": "mcarvalho", "guid": "5a337f57$6f1f$dcf9$5519$d88ce651fe7d", "pendenteTotvs": "N", "statusIntegraTotvs": "OK", "dataIntegraTotvs": 1605637214510, "currentStepPortal": 5, "notificaGrupoBrotherFimAcao": "N", "revisao": false, "folderAttach": "2438", "cliente": { "displaykey": "4 - AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA - 68993641000128", "codigo": "4", "ativo": "SIM", "nomeAbrev": "AGIS EQUIP", "subcanal": "100", "cnpj": "68993641000128", "executivo": "", "razaoSocial": "AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA", "matriz": "SIM" }, "clienteNome": "AGIS EQUIPAMENTOS E SERVICOS DE INF LTDA", "clienteCodigo": 4, "nomeAcao": "TESTE FLUIG", "tipoAcao": { "metadata#parent_id": 2514, "descricaoTipoAcao": "Sed libero. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Phasellus gravida semper nisi. Quisque id odio. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.", "metadata#card_index_id": 2514, "companyid": 1, "metadata#version": 3000, "cardid": 2514, "tipoAcao_input": null, "metadata#active": true, "tableid": "principal", "contaContabil_input": "41301012 - DESCONTO FINANCEIRO - SELL OUT PROMOTION", "documentid": 2545, "id": 7, "tipoAcaoCodigo": "sellout", "metadata#id": 2545, "displaykey": "SELL-OUT PROMOTIONS", "contaContabil_i": null, "Params": "{\"formMode\":\"MOD\",\"edit\":true,\"user\":\"rugeda\",\"mobile\":false,\"companyId\":1}", "contaContabilCodigo": "41301012", "version": 3000, "Errors": "[]", "contaContabil": { "displaykey": "41301012 - DESCONTO FINANCEIRO - SELL OUT PROMOTION", "codigo": "41301012", "descricao": "DESCONTO FINANCEIRO - SELL OUT PROMOTION" }, "tipoAcao": { "displaykey": "sellout - SELL-OUT PROMOTIONS", "contaContabil": "03.01.01", "codigo": "sellout", "descricao": "SELL-OUT PROMOTIONS" }, "importado": "false", "tipoAcao_i": null, "metadata#card_index_version": 1000 }, "tipoAcaoDescricao": "SELL-OUT PROMOTIONS", "tipoAcaoCodigo": "sellout", "inicioAcao_f": "domingo, 1 de novembro de 2020", "inicioAcao": 1604285999000, "terminoAcao_f": "quinta-feira, 5 de novembro de 2020", "terminoAcao": 1604631599000, "tipoQuantidade": "estimada", "descricaoDetalhada": "TESTE FLUIG\n22222\nPPPP\nBLABLAPGPGPGPGPGPGPGP", "totalRateio": 1, "statusValidacaoMarketing": "APROVADO", "dataValidacaoMarketing_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataValidacaoMarketing": 1605272152825, "userValMarketing": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userValMarketingNome": "Rosi Ugeda", "userValMarketingCodigo": "rugeda", "executivo": { "displaykey": "EDUARDO MEDEIROS - eduardo.medeiros@brother.com.br", "codigo": "3", "nome": "EDUARDO MEDEIROS", "email": "eduardo.medeiros@brother.com.br" }, "executivoCodigo": 3, "executivoNome": "EDUARDO MEDEIROS", "necAprovacaoGerMkt": true, "statusAprovGerMarketing": "APROVADO", "dataAprovGerMarketing_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataAprovGerMarketing": 1605272180170, "userAprovGerMarketing": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userAprovGerMarketingNome": "Rosi Ugeda", "userAprovGerMarketingCodigo": "rugeda", "statusAprovPresidenciaVp": "APROVADO", "dataAprovPresidenciaVp_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataAprovPresidenciaVp": 1605272199596, "userAprovPresidenciaVp": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userAprovPresidenciaVpNome": "Rosi Ugeda", "userAprovPresidenciaVpCodigo": "rugeda", "anteciparEncerramento": true, "dataEncerramentoAntecip_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataEncerramentoAntecip": 1605272323005, "userEncerramentoAntecip": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userEncerramentoAntecipNome": "Rosi Ugeda", "userEncerramentoAntecipCodigo": "rugeda", "obsEncerramentoAntecip": "teste", "statusValidacaoEvid": "APROVADO", "dataValidacaoEvid": 1605272602737, "userValidacaoEvid": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userValidacaoEvidNome": "Rosi Ugeda", "userValidacaoEvidCodigo": "rugeda", "valorTotalVerba_f": "R$14.046,15", "valorTotalVerba": 14046.15, "valorResultado_f": "R$8.427,60", "valorResultado": 8427.6, "valorLiberado_f": "R$8.427,60", "valorLiberado": 8427.6, "necEnvioNd": true, "evRecusada": false, "envioEvidenciasConcluido": true, "statusValidacaoND": "APROVADO", "dataValidacaoND_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataValidacaoND": 1605272758696, "userValidacaoND": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userValidacaoNDNome": "Rosi Ugeda", "userValidacaoNDCodigo": "rugeda", "envioNDConcluido": true, "ndRecusada": false, "statusFinanceiro": "APROVADO", "dataFinanceiro": 1605636805525, "userFinanceiro": { "colleagueName": "MANUELA CARVALHO", "mail": "manuela.carvalho@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "10", "active": "true", "login": "mcarvalho", "currentProject": "", "especializationArea": "", "colleagueId": "mcarvalho", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userFinanceiroNome": "MANUELA CARVALHO", "userFinanceiroCodigo": "mcarvalho", "difValorLiberado_f": "R$0,00", "difValorLiberado": 0, "saldoTitulos_f": "R$7.865.902,22", "saldoTitulos": 7865902.22, "valorAntecipacao_f": "R$0,00", "valorAntecipacao": 0, "statusAprovPagamento": "APROVADO", "dataAprovPagamento_f": "TERÇA-FEIRA, 17 DE NOVEMBRO DE 2020", "dataAprovPagamento": 1605636945318, "userAprovPagamento": { "colleagueName": "MANUELA CARVALHO", "mail": "manuela.carvalho@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "10", "active": "true", "login": "mcarvalho", "currentProject": "", "especializationArea": "", "colleagueId": "mcarvalho", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "userAprovPagamentoNome": "MANUELA CARVALHO", "userAprovPagamentoCodigo": "mcarvalho", "notificacaoEtapa": "ENVIO DA ND", "gpMedioSugerido_f": "28,000%", "gpMedioSugerido": 0.28, "dataAbertura_f": "SEXTA-FEIRA, 13 DE NOVEMBRO DE 2020", "dataAbertura": 1605271667983, "solicitante": { "colleagueName": "Rosi Ugeda", "mail": "rosi.ugeda@brother.com.br", "extensionNr": null, "maxPrivateSize": null, "groupId": "", "userTenantId": "17", "active": "true", "login": "rugeda", "currentProject": "", "especializationArea": "", "colleagueId": "rugeda", "companyId": "1", "defaultLanguage": "pt_BR", "adminUser": "false", "volumeId": null, "emailHtml": "true" }, "solicitanteNome": "Rosi Ugeda", "solicitanteCodigo": "rugeda", "status": "ENVIO BANCÁRIO" };
+            $http.get(`../../../tmp/solicitacao.json`).then(res => {
+              console.log(res)
+              vm.Formulario = res.data;
+            })
           }
         }
       }
@@ -96,7 +99,30 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           vm.Formulario.importado = false;
         }
 
-        vm.getItens()
+        vm.getItens();
+
+        // switch (vm.etapaNotificacao) {
+        //   case 1: tipo = 'iniAcao'; break;
+        //   case 2: tipo = 'fimAcao'; break;
+        //   case 3: tipo = 'evidencia'; break;
+        //   case 4: tipo = 'envioND'; break;
+        //   case 5: tipo = 'pagamento'; break;
+        //   default: tipo = 'iniAcao'; break;
+        // }
+
+        // if (vm.Formulario.status == 'CANCELADA') {
+        //   tipo = 'cancelamento';
+        // }
+        // vm.NotificationTypes = [
+        //   { id: 'iniAcao', label: 'Início da Ação' },
+        //   { id: 'fimAcao', label: 'Término da Ação' },
+        //   { id: 'evidencia', label: 'Envio de Evidências' },
+        //   { id: 'envioND', label: 'Envio da ND' },
+        //   { id: 'pagamento', label: 'Pagamento' },
+        //   { id: 'cancelamento', label: 'Cancelamento' },
+        //   { id: 'vales', label: 'Acompanhamento de Vales' }
+        // ];
+        vm.NotificationTypes = [];
       };
 
       vm.checkRegras = function checkRegras() {
@@ -109,6 +135,9 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'showResumo', def: true, etapas: vm.etapas },
           { regra: 'showSolicitacao', def: true, etapas: ['inicio', 'consulta', 'revisarSolicitacao', 'analisarErros'] },
           { regra: 'enableSolicitacao', def: vm.Params.edit, etapas: ['inicio', 'revisarSolicitacao'] },
+
+          { regra: 'showExecutivos', def: true, etapas: ['inicio', 'consulta', 'revisarSolicitacao', 'analisarErros', 'validarMarketing'] },
+          { regra: 'enableExecutivos', def: vm.Params.edit, etapas: ['inicio', 'revisarSolicitacao', 'validarMarketing'] },
 
           { regra: 'showCopiarAcao', def: true, etapas: ['inicio'] },
           { regra: 'enableCopiarAcao', def: vm.Params.edit, etapas: ['inicio'] },
@@ -139,7 +168,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           { regra: 'enableAprovVerbaMenor', def: true, etapas: ['aprovarVerbaMenor'] },
 
           { regra: 'showNotificacaoCliente', def: true, etapas: vm.etapas },
-          { regra: 'enableNotificacaoCliente', def: true, etapas: vm.etapas },
+          { regra: 'enableNotificacaoCliente', def: vm.Params.edit, etapas: vm.etapas },
 
           { regra: 'showEvidencias', def: true, etapas: ['consulta', 'enviarEvidencias', 'validarND', 'aprovarVerbaMaior', 'aprovarVerbaMenor', 'validarEvidencias', 'aprovarPagamento', 'analisarErros', 'conferirFinanceiro', 'gerenciarVales'] },
           { regra: 'enableEvidencias', def: true, etapas: ['enviarEvidencias', 'analisarErros'] },
@@ -168,8 +197,6 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       };
 
       vm.calculaPercCategoria = () => {
-        console.log(vm.calculaPercCategoria)
-
         vm.Formulario.rateioCategoria.forEach(cat => cat.valor = 0);
 
         switch (vm.Formulario.tipoAcao.tipoAcaoCodigo) {
@@ -262,6 +289,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
           case vm.Params.etapa == 'aguardandoFimDaAcao':
             vm.Formulario.userEncerramentoAntecip = vm.Usuario;
             vm.Formulario.dataEncerramentoAntecip = vm.dataAtual;
+            vm.etapaNotificacao = 1;
             break;
 
           case vm.Params.etapa == 'autorizarNotificacaoFim':
@@ -318,14 +346,19 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.Formulario.dataAprovPagamento = vm.dataAtual;
             vm.Formulario.statusAprovPagamento = 'PENDENTE';
             vm.Formulario.obsAprovPagamento = '';
+            vm.etapaNotificacao = 5;
             vm.buscaResumoVerbas();
             break;
 
+          case vm.Params.etapa == 'gerenciarVales':
+            vm.etapaNotificacao = 7;
+            break;
           case vm.Params.etapa == 'conferirFinanceiro':
             vm.Formulario.userFinanceiro = vm.Usuario;
             vm.Formulario.dataFinanceiro = vm.dataAtual;
             vm.Formulario.statusFinanceiro = 'PENDENTE';
             vm.Formulario.obsConferenciaFinanceiro = '';
+            vm.etapaNotificacao = 5;
             vm.buscaDuplicatas();
             vm.calculaTotalDuplicatas();
             vm.checkUrlArquivos()
@@ -353,6 +386,67 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             });
           })
         }
+
+        if (vm.etapaNotificacao === 1) {
+          vm.NotificationTypes.push({ id: 'iniAcao', label: 'Início da Ação' });
+        }
+        if (vm.etapaNotificacao === 2) {
+          vm.NotificationTypes.push({ id: 'fimAcao', label: 'Término da Ação' });
+        }
+        if (vm.etapaNotificacao === 3) {
+          vm.NotificationTypes.push({ id: 'evidencia', label: 'Envio de Evidências' });
+        }
+        if (vm.etapaNotificacao === 4) {
+          vm.NotificationTypes.push({ id: 'envioND', label: 'Envio da ND' });
+        }
+        if (vm.etapaNotificacao === 5) {
+          vm.NotificationTypes.push({ id: 'pagamento', label: 'Pagamento' });
+        }
+        if (vm.etapaNotificacao === 7) {
+          vm.NotificationTypes.push({ id: 'vales', label: 'Acompanhamento de Vales' });
+        }
+
+        if (vm.Formulario.status === 'CANCELADA') {
+          vm.NotificationTypes = [{ id: 'cancelamento', label: 'Cancelamento' }];
+        }
+      }
+
+      vm.reenviaNotificacao = (user, type) => {
+        FLUIGC.message.confirm({
+          message: `Confirma o envio da notificação de ${type.label}?`,
+          title: 'Reenviar notificação'
+        }, (answer) => {
+          console.log(answer);
+          if (answer) {
+            let enviaTodos = user ? 'N' : 'S';
+            let email = user ? user.email : null;
+            // let tipo;
+            // switch (vm.etapaNotificacao) {
+            //   case 1: tipo = 'iniAcao'; break;
+            //   case 2: tipo = 'fimAcao'; break;
+            //   case 3: tipo = 'evidencia'; break;
+            //   case 4: tipo = 'envioND'; break;
+            //   case 5: tipo = 'pagamento'; break;
+            //   default: tipo = 'iniAcao'; break;
+            // }
+
+            // if (vm.Formulario.status == 'CANCELADA') {
+            //   tipo = 'cancelamento';
+            // }
+
+            // console.log(vm.Formulario.solicitacao, tipo, email, enviaTodos, enviaTodos, enviaTodos)
+
+            brotherService.notificaAcaoMarketing(vm.Formulario.solicitacao, type.id, enviaTodos, enviaTodos, enviaTodos, email)
+              .then(result => {
+                console.log(result);
+                FLUIGC.toast({
+                  title: 'Feito! ',
+                  message: 'Notificação enviada',
+                  type: 'success'
+                });
+              })
+          }
+        });
       }
 
       vm.changeAcaoCopiada = () => {
@@ -374,11 +468,17 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
       vm.copiaDadosAcao = () => {
         [
           'cliente', 'nomeAcao', 'tipoAcao', 'inicioAcao', 'terminoAcao', 'tipoQuantidade',
-          'tipoVpc', 'tipoSellin', 'tipoSellout', 'tipoSpiff', 'descricaoDetalhada'
+          'tipoVpc', 'tipoSellin', 'tipoSellout', 'tipoSpiff', 'descricaoDetalhada', 'valorTotalVerba'
         ]
           .forEach(field => {
             vm.Formulario[field] = globalService.isJson(vm.Formulario.acaoCopiada[field]) ? JSON.parse(vm.Formulario.acaoCopiada[field]) : vm.Formulario.acaoCopiada[field];
           });
+
+        if (vm.Formulario.tipoAcao.tipoAcaoCodigo == 'sellout' && !vm.Formulario.tipoSellout) {
+          vm.Formulario.tipoSellout = 'srp';
+        }
+
+        vm.buscaContatosCliente();
 
         const tablesToCopy = [
           {
@@ -390,9 +490,59 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
               ]
           },
           {
-            tablename: 'rateioCategoria', fieldPrefix: 'rateio', fields: [
-              'perc', 'categoria'
-            ]
+            tablename: 'itensSellinIt', fieldPrefix: 'itemSellinIt', fields:
+              [
+                'item', 'srpInicial', 'srpSugerido', 'gpInicial', 'netInicial', 'netSugerido', 'gpSugerido',
+                'rebateUnit', 'qtde', 'rebateTotal', 'dolar'
+              ]
+          },
+          {
+            tablename: 'itensSellinTg', fieldPrefix: 'itemSellinTg', fields:
+              [
+                'descricao', 'target', 'qtde', 'perc', 'vlTarget', 'vlTotal'
+              ]
+          },
+          {
+            tablename: 'itensSellinTgAc', fieldPrefix: 'itemSellinTgAc', fields:
+              [
+                'descricao', 'target', 'qtde', 'perc', 'vlTarget', 'vlTotal'
+              ]
+          },
+          {
+            tablename: 'itensSpiffIt', fieldPrefix: 'itemSpiffIt', fields:
+              [
+                'item', 'spiffUnit', 'qtde', 'vlTotal'
+              ]
+          },
+          {
+            tablename: 'itensSpiffTg', fieldPrefix: 'itemSpiffTg', fields:
+              [
+                'foco', 'target', 'perc', 'vlUnit', 'vlTotal', 'qtde'
+              ]
+          },
+          {
+            tablename: 'itensVpcEvt', fieldPrefix: 'itemVpcEvt', fields:
+              [
+                'nomeEvento', 'finalidade', 'inicio', 'termino', 'perc', 'vlTotal'
+              ]
+          },
+          {
+            tablename: 'itensVpcOutros', fieldPrefix: 'itemVpcOutros', fields:
+              [
+                'tipo', 'finalidade', 'qtd', 'perc', 'vlTotal'
+              ]
+          },
+          {
+            tablename: 'executivos', fieldPrefix: 'executivo', fields:
+              [
+                'executivo'
+              ]
+          },
+          {
+            tablename: 'rateioCategoria', fieldPrefix: 'rateio', fields:
+              [
+                'perc', 'categoria'
+              ]
           }
         ]
 
@@ -407,14 +557,22 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
                 item[field] = globalService.isJson(i[`${t.fieldPrefix}_${field}`]) ? JSON.parse(i[`${t.fieldPrefix}_${field}`]) : i[`${t.fieldPrefix}_${field}`]
               });
               vm.Formulario[t.tablename].push(item);
-            })
+            });
 
             if (t.tablename === 'rateioCategoria') {
+              erpService.getBusinessSegment().then(categorias => {
+                categorias.forEach(c => {
+                  if (!vm.Formulario.rateioCategoria.filter(r => r.categoria.codigo === c.codigo)[0]) {
+                    vm.Formulario.rateioCategoria.push({ categoria: c, perc: 0 });
+                  }
+                });
+              });
               vm.calculaTotalRateio();
+              // vm.calculaTotais();
             }
-          })
+          });
         });
-      }
+      };
 
       vm.checkUrlArquivos = () => {
         vm.Formulario.arquivosEvidencias.forEach(a => {
@@ -480,26 +638,30 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.calculaItemErp(itemSellout)
           })
 
-          brotherService.getMarketingCliente(vm.Formulario.cliente.codigo).then((cliente) => {
-            if (cliente[0]) {
-              brotherService.getContatosCliente(cliente[0].documentid).then((contatos) => {
-                vm.Formulario.emailsCliente = [];
-                contatos.forEach((contato) => {
-                  vm.Formulario.emailsCliente.push({
-                    email: contato.contato_email,
-                    iniAcao: contato.contato_iniAcao,
-                    evidencia: contato.contato_evidencia,
-                    envioND: contato.contato_envioND,
-                    pagamento: contato.contato_pagamento,
-                    cancelamento: contato.contato_cancelamento,
-                    vales: contato.contato_vales
-                  });
-                });
-              });
-            }
-          });
+          vm.buscaContatosCliente();
         }
       };
+
+      vm.buscaContatosCliente = () => {
+        brotherService.getMarketingCliente(vm.Formulario.cliente.codigo).then((cliente) => {
+          if (cliente[0]) {
+            brotherService.getContatosCliente(cliente[0].documentid).then((contatos) => {
+              vm.Formulario.emailsCliente = [];
+              contatos.forEach((contato) => {
+                vm.Formulario.emailsCliente.push({
+                  email: contato.contato_email,
+                  iniAcao: contato.contato_iniAcao,
+                  evidencia: contato.contato_evidencia,
+                  envioND: contato.contato_envioND,
+                  pagamento: contato.contato_pagamento,
+                  cancelamento: contato.contato_cancelamento,
+                  vales: contato.contato_vales
+                });
+              });
+            });
+          }
+        });
+      }
 
       vm.buscaResumoVerbas = function buscaResumoVerbas() {
         // erpService.getResumoVerbas(vm.Formulario.cliente.codigo);
@@ -1118,7 +1280,11 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         })
 
         vm.chatMessage = null;
-      }
+      };
+
+      vm.openForm = solicitacao => {
+
+      };
 
       vm.createExtMav = () => {
         if (vm.Formulario.solicitacao) {

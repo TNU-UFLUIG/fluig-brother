@@ -96,6 +96,7 @@ function afterStateEntry(sequenceId) {
   if (Params.atividades.atualizarStatus.indexOf(sequenceId) >= 0) {
     hAPI.setCardValue("status", "ENVIO BANCÁRIO");
     hAPI.setCardValue("currentStepPortal", "5");
+    notificaAprovacaoPagamento();
   }
 
   if (Params.atividades.gerenciarVales.indexOf(sequenceId) >= 0) {

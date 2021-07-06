@@ -17,6 +17,14 @@ angular.module('brother.services')
 
       return str.replace(regMetaChars, '\\$1');
     },
+    guid: function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return `${s4() + s4()}$${s4()}$${s4()}$${s4()}$${s4()}${s4()}${s4()}`;
+    },
     deepValue: function deepValue(_obj, _path) {
       const path = _path.split('.');
       const len = path.length;

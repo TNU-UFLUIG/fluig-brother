@@ -166,21 +166,6 @@ function createDataset(fields, constraints, sortFields) {
     tplParamsSolicitacao.put('camposSolicitacao', tplArrCamposSolicitacao);
     tplParamsSolicitacao.put('tables', tplArrTables);
 
-    tplParams.put('solicitacao', solicitacao.solicitacao);
-    tplParams.put('link', linkPortalCliente);
-
-    if (solicitacao.motivoRecusaNd) {
-      tplParams.put('motivoRecusaNd', solicitacao.motivoRecusaNd);
-    }
-
-    if (solicitacao.motivoRecusaEv) {
-      tplParams.put('motivoRecusaEv', solicitacao.motivoRecusaEv);
-    }
-
-    if (solicitacao.motivoCancelamento) {
-      tplParams.put('motivoCancelamento', solicitacao.motivoCancelamento);
-    }
-
     tplArrSolicitacoes.add(tplParamsSolicitacao);
 
     dsDestinatariosCliente = [];
@@ -267,6 +252,7 @@ function createDataset(fields, constraints, sortFields) {
   }
 
   return dataset;
+
 }
 
 function onMobileSync(user) {

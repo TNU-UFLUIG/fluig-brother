@@ -2,13 +2,13 @@
   ng-show="vm.Formulario.executivos.length > 0">
   <thead>
     <tr>
-      <th class="col-sm-1" ng-if="vm.regras.enableSolicitacao"></th>
+      <th class="col-sm-1" ng-if="vm.regras.enableExecutivos"></th>
       <th class="col-sm-11"></th>
     </tr>
   </thead>
   <tbody ng-non-bindable>
     <tr ng-repeat="executivo in vm.Formulario.executivos">
-      <td ng-if="vm.regras.enableSolicitacao">
+      <td ng-if="vm.regras.enableExecutivos">
         <span ng-click="vm.removeChild(vm.Formulario.executivos, executivo)"
           class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
       </td>
@@ -19,8 +19,8 @@
               <label>Executivo</label>
               <input class="form-control input-lg" name="executivo_executivo_i" fluig-autocomplete
                 dataset="totvs_busca_executivo" display-key="nome" ng-model="executivo.executivo"
-                ng-disabled="!vm.regras.enableSolicitacao" ng-change="vm.changeExecutivo(executivo, $index)">
-              <textarea hidden name="executivo" ng-value="executivo.executivo | json:0"
+                ng-readonly="!vm.regras.enableExecutivos" ng-change="vm.changeExecutivo(executivo, $index)">
+              <textarea hidden name="executivo_executivo" ng-value="executivo.executivo | json:0"
                 ng-bind="executivo.executivo | json:0"></textarea>
               <input type="hidden" name="executivo_codigo" ng-value="executivo.executivo.codigo">
               <input type="hidden" name="executivo_nome" ng-value="executivo.executivo.nome">

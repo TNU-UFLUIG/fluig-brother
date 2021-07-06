@@ -1,0 +1,45 @@
+<div class="panel animation" ng-class="{'panel-primary': vm.Params.edit, 'panel-default': !vm.Params.edit}">
+  <div class="panel-heading">
+    <h4 class="panel-title">Usuário</h4>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="email_i">E-mail</label>
+          <input type="email" ng-required="true" fluig-error="form.email_i.$error" class="form-control input-lg"
+            ng-model="vm.Formulario.email" name="email_i" ng-change="vm.changeEmail()"
+            ng-readonly="vm.Params.formMode != 'ADD'" ng-required="true">
+          <input type="hidden" name="email" ng-value="vm.Formulario.email">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" ng-required="true" fluig-error="form.nome.$error" class="form-control input-lg"
+            ng-value="vm.Formulario.nome" ng-model="vm.Formulario.nome" name="nome"
+            ng-readonly="vm.Params.formMode != 'ADD'" ng-required="true">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="link">Link para o resumo de verbas</label>
+          <a target="_blank" href="/acao-marketing-cliente#!/resumo/{{vm.Formulario.guid}}">
+            <h3>
+              /acao-marketing-cliente/resumo/{{vm.Formulario.guid}}
+            </h3>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <!-- <label for="link">Enviar por e-mail ao usuário</label> -->
+          <button class="btn btn-default btn-lg" ng-click="vm.enviaEmail()">Enviar por e-mail ao usuário</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

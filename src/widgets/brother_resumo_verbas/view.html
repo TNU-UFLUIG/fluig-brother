@@ -1,0 +1,149 @@
+<html>
+
+<head>
+
+    <!-- <link rel="stylesheet" type="text/css" href="/brother-fluig/wcm/widget/brother_lib/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/brother-fluig/wcm/widget/brother_resumo_verbas/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-flat.min.css">
+
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-3.5.1.min.js?v=1.7.1-210518"></script>
+    <script type="text/javascript"
+        src="/portal/resources/js/jquery/jquery-migrate/jquery-migrate-3.3.1.js?v=1.7.1-210518"></script>
+    <script type="text/javascript"
+        src="/portal/resources/js/jquery/jquery-ready-revert/jquery-ready-revert.js?v=1.7.1-210518"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js?v=1.7.1-210518"></script>
+
+
+    <script type="text/javascript" src="/brother-fluig/wcm/widget/brother_lib/js/vendor.min.js"></script>
+    <script type="text/javascript" src="/brother-fluig/wcm/widget/brother_lib/js/script.min.js"></script>
+    <script type="text/javascript" src="/resources/js/wcm_global_pt_BR.js?v=1.6.5-190219" charset="utf-8"></script>
+    <script type="text/javascript" src="/portal/resources/js/api_pt_BR.js?v=1.6.5-190219" charset="utf-8"></script>
+    <script type="text/javascript" src="/brother-fluig/wcm/widget/brother_resumo_verbas/js/script.min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"></script> -->
+
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <!-- <base href="/portal/BROTHER/acao-marketing-cliente/"> -->
+
+</head>
+
+<body>
+
+    <div class="fluig-style-guide" id="BrotherResumoVerbas" ng-controller="BrotherResumoVerbasController as vm">
+        <div class="container">
+            <div id="message-page"></div>
+
+            <form name="form" role="form" id="form">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3>Resumo de Verbas</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <label for="">Busca</label>
+                                            <input type="text" class="form-control input-lg" ng-model="vm.search">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="">Limite</label>
+                                            <input type="number" class="form-control input-lg" ng-model="vm.limitTo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <table class="table table-striped">
+                                    <caption>{{vm.finalList.length}} solicitações encontradas</caption>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- ng-repeat="solicitacao in vm.Solicitacoes | orderBy:'solicitacao':true | filter:vm.search | limitTo:vm.limitTo" -->
+                                        <tr ng-repeat="solicitacao in (vm.finalList = (vm.Solicitacoes | filter: vm.search | orderBy:'solicitacao' : true) | limitTo:vm.limitTo)"
+                                            
+                                            >
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="">Solicitação</label>
+                                                        <p>{{solicitacao.solicitacao}} - {{solicitacao.nomeAcao}}</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="">Cliente</label>
+                                                        <p>{{solicitacao.clienteCodigo}} - {{solicitacao.clienteNome}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="">Status</label>
+                                                        <p>{{solicitacao.status}}</p>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="">Início</label>
+                                                        <p>{{solicitacao.inicioAcao | date}}</p>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="">Término</label>
+                                                        <p>{{solicitacao.terminoAcao | date}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label for="">Tipo da Ação</label>
+                                                        <p>{{solicitacao.tipoAcaoDescricao}}</p>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="">Total da Verba</label>
+                                                        <p>{{solicitacao.valorTotalVerba | currency}}</p>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="">Resultado</label>
+                                                        <p>{{solicitacao.valorResultado | currency}}</p>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="">Valor Liberado</label>
+                                                        <p>{{solicitacao.valorLiberado | currency}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <a class="btn btn-default" target="_blank"
+                                                            href="/webdesk/streamcontrol//{{solicitacao.documentid}}/{{solicitacao.version}}/?edit=false">
+                                                            Visualizar
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12" ng-show="vm.show">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <pre>{{vm.Solicitacoes | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <!-- <div ng-if="vm.currentDocument" class="view animated animated_fade">
+                <h1>{{vm.currentDocument.documentid}}</h1>
+            </div> -->
+        </div>
+    </div>
+
+</body>
+
+</html>

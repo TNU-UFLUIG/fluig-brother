@@ -1,5 +1,4 @@
 angular.module('BrotherConsultaVerbasApp', ['brother.directives', 'angular.fluig', 'ngAnimate', 'brother.services', 'chart.js', 'ngFileUpload'])
-
   .controller('BrotherConsultaVerbasController', ['$scope', '$compile', '$http', '$filter', '$timeout', 'fluigService', 'brotherService', 'erpService', 'globalService', 'Upload',
     function BrotherConsultaVerbasController($scope, $compile, $http, $filter, $timeout, fluigService, brotherService, erpService, globalService, Upload) {
       const vm = this;

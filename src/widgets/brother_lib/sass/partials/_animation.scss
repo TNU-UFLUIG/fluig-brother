@@ -1,28 +1,33 @@
-.animation {
-  // -webkit-transition: 0s;
+.ng-animate-shim {
+  visibility: hidden;
 }
 
-.animation.ng-enter {
-  opacity: 0;
+// FADE
+.animated.animated_fade.ng-hide-add {
+  -webkit-animation: fadeOut var(--animate-duration);
+  animation: fadeOut var(--animate-duration);
+}
+.animated.animated_fade.ng-hide-remove {
+  -webkit-animation: fadeIn var(--animate-duration);
+  animation: fadeIn var(--animate-duration);
 }
 
-.animation.ng-leave {
-  opacity: 1;
+// BOUNCE
+.animated.animated_bounce.ng-hide-add {
+  -webkit-animation: bounceOut var(--animate-duration);
+  animation: bounceOut var(--animate-duration);
+}
+.animated.animated_bounce.ng-hide-remove {
+  -webkit-animation: bounceIn var(--animate-duration);
+  animation: bounceIn var(--animate-duration);
 }
 
-.animation.ng-enter.ng-enter-active {
-  opacity: 1;
+// ZOOM
+.animated.animated_zoom.ng-hide-add {
+  -webkit-animation: zoomOut var(--animate-duration);
+  animation: zoomOut var(--animate-duration);
 }
-
-.animation.ng-leave.ng-leave-active {
-  opacity: 0;
-}
-
-.animation.ng-hide-remove {
-  transition: 1s linear all;
-  opacity: 0;
-}
-
-.animation.ng-hide-remove.ng-hide-remove-active {
-  opacity: 1;
+.animated.animated_zoom.ng-hide-remove {
+  -webkit-animation: zoomIn var(--animate-duration);
+  animation: zoomIn var(--animate-duration);
 }

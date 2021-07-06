@@ -26,6 +26,13 @@ angular.module('BrotherDocumentacaoMarketingMainApp', ['ngRoute', 'brother.direc
           title: 'Documentação de Marketing'
         })
 
+        .when('/resumo/:guid', {
+          templateUrl: '../views/resumo.html',
+          controller: 'BrotherResumoVerbasController',
+          controllerAs: 'vm',
+          title: 'Resumo de Verbas'
+        })
+
         .otherwise({
           redirectTo: '/'
         });

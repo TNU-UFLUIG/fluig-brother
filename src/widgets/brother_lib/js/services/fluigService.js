@@ -89,7 +89,7 @@ angular.module('brother.services')
 
         const defer = $q.defer();
 
-        let strParams = params ? Object.keys(params).map((k) => params[k] ? `${k},${params[k]}` : '').join(",") : '';
+        let strParams = params ? Object.keys(params).map((k) => params[k] ? `${k},${params[k]}` : null).join(',') : '';
         let strFields = fields ? fields.join() : '';
         let urlDataset = `/api/public/ecm/dataset/search?datasetId=${name}&filterFields=${strParams}&resultFields=${strFields}&limit=999999`;
 

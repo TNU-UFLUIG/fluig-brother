@@ -1,0 +1,87 @@
+<div id="message-page"></div>
+
+<form name="form" role="form" id="form">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Resumo de Verbas</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="solicitacao in vm.Solicitacoes"
+                                ng-class="{'danger':solicitacao.prazoVencto >= 3, 'info':solicitacao.prazoVencto == 1 || solicitacao.prazoVencto == 2 }">
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-8 form-group">
+                                            <label for="">Solicitação</label>
+                                            <p>{{solicitacao.solicitacao}} - {{solicitacao.nomeAcao}}</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="">Prazo Vencimento</label>
+                                            <p>{{solicitacao.prazoVencto}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="">Tipo da Ação</label>
+                                            <p>{{solicitacao.tipoAcaoDescricao}}</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="">Produto</label>
+                                            <p>{{solicitacao.produtosCodigos}}</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="">Cliente</label>
+                                            <p>{{solicitacao.clienteCodigo}} - {{solicitacao.clienteNome}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <label for="">Status</label>
+                                            <p>{{solicitacao.status}}</p>
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <label for="">Início da Ação</label>
+                                            <p>{{solicitacao.inicioAcao | date}}</p>
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <label for="">Término da Ação</label>
+                                            <p>{{solicitacao.terminoAcao | date}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="btn btn-default" target="_blank"
+                                                href="/acao-marketing-cliente#!/{{solicitacao.guid}}">
+                                                Acessar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12" ng-show="vm.show">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <pre>{{vm.Formulario | json}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!-- <button class="btn btn-default fs-float-right" ng-click="vm.show=!vm.show"></button> -->

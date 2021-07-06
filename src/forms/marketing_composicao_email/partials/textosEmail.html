@@ -147,3 +147,25 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Resumo de Verbas</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="resumoVerbasTitulo" class="control-label">Título</label>
+          <input name="resumoVerbasTitulo" class="form-control input-lg" ng-model="vm.Formulario.resumoVerbasTitulo"
+            ng-value="vm.Formulario.resumoVerbasTitulo" placeholder="Título">
+        </div>
+        <div class="form-group">
+          <label for="resumoVerbasTexto" class="control-label">Texto</label>
+          <textarea fluig-error="form.resumoVerbasTexto.$error" name="resumoVerbasTexto" elastic
+            class="form-control input-lg" ng-model="vm.Formulario.resumoVerbasTexto"
+            ng-value="vm.Formulario.resumoVerbasTexto"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

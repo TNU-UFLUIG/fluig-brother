@@ -40,6 +40,19 @@ angular.module('brother.services')
         return fluigService.getDatasetAsync('ext_mav', {
           solicitacao
         }, fields);
-      }
+      },
+      getUsuarioMarketing: function getUsuarioMarketing(email, fields) {
+        return fluigService.getDatasetAsync('marketing_usuario', {
+          email
+        }, fields);
+      },
+      enviaResumoVerbas: (email, fields) =>
+        fluigService.getDatasetAsync('fluig_envia_resumo_verbas', {
+          email
+        }, fields),
+      notificaAcaoMarketing: (solicitacoes, tipo, enviaBrother, enviaCliente, enviaExecutivo, email, fields) =>
+        fluigService.getDatasetAsync('fluig_notifica_acao_marketing', {
+          solicitacoes, tipo, enviaBrother, enviaCliente, enviaExecutivo, email
+        }, fields)
     })
   ]);
