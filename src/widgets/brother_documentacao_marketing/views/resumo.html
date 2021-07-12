@@ -8,6 +8,20 @@
                     <h3>Resumo de Verbas</h3>
                 </div>
                 <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label for="">Busca</label>
+                                <input type="text" class="form-control input-lg" ng-model="vm.search">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="">Limite</label>
+                                <input type="number" class="form-control input-lg" ng-model="vm.limitTo">
+                            </div>
+                        </div>
+                    </div>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -16,31 +30,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="solicitacao in vm.Solicitacoes"
+                            <tr ng-repeat="solicitacao in (vm.finalList = (vm.Solicitacoes | filter: vm.search | orderBy:'solicitacao' : true) | limitTo:vm.limitTo)"
                                 ng-class="{'danger':solicitacao.prazoVencto >= 3, 'info':solicitacao.prazoVencto == 1 || solicitacao.prazoVencto == 2 }">
                                 <td>
                                     <div class="row">
-                                        <div class="col-sm-8 form-group">
-                                            <label for="">Solicitação</label>
-                                            <p>{{solicitacao.solicitacao}} - {{solicitacao.nomeAcao}}</p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label for="">Prazo Vencimento</label>
-                                            <p>{{solicitacao.prazoVencto}}</p>
+                                        <div class="col-sm-12">
+                                            <label for="">Nome da Ação</label>
+                                            <p>{{solicitacao.nomeAcao}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4">
-                                            <label for="">Tipo da Ação</label>
-                                            <p>{{solicitacao.tipoAcaoDescricao}}</p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label for="">Produto</label>
-                                            <p>{{solicitacao.produtosCodigos}}</p>
+                                        <div class="col-sm-4 form-group">
+                                            <label for="">Solicitação</label>
+                                            <p>{{solicitacao.solicitacao}}</p>
                                         </div>
                                         <div class="col-sm-4">
                                             <label for="">Cliente</label>
                                             <p>{{solicitacao.clienteCodigo}} - {{solicitacao.clienteNome}}</p>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <label for="">Tipo da Ação</label>
+                                            <p>{{solicitacao.tipoAcaoDescricao}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="">Prazo Vencimento</label>
+                                            <p>{{solicitacao.prazoVencto}}</p>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <label for="">Produto</label>
+                                            <p>{{solicitacao.produtosCodigos}}</p>
                                         </div>
                                     </div>
                                     <div class="row">

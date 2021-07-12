@@ -16,6 +16,7 @@ angular
       };
 
       vm.buscaSolicitacoes = () => {
+        vm.limitTo = 100;
         FLUIGC.loading('body').show();
 
         vm.Solicitacoes = null;

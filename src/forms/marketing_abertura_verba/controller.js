@@ -590,7 +590,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
         })
       }
       vm.checkEtapaNotificacao = function checkEtapaNotificacao() {
-        if (vm.Params.etapa === 'validarEvidencias') {
+        if (vm.Params.etapa === 'validarEvidencias' || vm.Params.etapa == 'enviarEvidencias') {
           vm.Formulario.evRecusada = vm.Formulario.arquivosEvidencias.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
           vm.Formulario.revisao = vm.Formulario.evRecusada;
           if (vm.Formulario.evRecusada) {
@@ -598,6 +598,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             vm.etapaNotificacao = 3;
             vm.regras.showNotificacaoCliente = true;
           } else {
+            vm.Formulario.motivoRecusaEv = '';
             if (vm.Formulario.necEnvioNd) {
               vm.Formulario.notificacaoEtapa = 'ENVIO DA ND';
               vm.etapaNotificacao = 4;
@@ -608,7 +609,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             }
           }
         } else {
-          if (vm.Params.etapa == 'validarND') {
+          if (vm.Params.etapa == 'validarND' || vm.Params.etapa == 'enviarND') {
             vm.Formulario.ndRecusada = vm.Formulario.arquivosND.filter(arquivo => !arquivo.removed && !arquivo.aceito).length > 0;
             vm.Formulario.revisao = vm.Formulario.ndRecusada;
             if (vm.Formulario.ndRecusada) {
@@ -617,6 +618,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
 
               vm.regras.showNotificacaoCliente = true;
             } else {
+              vm.Formulario.motivoRecusaND = '';
               vm.regras.showNotificacaoCliente = false;
             }
           }

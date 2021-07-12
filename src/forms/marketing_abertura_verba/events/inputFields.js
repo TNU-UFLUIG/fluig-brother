@@ -23,7 +23,7 @@ function inputFields(form) {
       `arquivoND_url`, `arquivoND_removed`, `arquivoND_descricao`, `arquivoND_aceito`,
       `arquivoND_motivoRecusa`, `arquivoND_numero`]);
 
-  const displaykey = `${suspenderAcao ? 'SUSPENSA - ' : ''} ${tipoAcaoDescricao} - ${nomeAcao} - ${clienteNome}`;
+  const displaykey = `${suspenderAcao ? 'SUSPENSA - ' : ''} ${clienteNome}`;
 
   form.setValue('displaykey', displaykey);
 

@@ -169,16 +169,21 @@ function createDataset(fields, constraints, sortFields) {
     tplParams.put('solicitacao', solicitacao.solicitacao);
     tplParams.put('link', linkPortalCliente);
 
-    if (solicitacao.motivoRecusaNd) {
-      tplParams.put('motivoRecusaNd', solicitacao.motivoRecusaNd);
-    }
-
-    if (solicitacao.motivoRecusaEv) {
-      tplParams.put('motivoRecusaEv', solicitacao.motivoRecusaEv);
-    }
-
-    if (solicitacao.motivoCancelamento) {
-      tplParams.put('motivoCancelamento', solicitacao.motivoCancelamento);
+    if (solicitacao.status == 'CANCELADA') {
+      if (solicitacao.motivoCancelamento) {
+        tplParams.put('motivoCancelamento', solicitacao.motivoCancelamento);
+      }
+    } else {
+      if (solicitacao.ndRecusada == 'true') {
+        if (solicitacao.motivoRecusaND) {
+          tplParams.put('motivoRecusaND', solicitacao.motivoRecusaND);
+        }
+      }
+      if (solicitacao.evRecusada == 'true') {
+        if (solicitacao.motivoRecusaEv) {
+          tplParams.put('motivoRecusaEv', solicitacao.motivoRecusaEv);
+        }
+      }
     }
 
     tplArrSolicitacoes.add(tplParamsSolicitacao);
