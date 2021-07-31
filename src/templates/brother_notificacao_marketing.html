@@ -805,6 +805,26 @@
                                                 <p style="white-space: pre-line; background-color: chocolate; padding: 10px; margin-top: 10px; margin-bottom: 10px; font-weight: 500; vertical-align: baseline; font-size: 18px; line-height: 24px; color: #fff;"
                                                   align="left">${motivoCancelamento}</p>
                                               </#if>
+                                              <#if camposExtras?has_content>
+                                                <#if camposExtras?size !=0>
+
+                                                  <h2>Status dos Vales</h2>
+
+                                                  <#list camposExtras as campo>
+                                                    <#if campo.valor?has_content>
+                                                      <b style="white-space: pre-line; font-weight: 600; vertical-align: baseline; font-size: 20px; color: #000;"
+                                                        align="left">${campo.label}</b>
+                                                      <p style="white-space: pre-line; font-weight: 500; vertical-align: baseline; font-size: 18px; color: #333"
+                                                        align="left">${campo.valor}</p>
+                                                    </#if>
+                                                  </#list>
+                                                </#if>
+                                              </#if>
+                                              <#if obsNotificacaoCliente?has_content>
+                                                <h2>Observações</h2>
+                                                <p style="white-space: pre-line; padding: 10px; margin-top: 10px; margin-bottom: 10px; font-weight: 500; vertical-align: baseline; font-size: 18px; line-height: 24px;"
+                                                  align="left">${obsNotificacaoCliente}</p>
+                                              </#if>
 
                                               <table class="s-2 w-100" border="0" cellpadding="0" cellspacing="0"
                                                 style="width: 100%;">

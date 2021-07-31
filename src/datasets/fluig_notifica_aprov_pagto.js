@@ -62,7 +62,7 @@ function createDataset(fields, constraints, sortFields) {
       notifier.notify('admin', 'brother_notificacao_marketing', tplParams, arrDestinatarios, 'text/html');
     }
   } else {
-    throw 'Solicitação não encontrada';
+    throw `Solicitação ${String(params.solicitacao)} não encontrada`;
   }
 
   return dataset;

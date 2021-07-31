@@ -105,6 +105,7 @@ function createDataset(fields, constraints, sortFields) {
 
     const tplParamsSolicitacao = new java.util.HashMap();
     const tplArrCamposSolicitacao = new java.util.ArrayList();
+    const tplArrCamposExtras = new java.util.ArrayList();
     const tplArrTables = new java.util.ArrayList();
 
     dsCamposSolicitacao.forEach((c) => {
@@ -160,6 +161,24 @@ function createDataset(fields, constraints, sortFields) {
 
     const linkPortalCliente = `${sdk.getServerURL()}/portal/BROTHER/acao-marketing-cliente#!/${solicitacao.guid}`;
 
+    if (params.tipo == 'vales') {
+      [
+        { label: 'Nome da Ação', campo: 'nomeAcao' },
+        { label: 'Nº Controle / Registro', campo: 'solicitacao' },
+        { label: 'Tipo da Ação', campo: 'tipoAcaoDescricao' },
+        { label: 'Status dos Vales', campo: 'statusVales' },
+        { label: 'Data da Compra dos Vales', campo: 'dataCompraVales_f' },
+        { label: 'Data de Envio dos Vales', campo: 'dataEnvioVales_f' },
+        { label: 'Data de Entrega dos Vales', campo: 'dataEntregaVales_f' },
+        { label: 'Código de Rastreio nos Correios', campo: 'codRastreioVales' },
+      ].forEach(c => {
+        const campo = new java.util.HashMap();
+        campo.put('label', c.label);
+        campo.put('valor', String(solicitacao[c.campo]).replace(/(?:\r\n|\r|\n)/g, '<br>'));
+        tplArrCamposExtras.add(campo);
+      });
+    }
+
     tplParamsSolicitacao.put('linkPortalCliente', linkPortalCliente);
     tplParamsSolicitacao.put('observacoes', String(solicitacao.obsNotificacaoCliente).replace(/(?:\r\n|\r|\n)/g, '<br>'));
     tplParamsSolicitacao.put('solicitacao', solicitacao.solicitacao);
@@ -168,6 +187,7 @@ function createDataset(fields, constraints, sortFields) {
 
     tplParams.put('solicitacao', solicitacao.solicitacao);
     tplParams.put('link', linkPortalCliente);
+    tplParams.put('camposExtras', tplArrCamposExtras);
 
     if (solicitacao.status == 'CANCELADA') {
       if (solicitacao.motivoCancelamento) {
@@ -184,6 +204,10 @@ function createDataset(fields, constraints, sortFields) {
           tplParams.put('motivoRecusaEv', solicitacao.motivoRecusaEv);
         }
       }
+    }
+
+    if (solicitacao.obsNotificacaoCliente) {
+      tplParams.put('obsNotificacaoCliente', solicitacao.obsNotificacaoCliente);
     }
 
     tplArrSolicitacoes.add(tplParamsSolicitacao);

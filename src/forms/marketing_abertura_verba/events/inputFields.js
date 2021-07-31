@@ -25,6 +25,12 @@ function inputFields(form) {
 
   const displaykey = `${suspenderAcao ? 'SUSPENSA - ' : ''} ${clienteNome}`;
 
+  log.info(`getValue('WKUser') = ${getValue('WKUser')}`);
+
+  const dsUser = getDataset('colleague', ['colleagueId', 'colleagueName', 'mail', 'login'], [
+    { field: 'login', value: String(getValue('WKUser')) }
+  ], true)[0];
+
   form.setValue('displaykey', displaykey);
 
   atualizaPendenteTotvs(form);
@@ -36,6 +42,9 @@ function inputFields(form) {
     if (nextState == Params.atividades.revisarSolicitacao[0]) {
       form.setValue('statusValidacaoMarketing', 'REPROVADO');
     }
+
+    form.setValue('userValMarketing', JSON.stringify(dsUser));
+    form.setValue('dataValidacaoMarketing', new Date().getTime());
   }
 
   if (currentState == Params.atividades.aprovarGerMarketing[0]) {
@@ -45,15 +54,22 @@ function inputFields(form) {
     if (nextState == Params.atividades.validarMarketing[0]) {
       form.setValue('statusAprovGerMarketing', 'REPROVADO');
     }
+
+    form.setValue('userAprovGerMarketing', JSON.stringify(dsUser));
+    form.setValue('dataAprovGerMarketing', new Date().getTime());
   }
 
   if (currentState == Params.atividades.aprovarPresidencia[0]) {
+
     if (nextState == Params.atividades.notificarGrupoBrotherInicio[0]) {
       form.setValue('statusAprovPresidenciaVp', 'APROVADO');
     }
     if (nextState == Params.atividades.revisarSolicitacao[0]) {
       form.setValue('statusAprovPresidenciaVp', 'REPROVADO');
     }
+
+    form.setValue('userAprovPresidenciaVp', JSON.stringify(dsUser));
+    form.setValue('dataAprovPresidenciaVp', new Date().getTime());
   }
 
   if (currentState == Params.atividades.validarEvidencias[0]) {
@@ -81,6 +97,9 @@ function inputFields(form) {
     if (nextState == Params.atividades.validarEvidencias[0]) {
       form.setValue('statusAprovVerbaMaior', 'REPROVADO');
     }
+
+    form.setValue('userAprovVerbaMaior', JSON.stringify(dsUser));
+    form.setValue('dataAprovVerbaMaior', new Date().getTime());
   }
 
   if (currentState == Params.atividades.aprovarVerbaMenor[0]) {
@@ -90,6 +109,9 @@ function inputFields(form) {
     if (nextState == Params.atividades.validarEvidencias[0]) {
       form.setValue('statusAprovVerbaMenor', 'REPROVADO');
     }
+
+    form.setValue('userAprovVerbaMenor', JSON.stringify(dsUser));
+    form.setValue('dataAprovVerbaMenor', new Date().getTime());
   }
 
   if (currentState == Params.atividades.conferirFinanceiro[0]) {
@@ -108,6 +130,9 @@ function inputFields(form) {
     if (nextState == Params.atividades.conferirFinanceiro[0]) {
       form.setValue('statusAprovPagamento', 'REPROVADO');
     }
+
+    form.setValue('userAprovPagamento', JSON.stringify(dsUser));
+    form.setValue('dataAprovPagamento', new Date().getTime());
   }
 }
 

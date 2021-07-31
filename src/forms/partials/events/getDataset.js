@@ -24,7 +24,7 @@ function getDataset(name, campos, filtros, internal) {
       }
 
       campos.forEach(campo => {
-        o[campo] = dataset.getValue(i, campo);
+        o[campo] = String(dataset.getValue(i, campo));
       });
 
       result.push(o);

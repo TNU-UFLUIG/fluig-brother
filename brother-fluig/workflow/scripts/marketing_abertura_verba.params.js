@@ -20,6 +20,7 @@ function params() {
     conferirFinanceiro: [113],
     aprovarPagamento: [116],
     atualizarStatus: [132],
+    gerarAbatimentos: [121],
     autorizarNotificacaoPagamento: [139],
     gerenciarVales: [202],
     gtwVales: [204],

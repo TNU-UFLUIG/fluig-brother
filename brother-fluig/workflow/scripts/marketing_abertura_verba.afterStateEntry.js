@@ -93,10 +93,14 @@ function afterStateEntry(sequenceId) {
     hAPI.setCardValue("currentStepPortal", "4");
   }
 
+  if (Params.atividades.gerarAbatimentos.indexOf(sequenceId) >= 0) {
+    notificaAprovacaoPagamento();
+  }
+
   if (Params.atividades.atualizarStatus.indexOf(sequenceId) >= 0) {
     hAPI.setCardValue("status", "ENVIO BANCÁRIO");
     hAPI.setCardValue("currentStepPortal", "5");
-    notificaAprovacaoPagamento();
+    // notificaAprovacaoPagamento();
   }
 
   if (Params.atividades.gerenciarVales.indexOf(sequenceId) >= 0) {
