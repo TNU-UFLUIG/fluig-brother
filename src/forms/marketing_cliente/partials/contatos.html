@@ -25,16 +25,16 @@
                                         <div class="form-group">
                                             <label for="">Nome</label>
                                             <input class="form-control input-lg" fluig-autocomplete
-                                                dataset="marketing_usuario" display-key="nome"
-                                                ng-model="contato.usuario" name="contato_nome">
+                                                dataset="marketing_usuario" display-key="nome" ng-value="contato.nome"
+                                                ng-model="contato.usuario" name="contato_nome" result-fields="['nome','email']">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="">E-mail</label>
                                             <input class="form-control input-lg" fluig-autocomplete
-                                                dataset="marketing_usuario" display-key="email"
-                                                ng-model="contato.usuario" name="contato_email">
+                                                dataset="marketing_usuario" display-key="email" ng-value="contato.email"
+                                                ng-model="contato.usuario" name="contato_email" result-fields="['nome','email']">
                                         </div>
                                     </div>
                                     <textarea name="contato_usuario" id="contato_usuario" hidden

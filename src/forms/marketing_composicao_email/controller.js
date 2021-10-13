@@ -60,40 +60,40 @@ angular.module('MarketingComposicaoEmailApp', ['angular.fluig', 'ngAnimate', 'br
 
         vm.CamposSolicitacao = [];
 
-        DatasetFactory.getDataset('marketing_abertura_verba').columns.forEach(column => {
-          if ($.inArray(column, properties) < 0) {
-            vm.CamposSolicitacao.push({ name: column });
-          }
-        });
+        // DatasetFactory.getDataset('marketing_abertura_verba').columns.forEach(column => {
+        //   if ($.inArray(column, properties) < 0) {
+        //     vm.CamposSolicitacao.push({ name: column });
+        //   }
+        // });
 
-        [
-          { label: 'Duplicatas', name: 'duplicatas' },
-          { label: 'SellinIt', name: 'itensSellinIt' },
-          { label: 'SellinTg', name: 'itensSellinTg' },
-          { label: 'SellinTgAc', name: 'itensSellinTgAc' },
-          { label: 'Sellout', name: 'itensSellout' },
-          { label: 'SpiffIt', name: 'itensSpiffIt' },
-          { label: 'SpiffTg', name: 'itensSpiffTg' },
-          { label: 'VpcEvt', name: 'itensVpcEvt' },
-          { label: 'VpcOutros', name: 'itensVpcOutros' },
-          { label: 'Evidencias', name: 'arquivosEvidencias' },
-          { label: 'ND', name: 'arquivosND' }
-        ].forEach(table => {
-          vm[`Campos${table.label}`] = [];
-          DatasetFactory.getDataset('marketing_abertura_verba', null, [
-            DatasetFactory.createConstraint(
-              'tablename', table.name, table.name, ConstraintType.MUST)
-          ]).columns.forEach(column => {
-            if ($.inArray(column, properties) < 0) {
-              vm[`Campos${table.label}`].push({ name: column });
-            }
-          })
-        });
+        // [
+        //   { label: 'Duplicatas', name: 'duplicatas' },
+        //   { label: 'SellinIt', name: 'itensSellinIt' },
+        //   { label: 'SellinTg', name: 'itensSellinTg' },
+        //   { label: 'SellinTgAc', name: 'itensSellinTgAc' },
+        //   { label: 'Sellout', name: 'itensSellout' },
+        //   { label: 'SpiffIt', name: 'itensSpiffIt' },
+        //   { label: 'SpiffTg', name: 'itensSpiffTg' },
+        //   { label: 'VpcEvt', name: 'itensVpcEvt' },
+        //   { label: 'VpcOutros', name: 'itensVpcOutros' },
+        //   { label: 'Evidencias', name: 'arquivosEvidencias' },
+        //   { label: 'ND', name: 'arquivosND' }
+        // ].forEach(table => {
+        //   vm[`Campos${table.label}`] = [];
+        //   DatasetFactory.getDataset('marketing_abertura_verba', null, [
+        //     DatasetFactory.createConstraint(
+        //       'tablename', table.name, table.name, ConstraintType.MUST)
+        //   ]).columns.forEach(column => {
+        //     if ($.inArray(column, properties) < 0) {
+        //       vm[`Campos${table.label}`].push({ name: column });
+        //     }
+        //   })
+        // });
 
 
-        if (vm.Formulario.campos.length == 0) {
-          vm.Formulario.campos = [{ iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true }];
-        }
+        // if (vm.Formulario.campos.length == 0) {
+        //   vm.Formulario.campos = [{ iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true }];
+        // }
         if (vm.Formulario.destinatarios.length == 0) {
           vm.Formulario.destinatarios = [{ iniAcao: true, fimAcao: true, evidencia: true, envioND: true, pagamento: true }];
         }

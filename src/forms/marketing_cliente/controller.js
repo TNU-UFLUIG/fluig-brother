@@ -16,6 +16,19 @@ angular.module('MarketingClienteApp', ['angular.fluig', 'ngAnimate', 'brother.se
         fluigService.getUsuarios(vm.Params.user).then((users) => {
           vm.Usuario = users[0];
         });
+        $log.log(vm.Params.formMode)
+
+        if (vm.Params.formMode !== 'ADD') {
+          vm.Formulario.contatos.forEach(contato => {
+            $log.log(contato);
+            if (contato.usuario == '') {
+              contato.usuario = {
+                nome: contato.nome,
+                email: contato.email
+              };
+            }
+          });
+        }
       };
 
       vm.changeCliente = function changeCliente() {

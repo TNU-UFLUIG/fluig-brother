@@ -1,13 +1,11 @@
 function defineStructure() {
-
 }
 
 function onSync(lastSyncDate) {
-
+  createDataset();
 }
 
 function createDataset(fields, constraints, sortFields) {
-
   let logSeq = 0;
 
   const dataset = DatasetBuilder.newDataset();

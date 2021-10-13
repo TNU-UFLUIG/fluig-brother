@@ -913,7 +913,7 @@ angular.module('MarketingAberturaVerbaApp', ['angular.fluig', 'ngAnimate', 'brot
             })
 
             vm.Formulario.duplicatas.forEach(d => {
-              d.emAprovacao = titulos.filter(t => t.titulo_numTitulo == d.numTitulo).length > 0;
+              d.emAprovacao = titulos.filter(t => t.titulo_numTitulo == d.numTitulo && t.titulo_parcela == d.parcela).length > 0;
             })
           })
 

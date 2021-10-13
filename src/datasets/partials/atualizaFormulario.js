@@ -1,19 +1,13 @@
 function atualizaFormulario(empresa, usuario, senha, documentid, campos) {
-
-  var cardServiceProvider = ServiceManager.getServiceInstance("ECMCardService");
-  var cardServiceLocator = cardServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.ECMCardServiceService");
-  var cardService = cardServiceLocator.getCardServicePort();
-  var cardFieldDtoArray = cardServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.CardFieldDtoArray");
+  const cardServiceProvider = ServiceManager.getServiceInstance('ECMCardService');
+  const cardServiceLocator = cardServiceProvider.instantiate('com.totvs.technology.ecm.dm.ws.ECMCardServiceService');
+  const cardService = cardServiceLocator.getCardServicePort();
+  const cardFieldDtoArray = cardServiceProvider.instantiate('com.totvs.technology.ecm.dm.ws.CardFieldDtoArray');
 
   let sequence = 0;
 
-  // log.info('antes updateCardData. documentid: ' + documentid);
-
-  campos.forEach(campo => {
-    let cardField = cardServiceProvider.instantiate("com.totvs.technology.ecm.dm.ws.CardFieldDto");
-
-    // log.info(campo.name);
-    // log.info(campo.value);
+  campos.forEach((campo) => {
+    const cardField = cardServiceProvider.instantiate('com.totvs.technology.ecm.dm.ws.CardFieldDto');
 
     cardField.setField(String(campo.name));
     cardField.setValue(String(campo.value || ''));
@@ -23,9 +17,5 @@ function atualizaFormulario(empresa, usuario, senha, documentid, campos) {
     sequence++;
   });
 
-
   cardService.updateCardData(empresa, usuario, senha, documentid, cardFieldDtoArray);
-
-  // log.info('depois updateCardData');
-
 }
